@@ -19,11 +19,11 @@ for f in os.listdir(src):
         data = get_json(f)
 
         identifier = os.path.splitext(f)[0]
-        # collection_title = data["title"]
+        collection_title = data["title"].encode("utf-8").strip()
 
         with open(os.path.join(dest,identifier+'.html'), 'w+') as new_file:
             new_file.write("---\nlayout: collection\n")
-            # new_file.write("title: \n")
+            new_file.write("title: "+collection_title+"\n")
             new_file.write("id: "+identifier+"\n")
             new_file.write("permalink: "+dest+"/"+identifier+"/\n")
             new_file.write("---")
