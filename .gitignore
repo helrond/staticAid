@@ -1,0 +1,8 @@
+_site
+.sass-cache
+.jekyll-metadata
+local_settings.cfg
+log.txt
+*.pid
+*.pickle
+.DS_Store

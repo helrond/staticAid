@@ -1,0 +1,9 @@
+---
+layout: default
+---
+
+{% for collection_hash in site.data.collections %}
+{% assign collection = collection_hash[1] %}
+{% assign id = collection_hash[0] %}
+  <h2><a href="collections/{{id}}">{{ collection.title }}</a></h2>
+{% endfor %}

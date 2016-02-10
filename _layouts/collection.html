@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% capture id %}{{page.id}}{% endcapture %}
+{% assign collection = site.data.collections[{{id}}] %}
+<article class="collection">
+
+  <header class="collection-header">
+    <h1 class="collection-title">{{ collection.title }}</h1>
+  </header>
+
+  <div class="collection-dates">
+    {% for date in collection.dates %}
+      {% include collection/date.html %}
+    {% endfor %}
+  </div>
+
+  <div class="collection-extents">
+    {% for extent in collection.extents %}
+      {% include collection/extent.html %}
+    {% endfor %}
+  </div>
+
+  <div class="collection-notes">
+    {% for note in collection.notes %}
+      {% include collection/note.html %}
+    {% endfor %}
+  </div>
+
+  {% if collection.tree %}
+    <div class="collection-contents">
+      {% assign tree = site.data.trees[{{id}}].children %}
+      {% include collection/component.html %}
+    </div>
+  {% endif %}
+
+</article>

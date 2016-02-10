@@ -1,0 +1,19 @@
+<ul>
+{% for component in tree %}
+  <li>
+    {{ component.title }}
+    {% capture component_id %}{{component.id}}{% endcapture %}
+    {% assign component_detail = site.data.objects[{{component_id}}] %}
+    {% for instance in component_detail.instances %}
+      {% include collection/instance.html %}
+    {% endfor %}
+    {% for note in component_detail.notes %}
+      {% include collection/note.html %}
+    {% endfor %}
+  {% if component.children %}
+    {% assign tree = component.children %}
+    {% include collection/component.html %}
+  {% endif %}
+  </li>
+{% endfor %}
+</ul>
