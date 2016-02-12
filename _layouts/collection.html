@@ -3,17 +3,17 @@ layout: default
 ---
 {% capture id %}{{page.id}}{% endcapture %}
 {% assign collection = site.data.collections[{{id}}] %}
-<article class="collection">
+{% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
+<div class="col-md-8 col-md-offset-2">
 
-  <header class="collection-header">
-    <h1 class="collection-title">{{ collection.title }}</h1>
-  </header>
+  {% include collection/breadcrumb.html %}
 
-  <div class="collection-dates">
-    {% for date in collection.dates %}
-      {% include collection/date.html %}
-    {% endfor %}
-  </div>
+  <h1 class="collection-title">
+    {{ collection.title }} ({{fa_number}})
+    <small>
+      {{collection.dates[0].expression}}
+    </small>
+  </h1>
 
   <div class="collection-extents">
     {% for extent in collection.extents %}
@@ -27,11 +27,11 @@ layout: default
     {% endfor %}
   </div>
 
-  {% if collection.tree %}
+  {% if collection.tree.ref %}
     <div class="collection-contents">
       {% assign tree = site.data.trees[{{id}}].children %}
       {% include collection/component.html %}
     </div>
   {% endif %}
 
-</article>
+</div>

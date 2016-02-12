@@ -17,3 +17,5 @@ github_username:  helrond
 
 # Build settings
 markdown: kramdown
+exclude :
+  - utilities 
