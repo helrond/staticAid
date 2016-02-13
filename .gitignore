@@ -1,8 +1,8 @@
 _site
 .sass-cache
 .jekyll-metadata
-local_settings.cfg
-log.txt
-*.pid
-*.pickle
 .DS_Store
+utilities/*.txt
+utilities/*.cfg
+utilities/*.pid
+utilities/*.pickle
