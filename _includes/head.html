@@ -13,7 +13,7 @@
   {% endif %}
   <!-- /404 Redirect -->
 
-  <link rel="stylesheet" href="{{ site.base_url }}/css/styles.css" />
+  <link rel="stylesheet" href="{{ css/styles.css | prepend: site.baseurl | prepend: site.url }}" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 </head>
