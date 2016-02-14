@@ -2,6 +2,7 @@ _site
 .sass-cache
 .jekyll-metadata
 .DS_Store
+node_modules
 utilities/*.txt
 utilities/*.cfg
 utilities/*.pid
