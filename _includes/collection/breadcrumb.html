@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-  <li><a href="{{ site.baseurl }}">Home</a></li>
-  <li><a href="{{ "/collections" | prepend:site.baseurl }}">Collections</a></li>
+  <li><a href="{{ site.baseurl | prepend: site.baseurl }}">Home</a></li>
+  <li><a href="{{ "/collections" | prepend:site.baseurl | prepend:site.url }}">Collections</a></li>
   <li class="active">{{ collection.title }}</li>
 </ol>
