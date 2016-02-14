@@ -45,12 +45,12 @@ def main():
 
     start_section("Destinations")
     print "\nNow you need to tell me where you want to export data to. Unless you know what you\'re doing, you should probably leave the defaults in place.\n"
-    collections = raw_input("Enter the directory to which you want to export JSON for resource records (default is '../_data/collections'): ")
-    write_value("collections", "../_data/collections", collections)
-    objects = raw_input("Enter the directory to which you want to export JSON for archival objects (default is '../_data/objects'): ")
-    write_value("objects", "../_data/objects", objects)
-    trees = raw_input("Enter the directory to which you want to export JSON for resource record trees (default is '../_data/trees'): ")
-    write_value("trees", "../_data/trees", trees)
+    collections = raw_input("Enter the directory to which you want to export JSON for resource records (default is '_data/collections'): ")
+    write_value("collections", "_data/collections", collections)
+    objects = raw_input("Enter the directory to which you want to export JSON for archival objects (default is '_data/objects'): ")
+    write_value("objects", "_data/objects", objects)
+    trees = raw_input("Enter the directory to which you want to export JSON for resource record trees (default is '_data/trees'): ")
+    write_value("trees", "_data/trees", trees)
 
     start_section("Logging")
     print "\nNow enter some values for the log file. Again, you can probably leave the defaults in place.\n"
@@ -67,8 +67,8 @@ def main():
     write_value("filepath", "lastExport.pickle")
 
     start_section("Build")
-    write_value("src", "../_data/collections")
-    write_value("dest", "../collections")
+    write_value("src", "_data/collections")
+    write_value("dest", "collections")
 
     cfg_file.close()
 
