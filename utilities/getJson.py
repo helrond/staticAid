@@ -3,8 +3,15 @@
 import os, requests, json, sys, time, pickle, logging, ConfigParser, re, subprocess, random, psutil
 from requests_toolbelt import exceptions
 
+current_dir = current_dir = os.path.dirname(__file__)
+if current_dir != '.':
+    data_prefix = ".."
+else:
+    data_prefix = None
+
+
 # local config file, containing variables
-configFilePath = 'local_settings.cfg'
+configFilePath = os.path.join(current_dir, 'local_settings.cfg')
 config = ConfigParser.ConfigParser()
 config.read(configFilePath)
 
@@ -14,19 +21,19 @@ baseURL = '{baseURL}'.format(**dictionary)
 repositoryBaseURL = '{baseURL}/repositories/{repository}/'.format(**dictionary)
 
 # Location of Pickle file which contains last export time
-lastExportFilepath = config.get('LastExport', 'filepath')
+lastExportFilepath = os.path.join(current_dir, config.get('LastExport', 'filepath'))
 
-logging.basicConfig(filename=config.get('Logging', 'filename'),format=config.get('Logging', 'format', 1), datefmt=config.get('Logging', 'datefmt', 1), level=config.get('Logging', 'level', 0))
+logging.basicConfig(filename=os.path.join(current_dir, config.get('Logging', 'filename')),format=config.get('Logging', 'format', 1), datefmt=config.get('Logging', 'datefmt', 1), level=config.get('Logging', 'level', 0))
 # Sets logging of requests to WARNING to avoid unneccessary info
 logging.getLogger("requests").setLevel(logging.WARNING)
 
 # export destinations, os.path.sep makes these absolute URLs
-collectionDestination = config.get('Destinations', 'collections')
-objectDestination = config.get('Destinations', 'objects')
-treeDestination = config.get('Destinations', 'trees')
+collectionDestination = os.path.join(data_prefix, config.get('Destinations', 'collections'))
+objectDestination = os.path.join(data_prefix, config.get('Destinations', 'objects'))
+treeDestination = os.path.join(data_prefix, config.get('Destinations', 'trees'))
 
 # file path to record process id
-pidfilepath = 'daemon.pid'
+pidfilepath = os.path.join(current_dir, 'daemon.pid')
 
 # check to see if process is already running
 def checkPid(pidfilepath):
@@ -91,29 +98,13 @@ def removeFile(identifier, destination):
         os.remove(os.path.join(destination,str(identifier)+'.json'))
         logging.info('%s deleted from %s', identifier, destination)
     else:
-        logging.info('Could not find %s in %s, no need to delete', identifier, destination)
+        pass
 
 def saveFile(fileID, data, destination):
     with open(os.path.join(destination,str(fileID)+'.json'), 'wb') as fd:
         json.dump(data, fd)
         fd.close
         logging.info('%s exported to %s', fileID, destination)
-
-# Looks for a specific resource record using id_0
-def findResource(headers, resourceId):
-    logging.info('*** Getting a list of all resources ***')
-    resourceIds = requests.get(repositoryBaseURL+'resources?all_ids=true', headers=headers)
-    for r in resourceIds.json():
-        resource = (requests.get(repositoryBaseURL+'resources/' + str(r), headers=headers)).json()
-        if resource["publish"]:
-            if not "LI" in resource["id_0"]:
-                saveFile(r, resource, collectionDestination)
-                findTree(r, headers)
-            else:
-                pass
-        else:
-            removeFile(r, collectionDestination)
-            removeFile(r, treeDestination)
 
 # Looks for resources
 def findResources(lastExport, headers):

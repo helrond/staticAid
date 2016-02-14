@@ -2,12 +2,18 @@
 
 import os, ConfigParser, json
 
-configFilePath = 'local_settings.cfg'
+current_dir = os.path.dirname(__file__)
+if current_dir == '.':
+    build_prefix = "../"
+else:
+    build_prefix = ""
+
+configFilePath = os.path.join(current_dir, 'local_settings.cfg')
 config = ConfigParser.ConfigParser()
 config.read(configFilePath)
 
-src = config.get('Build', 'src')
-dest = config.get('Build', 'dest')
+src = build_prefix + config.get('Build', 'src')
+dest = build_prefix + config.get('Build', 'dest')
 
 def get_json(data):
     with open(os.path.join(src,data)) as data_file:
@@ -28,3 +34,4 @@ for f in os.listdir(src):
             new_file.write("permalink: "+dest+"/"+identifier+"/\n")
             new_file.write("---")
             new_file.close
+            print str(os.path.join(dest,identifier+'.html')) + " created"

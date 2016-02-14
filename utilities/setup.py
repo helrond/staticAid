@@ -2,7 +2,9 @@
 
 import os, sys
 
-file_path = "local_settings.cfg"
+current_dir = os.path.dirname(__file__)
+
+file_path = os.path.join(current_dir, "local_settings.cfg")
 
 def check_response(response, yes):
     if response != yes:
@@ -39,7 +41,7 @@ def main():
     repoId = raw_input("Enter the repository ID for your ArchivesSpace installation (default is '2'): ")
     write_value("repository", "2", repoId)
     username = raw_input("Enter the username for your ArchivesSpace installation (default is 'admin'): ")
-    write_value("repository", "admin", username)
+    write_value("user", "admin", username)
     password = raw_input("Enter the password associated with this username (default is 'admin'): ")
     write_value("password", "admin", password)
 
