@@ -72,7 +72,7 @@ def logout(headers):
 # gets time of last export
 def readTime():
     # last export time in Unix epoch time, for example 1439563523
-    if os.path.isfile(lastExportFilepath) and sys.argv[1] == '--replace':
+    if os.path.isfile(lastExportFilepath) and sys.argv[1] == '--update':
         with open(lastExportFilepath, 'rb') as pickle_handle:
             lastExport = str(pickle.load(pickle_handle))
     else:
