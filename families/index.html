@@ -1,16 +1,7 @@
 ---
 layout: default
+title: "Families"
 ---
 
-<div class="col-sm-8 col-sm-offset-2">
-  <h1>Families</h1>
-  {% for family_hash in site.data.agents.families %}
-    {% assign family = family_hash[1] %}
-    {% assign id = family_hash[0] %}
-    {% capture description %}{% for note in family.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content}}{% endif %}{% endfor %}{% endcapture %}
-    <h3><a href="{{ id }}">{{ family.title }}</a></h3>
-    {% if description != '' %}
-      <p>{{ description | truncatewords: 50 }}</p>
-    {% endif %}
-  {% endfor %}
-</div>
+{% assign list_data = site.data.agents.families %}
+{% include list.html %}

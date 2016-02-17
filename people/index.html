@@ -1,16 +1,7 @@
 ---
 layout: default
+title: "People"
 ---
 
-<div class="col-sm-8 col-sm-offset-2">
-  <h1>People</h1>
-  {% for person_hash in site.data.agents.people %}
-    {% assign person = person_hash[1] %}
-    {% assign id = person_hash[0] %}
-    {% capture description %}{% for note in person.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content}}{% endif %}{% endfor %}{% endcapture %}
-    <h3><a href="{{ id }}">{{ person.title }}</a></h3>
-    {% if description != '' %}
-      <p>{{ description | truncatewords: 50 }}</p>
-    {% endif %}
-  {% endfor %}
-</div>
+{% assign list_data = site.data.agents.people %}
+{% include list.html %}

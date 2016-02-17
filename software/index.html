@@ -1,16 +1,7 @@
 ---
 layout: default
+title: "Software"
 ---
 
-<div class="col-sm-8 col-sm-offset-2">
-  <h1>Software</h1>
-  {% for software_hash in site.data.agents.software %}
-    {% assign software = software_hash[1] %}
-    {% assign id = software_hash[0] %}
-    {% capture description %}{% for note in software.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content}}{% endif %}{% endfor %}{% endcapture %}
-    <h3><a href="{{ id }}">{{ software.title }}</a></h3>
-    {% if description != '' %}
-      <p>{{ description | truncatewords: 50 }}</p>
-    {% endif %}
-  {% endfor %}
-</div>
+{% assign list_data = site.data.agents.software %}
+{% include list.html %}
