@@ -26,12 +26,18 @@
         {% include collection/instance.html %}
       {% endfor %}
     </div>
-    {% if component_detail.notes[0] %}
+    {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
       <div class="col-md-12 container-list-notes">
         <div class="collapse" id="{{component_detail.ref_id}}-notes">
           <div class="well">
             {% for note in component_detail.notes %}
               {% include collection/note.html %}
+            {% endfor %}
+            {% for subject_detail in component_detail.subjects %}
+              {% include collection/subject.html %}
+            {% endfor %}
+            {% for agent.detail in component_detail.subjects %}
+              {% include collection/agent-list.html %}
             {% endfor %}
           </div>
         </div>
