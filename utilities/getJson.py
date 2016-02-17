@@ -4,11 +4,6 @@ import os, requests, json, sys, time, pickle, logging, ConfigParser, re, subproc
 from requests_toolbelt import exceptions
 
 current_dir = current_dir = os.path.dirname(__file__)
-if current_dir != '.':
-    data_prefix = ".."
-else:
-    data_prefix = None
-
 
 # local config file, containing variables
 configFilePath = os.path.join(current_dir, 'local_settings.cfg')
@@ -28,9 +23,11 @@ logging.basicConfig(filename=os.path.join(current_dir, config.get('Logging', 'fi
 logging.getLogger("requests").setLevel(logging.WARNING)
 
 # export destinations, os.path.sep makes these absolute URLs
-collectionDestination = os.path.join(data_prefix, config.get('Destinations', 'collections'))
-objectDestination = os.path.join(data_prefix, config.get('Destinations', 'objects'))
-treeDestination = os.path.join(data_prefix, config.get('Destinations', 'trees'))
+collectionDestination = config.get('Destinations', 'collections')
+objectDestination = config.get('Destinations', 'objects')
+treeDestination = config.get('Destinations', 'trees')
+agentDestination = config.get('Destinations', 'agents')
+subjectDestination = config.get('Destinations', 'subjects')
 
 # file path to record process id
 pidfilepath = os.path.join(current_dir, 'daemon.pid')
@@ -52,7 +49,7 @@ def checkPid(pidfilepath):
         file(pidfilepath, 'w').write(currentPid)
 
 def makeDestinations():
-    destinations = [collectionDestination, objectDestination, treeDestination]
+    destinations = [collectionDestination, objectDestination, treeDestination, agentDestination, subjectDestination]
     for d in destinations:
         if not os.path.exists(d):
             os.makedirs(d)
@@ -101,7 +98,9 @@ def removeFile(identifier, destination):
         pass
 
 def saveFile(fileID, data, destination):
-    with open(os.path.join(destination,str(fileID)+'.json'), 'wb') as fd:
+    if not os.path.exists(destination):
+        os.makedirs(destination)
+    with open(os.path.join(destination,str(fileID)+'.json'), 'wb+') as fd:
         json.dump(data, fd)
         fd.close
         logging.info('%s exported to %s', fileID, destination)
@@ -144,6 +143,37 @@ def findObjects(lastExport, headers):
         else:
             removeFile(a, objectDestination)
 
+# Looks for agents
+def findAgents(lastExport, headers):
+    if lastExport > 0:
+        logging.info('*** Getting a list of all agents ***')
+    else:
+        logging.info('*** Getting a list of agents modified since %s ***', lastExport)
+    agent_types = ['corporate_entities', 'families', 'people', 'software']
+    for agent_type in agent_types:
+        agents = requests.get(baseURL+'/agents/'+agent_type+'?all_ids=true&modified_since='+str(lastExport), headers=headers)
+        for a in agents.json():
+            agent = requests.get(baseURL+'/agents/'+agent_type+'/'+str(a), headers=headers).json()
+            if agent["publish"]:
+                saveFile(a, agent, os.path.join(agentDestination, agent_type))
+            else:
+                removeFile(a, aos.path.join(agentDestination, agent_type))
+
+# Looks for subjects
+def findSubjects(lastExport, headers):
+    if lastExport > 0:
+        logging.info('*** Getting a list of all subjects ***')
+    else:
+        logging.info('*** Getting a list of subjects modified since %s ***', lastExport)
+    subjects = requests.get(baseURL+'/subjects?all_ids=true&modified_since='+str(lastExport), headers=headers)
+    for s in subjects.json():
+        subject = requests.get(baseURL+'/subjects/'+str(s), headers=headers).json()
+        if subject["publish"]:
+            saveFile(s, subject, subjectDestination)
+        else:
+            removeFile(s, subjectDestination)
+
+
 def main():
     checkPid(pidfilepath)
     makeDestinations()
@@ -154,6 +184,8 @@ def main():
     headers = authenticate()
     findResources(lastExport, headers)
     findObjects(lastExport, headers)
+    findAgents(lastExport, headers)
+    findSubjects(lastExport, headers)
     logging.info('*** Export completed ***')
     updateTime(exportStartTime)
     os.unlink(pidfilepath)

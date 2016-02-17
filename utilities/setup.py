@@ -53,6 +53,13 @@ def main():
     write_value("objects", "_data/objects", objects)
     trees = raw_input("Enter the directory to which you want to export JSON for resource record trees (default is '_data/trees'): ")
     write_value("trees", "_data/trees", trees)
+    agents = raw_input("Enter the directory to which you want to export JSON for agents (default is '_data/agents'): ")
+    write_value("agents", "_data/agents", agents)
+    agent_types = ['corporate_entities', 'families', 'people', 'software']
+    for agent_type in agent_types:
+        write_value("people", "_data/agents/"+agent_type, os.path.join(agents, agent_type))
+    subjects = raw_input("Enter the directory to which you want to export JSON for subjects (default is '_data/subjects'): ")
+    write_value("subjects", "_data/subjects", subjects)
 
     start_section("Logging")
     print "\nNow enter some values for the log file. Again, you can probably leave the defaults in place.\n"
