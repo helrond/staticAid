@@ -1,8 +1,0 @@
-{% for name in agent_detail.names %}
-  {% if name.is_display_name %}
-    {{name.primary_name}}
-  {% endif %}
-{% endfor %}
-<span class="label label-default">
-  {{agent.role}}
-</span>

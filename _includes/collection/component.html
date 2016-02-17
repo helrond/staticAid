@@ -33,12 +33,13 @@
             {% for note in component_detail.notes %}
               {% include collection/note.html %}
             {% endfor %}
-            {% for subject_detail in component_detail.subjects %}
+            {% for subject in component_detail.subjects %}
               {% include collection/subject.html %}
             {% endfor %}
-            {% for agent.detail in component_detail.subjects %}
+            {% if component_detail.linked_agents[0] %}
+              {% assign agents = component_detail.linked_agents[0] %}
               {% include collection/agent-list.html %}
-            {% endfor %}
+            {% endif %}
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-  {% for agent in collection.linked_agents %}
+  {% for agent in agents %}
   {% if agent.ref contains "corporate_entities" %}
     {% assign type = "corporate_entities" %}
     {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
@@ -18,7 +18,7 @@
     {% assign agent_detail = site.data.agents.software[{{id}}] %}
   {% endif %}
   {% if agent_detail %}
-    <li class="{{ type }} agent">{% include collection/agent.html %}</li>
+    <li class="{{ type }} agent">{{agent_detail.title}} <span class="badge">{{agent.role}}</span></li>
   {% endif %}
 {% endfor %}
 </ul>
