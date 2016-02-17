@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-{% capture id %}{{page.id}}{% endcapture %}
-{% assign collection = site.data.collections[{{id}}] %}
+{% capture collection_id %}{{page.id}}{% endcapture %}
+{% assign collection = site.data.collections[{{collection_id}}] %}
 {% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
 <div class="col-md-8 col-md-offset-2">
 
@@ -21,6 +21,18 @@ layout: default
     {% endfor %}
   </div>
 
+  <div class="collection-agents">
+    {% include collection/agent-list.html %}
+  </div>
+
+  <div class="collection-subjects">
+    {% for subject in collection.subjects %}
+      {% capture subject_id %}{{subject.ref | replace: '/subjects/', ''}}{% endcapture %}
+      {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+      {% include collection/subject.html %}
+    {% endfor %}
+  </div>
+
   <div class="collection-notes">
     {% for note in collection.notes %}
       {% include collection/note.html %}
@@ -29,7 +41,7 @@ layout: default
 
   {% if collection.tree.ref %}
     <div class="collection-contents">
-      {% assign tree = site.data.trees[{{id}}].children %}
+      {% assign tree = site.data.trees[{{collection_id}}].children %}
       {% include collection/component.html %}
     </div>
   {% endif %}
