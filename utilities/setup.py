@@ -76,8 +76,11 @@ def main():
     write_value("filepath", "lastExport.pickle")
 
     start_section("Build")
-    write_value("src", "_data/collections")
-    write_value("dest", "collections")
+    write_value("collections", "_data/collections,collections")
+    write_value("organizations", "_data/agents/corporate_entities,organizations")
+    write_value("families", "_data/agents/families,families")
+    write_value("people", "_data/agents/people,people")
+    write_value("software", "_data/agents/software,software")
 
     cfg_file.close()
 

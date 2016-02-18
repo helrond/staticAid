@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     clean: {
-      collections: ['collections/*.html', '!collections/index.html']
+      all: ['collections/*.html', 'families/*.html', 'organizations/*.html', 'people/*.html', 'software/*.html', '!**/index.html']
     },
     exec: {
       updateJSON: {
@@ -44,8 +44,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jekyll');
 
   grunt.registerTask('serve', ['jekyll:serve']);
-  grunt.registerTask('build', ['clean:collections', 'exec:makePages', 'jekyll:build']);
-  grunt.registerTask('update', ['exec:updateJSON', 'clean:collections', 'exec:makePages', 'jekyll:build']);
-  grunt.registerTask('rebuild', ['exec:replaceJSON', 'clean:collections', 'exec:makePages', 'jekyll:build']);
+  grunt.registerTask('build', ['clean:all', 'exec:makePages', 'jekyll:build']);
+  grunt.registerTask('update', ['exec:updateJSON', 'clean:all', 'exec:makePages', 'jekyll:build']);
+  grunt.registerTask('rebuild', ['exec:replaceJSON', 'clean:all', 'exec:makePages', 'jekyll:build']);
 
 };
