@@ -1,0 +1,10 @@
+<h3>Related Resources</h3>
+{% for collection_hash in site.data.collections %}
+  {% assign collection = collection_hash[0] %}
+  {% capture collection_id %}{{collection_hash[1]}}{% endcapture %}
+  {% for linked_agent in collection.linked_agents %}
+    {% if linked_agent.ref == agent.uri %}
+     <p><a href="/collections/{{ collection_id | prepend:site.baseurl | prepend:site.url }}">{{collection.title}}</a> <span class="label label-default">{{linked_agent.role}}</span></p>
+    {% endif %}
+  {% endfor %}
+{% endfor %}

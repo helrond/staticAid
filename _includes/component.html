@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-3">
       {% for instance in component_detail.instances %}
-        {% include collection/instance.html %}
+        {% include instance.html %}
       {% endfor %}
     </div>
     {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
@@ -31,14 +31,14 @@
         <div class="collapse" id="{{component_detail.ref_id}}-notes">
           <div class="well">
             {% for note in component_detail.notes %}
-              {% include collection/note.html %}
+              {% include note.html %}
             {% endfor %}
             {% for subject in component_detail.subjects %}
-              {% include collection/subject.html %}
+              {% include subject.html %}
             {% endfor %}
             {% if component_detail.linked_agents[0] %}
               {% assign agents = component_detail.linked_agents[0] %}
-              {% include collection/agent-list.html %}
+              {% include agent-list.html %}
             {% endif %}
           </div>
         </div>
@@ -46,7 +46,7 @@
     {% endif %}
     {% if component.children %}
       {% assign tree = component.children %}
-      {% include collection/component.html %}
+      {% include component.html %}
     {% endif %}
   </div>
 {% endfor %}
