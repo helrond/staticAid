@@ -6,42 +6,42 @@ layout: default
 {% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
 <div class="col-md-8 col-md-offset-2">
 
-  {% include collection/breadcrumb.html %}
+  {% include breadcrumb.html %}
 
-  <h1 class="collection-title">
+  <h1 class="collection title">
     {{ collection.title }} ({{fa_number}})
     <small>
       {{collection.dates[0].expression}}
     </small>
   </h1>
 
-  <div class="collection-extents">
+  <div class="collection extents">
     {% for extent in collection.extents %}
-      {% include collection/extent.html %}
+      {% include extent.html %}
     {% endfor %}
   </div>
 
-  <div class="collection-agents">
+  <div class="collection agents">
     {% assign agents = collection.linked_agents %}
-    {% include collection/agent-list.html %}
+    {% include agent-list.html %}
   </div>
 
-  <div class="collection-subjects">
+  <div class="collection subjects">
     {% for subject in collection.subjects %}
-      {% include collection/subject.html %}
+      {% include subject.html %}
     {% endfor %}
   </div>
 
-  <div class="collection-notes">
+  <div class="collection notes">
     {% for note in collection.notes %}
-      {% include collection/note.html %}
+      {% include note.html %}
     {% endfor %}
   </div>
 
   {% if collection.tree.ref %}
-    <div class="collection-contents">
+    <div class="collection contents">
       {% assign tree = site.data.trees[{{collection_id}}].children %}
-      {% include collection/component.html %}
+      {% include component.html %}
     </div>
   {% endif %}
 
