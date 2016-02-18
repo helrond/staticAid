@@ -22,21 +22,20 @@ def make_pages(src, dest):
                 data = get_json(f)
 
                 identifier = os.path.splitext(f)[0]
-                title = data["title"].strip()
+                title = data["title"].strip().replace('"', "'")
 
                 with open(os.path.join(dest,identifier+'.html'), 'w+') as new_file:
                     new_file.write("---\nlayout: "+dest+"\n")
                     new_file.write("title: \""+title.encode('utf-8')+"\"\n")
                     new_file.write("id: "+identifier+"\n")
+                    new_file.write("type: "+dest+"\n")
                     new_file.write("permalink: "+dest+"/"+identifier+"/\n")
                     new_file.write("---")
                     new_file.close
-                    print str(os.path.join(dest,identifier+'.html')) + " created"
+                    # print str(os.path.join(dest,identifier+'.html')) + " created"
 
 for destination in destinations:
     split = destination.split(',')
     src = split[0]
     dest = split[1]
-    print src
-    print dest
     make_pages(src, dest)

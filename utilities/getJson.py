@@ -157,7 +157,7 @@ def findAgents(lastExport, headers):
             if agent["publish"]:
                 saveFile(a, agent, os.path.join(agentDestination, agent_type))
             else:
-                removeFile(a, aos.path.join(agentDestination, agent_type))
+                removeFile(a, os.path.join(agentDestination, agent_type))
 
 # Looks for subjects
 def findSubjects(lastExport, headers):
@@ -182,8 +182,8 @@ def main():
     exportStartTime = int(time.time())
     lastExport = readTime()
     headers = authenticate()
-    findResources(lastExport, headers)
-    findObjects(lastExport, headers)
+    # findResources(lastExport, headers)
+    # findObjects(lastExport, headers)
     findAgents(lastExport, headers)
     findSubjects(lastExport, headers)
     logging.info('*** Export completed ***')
