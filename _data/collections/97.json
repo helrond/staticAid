@@ -1,1 +1,268 @@
-{"lock_version": 4, "system_mtime": "2015-09-18T18:56:27Z", "extents": [{"lock_version": 0, "system_mtime": "2015-09-18T18:56:27Z", "jsonmodel_type": "extent", "user_mtime": "2015-09-18T18:56:27Z", "number": "2.5", "last_modified_by": "admin", "container_summary": "6 document cases, 1 bound volume", "portion": "whole", "create_time": "2015-09-18T18:56:27Z", "created_by": "admin", "extent_type": "cubic_feet"}], "jsonmodel_type": "resource", "finding_aid_author": "Ruth Sternfeld", "instances": [], "create_time": "2014-12-06T04:04:06Z", "created_by": "admin", "finding_aid_date": "8/1980", "external_ids": [{"system_mtime": "2015-09-18T18:56:27Z", "jsonmodel_type": "external_id", "user_mtime": "2015-09-18T18:56:27Z", "last_modified_by": "admin", "source": "Archivists Toolkit Database::RESOURCE", "create_time": "2015-09-18T18:56:27Z", "created_by": "admin", "external_id": "17"}], "title": "Theodore H. Berlin papers, Rockefeller University Faculty", "external_documents": [], "publish": true, "subjects": [], "deaccessions": [], "ead_id": "FA008.xml", "linked_agents": [{"terms": [], "relator": "ctb", "ref": "/agents/corporate_entities/14", "role": "creator"}, {"terms": [], "relator": "ctb", "ref": "/agents/people/73", "role": "creator"}, {"terms": [], "relator": "aut", "ref": "/agents/people/59", "role": "creator"}, {"terms": [], "relator": "ctb", "ref": "/agents/people/71", "role": "creator"}, {"terms": [], "relator": "ctb", "ref": "/agents/people/70", "role": "creator"}, {"terms": [], "relator": "ctb", "ref": "/agents/people/74", "role": "creator"}, {"terms": [], "relator": "ctb", "ref": "/agents/people/75", "role": "creator"}, {"terms": [], "relator": "ctb", "ref": "/agents/corporate_entities/29", "role": "creator"}, {"terms": [], "relator": "ctb", "ref": "/agents/corporate_entities/30", "role": "creator"}], "repository": {"ref": "/repositories/2"}, "repository_processing_note": "Processed by Ruth Sternfeld, August 1980", "user_mtime": "2015-09-18T18:56:27Z", "rights_statements": [], "revision_statements": [{"system_mtime": "2015-09-18T18:56:27Z", "description": "Migrated from Re:discovery to AT by Marisa Hudspeth", "jsonmodel_type": "revision_statement", "user_mtime": "2015-09-18T18:56:27Z", "uri": "/revision_statement/1591", "last_modified_by": "admin", "repository": {"ref": "/repositories/2"}, "create_time": "2015-09-18T18:56:27Z", "created_by": "admin", "date": "4/8/2009"}], "linked_events": [], "finding_aid_title": "A Guide to the Theodore H. Berlin papers, Rockefeller University Faculty\n", "suppressed": false, "restrictions": false, "dates": [{"lock_version": 0, "system_mtime": "2015-09-18T18:56:27Z", "begin": "1944", "end": "1962", "jsonmodel_type": "date", "date_type": "inclusive", "user_mtime": "2015-09-18T18:56:27Z", "last_modified_by": "admin", "label": "creation", "create_time": "2015-09-18T18:56:27Z", "created_by": "admin", "expression": "1944-1962"}], "classifications": [], "language": "eng", "level": "collection", "notes": [{"persistent_id": "8a7cbf3523af5f666cdee15efc573a74", "type": "accessrestrict", "subnotes": [{"content": "Colllection is open for scholarly research.", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "05b62a9d6070fd86876ba123632ff5d2", "type": "processinfo", "subnotes": [{"content": "Processed by Ruth Sternfeld, August 1980.", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "d1452ff04b44f5f569465f25d45719f5", "type": "fileplan", "subnotes": [{"content": "Former Classification: I 450 B456", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "5184a1b015457d1b859ee9f360857b56", "type": "acqinfo", "subnotes": [{"content": "The papers of Theodore H. Berlin were deposited with the Rockefeller University Archives on July 1980 by Mrs. Patricia Berlin.", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "bd866e38646ddac84fb05efd3ba73da4", "type": "relatedmaterial", "subnotes": [{"content": "At his death a good deal of his correspondence and some notes were sent by Dr. Uhlenbeck (at the wish of Mrs. Berlin) to Kasimir Fajans to be handled with the Fajans papers in the Michigan Historical Collection, Rackham Building, Ann Arbor, Michigan.  A smaller group was sent to H. A. Gersch, Georgia Institute of Technology (see Box 1, Folder 2).", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "0eea4a1f4e9baf690200872695a37de8", "type": "bioghist", "subnotes": [{"content": "Theodore H. Berlin (1917-1962), a theoretical physicist who came to The Rockefeller University in 1962 and died suddenly in 1962.  He joined the Rockefeller University Faculty with Mark Kac and George Uhlenbeck to develop a department of theoretical physics.  In the short time that Dr. Berlin was at the University he so endeared himself to his colleagues that a Memorial Garden on campus was developed in his memory.\n\nDuring World War II, while still a graduate student, Dr. Berlin worked on the development of the proximity fuse.  His academic work was concerned with the electronic structure of molecules, and his thesis was on the quantization and electric interaction in diatonic molecules.  Finally his work turned toward theoretical physics.\n\nMarried Patricia May Cleary, 1944\nChildren:  Geoffrey N., Dennis A., Michael K., Alexander L.\n\nMember of:\nAmerican Physical Society (Fellow)\nSigma Xi\nPhi Beta Kappa\n\nEditor:\nJournal of Chemical Physics\nPhysical Review\nPhysical Review Letters\n", "publish": true, "jsonmodel_type": "note_text"}, {"items": [{"event_date": "1917", "events": ["Born May 8, New York City"]}, {"event_date": "1939", "events": ["B.S. Chemical Engineering, Cooper Union Institute of Technology"]}, {"event_date": "1940", "events": ["M.S., University of Michigan"]}, {"event_date": "1944", "events": ["Ph.D., University of Michigan (Horace H. Rackham Fellow)"]}, {"event_date": "1944-1946", "events": ["Research physicist, University of Michigan"]}, {"event_date": "1946-1947", "events": ["Lecturer, Johns Hopkins University"]}, {"event_date": "1948-1949", "events": ["Associate Professor, Northwestern University"]}, {"event_date": "1949-1954", "events": ["Associate Professor, Johns Hopkins University"]}, {"event_date": "1952-1953", "events": ["Guggenheim Fellow, Institute of Advanced Science"]}, {"event_date": "1955-1961", "events": ["Professor, Johns Hopkins University"]}, {"event_date": "1961-1962", "events": ["Professor, The Rockefeller University"]}, {"event_date": "1962", "events": ["Appointed to Board of Editors of The Physics of Fluids, starting January 1st ", "Died November 16 and buried in Prospect Hill Cemetery, Baltimore, Maryland\n"]}], "publish": true, "jsonmodel_type": "note_chronology", "title": "Chronology"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "78dc99c9ae7e2129c87ae7a3fe556f66", "type": "scopecontent", "subnotes": [{"content": "Biographical material, correspondence, manuscripts, notes and notebooks, reprints, and photographs. Includes administrative correspondence with Brookhaven National Laboratory (1949-1962) and Johns Hopkins University (1952-1962).  Correspondents include Kasimir Fajans, Sam Goudsmit, Mark Kac, S. Katsura, Lawrence Kubie, G. Uhlenbeck, and C. N. Yang.", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "0fe585a17c550f62392d953ed7d64dcd", "type": "userestrict", "subnotes": [{"content": "RAC users must abide by all applicable provisions of United States copyright law. Reproduction/duplication of archival items is routinely provided in accordance with \u201cfair use\u201d. If the RAC does not hold copyright for an archival collection, or items within a collection, it is the users\u2019 responsibility to contact the copyright holder, or make a fair effort to do so, prior to publication.", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "d02c94d3deaa660f43da201d594860a1", "type": "prefercite", "subnotes": [{"content": "Information regarding the Rockefeller Archive Center's preferred elements and forms of citation can be found at <extref href=\"http://www.rockarch.org/research/citations.php\">http://www.rockarch.org/research/citations.php</extref>\n", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}], "tree": {"ref": "/repositories/2/resources/97/tree"}, "uri": "/repositories/2/resources/97", "last_modified_by": "admin", "finding_aid_filing_title": "Berlin (Theodore H.) papers", "id_0": "FA008", "finding_aid_language": "English", "related_accessions": [], "finding_aid_status": "under_revision"}
+{
+  "lock_version": 4,
+  "system_mtime": "2015-09-18T18:56:27Z",
+  "extents": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:56:27Z",
+    "jsonmodel_type": "extent",
+    "user_mtime": "2015-09-18T18:56:27Z",
+    "number": "2.5",
+    "last_modified_by": "admin",
+    "container_summary": "6 document cases, 1 bound volume",
+    "portion": "whole",
+    "create_time": "2015-09-18T18:56:27Z",
+    "created_by": "admin",
+    "extent_type": "cubic_feet"
+  }],
+  "jsonmodel_type": "resource",
+  "finding_aid_author": "Ruth Sternfeld",
+  "instances": [],
+  "create_time": "2014-12-06T04:04:06Z",
+  "created_by": "admin",
+  "finding_aid_date": "8/1980",
+  "external_ids": [{
+    "system_mtime": "2015-09-18T18:56:27Z",
+    "jsonmodel_type": "external_id",
+    "user_mtime": "2015-09-18T18:56:27Z",
+    "last_modified_by": "admin",
+    "source": "Archivists Toolkit Database::RESOURCE",
+    "create_time": "2015-09-18T18:56:27Z",
+    "created_by": "admin",
+    "external_id": "17"
+  }],
+  "title": "Theodore H. Berlin papers, Rockefeller University Faculty",
+  "external_documents": [],
+  "publish": true,
+  "subjects": [],
+  "deaccessions": [],
+  "ead_id": "FA008.xml",
+  "linked_agents": [{
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/corporate_entities/14",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/73",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "aut",
+    "ref": "/agents/people/59",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/71",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/70",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/74",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/75",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/corporate_entities/29",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/corporate_entities/30",
+    "role": "creator"
+  }],
+  "repository": {
+    "ref": "/repositories/2"
+  },
+  "repository_processing_note": "Processed by Ruth Sternfeld, August 1980",
+  "user_mtime": "2015-09-18T18:56:27Z",
+  "rights_statements": [],
+  "revision_statements": [{
+    "system_mtime": "2015-09-18T18:56:27Z",
+    "description": "Migrated from Re:discovery to AT by Marisa Hudspeth",
+    "jsonmodel_type": "revision_statement",
+    "user_mtime": "2015-09-18T18:56:27Z",
+    "uri": "/revision_statement/1591",
+    "last_modified_by": "admin",
+    "repository": {
+      "ref": "/repositories/2"
+    },
+    "create_time": "2015-09-18T18:56:27Z",
+    "created_by": "admin",
+    "date": "4/8/2009"
+  }],
+  "linked_events": [],
+  "finding_aid_title": "A Guide to the Theodore H. Berlin papers, Rockefeller University Faculty\n",
+  "suppressed": false,
+  "restrictions": false,
+  "dates": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:56:27Z",
+    "begin": "1944",
+    "end": "1962",
+    "jsonmodel_type": "date",
+    "date_type": "inclusive",
+    "user_mtime": "2015-09-18T18:56:27Z",
+    "last_modified_by": "admin",
+    "label": "creation",
+    "create_time": "2015-09-18T18:56:27Z",
+    "created_by": "admin",
+    "expression": "1944-1962"
+  }],
+  "classifications": [],
+  "language": "eng",
+  "level": "collection",
+  "notes": [{
+    "persistent_id": "8a7cbf3523af5f666cdee15efc573a74",
+    "type": "accessrestrict",
+    "subnotes": [{
+      "content": "Colllection is open for scholarly research.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "05b62a9d6070fd86876ba123632ff5d2",
+    "type": "processinfo",
+    "subnotes": [{
+      "content": "Processed by Ruth Sternfeld, August 1980.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "d1452ff04b44f5f569465f25d45719f5",
+    "type": "fileplan",
+    "subnotes": [{
+      "content": "Former Classification: I 450 B456",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "5184a1b015457d1b859ee9f360857b56",
+    "type": "acqinfo",
+    "subnotes": [{
+      "content": "The papers of Theodore H. Berlin were deposited with the Rockefeller University Archives on July 1980 by Mrs. Patricia Berlin.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "bd866e38646ddac84fb05efd3ba73da4",
+    "type": "relatedmaterial",
+    "subnotes": [{
+      "content": "At his death a good deal of his correspondence and some notes were sent by Dr. Uhlenbeck (at the wish of Mrs. Berlin) to Kasimir Fajans to be handled with the Fajans papers in the Michigan Historical Collection, Rackham Building, Ann Arbor, Michigan.  A smaller group was sent to H. A. Gersch, Georgia Institute of Technology (see Box 1, Folder 2).",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "0eea4a1f4e9baf690200872695a37de8",
+    "type": "bioghist",
+    "subnotes": [{
+      "content": "Theodore H. Berlin (1917-1962), a theoretical physicist who came to The Rockefeller University in 1962 and died suddenly in 1962.  He joined the Rockefeller University Faculty with Mark Kac and George Uhlenbeck to develop a department of theoretical physics.  In the short time that Dr. Berlin was at the University he so endeared himself to his colleagues that a Memorial Garden on campus was developed in his memory.\n\nDuring World War II, while still a graduate student, Dr. Berlin worked on the development of the proximity fuse.  His academic work was concerned with the electronic structure of molecules, and his thesis was on the quantization and electric interaction in diatonic molecules.  Finally his work turned toward theoretical physics.\n\nMarried Patricia May Cleary, 1944\nChildren:  Geoffrey N., Dennis A., Michael K., Alexander L.\n\nMember of:\nAmerican Physical Society (Fellow)\nSigma Xi\nPhi Beta Kappa\n\nEditor:\nJournal of Chemical Physics\nPhysical Review\nPhysical Review Letters\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }, {
+      "items": [{
+        "event_date": "1917",
+        "events": ["Born May 8, New York City"]
+      }, {
+        "event_date": "1939",
+        "events": ["B.S. Chemical Engineering, Cooper Union Institute of Technology"]
+      }, {
+        "event_date": "1940",
+        "events": ["M.S., University of Michigan"]
+      }, {
+        "event_date": "1944",
+        "events": ["Ph.D., University of Michigan (Horace H. Rackham Fellow)"]
+      }, {
+        "event_date": "1944-1946",
+        "events": ["Research physicist, University of Michigan"]
+      }, {
+        "event_date": "1946-1947",
+        "events": ["Lecturer, Johns Hopkins University"]
+      }, {
+        "event_date": "1948-1949",
+        "events": ["Associate Professor, Northwestern University"]
+      }, {
+        "event_date": "1949-1954",
+        "events": ["Associate Professor, Johns Hopkins University"]
+      }, {
+        "event_date": "1952-1953",
+        "events": ["Guggenheim Fellow, Institute of Advanced Science"]
+      }, {
+        "event_date": "1955-1961",
+        "events": ["Professor, Johns Hopkins University"]
+      }, {
+        "event_date": "1961-1962",
+        "events": ["Professor, The Rockefeller University"]
+      }, {
+        "event_date": "1962",
+        "events": ["Appointed to Board of Editors of The Physics of Fluids, starting January 1st ", "Died November 16 and buried in Prospect Hill Cemetery, Baltimore, Maryland\n"]
+      }],
+      "publish": true,
+      "jsonmodel_type": "note_chronology",
+      "title": "Chronology"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "78dc99c9ae7e2129c87ae7a3fe556f66",
+    "type": "scopecontent",
+    "subnotes": [{
+      "content": "Biographical material, correspondence, manuscripts, notes and notebooks, reprints, and photographs. Includes administrative correspondence with Brookhaven National Laboratory (1949-1962) and Johns Hopkins University (1952-1962).  Correspondents include Kasimir Fajans, Sam Goudsmit, Mark Kac, S. Katsura, Lawrence Kubie, G. Uhlenbeck, and C. N. Yang.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "0fe585a17c550f62392d953ed7d64dcd",
+    "type": "userestrict",
+    "subnotes": [{
+      "content": "RAC users must abide by all applicable provisions of United States copyright law. Reproduction/duplication of archival items is routinely provided in accordance with \u201cfair use\u201d. If the RAC does not hold copyright for an archival collection, or items within a collection, it is the users\u2019 responsibility to contact the copyright holder, or make a fair effort to do so, prior to publication.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "d02c94d3deaa660f43da201d594860a1",
+    "type": "prefercite",
+    "subnotes": [{
+      "content": "Information regarding the Rockefeller Archive Center's preferred elements and forms of citation can be found at <extref href=\"http://www.rockarch.org/research/citations.php\">http://www.rockarch.org/research/citations.php</extref>\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }],
+  "tree": {
+    "ref": "/repositories/2/resources/97/tree"
+  },
+  "uri": "/repositories/2/resources/97",
+  "last_modified_by": "admin",
+  "finding_aid_filing_title": "Berlin (Theodore H.) papers",
+  "id_0": "FA008",
+  "finding_aid_language": "English",
+  "related_accessions": [],
+  "finding_aid_status": "under_revision"
+}

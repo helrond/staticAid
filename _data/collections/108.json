@@ -1,1 +1,350 @@
-{"lock_version": 4, "system_mtime": "2015-09-18T18:57:01Z", "extents": [{"lock_version": 0, "system_mtime": "2015-09-18T18:57:01Z", "jsonmodel_type": "extent", "user_mtime": "2015-09-18T18:57:01Z", "number": "7.7", "last_modified_by": "admin", "container_summary": "16 document cases", "portion": "whole", "create_time": "2015-09-18T18:57:01Z", "created_by": "admin", "extent_type": "cubic_feet"}], "jsonmodel_type": "resource", "finding_aid_author": "Susan Irving", "instances": [], "create_time": "2014-12-06T04:16:17Z", "created_by": "admin", "external_ids": [{"system_mtime": "2015-09-18T18:57:01Z", "jsonmodel_type": "external_id", "user_mtime": "2015-09-18T18:57:01Z", "last_modified_by": "admin", "source": "Archivists Toolkit Database::RESOURCE", "create_time": "2015-09-18T18:57:01Z", "created_by": "admin", "external_id": "27"}], "title": "Elvin A. Kabat papers", "external_documents": [], "publish": true, "subjects": [{"ref": "/subjects/3"}, {"ref": "/subjects/424"}], "deaccessions": [], "ead_id": "FA020.xml", "linked_agents": [{"terms": [], "relator": "ctb", "ref": "/agents/corporate_entities/12", "role": "creator"}, {"terms": [], "relator": "aut", "ref": "/agents/people/121", "role": "creator"}], "repository": {"ref": "/repositories/2"}, "user_mtime": "2015-09-18T18:57:01Z", "rights_statements": [], "revision_statements": [{"system_mtime": "2015-09-18T18:57:01Z", "description": "Migrated from Re:discovery to the AT by Marisa Hudspeth", "jsonmodel_type": "revision_statement", "user_mtime": "2015-09-18T18:57:01Z", "uri": "/revision_statement/1601", "last_modified_by": "admin", "repository": {"ref": "/repositories/2"}, "create_time": "2015-09-18T18:57:01Z", "created_by": "admin", "date": "4/29/2009"}], "linked_events": [], "finding_aid_title": "A Guide to the Elvin A. Kabat papers\n", "suppressed": false, "restrictions": false, "dates": [{"lock_version": 0, "system_mtime": "2015-09-18T18:57:01Z", "begin": "1934", "end": "1990", "jsonmodel_type": "date", "date_type": "inclusive", "user_mtime": "2015-09-18T18:57:01Z", "last_modified_by": "admin", "label": "creation", "create_time": "2015-09-18T18:57:01Z", "created_by": "admin", "expression": "1934-1990"}], "classifications": [], "language": "eng", "level": "collection", "notes": [{"subnotes": [{"content": "The Elvin A. Kabat Papers are arranged in two series:\n\nSeries 1 - Personal\n\nSeries 2 - General Correspondence\n\n", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "persistent_id": "697584830bf9bd6d5b7ba4ac3c7b50d2", "publish": true, "label": "Arrangement note", "type": "arrangement"}, {"subnotes": [{"content": "Elvin A. Kabat (1914-2000), a pioneer in the field of immunochemistry, worked for three decades on standardizing immunological science. In the late 1930s he worked as a Fellow at the Institute of Physical Chemistry for the Rockefeller Foundation and later he was a leading member of the faculty at Columbia University. He spent much of his early career working on the structure and immunochemistry of blood-group substances, analyzing the binding properties of antibodies and developing immunodiagnostic tests for multiple sclerosis. He paved the way for the modern experimental autoimmunity process. Kabat also devoted much of his time to mentoring new and often passed-over scientists. He aided foreign medical and chemistry students and provided opportunities to women and African American students in the United States during a time when these opportunities were virtually non-existent.\n\nThrough his hard work and endless efforts, a Kabat database was created to aid students in standard immunochemistry. Kabat was also a prolific writer. He authored numerous books, including \"Sequences of Proteins of Immunological Interests\" and \"Kabat and Mayer's Experimental Immunochemistry,\" which became the text book for all future graduate and doctoral students. He often submitted articles on his latest research and contributed to the Immunochemical Studies on Blood Groups.\n\nKabat was known for his tireless pursuit of honesty and justice. Through the Freedom of Information Act, Dr. Kabat discovered that during the McCarthy era he was placed on a watch list because of his Eastern European heritage and because of his work with the National Research Council and the United States military.\n\n", "publish": true, "jsonmodel_type": "note_text"}, {"content": "Elvin A. Kabat (1914-2000), a pioneer in the field of immunochemistry, worked for three decades on standardizing immunological science. In the late 1930s he worked as a Fellow at the Institute of Physical Chemistry for the Rockefeller Foundation and later he was a leading member of the faculty at Columbia University. He spent much of his early career working on the structure and immunochemistry of blood-group substances, analyzing the binding properties of antibodies and developing immunodiagnostic tests for multiple sclerosis. He paved the way for the modern experimental autoimmunity process. Kabat also devoted much of his time to mentoring new and often passed-over scientists. He aided foreign medical and chemistry students and provided opportunities to women and African American students in the United States during a time when these opportunities were virtually non-existent.\n\nThrough his hard work and endless efforts, a Kabat database was created to aid students in standard immunochemistry. Kabat was also a prolific writer. He authored numerous books, including \"Sequences of Proteins of Immunological Interests\" and \"Kabat and Mayer's Experimental Immunochemistry,\" which became the text book for all future graduate and doctoral students. He often submitted articles on his latest research and contributed to the Immunochemical Studies on Blood Groups.\n\nKabat was known for his tireless pursuit of honesty and justice. Through the Freedom of Information Act, Dr. Kabat discovered that during the McCarthy era he was placed on a watch list because of his Eastern European heritage and because of his work with the National Research Council and the United States military.", "publish": true, "jsonmodel_type": "note_text"}, {"items": [{"event_date": "September 1, 1914 ", "events": ["Born in New York City to Harris Kabatchinick, from Lithuania, and Doreen Otesky from the Ukraine. "]}, {"event_date": "Spring 1929", "events": ["Graduated from DeWitt Clinton High School (at the age of 15). "]}, {"event_date": "Fall 1929", "events": ["Began studying at City College. "]}, {"event_date": "1932", "events": ["Obtained a Bachelors of Science degree from the College of the City of New York. "]}, {"event_date": "1933-1937", "events": ["Laboratory Assistant in Immunochemistry, Presbyterian Hospital, New York. "]}, {"event_date": "1934", "events": ["Obtained an MA from Columbia University. "]}, {"event_date": "1937", "events": ["Obtained a Ph.D. from Columbia University. "]}, {"event_date": "1937-1938", "events": ["Rockefeller Foundation Fellow at Institute of Physical Chemistry, Uppsala, Sweden with Professors The Svedberg and Arne Tiselius. "]}, {"event_date": "1938-1941", "events": ["Instructor of Pathology, Cornell Medical College. "]}, {"event_date": "1941-1946", "events": ["Research Associate in Biochemistry (assigned to Neurology), College of Physicians and Surgeons, Columbia University and the Neurological Institute, Presbyterian Hospital. "]}, {"event_date": "1942", "events": ["Married Sally Lennick. "]}, {"event_date": "1942-1943", "events": ["Director of Immunochemical Studies on Meningococcus Meningitis under subcontract from the Meningitis Commission, Board for the Control of Epidemic Diseases, United States Army. "]}, {"event_date": "1942-1945", "events": ["Responsible investigator for three OSRD projects for Committee on Medical Research. "]}, {"event_date": "1943-1945", "events": ["Chemist to an NDRC project. ", "Member, Scientific Staff, Division of War Research, Columbia University. "]}, {"event_date": "1945-1947", "events": ["Consultant, Chemical Warfare Service, Camp Detrick, Maryland. "]}, {"event_date": "1946-1948", "events": ["Assistant Professor of Bacteriology, Columbia University. "]}, {"event_date": "1947-1951", "events": ["Attending Consultant, Veterans Administration Hospital, Kingsbridge, Bronx, New York. "]}, {"event_date": "1948-1952", "events": ["Associate Professor of Bacteriology, Columbia University. "]}, {"event_date": "1949", "events": ["Eli Lilly Award in Bacteriology and Immunology. "]}, {"event_date": "1950", "events": ["Visiting Staff Member, University of California Summer Session, Berkeley, California."]}, {"event_date": "1950-1951", "events": ["Harvey Lecturer. "]}, {"event_date": "1951-1953", "events": ["Member, Subcommittee on Shock, National Research Council. "]}, {"event_date": "1952-1985", "events": ["Professor of Microbiology, Columbia University. "]}, {"event_date": "1953-1967", "events": ["Member, Medial Advisory Board, National Multiple Sclerosis Society. "]}, {"event_date": "1953-1971", "events": ["Member, Panel on Plasma, National Research Council. "]}, {"event_date": "1954-1968", "events": ["Member, Scientific and Education Council, American Foundation for Allergic Diseases. "]}, {"event_date": "1956-1958", "events": ["Member, Symposium Advisory Committee Unitarian Service Committee. "]}, {"event_date": "1956-1959", "events": ["Member, Research Review Panel, National Multiple Sclerosis Society. "]}, {"event_date": "1956-1985", "events": ["Microbiologist Medical Service, Presbyterian Hospital, Neurological Institute."]}, {"event_date": "1957-1960", "events": ["Editorial Board Transplantation Bulletin. "]}, {"event_date": "1957-1962", "events": ["Member, Biochemistry Advisory Panel AIBS to Office of Naval Research. "]}, {"event_date": "1957-1967", "events": ["Member, Ad Hoc Panel and Committee on Tissue Transplantation, National Research Council. "]}, {"event_date": "1960", "events": ["William Pyle Philips Lecturer, Haverford College. "]}, {"event_date": "1961", "events": ["Editorial Board, Journal of Immunological. "]}, {"event_date": "1961-1964", "events": ["Councillor American Association of Immunologists. "]}, {"event_date": "1962", "events": ["Golden Hope Chest Award, National Multiple Sclerosis Society. "]}, {"event_date": "1962-1968", "events": ["Scientific Advisory Committee, Institute of Microbiology, Rutgers. "]}, {"event_date": "March 1963", "events": ["Visiting Professor, Department of Microbiology, University of California, San Francisco. "]}, {"event_date": "April 1964", "events": ["Professor, College de France, Paris. "]}, {"event_date": "1964", "events": ["John S. Sharpe Memorial Lecturer, Bryn Mawr Hospital, Bryn Mawr, Pennsylvania. "]}, {"event_date": "1964-1965", "events": ["Vice President, American Association of Immunologists. "]}, {"event_date": "1965", "events": ["Member of Scientific Committee New York Blood Center. "]}, {"event_date": "1965-1966", "events": ["President, American Association of Immunologists. "]}, {"event_date": "1965-1975", "events": ["Member, World Health Organization Advisory Panel on Immunology. "]}, {"event_date": "1966", "events": ["Member, National Academy of Sciences. ", "Member, American Academy of Arts and Sciences. "]}, {"event_date": "1967", "events": ["Almroth Wright Lecturer, St. Mary's Hospital, Wright Fleming Institute, London. "]}, {"event_date": "1968", "events": ["Claude Bernard Medal, Universit de Montreal. ", "E. B. Wilson Lecturer, University of Texas, Austin. "]}, {"event_date": "1968-1972", "events": ["Chairman, Committee on Latimaria, National Academy of Sciences. "]}, {"event_date": "1969", "events": ["Professor of Human Genetics and Development, Columbia University. "]}, {"event_date": "1969-1972", "events": ["National Science Foundation Panel on Molecular Biology. "]}, {"event_date": "1971", "events": ["Member, Committee on Viral Hepatitis, National Research Council. "]}, {"event_date": "1974-1975", "events": ["Fogarty Scholar at U.S. National Institute of Health (NIH). "]}, {"event_date": "1975-2000", "events": ["Dr. Kabat divided his time between Columbia and NIH. "]}, {"event_date": "1991", "events": ["Received the National Medal of Science. "]}, {"event_date": "June 16, 2000", "events": ["Passed away at the age of 86."]}], "publish": true, "jsonmodel_type": "note_chronology", "title": "Chronology"}], "jsonmodel_type": "note_multipart", "persistent_id": "3a684bb5ccc70fc9e2c281c77c457a8a", "publish": true, "label": "Biographical/Historical note", "type": "bioghist"}, {"persistent_id": "31ae38a9fc7c96fd17017992d8737489", "type": "userestrict", "subnotes": [{"content": "RAC users must abide by all applicable provisions of United States copyright law.  Reproduction/duplication of archival items is routinely provided in accordance with \"fair use.\"  If the RAC does not hold copyright for an archival collection, or items within a collection, it is the user\u2019s responsibility to contact the copyright holder, or make a fair effort to do so, prior to publication.", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "4460e8f023aadbd39b0084bf815a6e79", "type": "accessrestrict", "subnotes": [{"content": "Open for scholarly research without restriction.", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"subnotes": [{"content": "Former Classification: XVIII\n\n", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "persistent_id": "5b7c06779b4644e535206ee79c2e0d5b", "publish": true, "label": "File Plan note", "type": "fileplan"}, {"persistent_id": "2a8169d04fe88f36189379be5cfe4f85", "type": "phystech", "subnotes": [{"content": "Materials requiring specialized equipment for access (film, audio, video, slides) may be closed to research dependent on availability of the applicable equipment \n\nBrittle or damaged items, or materials otherwise in need of preservation care, may be closed to researchers at the discretion of the RAC Head of Archival Services/Head of Reference.\n\n", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}, {"persistent_id": "830c3a59c898e4680a7b8463d76c84ba", "type": "prefercite", "subnotes": [{"content": "Information regarding the Rockefeller Archive Center's preferred elements and forms of citation can be found at <extref href=\"http://www.rockarch.org/research/citations.php\">http://www.rockarch.org/research/citations.php</extref>", "publish": true, "jsonmodel_type": "note_text"}], "jsonmodel_type": "note_multipart", "publish": true}], "tree": {"ref": "/repositories/2/resources/108/tree"}, "uri": "/repositories/2/resources/108", "last_modified_by": "admin", "finding_aid_filing_title": "Kabat (Elvin A.) papers", "id_0": "FA020", "related_accessions": [], "finding_aid_status": "under_revision"}
+{
+  "lock_version": 4,
+  "system_mtime": "2015-09-18T18:57:01Z",
+  "extents": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:57:01Z",
+    "jsonmodel_type": "extent",
+    "user_mtime": "2015-09-18T18:57:01Z",
+    "number": "7.7",
+    "last_modified_by": "admin",
+    "container_summary": "16 document cases",
+    "portion": "whole",
+    "create_time": "2015-09-18T18:57:01Z",
+    "created_by": "admin",
+    "extent_type": "cubic_feet"
+  }],
+  "jsonmodel_type": "resource",
+  "finding_aid_author": "Susan Irving",
+  "instances": [],
+  "create_time": "2014-12-06T04:16:17Z",
+  "created_by": "admin",
+  "external_ids": [{
+    "system_mtime": "2015-09-18T18:57:01Z",
+    "jsonmodel_type": "external_id",
+    "user_mtime": "2015-09-18T18:57:01Z",
+    "last_modified_by": "admin",
+    "source": "Archivists Toolkit Database::RESOURCE",
+    "create_time": "2015-09-18T18:57:01Z",
+    "created_by": "admin",
+    "external_id": "27"
+  }],
+  "title": "Elvin A. Kabat papers",
+  "external_documents": [],
+  "publish": true,
+  "subjects": [{
+    "ref": "/subjects/3"
+  }, {
+    "ref": "/subjects/424"
+  }],
+  "deaccessions": [],
+  "ead_id": "FA020.xml",
+  "linked_agents": [{
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/corporate_entities/12",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "aut",
+    "ref": "/agents/people/121",
+    "role": "creator"
+  }],
+  "repository": {
+    "ref": "/repositories/2"
+  },
+  "user_mtime": "2015-09-18T18:57:01Z",
+  "rights_statements": [],
+  "revision_statements": [{
+    "system_mtime": "2015-09-18T18:57:01Z",
+    "description": "Migrated from Re:discovery to the AT by Marisa Hudspeth",
+    "jsonmodel_type": "revision_statement",
+    "user_mtime": "2015-09-18T18:57:01Z",
+    "uri": "/revision_statement/1601",
+    "last_modified_by": "admin",
+    "repository": {
+      "ref": "/repositories/2"
+    },
+    "create_time": "2015-09-18T18:57:01Z",
+    "created_by": "admin",
+    "date": "4/29/2009"
+  }],
+  "linked_events": [],
+  "finding_aid_title": "A Guide to the Elvin A. Kabat papers\n",
+  "suppressed": false,
+  "restrictions": false,
+  "dates": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:57:01Z",
+    "begin": "1934",
+    "end": "1990",
+    "jsonmodel_type": "date",
+    "date_type": "inclusive",
+    "user_mtime": "2015-09-18T18:57:01Z",
+    "last_modified_by": "admin",
+    "label": "creation",
+    "create_time": "2015-09-18T18:57:01Z",
+    "created_by": "admin",
+    "expression": "1934-1990"
+  }],
+  "classifications": [],
+  "language": "eng",
+  "level": "collection",
+  "notes": [{
+    "subnotes": [{
+      "content": "The Elvin A. Kabat Papers are arranged in two series:\n\nSeries 1 - Personal\n\nSeries 2 - General Correspondence\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "697584830bf9bd6d5b7ba4ac3c7b50d2",
+    "publish": true,
+    "label": "Arrangement note",
+    "type": "arrangement"
+  }, {
+    "subnotes": [{
+      "content": "Elvin A. Kabat (1914-2000), a pioneer in the field of immunochemistry, worked for three decades on standardizing immunological science. In the late 1930s he worked as a Fellow at the Institute of Physical Chemistry for the Rockefeller Foundation and later he was a leading member of the faculty at Columbia University. He spent much of his early career working on the structure and immunochemistry of blood-group substances, analyzing the binding properties of antibodies and developing immunodiagnostic tests for multiple sclerosis. He paved the way for the modern experimental autoimmunity process. Kabat also devoted much of his time to mentoring new and often passed-over scientists. He aided foreign medical and chemistry students and provided opportunities to women and African American students in the United States during a time when these opportunities were virtually non-existent.\n\nThrough his hard work and endless efforts, a Kabat database was created to aid students in standard immunochemistry. Kabat was also a prolific writer. He authored numerous books, including \"Sequences of Proteins of Immunological Interests\" and \"Kabat and Mayer's Experimental Immunochemistry,\" which became the text book for all future graduate and doctoral students. He often submitted articles on his latest research and contributed to the Immunochemical Studies on Blood Groups.\n\nKabat was known for his tireless pursuit of honesty and justice. Through the Freedom of Information Act, Dr. Kabat discovered that during the McCarthy era he was placed on a watch list because of his Eastern European heritage and because of his work with the National Research Council and the United States military.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }, {
+      "content": "Elvin A. Kabat (1914-2000), a pioneer in the field of immunochemistry, worked for three decades on standardizing immunological science. In the late 1930s he worked as a Fellow at the Institute of Physical Chemistry for the Rockefeller Foundation and later he was a leading member of the faculty at Columbia University. He spent much of his early career working on the structure and immunochemistry of blood-group substances, analyzing the binding properties of antibodies and developing immunodiagnostic tests for multiple sclerosis. He paved the way for the modern experimental autoimmunity process. Kabat also devoted much of his time to mentoring new and often passed-over scientists. He aided foreign medical and chemistry students and provided opportunities to women and African American students in the United States during a time when these opportunities were virtually non-existent.\n\nThrough his hard work and endless efforts, a Kabat database was created to aid students in standard immunochemistry. Kabat was also a prolific writer. He authored numerous books, including \"Sequences of Proteins of Immunological Interests\" and \"Kabat and Mayer's Experimental Immunochemistry,\" which became the text book for all future graduate and doctoral students. He often submitted articles on his latest research and contributed to the Immunochemical Studies on Blood Groups.\n\nKabat was known for his tireless pursuit of honesty and justice. Through the Freedom of Information Act, Dr. Kabat discovered that during the McCarthy era he was placed on a watch list because of his Eastern European heritage and because of his work with the National Research Council and the United States military.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }, {
+      "items": [{
+        "event_date": "September 1, 1914 ",
+        "events": ["Born in New York City to Harris Kabatchinick, from Lithuania, and Doreen Otesky from the Ukraine. "]
+      }, {
+        "event_date": "Spring 1929",
+        "events": ["Graduated from DeWitt Clinton High School (at the age of 15). "]
+      }, {
+        "event_date": "Fall 1929",
+        "events": ["Began studying at City College. "]
+      }, {
+        "event_date": "1932",
+        "events": ["Obtained a Bachelors of Science degree from the College of the City of New York. "]
+      }, {
+        "event_date": "1933-1937",
+        "events": ["Laboratory Assistant in Immunochemistry, Presbyterian Hospital, New York. "]
+      }, {
+        "event_date": "1934",
+        "events": ["Obtained an MA from Columbia University. "]
+      }, {
+        "event_date": "1937",
+        "events": ["Obtained a Ph.D. from Columbia University. "]
+      }, {
+        "event_date": "1937-1938",
+        "events": ["Rockefeller Foundation Fellow at Institute of Physical Chemistry, Uppsala, Sweden with Professors The Svedberg and Arne Tiselius. "]
+      }, {
+        "event_date": "1938-1941",
+        "events": ["Instructor of Pathology, Cornell Medical College. "]
+      }, {
+        "event_date": "1941-1946",
+        "events": ["Research Associate in Biochemistry (assigned to Neurology), College of Physicians and Surgeons, Columbia University and the Neurological Institute, Presbyterian Hospital. "]
+      }, {
+        "event_date": "1942",
+        "events": ["Married Sally Lennick. "]
+      }, {
+        "event_date": "1942-1943",
+        "events": ["Director of Immunochemical Studies on Meningococcus Meningitis under subcontract from the Meningitis Commission, Board for the Control of Epidemic Diseases, United States Army. "]
+      }, {
+        "event_date": "1942-1945",
+        "events": ["Responsible investigator for three OSRD projects for Committee on Medical Research. "]
+      }, {
+        "event_date": "1943-1945",
+        "events": ["Chemist to an NDRC project. ", "Member, Scientific Staff, Division of War Research, Columbia University. "]
+      }, {
+        "event_date": "1945-1947",
+        "events": ["Consultant, Chemical Warfare Service, Camp Detrick, Maryland. "]
+      }, {
+        "event_date": "1946-1948",
+        "events": ["Assistant Professor of Bacteriology, Columbia University. "]
+      }, {
+        "event_date": "1947-1951",
+        "events": ["Attending Consultant, Veterans Administration Hospital, Kingsbridge, Bronx, New York. "]
+      }, {
+        "event_date": "1948-1952",
+        "events": ["Associate Professor of Bacteriology, Columbia University. "]
+      }, {
+        "event_date": "1949",
+        "events": ["Eli Lilly Award in Bacteriology and Immunology. "]
+      }, {
+        "event_date": "1950",
+        "events": ["Visiting Staff Member, University of California Summer Session, Berkeley, California."]
+      }, {
+        "event_date": "1950-1951",
+        "events": ["Harvey Lecturer. "]
+      }, {
+        "event_date": "1951-1953",
+        "events": ["Member, Subcommittee on Shock, National Research Council. "]
+      }, {
+        "event_date": "1952-1985",
+        "events": ["Professor of Microbiology, Columbia University. "]
+      }, {
+        "event_date": "1953-1967",
+        "events": ["Member, Medial Advisory Board, National Multiple Sclerosis Society. "]
+      }, {
+        "event_date": "1953-1971",
+        "events": ["Member, Panel on Plasma, National Research Council. "]
+      }, {
+        "event_date": "1954-1968",
+        "events": ["Member, Scientific and Education Council, American Foundation for Allergic Diseases. "]
+      }, {
+        "event_date": "1956-1958",
+        "events": ["Member, Symposium Advisory Committee Unitarian Service Committee. "]
+      }, {
+        "event_date": "1956-1959",
+        "events": ["Member, Research Review Panel, National Multiple Sclerosis Society. "]
+      }, {
+        "event_date": "1956-1985",
+        "events": ["Microbiologist Medical Service, Presbyterian Hospital, Neurological Institute."]
+      }, {
+        "event_date": "1957-1960",
+        "events": ["Editorial Board Transplantation Bulletin. "]
+      }, {
+        "event_date": "1957-1962",
+        "events": ["Member, Biochemistry Advisory Panel AIBS to Office of Naval Research. "]
+      }, {
+        "event_date": "1957-1967",
+        "events": ["Member, Ad Hoc Panel and Committee on Tissue Transplantation, National Research Council. "]
+      }, {
+        "event_date": "1960",
+        "events": ["William Pyle Philips Lecturer, Haverford College. "]
+      }, {
+        "event_date": "1961",
+        "events": ["Editorial Board, Journal of Immunological. "]
+      }, {
+        "event_date": "1961-1964",
+        "events": ["Councillor American Association of Immunologists. "]
+      }, {
+        "event_date": "1962",
+        "events": ["Golden Hope Chest Award, National Multiple Sclerosis Society. "]
+      }, {
+        "event_date": "1962-1968",
+        "events": ["Scientific Advisory Committee, Institute of Microbiology, Rutgers. "]
+      }, {
+        "event_date": "March 1963",
+        "events": ["Visiting Professor, Department of Microbiology, University of California, San Francisco. "]
+      }, {
+        "event_date": "April 1964",
+        "events": ["Professor, College de France, Paris. "]
+      }, {
+        "event_date": "1964",
+        "events": ["John S. Sharpe Memorial Lecturer, Bryn Mawr Hospital, Bryn Mawr, Pennsylvania. "]
+      }, {
+        "event_date": "1964-1965",
+        "events": ["Vice President, American Association of Immunologists. "]
+      }, {
+        "event_date": "1965",
+        "events": ["Member of Scientific Committee New York Blood Center. "]
+      }, {
+        "event_date": "1965-1966",
+        "events": ["President, American Association of Immunologists. "]
+      }, {
+        "event_date": "1965-1975",
+        "events": ["Member, World Health Organization Advisory Panel on Immunology. "]
+      }, {
+        "event_date": "1966",
+        "events": ["Member, National Academy of Sciences. ", "Member, American Academy of Arts and Sciences. "]
+      }, {
+        "event_date": "1967",
+        "events": ["Almroth Wright Lecturer, St. Mary's Hospital, Wright Fleming Institute, London. "]
+      }, {
+        "event_date": "1968",
+        "events": ["Claude Bernard Medal, Universit de Montreal. ", "E. B. Wilson Lecturer, University of Texas, Austin. "]
+      }, {
+        "event_date": "1968-1972",
+        "events": ["Chairman, Committee on Latimaria, National Academy of Sciences. "]
+      }, {
+        "event_date": "1969",
+        "events": ["Professor of Human Genetics and Development, Columbia University. "]
+      }, {
+        "event_date": "1969-1972",
+        "events": ["National Science Foundation Panel on Molecular Biology. "]
+      }, {
+        "event_date": "1971",
+        "events": ["Member, Committee on Viral Hepatitis, National Research Council. "]
+      }, {
+        "event_date": "1974-1975",
+        "events": ["Fogarty Scholar at U.S. National Institute of Health (NIH). "]
+      }, {
+        "event_date": "1975-2000",
+        "events": ["Dr. Kabat divided his time between Columbia and NIH. "]
+      }, {
+        "event_date": "1991",
+        "events": ["Received the National Medal of Science. "]
+      }, {
+        "event_date": "June 16, 2000",
+        "events": ["Passed away at the age of 86."]
+      }],
+      "publish": true,
+      "jsonmodel_type": "note_chronology",
+      "title": "Chronology"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "3a684bb5ccc70fc9e2c281c77c457a8a",
+    "publish": true,
+    "label": "Biographical/Historical note",
+    "type": "bioghist"
+  }, {
+    "persistent_id": "31ae38a9fc7c96fd17017992d8737489",
+    "type": "userestrict",
+    "subnotes": [{
+      "content": "RAC users must abide by all applicable provisions of United States copyright law.  Reproduction/duplication of archival items is routinely provided in accordance with \"fair use.\"  If the RAC does not hold copyright for an archival collection, or items within a collection, it is the user\u2019s responsibility to contact the copyright holder, or make a fair effort to do so, prior to publication.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "4460e8f023aadbd39b0084bf815a6e79",
+    "type": "accessrestrict",
+    "subnotes": [{
+      "content": "Open for scholarly research without restriction.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "subnotes": [{
+      "content": "Former Classification: XVIII\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "5b7c06779b4644e535206ee79c2e0d5b",
+    "publish": true,
+    "label": "File Plan note",
+    "type": "fileplan"
+  }, {
+    "persistent_id": "2a8169d04fe88f36189379be5cfe4f85",
+    "type": "phystech",
+    "subnotes": [{
+      "content": "Materials requiring specialized equipment for access (film, audio, video, slides) may be closed to research dependent on availability of the applicable equipment \n\nBrittle or damaged items, or materials otherwise in need of preservation care, may be closed to researchers at the discretion of the RAC Head of Archival Services/Head of Reference.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "830c3a59c898e4680a7b8463d76c84ba",
+    "type": "prefercite",
+    "subnotes": [{
+      "content": "Information regarding the Rockefeller Archive Center's preferred elements and forms of citation can be found at <extref href=\"http://www.rockarch.org/research/citations.php\">http://www.rockarch.org/research/citations.php</extref>",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }],
+  "tree": {
+    "ref": "/repositories/2/resources/108/tree"
+  },
+  "uri": "/repositories/2/resources/108",
+  "last_modified_by": "admin",
+  "finding_aid_filing_title": "Kabat (Elvin A.) papers",
+  "id_0": "FA020",
+  "related_accessions": [],
+  "finding_aid_status": "under_revision"
+}
