@@ -1,10 +1,10 @@
 <h3>Related Objects</h3>
 {% for object_hash in site.data.objects %}
-  {% assign object = object_hash[0] %}
-  {% capture object_id %}{{object_hash[1]}}{% endcapture %}
+  {% assign object = object_hash[1] %}
+  {% capture object_id %}{{object_hash[0]}}{% endcapture %}
   {% for linked_agent in object.linked_agents %}
     {% if linked_agent.ref == agent.uri %}
-     <p>{{collection.title}} <span class="label label-default">{{linked_agent.role}}</span></p>         
+     <p>{{collection.title}} <span class="label label-default">{{linked_agent.role}}</span></p>
     {% endif %}
   {% endfor %}
 {% endfor %}
