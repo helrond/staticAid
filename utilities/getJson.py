@@ -108,9 +108,9 @@ def saveFile(fileID, data, destination):
 # Looks for resources
 def findResources(lastExport, headers):
     if lastExport > 0:
-        logging.info('*** Getting a list of all resources ***')
-    else:
         logging.info('*** Getting a list of resources modified since %s ***', lastExport)
+    else:
+        logging.info('*** Getting a list of all resources ***')
     resourceIds = requests.get(repositoryBaseURL+'resources?all_ids=true&modified_since='+str(lastExport), headers=headers)
     for r in resourceIds.json():
         resource = (requests.get(repositoryBaseURL+'resources/' + str(r), headers=headers)).json()
@@ -131,10 +131,11 @@ def findTree(identifier, headers):
 
 # Looks for archival objects
 def findObjects(lastExport, headers):
+    idRange = range(361422, 362013)
     if lastExport > 0:
-        logging.info('*** Getting a list of all resources ***')
+        logging.info('*** Getting a list of objects modified since %s ***', lastExport)
     else:
-        logging.info('*** Getting a list of resources modified since %s ***', lastExport)
+        logging.info('*** Getting a list of all objects ***')
     archival_objects = requests.get(repositoryBaseURL+'archival_objects?all_ids=true&modified_since='+str(lastExport), headers=headers)
     for a in archival_objects.json():
         archival_object = requests.get(repositoryBaseURL+'archival_objects/'+str(a), headers=headers).json()
@@ -146,9 +147,9 @@ def findObjects(lastExport, headers):
 # Looks for agents
 def findAgents(lastExport, headers):
     if lastExport > 0:
-        logging.info('*** Getting a list of all agents ***')
-    else:
         logging.info('*** Getting a list of agents modified since %s ***', lastExport)
+    else:
+        logging.info('*** Getting a list of all agents ***')
     agent_types = ['corporate_entities', 'families', 'people', 'software']
     for agent_type in agent_types:
         agents = requests.get(baseURL+'/agents/'+agent_type+'?all_ids=true&modified_since='+str(lastExport), headers=headers)
@@ -162,9 +163,9 @@ def findAgents(lastExport, headers):
 # Looks for subjects
 def findSubjects(lastExport, headers):
     if lastExport > 0:
-        logging.info('*** Getting a list of all subjects ***')
-    else:
         logging.info('*** Getting a list of subjects modified since %s ***', lastExport)
+    else:
+        logging.info('*** Getting a list of all subjects ***')
     subjects = requests.get(baseURL+'/subjects?all_ids=true&modified_since='+str(lastExport), headers=headers)
     for s in subjects.json():
         subject = requests.get(baseURL+'/subjects/'+str(s), headers=headers).json()
@@ -183,9 +184,9 @@ def main():
     lastExport = readTime()
     headers = authenticate()
     # findResources(lastExport, headers)
-    # findObjects(lastExport, headers)
-    findAgents(lastExport, headers)
-    findSubjects(lastExport, headers)
+    findObjects(lastExport, headers)
+    # findAgents(lastExport, headers)
+    # findSubjects(lastExport, headers)
     logging.info('*** Export completed ***')
     updateTime(exportStartTime)
     os.unlink(pidfilepath)
