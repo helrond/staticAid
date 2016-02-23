@@ -1,5 +1,7 @@
+{% capture parent_url %}{{page.url | split: page.type | first }}{{page.type}}{% endcapture %}
+
 <ol class="breadcrumb">
   <li><a href="/{{ site.baseurl }}">home</a></li>
-  <li><a href="{{ "../"| prepend:site.baseurl | prepend:site.url }}">{{page.type}}</a></li>
+  <li><a href="{{ parent_url }}">{{page.type}}</a></li>
   <li class="active">{{ page.title }}</li>
 </ol>
