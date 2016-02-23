@@ -4,11 +4,12 @@ layout: default
 {% capture collection_id %}{{page.id}}{% endcapture %}
 {% assign collection = site.data.collections[{{collection_id}}] %}
 {% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
-<div class="col-md-8 col-md-offset-2">
+
+<div itemscope itemtype="http://schema.org/CollectionPage" class="col-md-8 col-md-offset-2">
 
   {% include breadcrumb.html %}
 
-  <h1 class="collection title">
+  <h1 itemprop="name" class="collection title">
     {{ collection.title }} ({{fa_number}})
     <small>
       {{collection.dates[0].expression}}

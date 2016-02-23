@@ -7,7 +7,7 @@
     {% when 'appraisal' %}Appraisal
     {% when 'arrangement' %}Arrangement
     {% when 'bibliography' %}Bibliography
-    {% when 'bioghist' %}Biographical / Historical 
+    {% when 'bioghist' %}Biographical / Historical
     {% when 'custodhist' %}Custodial History
     {% when 'fileplan' %}File Plan
     {% when 'index' %}Index
@@ -36,15 +36,22 @@
     {% when 'physfacet' %}Physical Facet
   {% endcase %}
 </h3>
-{% for subnote in note.subnotes %}
-  {% if subnote.jsonmodel_type == 'note_text' %}
-    <p>{{ subnote.content | markdownify }}</p>
-  {% endif %}
-  {% if subnote.jsonmodel_type == 'note_chronology' %}
-    <dl>
-    {% for item in subnote.items %}
-      <dt>{{item.event_date}}</dt><dl>{% for event in item.events %}{{event}} {% endfor %}</dl>
-    {% endfor %}
-    </dl>
-  {% endif %}
-{% endfor %}
+<div {% if {{note.type}} == 'abstract' or {{note.type}} == 'scopecontent' or {{note.type}} == 'bioghist' %}itemprop="description"{% endif %}>
+  {% case {{note.jsonmodel_type}} %}
+    {% when 'note_multipart' %}
+      {% for subnote in note.subnotes %}
+        {% if subnote.jsonmodel_type == 'note_text' %}
+          <p>{{ subnote.content | markdownify }}</p>
+        {% endif %}
+        {% if subnote.jsonmodel_type == 'note_chronology' %}
+          <dl>
+          {% for item in subnote.items %}
+            <dt>{{item.event_date}}</dt><dl>{% for event in item.events %}{{event}} {% endfor %}</dl>
+          {% endfor %}
+          </dl>
+        {% endif %}
+      {% endfor %}
+    {% when 'note_singlepart' %}
+      <p>{{ note.content }}</p>
+  {% endcase %}
+</div>
