@@ -1,13 +1,24 @@
+{% capture title %}{% if page.title %}{{ site.title | escape }}: {{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}{% endcapture %}
+{% capture description %}{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+{% capture canonical_url %}{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}{% endcapture %}
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="author" content="{{ site.author.name }}" />
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="author" content="{{ site.author }}" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@helrond" />
+  <meta property="og:title" name="twitter:title" content="{{ title }}" />
+  <meta property="og:description" name="twitter:description" content="{{ description}}" />
+  <meta property="og:url" content="{{ canonical_url }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
 
   <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.baseurl | prepend: site.url }}" />
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="canonical" href="{{ canonical_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 </head>
