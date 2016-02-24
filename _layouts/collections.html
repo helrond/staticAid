@@ -28,9 +28,8 @@ layout: default
   </div>
 
   <div class="collection subjects">
-    {% for subject in collection.subjects %}
-      {% include subject.html %}
-    {% endfor %}
+    {% assign subjects = collection.subjects %}
+    {% include subjects.html %}
   </div>
 
   <div class="collection notes">
