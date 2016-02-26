@@ -8,7 +8,7 @@ configFilePath = os.path.join(current_dir, 'local_settings.cfg')
 config = ConfigParser.ConfigParser()
 config.read(configFilePath)
 
-destinations = [config.get('Build', 'collections'), config.get('Build', 'families'), config.get('Build', 'organizations'), config.get('Build', 'people'), config.get('Build', 'software')]
+destinations = [config.get('Build', 'collections'), config.get('Build', 'families'), config.get('Build', 'organizations'), config.get('Build', 'people'), config.get('Build', 'software'), config.get('Build', 'objects')]
 
 def get_json(data):
     with open(os.path.join(src,data)) as data_file:
@@ -29,7 +29,10 @@ def make_pages(src, dest):
                 data = get_json(f)
 
                 identifier = os.path.splitext(f)[0]
-                title = data["title"].strip().replace('"', "'")
+                if dest == 'objects':
+                    title = data["display_string"].strip().replace('"', "'")
+                else:
+                    title = data["title"].strip().replace('"', "'")
                 raw_description = ''
                 description = ''
 
@@ -51,7 +54,7 @@ def make_pages(src, dest):
                     new_file.write("id: "+identifier+"\n")
                     new_file.write("type: "+dest+"\n")
                     new_file.write("permalink: "+dest+"/"+identifier+"/\n")
-                    new_file.write("description: \""+description+"\"\n")
+                    new_file.write("description: \""+description.encode('utf-8')+"\"\n")
                     new_file.write("---")
                     new_file.close
                     # print str(os.path.join(dest,identifier+'.html')) + " created"

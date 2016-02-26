@@ -4,7 +4,7 @@
   {% capture collection_id %}{{collection_hash[0]}}{% endcapture %}
   {% for linked_agent in collection.linked_agents %}
     {% if linked_agent.ref == agent.uri %}
-     <p><a href="../../collections/{{collection_id}}">{{collection.title}}</a> <span class="label label-default">{{linked_agent.role}}</span></p>
+     <p><a href="../../collections/{{collection_id}}">{{collection.title}}</a> <span class="badge">{{linked_agent.role}}</span></p>
     {% endif %}
   {% endfor %}
 {% endfor %}

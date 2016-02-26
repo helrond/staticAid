@@ -81,6 +81,7 @@ def main():
     write_value("families", "_data/agents/families,families")
     write_value("people", "_data/agents/people,people")
     write_value("software", "_data/agents/software,software")
+    write_value("objects", "_data/objects,objects")
 
     cfg_file.close()
 

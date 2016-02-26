@@ -5,46 +5,50 @@
   {% capture component_id %}{{component.id}}{% endcapture %}
   {% assign component_detail = site.data.objects[{{component_id}}] %}
   <div class="col-md-12 {{component.level}}">
-    <div class="col-md-9">
-      {% if component.level == 'series' %}
-        <span class="group-title-top">{{ component.title }}</span>
-      {% elsif component.level == 'recordgrp' %}
-        <span class="group-title-top">{{ component.title }}</span>
-      {% elsif component.level == 'subseries' %}
-        <span class="group-title-intermediate">{{ component.title }}</span>
-      {% elsif component.level == 'subgrp' %}
-        <span class="group-title-intermediate">{{ component.title }}</span>
-      {% else %}
-        <span class="component-title">{{ component.title }}</span>
-      {% endif %}
-      {% if component_detail.notes[0] %}
-        <a href="#{{component_detail.ref_id}}-notes" class="more-link" data-toggle="collapse">More information</a>
-      {% endif %}
+    <div id="{{component_detail.ref_id}}" class="row">
+      <div class="col-md-9">
+        {% if component.level == 'series' %}
+          <span class="group-title-top">{{ component.title }}</span>
+        {% elsif component.level == 'recordgrp' %}
+          <span class="group-title-top">{{ component.title }}</span>
+        {% elsif component.level == 'subseries' %}
+          <span class="group-title-intermediate">{{ component.title }}</span>
+        {% elsif component.level == 'subgrp' %}
+          <span class="group-title-intermediate">{{ component.title }}</span>
+        {% else %}
+          <span class="component-title">{{ component.title }}</span>
+        {% endif %}
+        <a title="More information" class="more-link" href="../../objects/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
+        {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
+          <span class="more-link glyphicon glyphicon-comment" aria-hidden="true"></span>
+        {% endif %}
+      </div>
+      <div class="col-md-3">
+        {% for instance in component_detail.instances %}
+          <p>{% include instance.html %}</p>
+        {% endfor %}
+      </div>
     </div>
-    <div class="col-md-3">
-      {% for instance in component_detail.instances %}
-        {% include instance.html %}
-      {% endfor %}
-    </div>
-    {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
-      <div class="col-md-12 container-list-notes">
-        <div class="collapse" id="{{component_detail.ref_id}}-notes">
-          <div class="well">
-            {% for note in component_detail.notes %}
-              {% include note.html %}
-            {% endfor %}
-            {% if component_detail.linked_agents[0] %}
-              {% assign agents = component_detail.linked_agents %}
-              {% include agent-list.html %}
-            {% endif %}
-            {% if component_detail.subjects %}
-              {% assign subjects = component_detail.subjects %}
-              {% include subjects.html %}
-            {% endif %}
+      <!-- {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
+        <div class="col-md-12 container-list-notes">
+          <div class="collapse" id="{{component_detail.ref_id}}-detail">
+            <div class="well">
+              {% for note in component_detail.notes %}
+                {% include note.html %}
+              {% endfor %}
+              {% if component_detail.linked_agents[0] %}
+                {% assign agents = component_detail.linked_agents %}
+                {% include agent-list.html %}
+              {% endif %}
+              {% if component_detail.subjects %}
+                {% assign subjects = component_detail.subjects %}
+                {% include subjects.html %}
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
-    {% endif %}
+    {% endif %} -->
     {% if component.children %}
       {% assign tree = component.children %}
       {% include component.html %}

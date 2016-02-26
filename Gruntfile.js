@@ -27,7 +27,8 @@ module.exports = function(grunt) {
           options: {
           serve: true,
           skip_initial_build: true,
-          verbose: true
+          verbose: true,
+          incremental: true
         }
       },
       build: {
