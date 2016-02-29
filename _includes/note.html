@@ -1,41 +1,4 @@
-<h3>
-  {% case {{note.type}} %}
-    {% when 'accessrestrict' %}Conditions Governing Access
-    {% when 'accruals' %}Accruals
-    {% when 'acqinfo' %}Immediate Source of Acquisition
-    {% when 'altformavail' %}Existence and Location of Copies
-    {% when 'appraisal' %}Appraisal
-    {% when 'arrangement' %}Arrangement
-    {% when 'bibliography' %}Bibliography
-    {% when 'bioghist' %}Biographical / Historical
-    {% when 'custodhist' %}Custodial History
-    {% when 'fileplan' %}File Plan
-    {% when 'index' %}Index
-    {% when 'odd' %}General
-    {% when 'otherfindaid' %}Other Finding Aids
-    {% when 'originalsloc' %}Existence and Location of Originals
-    {% when 'phystech' %}Physical Characteristics and Technical Requirements
-    {% when 'prefercite' %}Preferred Citation
-    {% when 'processinfo' %}Processing Information
-    {% when 'relatedmaterial' %}Related Archival Materials
-    {% when 'scopecontent' %}Scope and Contents
-    {% when 'separatedmaterial' %}Separated Materials
-    {% when 'userestrict' %}Conditions Governing Use
-    {% when 'dimensions' %}Dimensions
-    {% when 'legalstatus' %}Legal Status
-    {% when 'summary' %}Summary
-    {% when 'edition' %}Edition
-    {% when 'extent' %}Extent
-    {% when 'note' %}General Note
-    {% when 'inscription' %}Inscription
-    {% when 'langmaterial' %}Language of Materials
-    {% when 'physdesc' %}Physical Description
-    {% when 'abstract' %}Abstract
-    {% when 'physloc' %}Physical Location
-    {% when 'materialspec' %}Materials Specific Details
-    {% when 'physfacet' %}Physical Facet
-  {% endcase %}
-</h3>
+<h3 id="{{note.persistent_id}}">{% include note-title.html %}</h3>
 <div {% if {{note.type}} == 'abstract' or {{note.type}} == 'scopecontent' or {{note.type}} == 'bioghist' %}itemprop="description"{% endif %}>
   {% case {{note.jsonmodel_type}} %}
     {% when 'note_multipart' %}

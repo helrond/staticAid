@@ -39,6 +39,7 @@ layout: default
   </div>
 
   {% if collection.tree.ref %}
+    <h3 id="{{collection.id_0}}-contents">Contents</h3>
     <div class="collection contents">
       {% assign tree = site.data.trees[{{collection_id}}].children %}
       {% include component.html %}
