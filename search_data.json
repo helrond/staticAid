@@ -8,31 +8,9 @@ layout: null
     {% assign id = item_hash[0] %}
     "collections/{{id}}": {
       "href": "collections/{{id}}",
-      "title": "{{collection.title | escape}}",
+      "title": "{{collection.title | escape | strip_newlines}}",
       "url": "{{site.url}}/collections/{{id}}",
       "record_type": "collection",
-      "creator": [
-        {% assign agents = collection.linked_agents %}
-        {% assign flag = 0 %}
-        {% for agent in agents %}
-          {% if agent.role == 'creator' %}
-            {% if agent.ref contains "corporate_entities" %}
-              {% capture agent_id %}{{ agent.ref | replace: '/agents/corporate_entities', ''}}{% endcapture %}
-              {% assign agent_detail = site.data.agents.corporate_entities[{{agent_id}}] %}
-            {% elsif agent.ref contains "people" %}
-              {% capture agent_id %}{{ agent.ref | replace: '/agents/people/', ''}}{% endcapture %}
-              {% assign agent_detail = site.data.agents.people[{{agent_id}}] %}
-            {% elsif agent.ref contains "families" %}
-              {% capture agent_id %}{{ agent.ref | replace: '/agents/families/', ''}}{% endcapture %}
-              {% assign agent_detail = site.data.agents.families[{{agent_id}}] %}
-            {% endif %}
-            {% if agent_detail %}
-              {% if flag != 0 %},{% endif %}
-              "{{agent_detail.display_string}}"
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-      ],
       "subjects": [
         {% assign subjects = collection.subjects %}
         {% for subject in subjects %}
@@ -49,7 +27,7 @@ layout: null
     {% assign id = item_hash[0] %}
     "objects/{{id}}": {
       "href": "objects/{{id}}",
-      "title": "{{object.title | escape}}",
+      "title": "{{object.title | escape | strip_newlines}}",
       "url": "{{site.url}}/objects/{{id}}",
       "record_type": "{{object.level}}",
       "subjects": [
