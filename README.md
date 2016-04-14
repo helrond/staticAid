@@ -33,7 +33,7 @@ You can see a live version of this site with sample data [here](http://hillelarn
 
 ### Building the HTML Site
 
-You have three options for building the HTML site using Jekyll. In all cases, Jekyll will place the generate site in a directory called `_site`.
+You have three options for building the HTML site using Jekyll. In all cases, Jekyll will place the generated site in a directory called `_site`.
 
 #### Build without updating data
 
