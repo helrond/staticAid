@@ -1,0 +1,34 @@
+
+[ArchivesSpace]
+baseURL: http://localhost:8089
+repository: 2
+user: admin
+password: admin
+
+[Destinations]
+collections: _data/collections
+objects: _data/objects
+trees: _data/trees
+agents: _data/agents
+people: corporate_entities
+people: families
+people: people
+people: software
+subjects: _data/subjects
+
+[Logging]
+filename: log.txt
+level: INFO
+format: %(asctime)s %(message)s
+datefmt: %m/%d/%Y %I:%M:%S %p
+
+[LastExport]
+filepath: lastExport.pickle
+
+[Build]
+collections: _data/collections,collections
+organizations: _data/agents/corporate_entities,organizations
+families: _data/agents/families,families
+people: _data/agents/people,people
+software: _data/agents/software,software
+objects: _data/objects,objects
