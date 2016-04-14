@@ -46,16 +46,22 @@ then
     cp local_settings.default local_settings.cfg
 fi
 
-echo ""
-echo "Done installing dependencies for StaticAid."
-echo ""
-echo "To replace the current sample data set with real data from ArchiveSpace, run:"
-echo ""
-echo "    installArchiveSpace.sh"
-echo "    grunt update"
-echo ""
-echo "To generate HTML from the data currently present in the _data/ directory, run:"
-echo ""
-echo "    grunt build"
-echo ""
+echo "
+Done installing dependencies for StaticAid.
+
+To replace the current sample data set with real data from ArchiveSpace, run:
+
+    installArchiveSpace.sh
+    grunt update
+
+To generate HTML from the data currently present in the _data/ directory, run:
+
+    grunt build
+
+To view the generated HTML in the test server, run:
+
+    sudo sysctl fs.inotify.max_user_watches=524288
+    sudo sysctl -p
+    grunt serve
+"
 
