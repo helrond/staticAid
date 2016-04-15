@@ -49,9 +49,9 @@ fi
 echo "
 Done installing dependencies for StaticAid.
 
-To replace the current sample data set with real data from ArchiveSpace, run:
+To replace the current sample data set with real data from ArchiveSpace, make sure ArchivesSpace is running
+and that your ArchivesSpace config is correct and run:
 
-    installArchiveSpace.sh
     grunt update
 
 To generate HTML from the data currently present in the _data/ directory, run:
