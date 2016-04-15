@@ -21,9 +21,7 @@ archivesSpace['breadcrumbBaseURL'] = '{baseURL}/search/published_tree?node_uri=/
 # Location of Pickle file which contains last export time
 lastExportFilepath = os.path.join(current_dir, config.get('LastExport', 'filepath'))
 
-logFilename = os.path.join(current_dir,
-                           config.get('Logging', 'filename'))
-logging.basicConfig(filename=logFilename,
+logging.basicConfig(filename=os.path.join(current_dir, config.get('Logging', 'filename')),
                     format=config.get('Logging', 'format', 1),
                     datefmt=config.get('Logging', 'datefmt', 1),
                     level=config.get('Logging', 'level', 0),
@@ -33,10 +31,8 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 # export destinations, os.path.sep makes these absolute URLs
 destinations = {k:v for k, v in config.items('Destinations')}
 
-# file path to record process id
-pidfilepath = os.path.join(current_dir, 'daemon.pid')
-
 # check to see if process is already running
+pidfilepath = os.path.join(current_dir, 'daemon.pid')
 def checkPid(pidfilepath):
     currentPid = str(os.getpid())
 
@@ -212,4 +208,5 @@ def main():
     updateTime(exportStartTime)
     os.unlink(pidfilepath)
 
-main()
+if __name__ == '__main__':
+    main()
