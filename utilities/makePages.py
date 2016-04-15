@@ -8,7 +8,13 @@ configFilePath = os.path.join(current_dir, 'local_settings.cfg')
 config = ConfigParser.ConfigParser()
 config.read(configFilePath)
 
-destinations = [config.get('Build', 'collections'), config.get('Build', 'families'), config.get('Build', 'organizations'), config.get('Build', 'people'), config.get('Build', 'software'), config.get('Build', 'objects')]
+destinations = [config.get('Build', 'collections'), 
+                config.get('Build', 'families'), 
+                config.get('Build', 'organizations'), 
+                config.get('Build', 'people'), 
+                config.get('Build', 'software'), 
+                config.get('Build', 'objects'),
+                ]
 
 def get_json(data):
     with open(os.path.join(src,data)) as data_file:
@@ -67,3 +73,4 @@ for destination in destinations:
     src = split[0]
     dest = split[1]
     make_pages(src, dest)
+
