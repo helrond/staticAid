@@ -43,10 +43,8 @@ def checkPid(pidfilepath):
         if psutil.pid_exists(pid):
             logging.error('Process already running, exiting')
             sys.exit()
-        else:
-            file(pidfilepath, 'w').write(currentPid)
-    else:
-        file(pidfilepath, 'w').write(currentPid)
+
+    file(pidfilepath, 'w').write(currentPid)
 
 def makeDestinations():
     for k in destinations:
@@ -68,9 +66,9 @@ def authenticate():
         sys.exit(1)
 
 # logs out non-expiring session (not yet in AS core, so commented out)
-def logout(headers):
-    requests.post('{baseURL}/logout'.format(**archivesSpace), headers=headers)
-    logging.info('You have been logged out of your session')
+#def logout(headers):
+#    requests.post('{baseURL}/logout'.format(**archivesSpace), headers=headers)
+#    logging.info('You have been logged out of your session')
 
 # gets time of last export
 def readTime():
