@@ -2,14 +2,12 @@
 
 import os, ConfigParser, json
 
-current_dir = os.path.dirname(__file__)
-
-configFilePath = os.path.join(current_dir, 'local_settings.cfg')
+configFilePath = os.path.join(os.path.dirname(__file__), 'local_settings.cfg')
 config = ConfigParser.ConfigParser()
 config.read(configFilePath)
 
-def get_json(data):
-    with open(os.path.join(src, data)) as data_file:
+def get_json(filename):
+    with open(os.path.join(src, filename)) as data_file:
         parsed_data = json.load(data_file)
     return parsed_data
 
