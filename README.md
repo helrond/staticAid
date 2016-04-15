@@ -26,7 +26,7 @@ You can see a live version of this site with sample data [here](http://hillelarn
 1.  Clone this repository `git clone git@github.com:helrond/staticAid.git` or download the ZIP file.
 2.  Install dependencies. See "Requirements" above for a list of things you'll need to have installed.
 3.  In this project's root directory, run `npm install` to install dependencies for Grunt.
-4.  Run `utilities/setup.py` to create a configuration file which will allow you to fetch and update data from ArchivesSpace.
+4.  Run `utilities/generateConfig.py` to create a configuration file which will allow you to fetch and update data from ArchivesSpace.
 5.  Change the values in `_config.yml` to match your preferences. Make sure to change `url` and `baseurl`.
 
 ## Usage
