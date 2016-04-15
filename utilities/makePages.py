@@ -47,16 +47,16 @@ def make_pages(src, dest):
                         pass
                 description = (raw_description.strip().replace('"', "'")[:200] + '...') if len(raw_description) > 200 else description
 
-                with open(os.path.join(dest, identifier + '.html'), 'w+') as new_file:
-                    new_file.write("---\nlayout: " + dest + "\n")
-                    new_file.write("title: \"" + title.encode('utf-8') + "\"\n")
-                    new_file.write("id: " + identifier + "\n")
-                    new_file.write("type: " + dest + "\n")
-                    new_file.write("permalink: " + dest + "/" + identifier + "/\n")
-                    new_file.write("description: \"" + description.encode('utf-8') + "\"\n")
+                with open(os.path.join(dest, '%s.html' % identifier), 'w+') as new_file:
+                    new_file.write("---\nlayout: %s\n" % dest)
+                    new_file.write("title: \"%s\"\n" % title.encode('utf-8'))
+                    new_file.write("id: %s\n" % identifier)
+                    new_file.write("type: %s\n" % dest)
+                    new_file.write("permalink: %s/%s/\n" % (dest, identifier))
+                    new_file.write("description: \"%s\"\n" % description.encode('utf-8'))
                     new_file.write("---")
                     new_file.close
-                    # print str(os.path.join(dest,identifier+'.html')) + " created"
+                    # print '%s created' % os.path.join(dest, '%s.html' % identifier)
 
 for dest, src in config.items('Build'):
     make_pages(src, dest)
