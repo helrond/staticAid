@@ -26,9 +26,9 @@ datefmt: %m/%d/%Y %I:%M:%S %p
 filepath: lastExport.pickle
 
 [Build]
-collections: _data/collections,collections
-organizations: _data/agents/corporate_entities,organizations
-families: _data/agents/families,families
-people: _data/agents/people,people
-software: _data/agents/software,software
-objects: _data/objects,objects
+collections: _data/collections
+organizations: _data/agents/corporate_entities
+families: _data/agents/families
+people: _data/agents/people
+software: _data/agents/software
+objects: _data/objects
