@@ -28,16 +28,10 @@ logging.basicConfig(filename=logFilename,
                     datefmt=config.get('Logging', 'datefmt', 1),
                     level=config.get('Logging', 'level', 0),
                     )
-# Sets logging of requests to WARNING to avoid unneccessary info
 logging.getLogger("requests").setLevel(logging.WARNING)
 
 # export destinations, os.path.sep makes these absolute URLs
-collectionDestination = config.get('Destinations', 'collections')
-objectDestination = config.get('Destinations', 'objects')
-breadcrumbDestination = config.get('Destinations', 'breadcrumbs')
-treeDestination = config.get('Destinations', 'trees')
-agentDestination = config.get('Destinations', 'agents')
-subjectDestination = config.get('Destinations', 'subjects')
+destinations = {k:v for k, v in config.items('Destinations')}
 
 # file path to record process id
 pidfilepath = os.path.join(current_dir, 'daemon.pid')
@@ -59,10 +53,9 @@ def checkPid(pidfilepath):
         file(pidfilepath, 'w').write(currentPid)
 
 def makeDestinations():
-    destinations = [collectionDestination, objectDestination, treeDestination, agentDestination, subjectDestination]
-    for d in destinations:
-        if not os.path.exists(d):
-            os.makedirs(d)
+    for k in destinations:
+        if not os.path.exists(destinations[k]):
+            os.makedirs(destinations[k])
 
 # authenticates the session
 def authenticate():
@@ -131,19 +124,19 @@ def findResources(lastExport, headers):
         resource = (requests.get(url, headers=headers)).json()
         if resource["publish"]:
             if not "LI" in resource["id_0"]:
-                saveFile(r, resource, collectionDestination)
+                saveFile(r, resource, destinations['collections'])
                 findTree(r, headers)
             else:
                 pass
         else:
-            removeFile(r, collectionDestination)
-            removeFile(r, treeDestination)
+            removeFile(r, destinations['collections'])
+            removeFile(r, destinations['trees'])
 
 # Looks for resource trees
 def findTree(identifier, headers):
     url = '%s/resources/%s/tree' % (archivesSpace['repositoryBaseURL'], str(identifier))
     tree = (requests.get(url, headers=headers)).json()
-    saveFile(identifier, tree, treeDestination)
+    saveFile(identifier, tree, destinations['trees'])
 
 # Looks for archival objects
 def findObjects(lastExport, headers):
@@ -157,16 +150,16 @@ def findObjects(lastExport, headers):
         url = '%s/archival_objects/%s' % (archivesSpace['repositoryBaseURL'], str(a))
         archival_object = requests.get(url, headers=headers).json()
         if archival_object["publish"]:
-            saveFile(a, archival_object, objectDestination)
+            saveFile(a, archival_object, destinations['objects'])
             # build breadcrumb trails for archival object pages
             url = '%s/archival_objects/%s' % (archivesSpace['breadcrumbBaseURL'], str(a))
             r = requests.get(url, headers=headers)
             if r.status_code == 200:
                 published_tree = r.json()
                 breadcrumbs = json.loads(published_tree["tree_json"])
-                saveFile(a, breadcrumbs, breadcrumbDestination)
+                saveFile(a, breadcrumbs, destinations['breadcrumbs'])
         else:
-            removeFile(a, objectDestination)
+            removeFile(a, destinations['objects'])
 
 # Looks for agents
 def findAgents(lastExport, headers):
@@ -182,9 +175,9 @@ def findAgents(lastExport, headers):
             url = '%s/agents/%s/%s' % (archivesSpace['baseURL'], agent_type, str(a))
             agent = requests.get(url, headers=headers).json()
             if agent["publish"]:
-                saveFile(a, agent, os.path.join(agentDestination, agent_type))
+                saveFile(a, agent, os.path.join(destinations['agents'], agent_type))
             else:
-                removeFile(a, os.path.join(agentDestination, agent_type))
+                removeFile(a, os.path.join(destinations['agents'], agent_type))
 
 # Looks for subjects
 def findSubjects(lastExport, headers):
@@ -198,9 +191,9 @@ def findSubjects(lastExport, headers):
         url = '%s/subjects/%s' % (archivesSpace['baseURL'], str(s))
         subject = requests.get(url, headers=headers).json()
         if subject["publish"]:
-            saveFile(s, subject, subjectDestination)
+            saveFile(s, subject, destinations['subjects'])
         else:
-            removeFile(s, subjectDestination)
+            removeFile(s, destinations['subjects'])
 
 
 def main():
