@@ -6,6 +6,7 @@ user: admin
 password: admin
 
 [Destinations]
+breadcrumbs: _data/breadcrumbs
 collections: _data/collections
 objects: _data/objects
 trees: _data/trees
