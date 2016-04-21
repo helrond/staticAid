@@ -1,4 +1,4 @@
-from ConfigParser import ConfigParser
+from ConfigParser import ConfigParser, NoSectionError
 from os.path import dirname, join
 
 # read the config file
@@ -8,8 +8,21 @@ _config = ConfigParser()
 _config.read(configFilePath)
 
 def _configSection(section):
-    return {k:v for k, v in _config.items(section, raw=True)}
+    try:
+        return {k:v for k, v in _config.items(section, raw=True)}
+    except NoSectionError:
+        return {}
 
+def _stringToBoolean(string):
+	k = string.lower()
+    result = {'true': True,
+              '1': True,
+              'false': False,
+              '0':False,
+              }
+    if k in result:
+        return result[k]
+    return None
 
 ### the config values ###
 # NOTE: keys are forced to lower-case

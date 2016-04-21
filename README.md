@@ -1,4 +1,4 @@
-# Project Name
+# StaticAid
 
 A [Jekyll](http://jekyllrb.com/) static site generator for archival description serialized in JSON, generated via the [ArchivesSpace](http://archivesspace.org) REST API.
 

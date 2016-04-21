@@ -56,12 +56,11 @@ def authenticate():
 #    requests.post('{baseURL}/logout'.format(**archivesSpace), headers=headers)
 #    logging.info('You have been logged out of your session')
 
-# gets time of last export
-def readTime():
+def lastExportTime():
     # last export time in Unix epoch time, for example 1439563523
     if os.path.isfile(config.lastExportFilepath) and sys.argv[1] == '--update':
         with open(config.lastExportFilepath, 'rb') as pickle_handle:
-            lastExport = str(pickle.load(pickle_handle))
+            lastExport = int(str(pickle.load(pickle_handle)))
     else:
         lastExport = 0
     return lastExport
@@ -93,11 +92,12 @@ def saveFile(fileID, data, destination):
 # Looks for resources
 def findResources(lastExport, headers):
     if lastExport > 0:
-        logging.info('*** Getting a list of resources modified since %s ***', lastExport)
+        logging.info('*** Getting a list of resources modified since %d ***', lastExport)
     else:
         logging.info('*** Getting a list of all resources ***')
 
     url = '%s/resources?all_ids=true&modified_since=%d' % (config.archivesSpace['repository_url'], lastExport)
+    url = '%s/resources?all_ids=true' % (config.archivesSpace['repository_url'])
     resourceIds = requests.get(url, headers=headers)
     for r in resourceIds.json():
         url = '%s/resources/%s' % (config.archivesSpace['repository_url'], str(r))
@@ -121,10 +121,10 @@ def findTree(identifier, headers):
 # Looks for archival objects
 def findObjects(lastExport, headers):
     if lastExport > 0:
-        logging.info('*** Getting a list of objects modified since %s ***', lastExport)
+        logging.info('*** Getting a list of objects modified since %d ***', lastExport)
     else:
         logging.info('*** Getting a list of all objects ***')
-    url = '%s/archival_objects?all_ids=true&modified_since=%s' % (config.archivesSpace['repository_url'], str(lastExport))
+    url = '%s/archival_objects?all_ids=true&modified_since=%d' % (config.archivesSpace['repository_url'], lastExport)
     archival_objects = requests.get(url, headers=headers)
     for a in archival_objects.json():
         url = '%s/archival_objects/%s' % (config.archivesSpace['repository_url'], str(a))
@@ -144,36 +144,38 @@ def findObjects(lastExport, headers):
 # Looks for agents
 def findAgents(lastExport, headers):
     if lastExport > 0:
-        logging.info('*** Getting a list of agents modified since %s ***', lastExport)
+        logging.info('*** Getting a list of agents modified since %d ***', lastExport)
     else:
         logging.info('*** Getting a list of all agents ***')
     agent_types = ['corporate_entities', 'families', 'people', 'software']
     for agent_type in agent_types:
-        url = '%s/agents/%s?all_ids=true&modified_since=%s' % (config.archivesSpace TODO THIS HERE.baseurl, agent_type, str(lastExport))
+        url = '%s/agents/%s?all_ids=true&modified_since=%d' % (config.archivesSpace['baseurl'],
+                                                               agent_type,
+                                                               lastExport)
         agents = requests.get(url, headers=headers)
         for a in agents.json():
-            url = '%s/agents/%s/%s' % (config.archivesSpace.baseurl, agent_type, str(a))
+            url = '%s/agents/%s/%s' % (config.archivesSpace['baseurl'], agent_type, str(a))
             agent = requests.get(url, headers=headers).json()
             if agent["publish"]:
-                saveFile(a, agent, os.path.join(config.destinations.agents, agent_type))
+                saveFile(a, agent, os.path.join(config.destinations['agents'], agent_type))
             else:
-                removeFile(a, os.path.join(config.destinations.agents, agent_type))
+                removeFile(a, os.path.join(config.destinations['agents'], agent_type))
 
 # Looks for subjects
 def findSubjects(lastExport, headers):
     if lastExport > 0:
-        logging.info('*** Getting a list of subjects modified since %s ***', lastExport)
+        logging.info('*** Getting a list of subjects modified since %d ***', lastExport)
     else:
         logging.info('*** Getting a list of all subjects ***')
-    url = '%s/subjects?all_ids=true&modified_since=%s' % (config.archivesSpace.baseurl, str(lastExport))
+    url = '%s/subjects?all_ids=true&modified_since=%d' % (config.archivesSpace['baseurl'], lastExport)
     subjects = requests.get(url, headers=headers)
     for s in subjects.json():
-        url = '%s/subjects/%s' % (config.archivesSpace.baseurl, str(s))
+        url = '%s/subjects/%s' % (config.archivesSpace['baseurl'], str(s))
         subject = requests.get(url, headers=headers).json()
         if subject["publish"]:
-            saveFile(s, subject, config.destinations.subjects)
+            saveFile(s, subject, config.destinations['subjects'])
         else:
-            removeFile(s, config.destinations.subjects)
+            removeFile(s, config.destinations['subjects'])
 
 
 def main():
@@ -182,7 +184,7 @@ def main():
     logging.info('=========================================')
     logging.info('*** Export started ***')
     exportStartTime = int(time.time())
-    lastExport = readTime()
+    lastExport = lastExportTime()
     headers = authenticate()
     findResources(lastExport, headers)
     findObjects(lastExport, headers)
