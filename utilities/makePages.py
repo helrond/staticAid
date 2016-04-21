@@ -4,7 +4,8 @@ import config
 from json import load
 from os import listdir
 from os.path import exists, join, splitext
-from utilities import PAGE_DATA_DIR
+
+PAGE_DATA_DIR = 'build/page_data'
 
 
 def get_json(filename):

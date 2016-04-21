@@ -4,7 +4,9 @@ import os, requests, json, sys, time, pickle, logging, psutil
 import config
 from os.path import join, exists, isfile
 from os import makedirs, remove
-from utilities import DATA_DIR
+
+DATA_DIR = 'build/data'
+
 
 current_dir = os.path.dirname(__file__)
 
