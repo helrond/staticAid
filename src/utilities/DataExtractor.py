@@ -15,20 +15,14 @@ class DataExtractor(object):
         exportStartTime = int(time.time())
         self.makeDestinations()
         self._run()
-        self.updateTime(exportStartTime)
+        self.updateLastExportTime(exportStartTime)
 
         logging.info('*** Export completed ***')
         self.unregisterPid()
 
 
     def _run(self):
-#         raise Exception('override this method for each DataExtractor subclass')
-        lastExport = self.lastExportTime()
-        headers = self.authenticate()
-        self.findResources(lastExport, headers)
-        self.findObjects(lastExport, headers)
-        self.findAgents(lastExport, headers)
-        self.findSubjects(lastExport, headers)
+        raise Exception('override this method for each DataExtractor subclass')
 
 
     def registerPid(self):
@@ -64,6 +58,52 @@ class DataExtractor(object):
                 makedirs(path)
 
 
+    def lastExportTime(self):
+        # last export time in Unix epoch time, for example 1439563523
+        if isfile(config.lastExportFilepath) and sys.argv[1] == '--update':
+            with open(config.lastExportFilepath, 'rb') as pickle_handle:
+                lastExport = int(str(pickle.load(pickle_handle)))
+        else:
+            lastExport = 0
+        return lastExport
+
+
+    # store the current time in Unix epoch time, for example 1439563523
+    def updateLastExportTime(self, exportStartTime):
+        with open(config.lastExportFilepath, 'wb') as pickle_handle:
+            pickle.dump(exportStartTime, pickle_handle)
+            logging.info('Last export time updated to %d' % exportStartTime)
+
+
+    # Deletes file if it exists
+    def removeFile(self, identifier, destination):
+        filename = join(destination, '%s.json' % str(identifier))
+        if isfile(filename):
+            remove(filename)
+            logging.info('%s deleted from %s', identifier, destination)
+        else:
+            pass
+
+
+    def saveFile(self, fileID, data, destination):
+        filename = join(self.getDestinationDirname(destination), '%s.json' % str(fileID))
+        with open(filename, 'wb+') as fp:
+            json.dump(data, fp)
+            fp.close
+            logging.info('%s exported to %s', fileID, filename)
+
+
+class DataExtractor_ArchivesSpace(DataExtractor):
+
+    def _run(self):
+        lastExport = self.lastExportTime()
+        headers = self.authenticate()
+        self.findResources(lastExport, headers)
+        self.findObjects(lastExport, headers)
+        self.findAgents(lastExport, headers)
+        self.findSubjects(lastExport, headers)
+
+
     # authenticates the session
     def authenticate(self):
         try:
@@ -89,41 +129,6 @@ class DataExtractor(object):
     #    logging.info('You have been logged out of your session')
 
 
-    def lastExportTime(self):
-        # last export time in Unix epoch time, for example 1439563523
-        if isfile(config.lastExportFilepath) and sys.argv[1] == '--update':
-            with open(config.lastExportFilepath, 'rb') as pickle_handle:
-                lastExport = int(str(pickle.load(pickle_handle)))
-        else:
-            lastExport = 0
-        return lastExport
-
-
-    # store the current time in Unix epoch time, for example 1439563523
-    def updateTime(self, exportStartTime):
-        with open(config.lastExportFilepath, 'wb') as pickle_handle:
-            pickle.dump(exportStartTime, pickle_handle)
-            logging.info('Last export time updated to %d' % exportStartTime)
-
-
-    # Deletes file if it exists
-    def removeFile(self, identifier, destination):
-        filename = join(destination, '%s.json' % str(identifier))
-        if isfile(filename):
-            remove(filename)
-            logging.info('%s deleted from %s', identifier, destination)
-        else:
-            pass
-
-
-    def saveFile(self, fileID, data, destination):
-        filename = join(self.getDestinationDirname(destination), '%s.json' % str(fileID))
-        with open(filename, 'wb+') as fp:
-            json.dump(data, fp)
-            fp.close
-            logging.info('%s exported to %s', fileID, filename)
-
-
     # Looks for resources
     def findResources(self, lastExport, headers):
         if lastExport > 0:
@@ -133,18 +138,18 @@ class DataExtractor(object):
 
         url = '%s/resources?all_ids=true&modified_since=%d' % (config.archivesSpace['repository_url'], lastExport)
         resourceIds = requests.get(url, headers=headers)
-        for r in resourceIds.json():
-            url = '%s/resources/%s' % (config.archivesSpace['repository_url'], str(r))
+        for resourceId in resourceIds.json():
+            url = '%s/resources/%s' % (config.archivesSpace['repository_url'], str(resourceId))
             resource = (requests.get(url, headers=headers)).json()
             if resource["publish"]:
                 if not "LI" in resource["id_0"]:
-                    self.saveFile(r, resource, config.destinations['collections'])
-                    self.findTree(r, headers)
+                    self.saveFile(resourceId, resource, config.destinations['collections'])
+                    self.findTree(resourceId, headers)
                 else:
                     pass
             else:
-                self.removeFile(r, config.destinations['collections'])
-                self.removeFile(r, config.destinations['trees'])
+                self.removeFile(resourceId, config.destinations['collections'])
+                self.removeFile(resourceId, config.destinations['trees'])
 
 
     # Looks for resource trees
@@ -162,20 +167,20 @@ class DataExtractor(object):
             logging.info('*** Getting a list of all objects ***')
         url = '%s/archival_objects?all_ids=true&modified_since=%d' % (config.archivesSpace['repository_url'], lastExport)
         archival_objects = requests.get(url, headers=headers)
-        for a in archival_objects.json():
-            url = '%s/archival_objects/%s' % (config.archivesSpace['repository_url'], str(a))
+        for objectId in archival_objects.json():
+            url = '%s/archival_objects/%s' % (config.archivesSpace['repository_url'], str(objectId))
             archival_object = requests.get(url, headers=headers).json()
             if archival_object["publish"]:
-                self.saveFile(a, archival_object, config.destinations['objects'])
+                self.saveFile(objectId, archival_object, config.destinations['objects'])
                 # build breadcrumb trails for archival object pages
-                url = '%s/archival_objects/%s' % (config.archivesSpace['breadcrumb_url'], str(a))
-                r = requests.get(url, headers=headers)
-                if r.status_code == 200:
-                    published_tree = r.json()
+                url = '%s/archival_objects/%s' % (config.archivesSpace['breadcrumb_url'], str(objectId))
+                response = requests.get(url, headers=headers)
+                if response.status_code == 200:
+                    published_tree = response.json()
                     breadcrumbs = json.loads(published_tree["tree_json"])
-                    self.saveFile(a, breadcrumbs, config.destinations['breadcrumbs'])
+                    self.saveFile(objectId, breadcrumbs, config.destinations['breadcrumbs'])
             else:
-                self.removeFile(a, config.destinations['objects'])
+                self.removeFile(objectId, config.destinations['objects'])
 
 
     # Looks for agents
@@ -214,10 +219,4 @@ class DataExtractor(object):
                 self.saveFile(s, subject, config.destinations['subjects'])
             else:
                 self.removeFile(s, config.destinations['subjects'])
-
-
-class DataExtractor_ArchivesSpace(DataExtractor):
-
-    def _run(self):
-        pass
 
