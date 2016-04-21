@@ -2,14 +2,16 @@
 
 import config
 from json import load
-from os import listdir
-from os.path import exists, join, splitext
+from os import listdir, makedirs
+from os.path import exists, join, splitext, dirname, realpath
 
+# see Gruntfile.js: jekyll > build > options > *
+DATA_DIR = 'build/data'
 PAGE_DATA_DIR = 'build/page_data'
-
+ROOT = realpath(join(dirname(__file__), '..'))
 
 def get_json(filename):
-    with open(join(src, filename)) as data_file:
+    with open(filename) as data_file:
         parsed_data = load(data_file)
     return parsed_data
 
@@ -20,13 +22,25 @@ def get_note(note):
         content = note["content"]
     return content
 
-def make_pages(category, src):
-    if exists(src):
-        for f in listdir(src):
-            if f.endswith(".json"):
-                data = get_json(f)
+def make_category_dir(category):
+    pageDataDir = join(ROOT, PAGE_DATA_DIR, category)
+    try:
+        makedirs(pageDataDir)
+    except OSError:
+        # dir exists
+        pass
+    return pageDataDir
 
-                identifier = splitext(f)[0]
+def make_pages(category):
+    sourceDataDir = join(ROOT, DATA_DIR, config.destinations[category])
+    if exists(sourceDataDir):
+        pageDataDir = make_category_dir(category)
+
+        for filename in listdir(sourceDataDir):
+            if filename.endswith(".json"):
+                data = get_json(join(sourceDataDir, filename))
+
+                identifier = splitext(filename)[0]
                 if category == 'objects':
                     title = data["display_string"].strip().replace('"', "'")
                 else:
@@ -34,7 +48,7 @@ def make_pages(category, src):
                 raw_description = ''
                 description = ''
 
-                notes = data["notes"]
+                notes = data.get('notes', [])
                 for note in notes:
                     if note.has_key("type"):
                         if note["type"] == 'abstract':
@@ -49,9 +63,7 @@ def make_pages(category, src):
                         pass
                 description = (raw_description.strip().replace('"', "'")[:200] + '...') if len(raw_description) > 200 else description
 
-                # see Gruntfile.js:
-                # jekyll > build > options > src: 'build/page_data/',
-                filename = join(PAGE_DATA_DIR, category, '%s.html' % identifier)
+                filename = join(pageDataDir, '%s.html' % identifier)
                 with open(filename, 'w+') as new_file:
                     new_file.write("---\nlayout: %s\n" % category)
                     new_file.write("title: \"%s\"\n" % title.encode('utf-8'))
@@ -63,5 +75,5 @@ def make_pages(category, src):
                     new_file.close
 
 # ex: {families: agents/families}
-for category, src in config.destinations:
-    make_pages(category, src)
+for category in config.destinations:
+    make_pages(category)
