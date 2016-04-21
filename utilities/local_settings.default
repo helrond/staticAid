@@ -1,4 +1,3 @@
-
 [ArchivesSpace]
 baseURL: http://localhost:8089
 repository: 2
@@ -6,16 +5,16 @@ user: admin
 password: admin
 
 [Destinations]
+agents: _data/agents
 breadcrumbs: _data/breadcrumbs
 collections: _data/collections
+families: _data/agents/families
 objects: _data/objects
-trees: _data/trees
-agents: _data/agents
-people: corporate_entities
-people: families
-people: people
-people: software
+organizations: _data/agents/corporate_entities
+people: _data/agents/people
+software: _data/agents/software
 subjects: _data/subjects
+trees: _data/trees
 
 [Logging]
 filename: log.txt
@@ -25,11 +24,3 @@ datefmt: %m/%d/%Y %I:%M:%S %p
 
 [LastExport]
 filepath: lastExport.pickle
-
-[Build]
-collections: _data/collections
-organizations: _data/agents/corporate_entities
-families: _data/agents/families
-people: _data/agents/people
-software: _data/agents/software
-objects: _data/objects

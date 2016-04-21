@@ -35,6 +35,7 @@ module.exports = function(grunt) {
       build: {
         options: {
           serve: false,
+          src: 'build/page_data/',
           dest: 'build/site/',
           verbose: true
         }
