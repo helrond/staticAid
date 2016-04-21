@@ -1,13 +1,13 @@
-_site
 _config.yml
 .sass-cache
 .jekyll-metadata
 .DS_Store
-node_modules
-utilities/*.txt
-utilities/*.cfg
-utilities/*.pid
-utilities/*.pickle
+/build/
+/node_modules/
+/utilities/*.txt
+/utilities/*.cfg
+/utilities/*.pid
+/utilities/*.pickle
 
 log.txt
 *.pyc

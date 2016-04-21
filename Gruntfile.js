@@ -25,15 +25,17 @@ module.exports = function(grunt) {
     jekyll: {
       serve: {
           options: {
-          serve: true,
-          skip_initial_build: true,
-          verbose: true,
-          incremental: true
+            serve: true,
+            dest: 'build/_site/',
+            skip_initial_build: true,
+            verbose: true,
+            incremental: true
         }
       },
       build: {
         options: {
           serve: false,
+          dest: 'build/_site/',
           verbose: true
         }
       }
