@@ -8,6 +8,7 @@ from shutil import copyfile
 ROOT = realpath(join(dirname(__file__), '..', '..'))
 DATA_DIR = join(ROOT, 'build', 'data')
 PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
+SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'src', 'site')
 TEMP_DIR = join(ROOT, 'build', 'tmp')
 PIDFILE_PATH = join(TEMP_DIR, 'daemon.pid')
@@ -70,6 +71,7 @@ if archivesSpace:
                                                                                               )
 
 fakeSampleData = _configSection('FakeSampleData')
+fakeSampleData['filename'] = join(SAMPLE_DATA_DIR, fakeSampleData.get('filename', 'FILENAME_NOT_SET'))
 
 # filename, level, format, datefmt
 logging = _configSection('Logging')

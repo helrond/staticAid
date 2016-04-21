@@ -4,6 +4,7 @@ import os, requests, json, sys, time, pickle, logging, psutil
 import config
 from os.path import join, exists, isfile, dirname
 from os import makedirs, remove, unlink
+from zipfile import ZipFile
 
 class DataExtractor(object):
 
@@ -85,12 +86,12 @@ class DataExtractor(object):
             pass
 
 
-    def saveFile(self, fileID, data, destination):
-        filename = join(self.getDestinationDirname(destination), '%s.json' % str(fileID))
+    def saveFile(self, identifier, data, destination):
+        filename = join(self.getDestinationDirname(destination), '%s.json' % str(identifier))
         with open(filename, 'wb+') as fp:
             json.dump(data, fp)
             fp.close
-            logging.info('%s exported to %s', fileID, filename)
+            logging.info('%s exported to %s', identifier, filename)
 
 
 class DataExtractor_ArchivesSpace(DataExtractor):
@@ -220,3 +221,22 @@ class DataExtractor_ArchivesSpace(DataExtractor):
             else:
                 self.removeFile(s, config.destinations['subjects'])
 
+
+class DataExtractor_FakeSampleData(DataExtractor):
+    def _run(self):
+        archiveFilename = config.fakeSampleData['filename']
+        if not archiveFilename.endswith('.zip'):
+            msg = 'DataExtractor_FakeSampleData is not extracting %s (I only know how to operate on .zip files)' % archiveFilename
+            logging.error(msg)
+            print 'ERROR: %s' % msg
+            exit(1)
+        logging.debug('Extracting fake sample data %s into folder: %s...' % (archiveFilename, config.DATA_DIR))
+
+        try:
+            makedirs(config.DATA_DIR)
+        except OSError:
+            # exists
+            pass
+
+        with ZipFile(archiveFilename) as archiveFile:
+            archiveFile.extractall(config.DATA_DIR)
