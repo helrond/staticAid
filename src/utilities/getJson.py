@@ -11,5 +11,8 @@ logging.basicConfig(filename=config.logging['filename'],
 logging.getLogger("requests").setLevel(logging.WARNING)
 
 
+# TODO respect --update and --replace
+update = False
+
 extractorClass = config.dataExtractor['extractorclass']
-extractorClass().run()
+extractorClass(update=update).run()

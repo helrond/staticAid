@@ -1,6 +1,7 @@
 from ConfigParser import ConfigParser, NoSectionError
 from os.path import dirname, join, exists, realpath
 from shutil import copyfile
+import DataExtractor
 
 ### Application constants - these are not exposed to users via config files ###
 
@@ -36,8 +37,10 @@ def _stringToBoolean(string):
 
     k = string.lower()
     result = {'true': True,
+              't': True,
               '1': True,
               'false': False,
+              'f': False,
               '0':False,
               }
     if k in result:
@@ -56,11 +59,13 @@ def _stringToList(string):
 # which extractor backend to use for loading data
 # TODO this will require extracting DataExtractor into a separate module, to prevent circular dependencies
 DATA_SOURCE_EXTRACTORS = {'adlib': None,
-                          'archivessource': None,
-                          'sampledata': None,
+                          'archivesspace': DataExtractor.DataExtractor_ArchivesSpace,
+                          'sampledata': DataExtractor.DataExtractor_FakeSampleData,
+                          'DEFAULT': DataExtractor.DataExtractor_FakeSampleData,
                           }
 dataExtractor = _configSection('DataExtractor')
-dataExtractor['extractorclass'] = DATA_SOURCE_EXTRACTORS[dataExtractor['datasource'].lower()]
+_dataSource = dataExtractor.get('datasource', 'DEFAULT').lower()
+dataExtractor['extractorclass'] = DATA_SOURCE_EXTRACTORS.get(_dataSource, DATA_SOURCE_EXTRACTORS['DEFAULT'])
 
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')

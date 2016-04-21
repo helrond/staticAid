@@ -8,13 +8,15 @@ from zipfile import ZipFile
 
 class DataExtractor(object):
 
+    def __init__(self, update=False):
+        self.update = update
+
     def run(self):
         self.registerPid()
         logging.info('=========================================')
         logging.info('*** Export started ***')
 
         exportStartTime = int(time.time())
-        self.makeDestinations()
         self._run()
         self.updateLastExportTime(exportStartTime)
 
@@ -61,12 +63,13 @@ class DataExtractor(object):
 
     def lastExportTime(self):
         # last export time in Unix epoch time, for example 1439563523
-        if isfile(config.lastExportFilepath) and sys.argv[1] == '--update':
-            with open(config.lastExportFilepath, 'rb') as pickle_handle:
-                lastExport = int(str(pickle.load(pickle_handle)))
-        else:
-            lastExport = 0
-        return lastExport
+        if self.update:
+            try:
+                with open(config.lastExportFilepath, 'rb') as pickle_handle:
+                    return int(str(pickle.load(pickle_handle)))
+            except:
+                pass
+        return 0
 
 
     # store the current time in Unix epoch time, for example 1439563523
@@ -98,6 +101,7 @@ class DataExtractor_ArchivesSpace(DataExtractor):
 
     def _run(self):
         lastExport = self.lastExportTime()
+        self.makeDestinations()
         headers = self.authenticate()
         self.findResources(lastExport, headers)
         self.findObjects(lastExport, headers)

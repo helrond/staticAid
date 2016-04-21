@@ -1,5 +1,5 @@
 [DataExtractor]
-dataSource: FakeSampleData
+dataSource: SampleData
 
 [ArchivesSpace]
 baseURL: http://localhost:8089
