@@ -14,7 +14,7 @@ def _configSection(section):
         return {}
 
 def _stringToBoolean(string):
-	k = string.lower()
+    k = string.lower()
     result = {'true': True,
               '1': True,
               'false': False,
