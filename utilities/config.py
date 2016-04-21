@@ -14,6 +14,9 @@ def _configSection(section):
         return {}
 
 def _stringToBoolean(string):
+    if string is None:
+        return None
+
     k = string.lower()
     result = {'true': True,
               '1': True,
@@ -24,6 +27,11 @@ def _stringToBoolean(string):
         return result[k]
     return None
 
+def _stringToList(string):
+    if string is None:
+        return None
+    return [i.strip() for i in string.strip().split(',')]
+
 ### the config values ###
 # NOTE: keys are forced to lower-case
 
@@ -31,8 +39,11 @@ lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
 
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
-archivesSpace['repository_url'] = '%s/repositories/%s' % (archivesSpace['baseurl'], archivesSpace['repository'])
-archivesSpace['breadcrumb_url'] = '%s/search/published_tree?node_uri=/repositories/%s' % (archivesSpace['baseurl'], archivesSpace['repository'])
+if archivesSpace:
+    archivesSpace['repository_url'] = '%s/repositories/%s' % (archivesSpace.get('baseurl'), archivesSpace.get('repository'))
+    archivesSpace['breadcrumb_url'] = '%s/search/published_tree?node_uri=/repositories/%s' % (archivesSpace.get('baseurl'),
+                                                                                              archivesSpace.get('repository'),
+                                                                                              )
 
 # filename, level, format, datefmt
 logging = _configSection('Logging')

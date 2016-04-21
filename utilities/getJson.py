@@ -97,7 +97,6 @@ def findResources(lastExport, headers):
         logging.info('*** Getting a list of all resources ***')
 
     url = '%s/resources?all_ids=true&modified_since=%d' % (config.archivesSpace['repository_url'], lastExport)
-    url = '%s/resources?all_ids=true' % (config.archivesSpace['repository_url'])
     resourceIds = requests.get(url, headers=headers)
     for r in resourceIds.json():
         url = '%s/resources/%s' % (config.archivesSpace['repository_url'], str(r))
