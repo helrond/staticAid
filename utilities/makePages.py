@@ -4,6 +4,7 @@ import config
 from json import load
 from os import listdir
 from os.path import exists, join, splitext
+from utilities import PAGE_DATA_DIR
 
 
 def get_json(filename):
@@ -18,7 +19,7 @@ def get_note(note):
         content = note["content"]
     return content
 
-def make_pages(src, category):
+def make_pages(category, src):
     if exists(src):
         for f in listdir(src):
             if f.endswith(".json"):
@@ -49,7 +50,7 @@ def make_pages(src, category):
 
                 # see Gruntfile.js:
                 # jekyll > build > options > src: 'build/page_data/',
-                filename = join('build', 'page_data', category, '%s.html' % identifier)
+                filename = join(PAGE_DATA_DIR, category, '%s.html' % identifier)
                 with open(filename, 'w+') as new_file:
                     new_file.write("---\nlayout: %s\n" % category)
                     new_file.write("title: \"%s\"\n" % title.encode('utf-8'))
@@ -60,6 +61,6 @@ def make_pages(src, category):
                     new_file.write("---")
                     new_file.close
 
-# ex: {people: _data/people}
+# ex: {families: agents/families}
 for category, src in config.destinations:
-    make_pages(src, category)
+    make_pages(category, src)

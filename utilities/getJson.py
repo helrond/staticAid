@@ -4,6 +4,7 @@ import os, requests, json, sys, time, pickle, logging, psutil
 import config
 from os.path import join, exists, isfile
 from os import makedirs, remove
+from utilities import DATA_DIR
 
 current_dir = os.path.dirname(__file__)
 
@@ -31,7 +32,7 @@ def checkPid(pidfilepath):
     file(pidfilepath, 'w').write(currentPid)
 
 def getDestinationDirname(destinationName):
-    return join('build', 'data', destinationName)
+    return join(DATA_DIR, destinationName)
 
 def makeDestinations():
     for k in config.destinations:

@@ -5,16 +5,16 @@ user: admin
 password: admin
 
 [Destinations]
-agents: _data/agents
-breadcrumbs: _data/breadcrumbs
-collections: _data/collections
-families: _data/agents/families
-objects: _data/objects
-organizations: _data/agents/corporate_entities
-people: _data/agents/people
-software: _data/agents/software
-subjects: _data/subjects
-trees: _data/trees
+agents: agents
+breadcrumbs: breadcrumbs
+collections: collections
+families: agents/families
+objects: objects
+organizations: agents/corporate_entities
+people: agents/people
+software: agents/software
+subjects: subjects
+trees: trees
 
 [Logging]
 filename: log.txt
