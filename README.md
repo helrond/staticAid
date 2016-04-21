@@ -39,12 +39,12 @@ in `data/site/`.
 
 #### Build without updating data
 
-Running `grunt build` will build the site based on the data currently in the `build/page_data` directory.
+Running `grunt build` will build the site based on the data currently in the `build/data` directory.
 
 #### Update data then build site
 
 Running `grunt update` will fetch JSON for resource records, resource record trees and archival objects from ArchivesSpace 
-using `utilities/getJson.py` and save it in your `build/page_data` directory, then will build the site based on that data.
+using `utilities/getJson.py` and save it in your `build/data` directory, then will build the site based on that data.
 
 **WARNING**: Depending on the size of your ArchivesSpace installation, it could take quite a while for this script to 
 loop through all resource records and components. Be patient!
