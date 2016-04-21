@@ -2,10 +2,9 @@
 
 import os, requests, json, sys, time, pickle, logging, psutil
 import config
-from os.path import join, exists, isfile
-from os import makedirs, remove
+from os.path import join, exists, isfile, dirname
+from os import makedirs, remove, unlink
 
-current_dir = os.path.dirname(__file__)
 
 logging.basicConfig(filename=config.logging['filename'],
                     format=config.logging['format'],
@@ -15,29 +14,38 @@ logging.basicConfig(filename=config.logging['filename'],
 logging.getLogger("requests").setLevel(logging.WARNING)
 
 
-# check to see if process is already running
-pidfilepath = os.path.join(current_dir, 'daemon.pid')
-def checkPid(pidfilepath):
-    currentPid = str(os.getpid())
+def registerPid():
 
-    if os.path.isfile(pidfilepath):
-        pidfile = open(pidfilepath, "r")
+    # check to see if a process is already running
+    if isfile(config.PIDFILE_PATH):
+        pidfile = open(config.PIDFILE_PATH, "r")
         for line in pidfile:
             pid = int(line.strip())
         if psutil.pid_exists(pid):
             logging.error('Process already running, exiting')
             sys.exit()
 
-    file(pidfilepath, 'w').write(currentPid)
+    # nothing running yet - register ourselves as the running PID
+    if not exists(dirname(config.PIDFILE_PATH)):
+        makedirs(dirname(config.PIDFILE_PATH))
+    currentPid = str(os.getpid())
+    file(config.PIDFILE_PATH, 'w').write(currentPid)
+
+
+def unregisterPid():
+    unlink(config.PIDFILE_PATH)
+
 
 def getDestinationDirname(destinationName):
     return join(config.DATA_DIR, destinationName)
+
 
 def makeDestinations():
     for k in config.destinations:
         path = getDestinationDirname(config.destinations[k])
         if not exists(path):
             makedirs(path)
+
 
 # authenticates the session
 def authenticate():
@@ -57,10 +65,12 @@ def authenticate():
         print 'Authentication failed! It looks like you entered the wrong password. Please check the information in %s.' % config.configFilePath
         sys.exit(1)
 
+
 # logs out non-expiring session (not yet in AS core, so commented out)
 # def logout(headers):
 #    requests.post('{baseURL}/logout'.format(**archivesSpace), headers=headers)
 #    logging.info('You have been logged out of your session')
+
 
 def lastExportTime():
     # last export time in Unix epoch time, for example 1439563523
@@ -71,11 +81,13 @@ def lastExportTime():
         lastExport = 0
     return lastExport
 
+
 # store the current time in Unix epoch time, for example 1439563523
 def updateTime(exportStartTime):
     with open(config.lastExportFilepath, 'wb') as pickle_handle:
         pickle.dump(exportStartTime, pickle_handle)
         logging.info('Last export time updated to %d' % exportStartTime)
+
 
 # Deletes file if it exists
 def removeFile(identifier, destination):
@@ -86,12 +98,14 @@ def removeFile(identifier, destination):
     else:
         pass
 
+
 def saveFile(fileID, data, destination):
     filename = join(getDestinationDirname(destination), '%s.json' % str(fileID))
     with open(filename, 'wb+') as fp:
         json.dump(data, fp)
         fp.close
         logging.info('%s exported to %s', fileID, filename)
+
 
 # Looks for resources
 def findResources(lastExport, headers):
@@ -115,11 +129,13 @@ def findResources(lastExport, headers):
             removeFile(r, config.destinations['collections'])
             removeFile(r, config.destinations['trees'])
 
+
 # Looks for resource trees
 def findTree(identifier, headers):
     url = '%s/resources/%s/tree' % (config.archivesSpace['repository_url'], str(identifier))
     tree = (requests.get(url, headers=headers)).json()
     saveFile(identifier, tree, config.destinations['trees'])
+
 
 # Looks for archival objects
 def findObjects(lastExport, headers):
@@ -144,6 +160,7 @@ def findObjects(lastExport, headers):
         else:
             removeFile(a, config.destinations['objects'])
 
+
 # Looks for agents
 def findAgents(lastExport, headers):
     if lastExport > 0:
@@ -164,6 +181,7 @@ def findAgents(lastExport, headers):
             else:
                 removeFile(a, os.path.join(config.destinations['agents'], agent_type))
 
+
 # Looks for subjects
 def findSubjects(lastExport, headers):
     if lastExport > 0:
@@ -182,10 +200,12 @@ def findSubjects(lastExport, headers):
 
 
 def main():
-    checkPid(pidfilepath)
+    registerPid()
     makeDestinations()
+
     logging.info('=========================================')
     logging.info('*** Export started ***')
+
     exportStartTime = int(time.time())
     lastExport = lastExportTime()
     headers = authenticate()
@@ -193,9 +213,10 @@ def main():
     findObjects(lastExport, headers)
     findAgents(lastExport, headers)
     findSubjects(lastExport, headers)
+
     logging.info('*** Export completed ***')
     updateTime(exportStartTime)
-    os.unlink(pidfilepath)
+    unregisterPid()
 
 if __name__ == '__main__':
     main()

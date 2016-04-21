@@ -9,7 +9,8 @@ ROOT = realpath(join(dirname(__file__), '..', '..'))
 DATA_DIR = join(ROOT, 'build', 'data')
 PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
 SITE_SRC_DIR = join(ROOT, 'src', 'site')
-
+TEMP_DIR = join(ROOT, 'build', 'tmp')
+PIDFILE_PATH = join(TEMP_DIR, 'daemon.pid')
 
 ### Config file values ###
 
@@ -49,7 +50,7 @@ def _stringToList(string):
 
 
 # Below are the config values - reference these in calling code
-# NOTE: keys are forced to lower-case
+# NOTE: keys from config files are forced to lower-case when they are read by ConfigParser
 lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
 
 # baseURL, repository, user, password
