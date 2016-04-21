@@ -9,11 +9,9 @@ from posix import remove
 
 # see Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
 DATA_DIR = 'build/data'
-PAGE_DATA_DIR = 'build/page_data'
-
-SITE_SRC_DIR = 'src/site'
-
+PAGE_DATA_DIR = 'build/staging'
 ROOT = realpath(join(dirname(__file__), '..'))
+SITE_SRC_DIR = 'src/site'
 
 def get_json(filename):
     with open(filename) as data_file:
@@ -28,6 +26,11 @@ def create_initial_structure():
     if isfile(target):
         remove(target)
     copytree(src, target)
+
+    # copy _data into place so that JSON is available to the Liquid templates
+    copytree(DATA_DIR, join(target, '_data'))
+
+
 
 def get_note(note):
     if note["jsonmodel_type"] == 'note_multipart':

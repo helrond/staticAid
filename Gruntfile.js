@@ -2,9 +2,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    clean: {
-      all: ['collections/*.html', 'families/*.html', 'organizations/*.html', 'people/*.html', 'software/*.html', '!**/index.html']
-    },
     exec: {
       updateJSON: {
         command: 'utilities/getJson.py --update',
@@ -35,21 +32,20 @@ module.exports = function(grunt) {
       build: {
         options: {
           serve: false,
-          src: 'build/page_data',
-          dest: 'build/site/_site',
+          src: 'build/staging',
+          dest: 'build/site',
           verbose: true
         }
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-jekyll');
 
   grunt.registerTask('serve', ['jekyll:serve']);
-  grunt.registerTask('build', ['clean:all', 'exec:makePages', 'jekyll:build']);
-  grunt.registerTask('update', ['exec:updateJSON', 'clean:all', 'exec:makePages', 'jekyll:build']);
-  grunt.registerTask('rebuild', ['exec:replaceJSON', 'clean:all', 'exec:makePages', 'jekyll:build']);
+  grunt.registerTask('build', ['exec:makePages', 'jekyll:build']);
+  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages', 'jekyll:build']);
+  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages', 'jekyll:build']);
 
 };
