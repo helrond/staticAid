@@ -8,6 +8,7 @@ utilities/*.txt
 utilities/*.cfg
 utilities/*.pid
 utilities/*.pickle
+log.txt
 
 # Eclipse stuff
 .project
