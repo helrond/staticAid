@@ -20,7 +20,7 @@ def get_json(filename):
         parsed_data = load(data_file)
     return parsed_data
 
-def createInitialStructure():
+def create_initial_structure():
     src = join(ROOT, SITE_SRC_DIR)
     target = join(ROOT, PAGE_DATA_DIR)
     if isdir(target):
@@ -77,8 +77,8 @@ def make_pages(category):
                         pass
                 description = (raw_description.strip().replace('"', "'")[:200] + '...') if len(raw_description) > 200 else description
 
-                filename = join(pageDataDir, '%s.html' % identifier)
-                with open(filename, 'w+') as new_file:
+                targetFilename = join(pageDataDir, '%s.html' % identifier)
+                with open(targetFilename, 'w+') as new_file:
                     new_file.write("---\nlayout: %s\n" % category)
                     new_file.write("title: \"%s\"\n" % title.encode('utf-8'))
                     new_file.write("id: %s\n" % identifier)
@@ -89,6 +89,6 @@ def make_pages(category):
                     new_file.close
 
 # ex: {families: agents/families}
-createInitialStructure()
+create_initial_structure()
 for category in config.destinations:
     make_pages(category)
