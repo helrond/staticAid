@@ -10,7 +10,7 @@ from posix import remove
 # see Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
 DATA_DIR = 'build/data'
 PAGE_DATA_DIR = 'build/staging'
-ROOT = realpath(join(dirname(__file__), '..'))
+ROOT = realpath(join(dirname(__file__), '..', '..'))
 SITE_SRC_DIR = 'src/site'
 
 def get_json(filename):

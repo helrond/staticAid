@@ -17,7 +17,7 @@ subjects: subjects
 trees: trees
 
 [Logging]
-filename: log.txt
+filename: static_aid.log
 level: INFO
 format: %(asctime)s %(message)s
 datefmt: %m/%d/%Y %I:%M:%S %p
