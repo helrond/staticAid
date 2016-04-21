@@ -1,8 +1,19 @@
+[DataExtractor]
+dataSource: FakeSampleData
+
 [ArchivesSpace]
 baseURL: http://localhost:8089
 repository: 2
 user: admin
 password: admin
+
+[Adlib]
+baseURL: http://whatever
+user: 
+password: 
+
+[FakeSampleData]
+filename: data-cleaned.zip
 
 [Destinations]
 agents: agents

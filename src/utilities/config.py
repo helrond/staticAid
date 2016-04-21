@@ -51,7 +51,15 @@ def _stringToList(string):
 
 # Below are the config values - reference these in calling code
 # NOTE: keys from config files are forced to lower-case when they are read by ConfigParser
-lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
+
+# which extractor backend to use for loading data
+# TODO this will require extracting DataExtractor into a separate module, to prevent circular dependencies
+DATA_SOURCE_EXTRACTORS = {'adlib': None,
+                          'archivessource': None,
+                          'sampledata': None,
+                          }
+dataExtractor = _configSection('DataExtractor')
+dataExtractor['extractorclass'] = DATA_SOURCE_EXTRACTORS[dataExtractor['datasource'].lower()]
 
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
@@ -61,8 +69,12 @@ if archivesSpace:
                                                                                               archivesSpace.get('repository'),
                                                                                               )
 
+fakeSampleData = _configSection('FakeSampleData')
+
 # filename, level, format, datefmt
 logging = _configSection('Logging')
 
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
+
+lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
