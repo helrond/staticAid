@@ -2,12 +2,8 @@
 
 import os, requests, json, sys, time, pickle, logging, psutil
 import config
-from os.path import join, exists, isfile, dirname, realpath
+from os.path import join, exists, isfile
 from os import makedirs, remove
-
-# see Gruntfile.js: jekyll > build > options > *
-DATA_DIR = 'build/data'
-ROOT = realpath(join(dirname(__file__), '..', '..'))
 
 current_dir = os.path.dirname(__file__)
 
@@ -35,7 +31,7 @@ def checkPid(pidfilepath):
     file(pidfilepath, 'w').write(currentPid)
 
 def getDestinationDirname(destinationName):
-    return join(ROOT, DATA_DIR, destinationName)
+    return join(config.DATA_DIR, destinationName)
 
 def makeDestinations():
     for k in config.destinations:

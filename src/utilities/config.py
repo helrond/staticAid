@@ -1,6 +1,17 @@
 from ConfigParser import ConfigParser, NoSectionError
-from os.path import dirname, join, exists
+from os.path import dirname, join, exists, realpath
 from shutil import copyfile
+
+### Application constants - these are not exposed to users via config files ###
+
+# NOTE: Directories must match Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
+ROOT = realpath(join(dirname(__file__), '..', '..'))
+DATA_DIR = join(ROOT, 'build', 'data')
+PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
+SITE_SRC_DIR = join(ROOT, 'src', 'site')
+
+
+### Config file values ###
 
 # read the config file
 current_dir = dirname(__file__)
@@ -36,9 +47,9 @@ def _stringToList(string):
         return None
     return [i.strip() for i in string.strip().split(',')]
 
-### the config values ###
-# NOTE: keys are forced to lower-case
 
+# Below are the config values - reference these in calling code
+# NOTE: keys are forced to lower-case
 lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
 
 # baseURL, repository, user, password
