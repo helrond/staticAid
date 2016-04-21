@@ -1,14 +1,10 @@
 #!/usr/bin/env python
 
-from ConfigParser import ConfigParser
+import config
 from json import load
 from os import listdir
-from os.path import dirname, exists, join, splitext
+from os.path import exists, join, splitext
 
-
-configFilePath = join(dirname(__file__), 'local_settings.cfg')
-config = ConfigParser()
-config.read(configFilePath)
 
 def get_json(filename):
     with open(join(src, filename)) as data_file:
@@ -65,5 +61,5 @@ def make_pages(src, category):
                     new_file.close
 
 # ex: {people: _data/people}
-for category, src in config.items('Destinations'):
+for category, src in config.destinations:
     make_pages(src, category)

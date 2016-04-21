@@ -2,6 +2,8 @@
 
 import os, requests, json, sys, time, pickle, logging, psutil
 import config
+from os.path import join, exists, isfile
+from os import makedirs, remove
 
 current_dir = os.path.dirname(__file__)
 
@@ -28,10 +30,14 @@ def checkPid(pidfilepath):
 
     file(pidfilepath, 'w').write(currentPid)
 
+def getDestinationDirname(destinationName):
+    return join('build', 'data', destinationName)
+
 def makeDestinations():
     for k in config.destinations:
-        if not os.path.exists(config.destinations[k]):
-            os.makedirs(config.destinations[k])
+        path = getDestinationDirname(config.destinations[k])
+        if not exists(path):
+            makedirs(path)
 
 # authenticates the session
 def authenticate():
@@ -58,7 +64,7 @@ def authenticate():
 
 def lastExportTime():
     # last export time in Unix epoch time, for example 1439563523
-    if os.path.isfile(config.lastExportFilepath) and sys.argv[1] == '--update':
+    if isfile(config.lastExportFilepath) and sys.argv[1] == '--update':
         with open(config.lastExportFilepath, 'rb') as pickle_handle:
             lastExport = int(str(pickle.load(pickle_handle)))
     else:
@@ -73,21 +79,19 @@ def updateTime(exportStartTime):
 
 # Deletes file if it exists
 def removeFile(identifier, destination):
-    filename = os.path.join(destination, '%s.json' % str(identifier))
-    if os.path.isfile(filename):
-        os.remove(filename)
+    filename = join(destination, '%s.json' % str(identifier))
+    if isfile(filename):
+        remove(filename)
         logging.info('%s deleted from %s', identifier, destination)
     else:
         pass
 
 def saveFile(fileID, data, destination):
-    if not os.path.exists(destination):
-        os.makedirs(destination)
-    filename = os.path.join(destination, '%s.json' % str(fileID))
-    with open(filename, 'wb+') as fd:
-        json.dump(data, fd)
-        fd.close
-        logging.info('%s exported to %s', fileID, destination)
+    filename = join(getDestinationDirname(destination), '%s.json' % str(fileID))
+    with open(filename, 'wb+') as fp:
+        json.dump(data, fp)
+        fp.close
+        logging.info('%s exported to %s', fileID, filename)
 
 # Looks for resources
 def findResources(lastExport, headers):
