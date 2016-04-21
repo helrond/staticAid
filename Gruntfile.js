@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       serve: {
           options: {
             serve: true,
-            dest: 'build/_site/',
+            dest: 'build/site',
             skip_initial_build: true,
             verbose: true,
             incremental: true
@@ -37,7 +37,6 @@ module.exports = function(grunt) {
           serve: false,
           src: 'build/page_data',
           dest: 'build/site',
-          layouts: 'src/html/layouts',
           verbose: true
         }
       }

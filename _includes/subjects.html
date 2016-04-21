@@ -1,6 +1,0 @@
-{% for subject in subjects %}
-  {% capture subject_id %}{{subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-  {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
-
-  <span itemprop="keywords" class="label label-primary">{{subject_detail.title}}</span>
-{% endfor %}

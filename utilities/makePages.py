@@ -3,17 +3,31 @@
 import config
 from json import load
 from os import listdir, makedirs
-from os.path import exists, join, splitext, dirname, realpath
+from os.path import exists, join, splitext, dirname, realpath, isdir, isfile
+from shutil import copytree, rmtree
+from posix import remove
 
-# see Gruntfile.js: jekyll > build > options > *
+# see Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
 DATA_DIR = 'build/data'
 PAGE_DATA_DIR = 'build/page_data'
+
+SITE_SRC_DIR = 'src/site'
+
 ROOT = realpath(join(dirname(__file__), '..'))
 
 def get_json(filename):
     with open(filename) as data_file:
         parsed_data = load(data_file)
     return parsed_data
+
+def createInitialStructure():
+    src = join(ROOT, SITE_SRC_DIR)
+    target = join(ROOT, PAGE_DATA_DIR)
+    if isdir(target):
+        rmtree(target)
+    if isfile(target):
+        remove(target)
+    copytree(src, target)
 
 def get_note(note):
     if note["jsonmodel_type"] == 'note_multipart':
@@ -22,7 +36,7 @@ def get_note(note):
         content = note["content"]
     return content
 
-def make_category_dir(category):
+def make_page_data_dir(category):
     pageDataDir = join(ROOT, PAGE_DATA_DIR, category)
     try:
         makedirs(pageDataDir)
@@ -34,7 +48,7 @@ def make_category_dir(category):
 def make_pages(category):
     sourceDataDir = join(ROOT, DATA_DIR, config.destinations[category])
     if exists(sourceDataDir):
-        pageDataDir = make_category_dir(category)
+        pageDataDir = make_page_data_dir(category)
 
         for filename in listdir(sourceDataDir):
             if filename.endswith(".json"):
@@ -75,5 +89,6 @@ def make_pages(category):
                     new_file.close
 
 # ex: {families: agents/families}
+createInitialStructure()
 for category in config.destinations:
     make_pages(category)

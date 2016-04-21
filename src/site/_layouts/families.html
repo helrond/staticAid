@@ -1,0 +1,7 @@
+---
+layout: default
+---
+{% capture family_id %}{{page.id}}{% endcapture %}
+{% assign agent = site.data.agents.families[{{family_id}}] %}
+
+{% include agent.html %}
