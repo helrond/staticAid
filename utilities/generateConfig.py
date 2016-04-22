@@ -14,7 +14,7 @@ def check_response(response, yes):
 def start_section(section_name):
     cfg_file.write("\n[{}]\n".format(section_name))
 
-def write_value(name, default, value = None):
+def write_value(name, default, value=None):
     if value:
         line = ("{}: {}\n".format(name, value))
     else:
@@ -57,7 +57,7 @@ def main():
     write_value("agents", "_data/agents", agents)
     agent_types = ['corporate_entities', 'families', 'people', 'software']
     for agent_type in agent_types:
-        write_value("people", "_data/agents/"+agent_type, os.path.join(agents, agent_type))
+        write_value("people", "_data/agents/" + agent_type, os.path.join(agents, agent_type))
     subjects = raw_input("Enter the directory to which you want to export JSON for subjects (default is '_data/subjects'): ")
     write_value("subjects", "_data/subjects", subjects)
 
@@ -76,12 +76,12 @@ def main():
     write_value("filepath", "lastExport.pickle")
 
     start_section("Build")
-    write_value("collections", "_data/collections,collections")
-    write_value("organizations", "_data/agents/corporate_entities,organizations")
-    write_value("families", "_data/agents/families,families")
-    write_value("people", "_data/agents/people,people")
-    write_value("software", "_data/agents/software,software")
-    write_value("objects", "_data/objects,objects")
+    write_value("collections", "_data/collections")
+    write_value("organizations", "_data/agents/corporate_entities")
+    write_value("families", "_data/agents/families")
+    write_value("people", "_data/agents/people")
+    write_value("software", "_data/agents/software")
+    write_value("objects", "_data/objects")
 
     cfg_file.close()
 

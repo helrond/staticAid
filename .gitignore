@@ -8,3 +8,8 @@ utilities/*.txt
 utilities/*.cfg
 utilities/*.pid
 utilities/*.pickle
+
+# Eclipse stuff
+.project
+.pydevproject
+
