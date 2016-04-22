@@ -38,12 +38,15 @@ def make_pages(src, dest):
 
                 notes = data["notes"]
                 for note in notes:
-                    if note["type"] == 'abstract':
-                        raw_description = get_note(note)
-                    elif note["type"] == 'scopecontent':
-                        raw_description = get_note(note)
-                    elif note["type"] == 'bioghist':
-                        raw_description = get_note(note)
+                    if note.has_key("type"):
+                        if note["type"] == 'abstract':
+                            raw_description = get_note(note)
+                        elif note["type"] == 'scopecontent':
+                            raw_description = get_note(note)
+                        elif note["type"] == 'bioghist':
+                            raw_description = get_note(note)
+                        else:
+                            pass
                     else:
                         pass
                 description = (raw_description.strip().replace('"', "'")[:200] + '...') if len(raw_description) > 200 else description

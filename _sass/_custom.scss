@@ -21,3 +21,94 @@
 .label {
   line-height: 2.3;
 }
+
+/* DU customizations */
+
+.navbar-default {
+  background-color: #8b2332;
+}
+
+.panel-primary {
+  border-color: #000000;
+}
+
+.panel-primary > .panel-heading {
+  background-color: #8b2332;
+  border-color: #8b2332;
+}
+
+.btn-info {
+  background-color: #b0a689;
+  border-color: #b0a689;
+}
+
+.btn-info:hover {
+  background-color: #94865d;
+  border-color: #94865d;
+}
+
+.btn-info:active:hover,
+.btn-info.active:hover,
+.open > .dropdown-toggle.btn-info:hover,
+.btn-info:active:focus,
+.btn-info.active:focus,
+.open > .dropdown-toggle.btn-info:focus,
+.btn-info:active.focus,
+.btn-info.active.focus,
+.open > .dropdown-toggle.btn-info.focus {
+  background-color: #6e6037;
+  border-color: #6e6037;
+}
+
+.component {
+  border-left: 1px solid #eee;
+  margin-left: 8px;
+}
+
+.component .description p {
+  margin: 0;
+}
+
+.list-series, .list-file, .list-item {
+  display: none;
+}
+
+.container-list .has-children > .container-list-toggle {
+  margin-left: -9px;
+}
+
+.container-list .container-list {
+  margin-left: 8px;
+  padding-left: 8px;
+}
+
+.container-list-toggle {
+  padding: 6px 4px 4px 4px;
+}
+
+.container-list-toggle .container-list-toggle-icon {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-image: url(http://localhost:4000/assets/tree_expander.png);
+  background-repeat: no-repeat;
+}
+
+.expanded {
+  > .container-list-toggle {
+    .container-list-toggle-icon {
+      background-position: -9px 0;
+    }
+  }
+}
+
+.no-children,
+.has-children .description,
+.has-children .instance {
+  padding-left: 12px;
+}
+
+.no-children .description,
+.no-children .instance {
+  padding-left: 0;
+}

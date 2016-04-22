@@ -14,6 +14,7 @@ config.read(configFilePath)
 dictionary = {'baseURL': config.get('ArchivesSpace', 'baseURL'), 'repository':config.get('ArchivesSpace', 'repository'), 'user': config.get('ArchivesSpace', 'user'), 'password': config.get('ArchivesSpace', 'password')}
 baseURL = '{baseURL}'.format(**dictionary)
 repositoryBaseURL = '{baseURL}/repositories/{repository}/'.format(**dictionary)
+breadcrumbBaseURL = '{baseURL}/search/published_tree?node_uri=/repositories/{repository}/'.format(**dictionary)
 
 # Location of Pickle file which contains last export time
 lastExportFilepath = os.path.join(current_dir, config.get('LastExport', 'filepath'))
@@ -25,6 +26,7 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 # export destinations, os.path.sep makes these absolute URLs
 collectionDestination = config.get('Destinations', 'collections')
 objectDestination = config.get('Destinations', 'objects')
+breadcrumbDestination = config.get('Destinations', 'breadcrumbs')
 treeDestination = config.get('Destinations', 'trees')
 agentDestination = config.get('Destinations', 'agents')
 subjectDestination = config.get('Destinations', 'subjects')
@@ -131,7 +133,6 @@ def findTree(identifier, headers):
 
 # Looks for archival objects
 def findObjects(lastExport, headers):
-    idRange = range(361422, 362013)
     if lastExport > 0:
         logging.info('*** Getting a list of objects modified since %s ***', lastExport)
     else:
@@ -141,6 +142,12 @@ def findObjects(lastExport, headers):
         archival_object = requests.get(repositoryBaseURL+'archival_objects/'+str(a), headers=headers).json()
         if archival_object["publish"]:
             saveFile(a, archival_object, objectDestination)
+            # build breadcrumb trails for archival object pages
+            r = requests.get(breadcrumbBaseURL+'archival_objects/'+str(a), headers=headers)
+            if r.status_code == 200:
+                published_tree = r.json()
+                breadcrumbs = json.loads(published_tree["tree_json"])
+                saveFile(a, breadcrumbs, breadcrumbDestination)
         else:
             removeFile(a, objectDestination)
 
@@ -183,10 +190,10 @@ def main():
     exportStartTime = int(time.time())
     lastExport = readTime()
     headers = authenticate()
-    # findResources(lastExport, headers)
+    findResources(lastExport, headers)
     findObjects(lastExport, headers)
-    # findAgents(lastExport, headers)
-    # findSubjects(lastExport, headers)
+    findAgents(lastExport, headers)
+    findSubjects(lastExport, headers)
     logging.info('*** Export completed ***')
     updateTime(exportStartTime)
     os.unlink(pidfilepath)

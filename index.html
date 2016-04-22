@@ -15,7 +15,7 @@ layout: default
       </div>
       <div class="panel-body">
         {% if description == '' %}
-          Sorry, I couldn't find an Abstract, Scope and Contents note or a Biographical/Historical note. Maybe you should work on your description?
+          Sorry, no abstract, scope/content note, or biographical statement could be found for this collection.
         {% else  %}
           {{description | truncatewords: 50}}
         {% endif %}
