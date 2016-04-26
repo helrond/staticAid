@@ -1,5 +1,5 @@
 [DataExtractor]
-dataSource: SampleData
+dataSource: Adlib
 
 [ArchivesSpace]
 baseURL: http://localhost:8089
@@ -8,9 +8,12 @@ user: admin
 password: admin
 
 [Adlib]
-baseURL: http://whatever
+baseURL: http://ga-adlib01/popapi/wwwopac.ashx
+database: collect.inf
 user: 
 password: 
+
+# {baseURL}?database={database}&search=modification%20greater%20%272015-12-10%27&xmltype=unstructured&limit=100&startfrom=1&output=json
 
 [FakeSampleData]
 filename: data-cleaned.zip
