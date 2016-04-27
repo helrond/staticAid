@@ -63,5 +63,8 @@ To view the generated HTML in the test server, run:
     sudo sysctl fs.inotify.max_user_watches=524288
     sudo sysctl -p
     grunt serve
-"
 
+and then open:
+
+    http://localhost:4000
+"

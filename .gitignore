@@ -9,6 +9,9 @@ utilities/*.cfg
 utilities/*.pid
 utilities/*.pickle
 
+log.txt
+*.pyc
+
 # Eclipse stuff
 .project
 .pydevproject
