@@ -34,17 +34,10 @@ sudo gem install jekyll github-pages --no-rdoc --no-ri
 sudo npm install -g grunt-cli
 
 
-
-# install Grunt dependencies
+# install NPM dependencies
 cd $DIR
 sudo npm install
 
-
-# create a default config file if necessary
-if [ ! -e utilities/local_settings.cfg ]
-then
-    cp local_settings.default local_settings.cfg
-fi
 
 # hack-ish workaround for the massive number of HTML files present in the generated site
 sudo sysctl fs.inotify.max_user_watches=524288

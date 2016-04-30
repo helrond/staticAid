@@ -4,9 +4,9 @@ from shutil import copyfile
 
 # read the config file
 current_dir = dirname(__file__)
-configFilePath = join(current_dir, 'local_settings.cfg')
+configFilePath = join(current_dir, '..', '..', 'local_settings.cfg')
 if not exists(configFilePath):
-    defaultConfigFile = join(current_dir, 'local_settings.default')
+    defaultConfigFile = join(current_dir, '..', '..', 'local_settings.default')
     copyfile(defaultConfigFile, configFilePath)
 _config = ConfigParser()
 _config.read(configFilePath)

@@ -1,18 +1,19 @@
-_config.yml
-.sass-cache
-.jekyll-metadata
-.DS_Store
+# build artifacts
 /build/
 /node_modules/
-/utilities/*.txt
-/utilities/*.cfg
-/utilities/*.pid
-/utilities/*.pickle
+_config.yml
+.sass-cache
 
-log.txt
+# runtime and user-generated stuff
+*.cfg
+.jekyll-metadata
+*.log
+*.pickle
+*.pid
 *.pyc
 
-# Eclipse stuff
+# IDE stuff
+.DS_Store
 .project
 .pydevproject
 

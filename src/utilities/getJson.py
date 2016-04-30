@@ -7,7 +7,7 @@ from os import makedirs, remove
 
 # see Gruntfile.js: jekyll > build > options > *
 DATA_DIR = 'build/data'
-ROOT = realpath(join(dirname(__file__), '..'))
+ROOT = realpath(join(dirname(__file__), '..', '..'))
 
 current_dir = os.path.dirname(__file__)
 
