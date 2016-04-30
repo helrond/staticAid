@@ -1,6 +1,20 @@
 from ConfigParser import ConfigParser, NoSectionError
-from os.path import dirname, join, exists
+from os.path import dirname, join, exists, realpath
 from shutil import copyfile
+import DataExtractor
+
+### Application constants - these are not exposed to users via config files ###
+
+# NOTE: Directories must match Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
+ROOT = realpath(join(dirname(__file__), '..', '..'))
+DATA_DIR = join(ROOT, 'build', 'data')
+PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
+SAMPLE_DATA_DIR = join(ROOT, 'data')
+SITE_SRC_DIR = join(ROOT, 'src', 'site')
+TEMP_DIR = join(ROOT, 'build', 'tmp')
+PIDFILE_PATH = join(TEMP_DIR, 'daemon.pid')
+
+### Config file values ###
 
 # read the config file
 current_dir = dirname(__file__)
@@ -23,8 +37,10 @@ def _stringToBoolean(string):
 
     k = string.lower()
     result = {'true': True,
+              't': True,
               '1': True,
               'false': False,
+              'f': False,
               '0':False,
               }
     if k in result:
@@ -36,10 +52,20 @@ def _stringToList(string):
         return None
     return [i.strip() for i in string.strip().split(',')]
 
-### the config values ###
-# NOTE: keys are forced to lower-case
 
-lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
+# Below are the config values - reference these in calling code
+# NOTE: keys from config files are forced to lower-case when they are read by ConfigParser
+
+# which extractor backend to use for loading data
+# TODO this will require extracting DataExtractor into a separate module, to prevent circular dependencies
+DATA_SOURCE_EXTRACTORS = {'adlib': None,
+                          'archivesspace': DataExtractor.DataExtractor_ArchivesSpace,
+                          'sampledata': DataExtractor.DataExtractor_FakeSampleData,
+                          'DEFAULT': DataExtractor.DataExtractor_FakeSampleData,
+                          }
+dataExtractor = _configSection('DataExtractor')
+_dataSource = dataExtractor.get('datasource', 'DEFAULT').lower()
+dataExtractor['extractorclass'] = DATA_SOURCE_EXTRACTORS.get(_dataSource, DATA_SOURCE_EXTRACTORS['DEFAULT'])
 
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
@@ -49,8 +75,13 @@ if archivesSpace:
                                                                                               archivesSpace.get('repository'),
                                                                                               )
 
+fakeSampleData = _configSection('FakeSampleData')
+fakeSampleData['filename'] = join(SAMPLE_DATA_DIR, fakeSampleData.get('filename', 'FILENAME_NOT_SET'))
+
 # filename, level, format, datefmt
 logging = _configSection('Logging')
 
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
+
+lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
