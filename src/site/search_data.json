@@ -1,0 +1,43 @@
+---
+layout: null
+---
+{
+  {% assign collection_data = site.data.collections %}
+  {% for item_hash in collection_data %}
+    {% assign collection = item_hash[1] %}
+    {% assign id = item_hash[0] %}
+    "collections/{{id}}": {
+      "href": "collections/{{id}}",
+      "title": "{{collection.title | escape | strip_newlines}}",
+      "url": "{{site.url}}/collections/{{id}}",
+      "record_type": "collection",
+      "subjects": [
+        {% assign subjects = collection.subjects %}
+        {% for subject in subjects %}
+          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
+          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    },
+  {% endfor %}
+  {% assign object_data = site.data.objects %}
+  {% for item_hash in object_data %}
+    {% assign object = item_hash[1] %}
+    {% assign id = item_hash[0] %}
+    "objects/{{id}}": {
+      "href": "objects/{{id}}",
+      "title": "{{object.title | escape | strip_newlines}}",
+      "url": "{{site.url}}/objects/{{id}}",
+      "record_type": "{{object.level}}",
+      "subjects": [
+        {% assign subjects = object.subjects %}
+        {% for subject in subjects %}
+          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
+          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+}

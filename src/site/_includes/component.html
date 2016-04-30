@@ -1,0 +1,37 @@
+{% for component in tree %}
+  {% capture component_id %}{{component.id}}{% endcapture %}
+  {% assign component_detail = site.data.objects[{{component_id}}] %}
+  {% if component.has_children %}
+    <div class="component {{component.level}} has-children" id="{{component_detail.ref_id}}">
+      <a class="container-list-toggle" href="#">
+        <span class="container-list-toggle-icon"></span>
+      </a>
+  {% else %}
+    <div class="component {{component.level}} no-children" id="{{component_detail.ref_id}}">
+  {% endif %}
+  <a class="title" href="../../objects/{{component_id}}">{{ component.title }}</a>
+  {% for instance in component_detail.instances %}
+    <div class="instance">{% include instance.html %}</div>
+  {% endfor %}
+  {% for note in component_detail.notes %}
+    <div class="description">
+    {% case {{note.jsonmodel_type}} %}
+      {% when 'note_multipart' %}
+        {% for subnote in note.subnotes %}
+          {% if subnote.jsonmodel_type == 'note_text' %}
+            {{ subnote.content | strip_tags | markdownify }}
+          {% endif %}
+        {% endfor %}
+      {% when 'note_singlepart' %}
+        {{ note.content | strip_tags }}
+    {% endcase %}
+    </div>
+  {% endfor %}
+  {% if component.has_children %}
+    <div class="container-list list-{{component.level}}">
+      {% assign tree = component.children %}
+      {% include component.html %}
+    </div>
+  {% endif %}
+  </div>
+{% endfor %}

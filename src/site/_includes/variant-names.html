@@ -1,0 +1,7 @@
+{% for name in variant_names %}
+  {% if name.authorized %}
+  {% else %}
+    <h4>{{name.sort_name}} {% if name.use_dates %}<small>{{name.use_dates[0].expression}}</small></h4>
+    {% endif %}
+  {% endif %}
+{% endfor %}
