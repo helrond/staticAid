@@ -3,33 +3,28 @@
 import config
 from json import load
 from os import listdir, makedirs
-from os.path import exists, join, splitext, dirname, realpath, isdir, isfile
+from os.path import exists, join, splitext, isdir, isfile
 from shutil import copytree, rmtree
 from posix import remove
 
-# see Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
-DATA_DIR = 'build/data'
-PAGE_DATA_DIR = 'build/staging'
-ROOT = realpath(join(dirname(__file__), '..', '..'))
-SITE_SRC_DIR = 'src/site'
 
 def get_json(filename):
     with open(filename) as data_file:
         parsed_data = load(data_file)
     return parsed_data
 
+
 def create_initial_structure():
-    src = join(ROOT, SITE_SRC_DIR)
-    target = join(ROOT, PAGE_DATA_DIR)
+    target = config.PAGE_DATA_DIR
     if isdir(target):
         rmtree(target)
     if isfile(target):
+        # in case someone put something (like a softlink) in its place
         remove(target)
-    copytree(src, target)
+    copytree(config.SITE_SRC_DIR, target)
 
     # copy _data into place so that JSON is available to the Liquid templates
-    copytree(DATA_DIR, join(target, '_data'))
-
+    copytree(config.DATA_DIR, join(target, '_data'))
 
 
 def get_note(note):
@@ -39,8 +34,9 @@ def get_note(note):
         content = note["content"]
     return content
 
+
 def make_page_data_dir(category):
-    pageDataDir = join(ROOT, PAGE_DATA_DIR, category)
+    pageDataDir = join(config.PAGE_DATA_DIR, category)
     try:
         makedirs(pageDataDir)
     except OSError:
@@ -48,8 +44,9 @@ def make_page_data_dir(category):
         pass
     return pageDataDir
 
+
 def make_pages(category):
-    sourceDataDir = join(ROOT, DATA_DIR, config.destinations[category])
+    sourceDataDir = join(config.DATA_DIR, config.destinations[category])
     if exists(sourceDataDir):
         pageDataDir = make_page_data_dir(category)
 
@@ -90,6 +87,7 @@ def make_pages(category):
                     new_file.write("description: \"%s\"\n" % description.encode('utf-8'))
                     new_file.write("---")
                     new_file.close
+
 
 # ex: {families: agents/families}
 create_initial_structure()
