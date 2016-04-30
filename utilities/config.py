@@ -1,9 +1,13 @@
 from ConfigParser import ConfigParser, NoSectionError
-from os.path import dirname, join
+from os.path import dirname, join, exists
+from shutil import copyfile
 
 # read the config file
-current_dir = current_dir = dirname(__file__)
+current_dir = dirname(__file__)
 configFilePath = join(current_dir, 'local_settings.cfg')
+if not exists(configFilePath):
+    defaultConfigFile = join(current_dir, 'local_settings.default')
+    copyfile(defaultConfigFile, configFilePath)
 _config = ConfigParser()
 _config.read(configFilePath)
 

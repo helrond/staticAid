@@ -46,6 +46,10 @@ then
     cp local_settings.default local_settings.cfg
 fi
 
+# hack-ish workaround for the massive number of HTML files present in the generated site
+sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl -p
+
 echo "
 Done installing dependencies for StaticAid.
 
@@ -60,8 +64,6 @@ To generate HTML from the data currently present in the build/data/ directory, r
 
 To view the generated HTML in the test server, run:
 
-    sudo sysctl fs.inotify.max_user_watches=524288
-    sudo sysctl -p
     grunt serve
 
 and then open:
