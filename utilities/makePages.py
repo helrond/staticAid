@@ -1,14 +1,18 @@
 #!/usr/bin/env python
 
-import os, ConfigParser, json
+import config
+from json import load
+from os import listdir, makedirs
+from os.path import exists, join, splitext, dirname, realpath
 
-configFilePath = os.path.join(os.path.dirname(__file__), 'local_settings.cfg')
-config = ConfigParser.ConfigParser()
-config.read(configFilePath)
+# see Gruntfile.js: jekyll > build > options > *
+DATA_DIR = 'build/data'
+PAGE_DATA_DIR = 'build/page_data'
+ROOT = realpath(join(dirname(__file__), '..'))
 
 def get_json(filename):
-    with open(os.path.join(src, filename)) as data_file:
-        parsed_data = json.load(data_file)
+    with open(filename) as data_file:
+        parsed_data = load(data_file)
     return parsed_data
 
 def get_note(note):
@@ -18,21 +22,33 @@ def get_note(note):
         content = note["content"]
     return content
 
-def make_pages(src, dest):
-    if os.path.exists(src):
-        for f in os.listdir(src):
-            if f.endswith(".json"):
-                data = get_json(f)
+def make_category_dir(category):
+    pageDataDir = join(ROOT, PAGE_DATA_DIR, category)
+    try:
+        makedirs(pageDataDir)
+    except OSError:
+        # dir exists
+        pass
+    return pageDataDir
 
-                identifier = os.path.splitext(f)[0]
-                if dest == 'objects':
+def make_pages(category):
+    sourceDataDir = join(ROOT, DATA_DIR, config.destinations[category])
+    if exists(sourceDataDir):
+        pageDataDir = make_category_dir(category)
+
+        for filename in listdir(sourceDataDir):
+            if filename.endswith(".json"):
+                data = get_json(join(sourceDataDir, filename))
+
+                identifier = splitext(filename)[0]
+                if category == 'objects':
                     title = data["display_string"].strip().replace('"', "'")
                 else:
                     title = data["title"].strip().replace('"', "'")
                 raw_description = ''
                 description = ''
 
-                notes = data["notes"]
+                notes = data.get('notes', [])
                 for note in notes:
                     if note.has_key("type"):
                         if note["type"] == 'abstract':
@@ -47,16 +63,17 @@ def make_pages(src, dest):
                         pass
                 description = (raw_description.strip().replace('"', "'")[:200] + '...') if len(raw_description) > 200 else description
 
-                with open(os.path.join(dest, '%s.html' % identifier), 'w+') as new_file:
-                    new_file.write("---\nlayout: %s\n" % dest)
+                filename = join(pageDataDir, '%s.html' % identifier)
+                with open(filename, 'w+') as new_file:
+                    new_file.write("---\nlayout: %s\n" % category)
                     new_file.write("title: \"%s\"\n" % title.encode('utf-8'))
                     new_file.write("id: %s\n" % identifier)
-                    new_file.write("type: %s\n" % dest)
-                    new_file.write("permalink: %s/%s/\n" % (dest, identifier))
+                    new_file.write("type: %s\n" % category)
+                    new_file.write("permalink: %s/%s/\n" % (category, identifier))
                     new_file.write("description: \"%s\"\n" % description.encode('utf-8'))
                     new_file.write("---")
                     new_file.close
-                    # print '%s created' % os.path.join(dest, '%s.html' % identifier)
 
-for dest, src in config.items('Build'):
-    make_pages(src, dest)
+# ex: {families: agents/families}
+for category in config.destinations:
+    make_pages(category)

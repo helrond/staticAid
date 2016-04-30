@@ -54,7 +54,7 @@ and that your ArchivesSpace config is correct and run:
 
     grunt update
 
-To generate HTML from the data currently present in the _data/ directory, run:
+To generate HTML from the data currently present in the build/data/ directory, run:
 
     grunt build
 
