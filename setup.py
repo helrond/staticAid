@@ -2,7 +2,8 @@ from setuptools import setup
 
 setup(name='static-aid',
       version='0.1',
-      description='A Jekyll static site generator for archival description serialized in JSON, generated via the ArchivesSpace REST API.',
+      description='A Jekyll static site generator for archival description serialized in JSON, ' +
+                  'generated via the ArchivesSpace REST API, or by other modular backends which can be added to the system.',
       author='Hillel Arnold',
       author_email='',
       license='',

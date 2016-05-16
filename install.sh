@@ -49,8 +49,9 @@ sudo python setup.py install
 echo "
 Done installing StaticAid.
 
-To replace the current sample data set with real data from ArchiveSpace, make sure ArchivesSpace is running
-and that your ArchivesSpace config is correct and run:
+To replace the current sample data set in build/data/ with real data from ArchiveSpace, Adlib, etc.,
+verify your settings in local_settings.cfg (specifically that dataSource and access settings are correct),
+make sure ArchivesSpace/Adlib is running, and then run:
 
     grunt update
 
@@ -65,4 +66,6 @@ To view the generated HTML in the test server, run:
 and then open:
 
     http://localhost:4000
+
+(NOTE: These steps are automated in cleanRebuildAndRun.sh)
 "
