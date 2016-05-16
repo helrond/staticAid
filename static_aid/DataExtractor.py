@@ -37,8 +37,8 @@ class DataExtractor(object):
     def registerPid(self):
 
         # check to see if a process is already running
-        if isfile(config.PIDFILE_PATH):
-            pidfile = open(config.PIDFILE_PATH, "r")
+        if isfile(config.PID_FILE_PATH):
+            pidfile = open(config.PID_FILE_PATH, "r")
             for line in pidfile:
                 pid = int(line.strip())
             if pid_exists(pid):
@@ -46,14 +46,14 @@ class DataExtractor(object):
                 exit()
 
         # nothing running yet - register ourselves as the running PID
-        if not exists(dirname(config.PIDFILE_PATH)):
-            makedirs(dirname(config.PIDFILE_PATH))
+        if not exists(dirname(config.PID_FILE_PATH)):
+            makedirs(dirname(config.PID_FILE_PATH))
         currentPid = str(getpid())
-        file(config.PIDFILE_PATH, 'w').write(currentPid)
+        file(config.PID_FILE_PATH, 'w').write(currentPid)
 
 
     def unregisterPid(self):
-        unlink(config.PIDFILE_PATH)
+        unlink(config.PID_FILE_PATH)
 
 
     def getDestinationDirname(self, destinationName):

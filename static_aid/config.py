@@ -6,12 +6,13 @@ from shutil import copyfile
 
 # NOTE: Directories must match Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
 ROOT = realpath(join(dirname(__file__), '..'))
+
+CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
 DATA_DIR = join(ROOT, 'build', 'data')
 PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
+PID_FILE_PATH = join(ROOT, 'build', 'tmp', 'daemon.pid')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'src', 'site')
-TEMP_DIR = join(ROOT, 'build', 'tmp')
-PIDFILE_PATH = join(TEMP_DIR, 'daemon.pid')
 
 def _configSection(section):
     try:
@@ -43,13 +44,11 @@ def _stringToList(string):
 ### Config file values ###
 
 # read the config file
-current_dir = dirname(__file__)
-configFilePath = join(ROOT, 'local_settings.cfg')
-if not exists(configFilePath):
+if not exists(CONFIG_FILE_PATH):
     defaultConfigFile = join(ROOT, 'local_settings.default')
-    copyfile(defaultConfigFile, configFilePath)
+    copyfile(defaultConfigFile, CONFIG_FILE_PATH)
 _config = ConfigParser()
-_config.read(configFilePath)
+_config.read(CONFIG_FILE_PATH)
 
 
 # Extract the config values - reference these in calling code
@@ -87,4 +86,4 @@ logging = _configSection('Logging')
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
 
-lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
+lastExportFilepath = join(dirname(__file__), _config.get('LastExport', 'filepath'))
