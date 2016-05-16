@@ -2,6 +2,7 @@
 /build/
 /node_modules/
 _config.yml
+*.egg-info
 .sass-cache
 
 # runtime and user-generated stuff
@@ -11,6 +12,7 @@ _config.yml
 *.pickle
 *.pid
 *.pyc
+*.pyo
 
 # IDE stuff
 .DS_Store

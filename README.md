@@ -1,7 +1,7 @@
 # StaticAid
 
 A [Jekyll](http://jekyllrb.com/) static site generator for archival description serialized in JSON, generated via the
-[ArchivesSpace](http://archivesspace.org) REST API.
+[ArchivesSpace](http://archivesspace.org) REST API, or by other modular backends which can be added to the system.
 
 You can see a live version of this site with sample data [here](http://hillelarnold.com/staticAid/).
 
@@ -18,7 +18,7 @@ You can see a live version of this site with sample data [here](http://hillelarn
 *   [Jekyll](http://jekyllrb.com/) (to build the site)
 *   [Node Package Manager or NPM](https://www.npmjs.com/)
 *   [Grunt](http://gruntjs.com/getting-started) (for running build and deployment tasks)
-*   An [ArchivesSpace](http://archivesspace.org/) instance with some data entered.
+*   An [ArchivesSpace](http://archivesspace.org/) or Adlib instance with some data entered (a sample data set is included for testing).
 
 ## Installation
 
@@ -30,6 +30,10 @@ You can see a live version of this site with sample data [here](http://hillelarn
 4.  Review the default settings in `local_settings.default`; if you'd like to change them, copy this file
     to `local_settings.cfg` and make your changes. Otherwise, this file will be created for you.
 5.  Change the values in `_config.yml` to match your preferences. Make sure to change `url` and `baseurl`.
+
+NOTE: For Linux-like systems, you can simply run `install.sh`. 
+It has only been tested on Linux Mint but should work on any Debian based distribution, 
+and should work on OSX, RedHat, etc. with minimal modification.
 
 ## Usage
 
@@ -44,15 +48,15 @@ Running `grunt build` will build the site based on the data currently in the `bu
 
 #### Update data then build site
 
-Running `grunt update` will fetch JSON for resource records, resource record trees and archival objects from ArchivesSpace
-using `utilities/getJson.py` and save it in your `build/data` directory, then will build the site based on that data.
+Running `grunt update` will fetch JSON for resource records, resource record trees and archival objects from ArchivesSpace 
+using `static_aid/getJson.py` and save it in your `build/data` directory, then will build the site based on that data.
 
 **WARNING**: Depending on the size of your ArchivesSpace installation, it could take quite a while for this script to
 loop through all resource records and components. Be patient!
 
 #### Clean Build
 
-By default, `grunt update` will only fetch JSON updated since the last time `utilities/getJson.py` completed successfully.
+By default, `grunt update` will only fetch JSON updated since the last time `static_aid/getJson.py` completed successfully. 
 At any point, you can run `grunt rebuild` to wipe out the existing data and build the site from scratch.
 
 **WARNING**: Depending on the size of your ArchivesSpace installation, it could take quite a while for this script to

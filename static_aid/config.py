@@ -1,29 +1,18 @@
 from ConfigParser import ConfigParser, NoSectionError
 from os.path import dirname, join, exists, realpath
 from shutil import copyfile
-import DataExtractor
 
 ### Application constants - these are not exposed to users via config files ###
 
 # NOTE: Directories must match Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
-ROOT = realpath(join(dirname(__file__), '..', '..'))
+ROOT = realpath(join(dirname(__file__), '..'))
+
+CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
 DATA_DIR = join(ROOT, 'build', 'data')
 PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
+PID_FILE_PATH = join(ROOT, 'build', 'tmp', 'daemon.pid')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
-SITE_SRC_DIR = join(ROOT, 'src', 'site')
-TEMP_DIR = join(ROOT, 'build', 'tmp')
-PIDFILE_PATH = join(TEMP_DIR, 'daemon.pid')
-
-### Config file values ###
-
-# read the config file
-current_dir = dirname(__file__)
-configFilePath = join(current_dir, '..', '..', 'local_settings.cfg')
-if not exists(configFilePath):
-    defaultConfigFile = join(current_dir, '..', '..', 'local_settings.default')
-    copyfile(defaultConfigFile, configFilePath)
-_config = ConfigParser()
-_config.read(configFilePath)
+SITE_SRC_DIR = join(ROOT, 'site')
 
 def _configSection(section):
     try:
@@ -52,20 +41,23 @@ def _stringToList(string):
         return None
     return [i.strip() for i in string.strip().split(',')]
 
+### Config file values ###
 
-# Below are the config values - reference these in calling code
+# read the config file
+if not exists(CONFIG_FILE_PATH):
+    defaultConfigFile = join(ROOT, 'local_settings.default')
+    copyfile(defaultConfigFile, CONFIG_FILE_PATH)
+_config = ConfigParser()
+_config.read(CONFIG_FILE_PATH)
+
+
+# Extract the config values - reference these in calling code
 # NOTE: keys from config files are forced to lower-case when they are read by ConfigParser
 
 # which extractor backend to use for loading data
-# TODO this will require extracting DataExtractor into a separate module, to prevent circular dependencies
-DATA_SOURCE_EXTRACTORS = {'adlib': None,
-                          'archivesspace': DataExtractor.DataExtractor_ArchivesSpace,
-                          'sampledata': DataExtractor.DataExtractor_FakeSampleData,
-                          'DEFAULT': DataExtractor.DataExtractor_FakeSampleData,
-                          }
 dataExtractor = _configSection('DataExtractor')
-_dataSource = dataExtractor.get('datasource', 'DEFAULT').lower()
-dataExtractor['extractorclass'] = DATA_SOURCE_EXTRACTORS.get(_dataSource, DATA_SOURCE_EXTRACTORS['DEFAULT'])
+# set DEFAULT value if necessary
+dataExtractor['dataSource'] = dataExtractor.get('datasource', 'DEFAULT').lower()
 
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
@@ -75,8 +67,21 @@ if archivesSpace:
                                                                                               archivesSpace.get('repository'),
                                                                                               )
 
-fakeSampleData = _configSection('FakeSampleData')
-fakeSampleData['filename'] = join(SAMPLE_DATA_DIR, fakeSampleData.get('filename', 'FILENAME_NOT_SET'))
+# baseURL, database, user, password
+class AdlibConfig:
+    'this class has no purpose other than to hold dot-separated field mapping config (below)'
+    def __init__(self, configDict):
+        self.__dict__ = configDict
+        class FieldMapping():
+            pass
+        self.fieldmapping = FieldMapping()
+adlib = AdlibConfig(_configSection('Adlib'))
+adlib.fieldmapping.agents = _configSection('Adlib.FieldMapping.agents')
+adlib.fieldmapping.collections = _configSection('Adlib.FieldMapping.collections')
+adlib.fieldmapping.thesaurus = _configSection('Adlib.FieldMapping.thesaurus')
+
+sampleData = _configSection('SampleData')
+sampleData['filename'] = join(SAMPLE_DATA_DIR, sampleData.get('filename', 'FILENAME_NOT_SET'))
 
 # filename, level, format, datefmt
 logging = _configSection('Logging')
@@ -84,4 +89,4 @@ logging = _configSection('Logging')
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
 
-lastExportFilepath = join(current_dir, _config.get('LastExport', 'filepath'))
+lastExportFilepath = join(dirname(__file__), _config.get('LastExport', 'filepath'))
