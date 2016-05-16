@@ -12,7 +12,7 @@ DATA_DIR = join(ROOT, 'build', 'data')
 PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
 PID_FILE_PATH = join(ROOT, 'build', 'tmp', 'daemon.pid')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
-SITE_SRC_DIR = join(ROOT, 'src', 'site')
+SITE_SRC_DIR = join(ROOT, 'site')
 
 def _configSection(section):
     try:

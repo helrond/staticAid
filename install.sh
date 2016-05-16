@@ -15,18 +15,18 @@ sudo apt-get -y install \
 # UGLY HACK to work around the Ubuntu Ruby 1.9/2.0 issue
 # thank you: http://blog.costan.us/2014/04/restoring-ruby-20-on-ubuntu-1404.html
 sudo rm /usr/bin/ruby /usr/bin/gem /usr/bin/irb /usr/bin/rdoc /usr/bin/erb
-sudo ln -s /usr/bin/ruby2.0 /usr/bin/ruby
-sudo ln -s /usr/bin/gem2.0 /usr/bin/gem
-sudo ln -s /usr/bin/irb2.0 /usr/bin/irb
-sudo ln -s /usr/bin/rdoc2.0 /usr/bin/rdoc
-sudo ln -s /usr/bin/erb2.0 /usr/bin/erb
+sudo ln -s /usr/bin/ruby2.0 /usr/bin/ruby 2>/dev/null
+sudo ln -s /usr/bin/gem2.0 /usr/bin/gem 2>/dev/null
+sudo ln -s /usr/bin/irb2.0 /usr/bin/irb 2>/dev/null
+sudo ln -s /usr/bin/rdoc2.0 /usr/bin/rdoc 2>/dev/null
+sudo ln -s /usr/bin/erb2.0 /usr/bin/erb 2>/dev/null
 sudo gem update --system
 sudo gem pristine --all
 
 # UGLY HACK to work around the 'node' vs 'nodejs' issue in the shebangs of StaticAid .js files
 if [ "x`which node`" = "x" ]
 then
-    sudo ln -s `which nodejs` /usr/local/bin/node
+    sudo ln -s `which nodejs` /usr/local/bin/node 2>/dev/null
 fi
 
 sudo pip install requests requests_toolbelt psutil

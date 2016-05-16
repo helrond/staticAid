@@ -8,6 +8,7 @@ from static_aid import config
 from static_aid.DataExtractor_Adlib import DataExtractor_Adlib
 from static_aid.DataExtractor_ArchivesSpace import DataExtractor_ArchivesSpace
 from static_aid.DataExtractor import DataExtractor_SampleData
+from os.path import isdir
 
 DATA_SOURCE_EXTRACTORS = {'adlib': DataExtractor_Adlib,
                           'archivesspace': DataExtractor_ArchivesSpace,
@@ -40,7 +41,7 @@ def main():
     arguments = parser.parse_args()
     arguments = vars(arguments)  # converts Namespace to {}
 
-    if arguments['replace']:
+    if arguments['replace'] and isdir(config.DATA_DIR):
         rmtree(config.DATA_DIR)
 
     extractorClass = DATA_SOURCE_EXTRACTORS.get(config.dataExtractor['dataSource'], DATA_SOURCE_EXTRACTORS['DEFAULT'])
