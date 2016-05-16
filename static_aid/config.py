@@ -1,29 +1,17 @@
 from ConfigParser import ConfigParser, NoSectionError
 from os.path import dirname, join, exists, realpath
 from shutil import copyfile
-import DataExtractor
 
 ### Application constants - these are not exposed to users via config files ###
 
 # NOTE: Directories must match Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
-ROOT = realpath(join(dirname(__file__), '..', '..'))
+ROOT = realpath(join(dirname(__file__), '..'))
 DATA_DIR = join(ROOT, 'build', 'data')
 PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'src', 'site')
 TEMP_DIR = join(ROOT, 'build', 'tmp')
 PIDFILE_PATH = join(TEMP_DIR, 'daemon.pid')
-
-### Config file values ###
-
-# read the config file
-current_dir = dirname(__file__)
-configFilePath = join(current_dir, '..', '..', 'local_settings.cfg')
-if not exists(configFilePath):
-    defaultConfigFile = join(current_dir, '..', '..', 'local_settings.default')
-    copyfile(defaultConfigFile, configFilePath)
-_config = ConfigParser()
-_config.read(configFilePath)
 
 def _configSection(section):
     try:
@@ -52,20 +40,25 @@ def _stringToList(string):
         return None
     return [i.strip() for i in string.strip().split(',')]
 
+### Config file values ###
 
-# Below are the config values - reference these in calling code
+# read the config file
+current_dir = dirname(__file__)
+configFilePath = join(ROOT, 'local_settings.cfg')
+if not exists(configFilePath):
+    defaultConfigFile = join(ROOT, 'local_settings.default')
+    copyfile(defaultConfigFile, configFilePath)
+_config = ConfigParser()
+_config.read(configFilePath)
+
+
+# Extract the config values - reference these in calling code
 # NOTE: keys from config files are forced to lower-case when they are read by ConfigParser
 
 # which extractor backend to use for loading data
-# TODO this will require extracting DataExtractor into a separate module, to prevent circular dependencies
-DATA_SOURCE_EXTRACTORS = {'adlib': None,
-                          'archivesspace': DataExtractor.DataExtractor_ArchivesSpace,
-                          'sampledata': DataExtractor.DataExtractor_FakeSampleData,
-                          'DEFAULT': DataExtractor.DataExtractor_FakeSampleData,
-                          }
 dataExtractor = _configSection('DataExtractor')
-_dataSource = dataExtractor.get('datasource', 'DEFAULT').lower()
-dataExtractor['extractorclass'] = DATA_SOURCE_EXTRACTORS.get(_dataSource, DATA_SOURCE_EXTRACTORS['DEFAULT'])
+# set DEFAULT value if necessary
+dataExtractor['dataSource'] = dataExtractor.get('datasource', 'DEFAULT').lower()
 
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
@@ -75,8 +68,18 @@ if archivesSpace:
                                                                                               archivesSpace.get('repository'),
                                                                                               )
 
-fakeSampleData = _configSection('FakeSampleData')
-fakeSampleData['filename'] = join(SAMPLE_DATA_DIR, fakeSampleData.get('filename', 'FILENAME_NOT_SET'))
+# baseURL, database, user, password
+adlib = _configSection('Adlib')
+# TODO a sketch of what needs to be added next
+class _FieldMappingConfig:
+    collections = {}
+    agents = {}
+    thesaurus = {}
+adlib.fieldmapping = _FieldMappingConfig()
+adlib.fieldmapping.agents = _configSection('Adlib.FieldMapping.Agents')
+
+sampleData = _configSection('SampleData')
+sampleData['filename'] = join(SAMPLE_DATA_DIR, sampleData.get('filename', 'FILENAME_NOT_SET'))
 
 # filename, level, format, datefmt
 logging = _configSection('Logging')

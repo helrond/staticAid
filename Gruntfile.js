@@ -4,17 +4,17 @@ module.exports = function(grunt) {
   grunt.initConfig({
     exec: {
       updateJSON: {
-        command: 'src/utilities/getJson.py --update',
+        command: 'static-aid-get-data --update',
         stdout: true,
         stderr: true
       },
       replaceJSON: {
-        command: 'src/utilities/getJson.py --replace',
+        command: 'static-aid-get-data --replace',
         stdout: true,
         stderr: true
       },
       makePages: {
-        command: 'src/utilities/makePages.py',
+        command: 'static-aid-build',
         stdout: true,
         stderr: true
       }

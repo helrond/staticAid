@@ -11,6 +11,7 @@ _config.yml
 *.pickle
 *.pid
 *.pyc
+*.pyo
 
 # IDE stuff
 .DS_Store

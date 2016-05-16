@@ -1,7 +1,19 @@
 #!/usr/bin/env python
 
-import config
+from argparse import ArgumentParser
 import logging
+from shutil import rmtree
+
+from static_aid import config
+from static_aid.DataExtractor_Adlib import DataExtractor_Adlib
+from static_aid.DataExtractor_ArchivesSpace import DataExtractor_ArchivesSpace
+from static_aid.DataExtractor import DataExtractor_SampleData
+
+DATA_SOURCE_EXTRACTORS = {'adlib': DataExtractor_Adlib,
+                          'archivesspace': DataExtractor_ArchivesSpace,
+                          'sampledata': DataExtractor_SampleData,
+                          'DEFAULT': DataExtractor_SampleData,
+                          }
 
 logging.basicConfig(filename=config.logging['filename'],
                     format=config.logging['format'],
@@ -10,9 +22,29 @@ logging.basicConfig(filename=config.logging['filename'],
                     )
 logging.getLogger("requests").setLevel(logging.WARNING)
 
+def main():
+    parser = ArgumentParser(description='StaticAid Data Extractor')
+    parser.add_argument('-r',
+                        '--replace',
+                        action='store_true',
+                        default=False,
+                        help="Delete data directory before importing",
+                        )
+    parser.add_argument('-u',
+                        '--update',
+                        action='store_true',
+                        default=False,
+                        help="Only grab the records updated since last run",
+                        )
 
-# TODO respect --update and --replace
-update = False
+    arguments = parser.parse_args()
+    arguments = vars(arguments)  # converts Namespace to {}
 
-extractorClass = config.dataExtractor['extractorclass']
-extractorClass(update=update).run()
+    if arguments['replace']:
+        rmtree(config.DATA_DIR)
+
+    extractorClass = DATA_SOURCE_EXTRACTORS.get(config.dataExtractor['dataSource'], DATA_SOURCE_EXTRACTORS['DEFAULT'])
+    extractorClass(update=arguments['update']).run()
+
+if __name__ == '__main__':
+    main()

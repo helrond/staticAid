@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-import config
 from json import load
 from os import listdir, makedirs
 from os.path import exists, join, splitext, isdir, isfile
 from shutil import copytree, rmtree
 from posix import remove
+
+from static_aid import config
 
 
 def get_json(filename):
@@ -88,8 +89,11 @@ def make_pages(category):
                     new_file.write("---")
                     new_file.close
 
+def main():
+    # ex: {families: agents/families}
+    create_initial_structure()
+    for category in config.destinations:
+        make_pages(category)
 
-# ex: {families: agents/families}
-create_initial_structure()
-for category in config.destinations:
-    make_pages(category)
+if __name__ == '__main__':
+    main()
