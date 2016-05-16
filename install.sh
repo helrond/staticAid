@@ -43,8 +43,11 @@ sudo npm install
 sudo sysctl fs.inotify.max_user_watches=524288
 sudo sysctl -p
 
+# Install Python module (the "real" install step)
+sudo python setup.py install
+
 echo "
-Done installing dependencies for StaticAid.
+Done installing StaticAid.
 
 To replace the current sample data set with real data from ArchiveSpace, make sure ArchivesSpace is running
 and that your ArchivesSpace config is correct and run:
