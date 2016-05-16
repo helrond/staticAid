@@ -68,11 +68,14 @@ if archivesSpace:
                                                                                               )
 
 # baseURL, database, user, password
-class FieldMapping:
+class AdlibConfig:
     'this class has no purpose other than to hold dot-separated field mapping config (below)'
-    pass
-adlib = _configSection('Adlib')
-adlib.fieldmapping = FieldMapping()
+    def __init__(self, configDict):
+        self.__dict__ = configDict
+        class FieldMapping():
+            pass
+        self.fieldmapping = FieldMapping()
+adlib = AdlibConfig(_configSection('Adlib'))
 adlib.fieldmapping.agents = _configSection('Adlib.FieldMapping.agents')
 adlib.fieldmapping.collections = _configSection('Adlib.FieldMapping.collections')
 adlib.fieldmapping.thesaurus = _configSection('Adlib.FieldMapping.thesaurus')
