@@ -68,14 +68,14 @@ if archivesSpace:
                                                                                               )
 
 # baseURL, database, user, password
+class FieldMapping:
+    'this class has no purpose other than to hold dot-separated field mapping config (below)'
+    pass
 adlib = _configSection('Adlib')
-# TODO a sketch of what needs to be added next
-class _FieldMappingConfig:
-    collections = {}
-    agents = {}
-    thesaurus = {}
-adlib.fieldmapping = _FieldMappingConfig()
-adlib.fieldmapping.agents = _configSection('Adlib.FieldMapping.Agents')
+adlib.fieldmapping = FieldMapping()
+adlib.fieldmapping.agents = _configSection('Adlib.FieldMapping.agents')
+adlib.fieldmapping.collections = _configSection('Adlib.FieldMapping.collections')
+adlib.fieldmapping.thesaurus = _configSection('Adlib.FieldMapping.thesaurus')
 
 sampleData = _configSection('SampleData')
 sampleData['filename'] = join(SAMPLE_DATA_DIR, sampleData.get('filename', 'FILENAME_NOT_SET'))
