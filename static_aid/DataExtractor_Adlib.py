@@ -14,3 +14,21 @@ class DataExtractor_Adlib(DataExtractor):
         except OSError:
             # exists
             pass
+
+    def createCollection(self, data):
+        '''
+        For a given JSON object which is extracted from AdlibCollectionApiResult['adlibJSON']['recordList']['record'][i],
+        construct a JSON object which can be saved to build/data/collections/{id}.json
+        '''
+        linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
+        linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
+        subjects = [{"title": subject} for subject in data['content.subject']]
+        collection = {
+                      "id_0": data['object_number'],
+                      "title": data['title'],
+                      "dates": [{"expression": data['production.date.start'][0]}],
+                      "extents": [],
+                      "linked_agents": linkedAgents,
+                      "subjects": subjects,
+                      }
+        return collection
