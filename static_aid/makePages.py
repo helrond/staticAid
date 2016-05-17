@@ -29,7 +29,7 @@ def create_initial_structure():
 
 
 def get_note(note):
-    if note["jsonmodel_type"] == 'note_multipart':
+    if note.get("jsonmodel_type") == 'note_multipart':
         content = note["subnotes"][0]["content"]
     else:
         content = note["content"]
@@ -47,6 +47,7 @@ def make_page_data_dir(category):
 
 
 def make_pages(category):
+    # ex: families > agents/families/
     sourceDataDir = join(config.DATA_DIR, config.destinations[category])
     if exists(sourceDataDir):
         pageDataDir = make_page_data_dir(category)
@@ -90,7 +91,6 @@ def make_pages(category):
                     new_file.close
 
 def main():
-    # ex: {families: agents/families}
     create_initial_structure()
     for category in config.destinations:
         make_pages(category)
