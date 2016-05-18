@@ -13,6 +13,7 @@ PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
 PID_FILE_PATH = join(ROOT, 'build', 'tmp', 'daemon.pid')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'site')
+ROW_FETCH_LIMIT = 100
 
 def _configSection(section):
     try:
@@ -68,17 +69,7 @@ if archivesSpace:
                                                                                               )
 
 # baseURL, database, user, password
-class AdlibConfig:
-    'this class has no purpose other than to hold dot-separated field mapping config (below)'
-    def __init__(self, configDict):
-        self.__dict__ = configDict
-        class FieldMapping():
-            pass
-        self.fieldmapping = FieldMapping()
-adlib = AdlibConfig(_configSection('Adlib'))
-adlib.fieldmapping.agents = _configSection('Adlib.FieldMapping.agents')
-adlib.fieldmapping.collections = _configSection('Adlib.FieldMapping.collections')
-adlib.fieldmapping.thesaurus = _configSection('Adlib.FieldMapping.thesaurus')
+adlib = _configSection('Adlib')
 
 sampleData = _configSection('SampleData')
 sampleData['filename'] = join(SAMPLE_DATA_DIR, sampleData.get('filename', 'FILENAME_NOT_SET'))

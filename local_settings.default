@@ -10,18 +10,17 @@ password: admin
 
 [Adlib]
 baseURL: http://whatever
-database: collect.inf
 user: 
 password: 
 
+# TODO verify this
+collectionDb: archive
+
+peopleDb: people
+thesaurusDb: thesau
+
 # {baseURL}?database={database}&search=modification%20greater%20%272015-12-10%27&xmltype=unstructured&limit=100&startfrom=1&output=json
 
-# TODO need to add nested configs, or at least make it easy to do this kind of thing cleanly
-[Adlib.FieldMapping.Agents]
-title: name
-display_name.rules: null
-display_name.source: equivalent_name
-names: null
 #names[i].authorized: 
 #names[i].sort_name: 
 #names[i].use_dates: 
