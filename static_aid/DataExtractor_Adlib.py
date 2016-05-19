@@ -43,7 +43,7 @@ class DataExtractor_Adlib(DataExtractor):
                         yield name
 
     def extractPeople(self):
-        for data in self.extractDatabase(config.adlib['peopleDb']):
+        for data in self.extractDatabase(config.adlib['peopleDb'], searchTerm='name.type=person'):
             resourceId = data['priref']
             names = [{'authorized': True,
                 'sort_name': name,
@@ -77,11 +77,11 @@ class DataExtractor_Adlib(DataExtractor):
 
             self.saveFile(resourceId, person, config.destinations['collections'])
 
-    def extractDatabase(self, database):
+    def extractDatabase(self, database, searchTerm=''):
         if self.update:
             lastExport = datetime.fromtimestamp(self.lastExportTime())
-            searchTerm = "modification greater '%4d-%02d-%02d'" % (lastExport.year, lastExport.month, lastExport.day)
-        else:
+            searchTerm += " modification greater '%4d-%02d-%02d'" % (lastExport.year, lastExport.month, lastExport.day)
+        elif not searchTerm or searchTerm.strip() == '':
             searchTerm = 'all'
 
         startFrom = 1
@@ -89,7 +89,7 @@ class DataExtractor_Adlib(DataExtractor):
         while numResults >= ROW_FETCH_LIMIT:
             url = "%s?database=%s&search=%s&xmltype=grouped&limit=%d&startfrom=%d&output=json" % (config.adlib['baseurl'],
                                                                                                   database,
-                                                                                                  searchTerm,
+                                                                                                  searchTerm.strip(),
                                                                                                   ROW_FETCH_LIMIT,
                                                                                                   startFrom)
             response = requests.get(url)
