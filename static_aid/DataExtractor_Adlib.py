@@ -34,8 +34,8 @@ class DataExtractor_Adlib(DataExtractor):
             resourceId = data['priref']
             self.saveFile(resourceId, collection, config.destinations['collections'])
 
-    def getEquivalentNames(self, data):
-        for equivalent in data['Equivalent']:
+    def getEquivalentNames(self, person):
+        for equivalent in person['Equivalent']:
             if 'equivalent_name' not in equivalent:
                 continue
                 for equivalentName in equivalent['equivalent_name']:
@@ -45,33 +45,37 @@ class DataExtractor_Adlib(DataExtractor):
     def extractPeople(self):
         for data in self.extractDatabase(config.adlib['peopleDb']):
             resourceId = data['priref']
-            equivalentNames = self.getEquivalentNames(data)
             names = [{'authorized': True,
                 'sort_name': name,
                 'use_dates': False,
-                } for name in equivalentNames]
+                } for name in self.getEquivalentNames(data)]
 
             relatedAgents = [{'_resolved':{'title': r['part_of']},
                               'description': 'part of',
-                              } for r in (data['Part_of'])]
+                              }
+                             for r in data.get('Part_of', [])]
             relatedAgents += [{'_resolved':{'title': r['part_of']},
                               'description': 'part',
-                              } for r in (data['Parts'])]
+                              }
+                              for r in data.get('Parts', [])]
             relatedAgents += [{'_resolved':{'title': r['part_of']},
                               'description': 'related',
-                              } for r in (data['Related'])]
-            notes = [{'type': 'note',
-                              'jsonmodel_type': 'note_singlepart',
-                              'content': n,
-                              } for n in data['documentation']]
+                              }
+                              for r in data.get('Related', [])]
 
-            person = {
-                      'title': data['title'],
+            notes = [{'type': 'note',
+                      'jsonmodel_type': 'note_singlepart',
+                      'content': n,
+                      }
+                     for n in data['documentation']]
+
+            person = {'title': data['title'],
                       'names': names,
-        '        related_agents':relatedAgents,
-        'notes':notes,
-                          }
-            self.saveFile(resourceId, collection, config.destinations['collections'])
+                      'related_agents':relatedAgents,
+                      'notes':notes,
+                      }
+
+            self.saveFile(resourceId, person, config.destinations['collections'])
 
     def extractDatabase(self, database):
         if self.update:
