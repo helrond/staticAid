@@ -46,37 +46,21 @@ class DataExtractor_Adlib(DataExtractor):
         for data in self.extractDatabase(config.adlib['peopleDb']):
             resourceId = data['priref']
             equivalentNames = self.getEquivalentNames(data)
-            names=                [{'authorized': True,
+            names = [{'authorized': True,
                 'sort_name': name,
                 'use_dates': False,
                 } for name in equivalentNames]
-            
+
             relatedAgents = [{'_resolved':{'title': r['part_of']},
-                              'description': 'part of',# or part/related,
+                              'description': 'part of',
                               } for r in (data['Part_of'])]
-#                 "Part_of": [
-#                     { < repeats
-#                         "part_of": [
-#                             {
-#                                 "@lang": "",
-#                                 "value": [
-#                                     "Gates, Mary Maxwell"
-#                 "Parts": [
-#                     { < repeats
-#                         "parts": [
-#                             {
-#                                 "value": [
-#                                     "Gates, Rory John"
-#                 "Related": [
-#                     { < repeats
-#                         "relationship": [
-#                             {
-#                                 "@lang": "",
-#                                 "value": [
-#                                     "Gates, Melinda"
-            dates_of_existence[0].begin: data['birth.date.start'],
-            dates_of_existence[0].end: data['death.date.start'],
-            notes=                       [{'type': 'note',
+            relatedAgents += [{'_resolved':{'title': r['part_of']},
+                              'description': 'part',
+                              } for r in (data['Parts'])]
+            relatedAgents += [{'_resolved':{'title': r['part_of']},
+                              'description': 'related',
+                              } for r in (data['Related'])]
+            notes = [{'type': 'note',
                               'jsonmodel_type': 'note_singlepart',
                               'content': n,
                               } for n in data['documentation']]
@@ -86,10 +70,6 @@ class DataExtractor_Adlib(DataExtractor):
                       'names': names,
         '        related_agents':relatedAgents,
         'notes':notes,
-        is_linked_to_published_record
-                            true if /site/data/collections/*.json contains .linked_agents[].ref == agent.url
-                            # TODO we haven't used a url yet - it's like /agents/people/*.json (right?)
-            // TODO requires site.data.collections[][1].linked_agents[].ref == agent.url
                           }
             self.saveFile(resourceId, collection, config.destinations['collections'])
 
