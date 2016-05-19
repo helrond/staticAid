@@ -34,21 +34,22 @@ class DataExtractor_Adlib(DataExtractor):
             resourceId = data['priref']
             self.saveFile(resourceId, collection, config.destinations['collections'])
 
-    def getEquivalentNames(self, person):
-        for equivalent in person['Equivalent']:
-            if 'equivalent_name' not in equivalent:
-                continue
-                for equivalentName in equivalent['equivalent_name']:
-                    for name in equivalentName['value']:
-                        yield name
-
     def extractPeople(self):
+
+        def getEquivalentNames(self, person):
+            for equivalent in person['Equivalent']:
+                if 'equivalent_name' not in equivalent:
+                    continue
+                    for equivalentName in equivalent['equivalent_name']:
+                        for name in equivalentName['value']:
+                            yield name
+
         for data in self.extractDatabase(config.adlib['peopleDb'], searchTerm='name.type=person'):
             resourceId = data['priref']
             names = [{'authorized': True,
                 'sort_name': name,
                 'use_dates': False,
-                } for name in self.getEquivalentNames(data)]
+                } for name in getEquivalentNames(data)]
 
             relatedAgents = [{'_resolved':{'title': r['part_of']},
                               'description': 'part of',
@@ -75,7 +76,43 @@ class DataExtractor_Adlib(DataExtractor):
                       'notes':notes,
                       }
 
-            self.saveFile(resourceId, person, config.destinations['collections'])
+            self.saveFile(resourceId, person, config.destinations['people'])
+
+    def extractFileLevelObjects(self):
+        for data in self.extractDatabase(config.adlib['peopleDb'], searchTerm='description_level=file'):
+            resourceId = data['priref']
+
+            # TODO this is fake code
+            # linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
+            # linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
+
+            # TODO make the whole thing optional? (if current_location.* isn't set)
+            instances = [{
+                          'container.type_1': data['current_location.name'],
+                          'container.indicator_1':data['current_location'],
+                          'container.type_2':data['current_location.package.location'],  # optional
+                          'container.indicator_2':data['current_location.package.context'],  # optional
+                          }
+                         ]
+
+            # TODO is this a list or a string in file-level data?
+            subjects = [{"title": subject} for subject in data['content.subject']]
+
+            notes = [{'type': 'note',
+                      'jsonmodel_type': 'note_singlepart',
+                      'content': n,
+                      }
+                     for n in data['content.description']]
+
+            archivalObject = {'title': data['title'],
+                              'level': data['description_level'],
+                              'instances': instances,
+                              'linked_agents': [],  # TODO linkedAgents,
+                              'subjects': subjects,
+                              'notes': notes,
+                              }
+
+            self.saveFile(resourceId, archivalObject, config.destinations['objects'])
 
     def extractDatabase(self, database, searchTerm=''):
         if self.update:
