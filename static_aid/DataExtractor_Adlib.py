@@ -20,7 +20,6 @@ class DataExtractor_Adlib(DataExtractor):
 
     def extractCollections(self):
         for data in self.extractDatabase(config.adlib['collectionDb']):
-            # construct a JSON object which can be saved to build/data/collections/{id}.json
             linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
             linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
             subjects = [{"title": subject} for subject in data['content.subject']]
@@ -33,6 +32,65 @@ class DataExtractor_Adlib(DataExtractor):
                           "subjects": subjects,
                           }
             resourceId = data['priref']
+            self.saveFile(resourceId, collection, config.destinations['collections'])
+
+    def getEquivalentNames(self, data):
+        for equivalent in data['Equivalent']:
+            if 'equivalent_name' not in equivalent:
+                continue
+                for equivalentName in equivalent['equivalent_name']:
+                    for name in equivalentName['value']:
+                        yield name
+
+    def extractPeople(self):
+        for data in self.extractDatabase(config.adlib['peopleDb']):
+            resourceId = data['priref']
+            equivalentNames = self.getEquivalentNames(data)
+            names=                [{'authorized': True,
+                'sort_name': name,
+                'use_dates': False,
+                } for name in equivalentNames]
+            
+            relatedAgents = [{'_resolved':{'title': r['part_of']},
+                              'description': 'part of',# or part/related,
+                              } for r in (data['Part_of'])]
+#                 "Part_of": [
+#                     { < repeats
+#                         "part_of": [
+#                             {
+#                                 "@lang": "",
+#                                 "value": [
+#                                     "Gates, Mary Maxwell"
+#                 "Parts": [
+#                     { < repeats
+#                         "parts": [
+#                             {
+#                                 "value": [
+#                                     "Gates, Rory John"
+#                 "Related": [
+#                     { < repeats
+#                         "relationship": [
+#                             {
+#                                 "@lang": "",
+#                                 "value": [
+#                                     "Gates, Melinda"
+            dates_of_existence[0].begin: data['birth.date.start'],
+            dates_of_existence[0].end: data['death.date.start'],
+            notes=                       [{'type': 'note',
+                              'jsonmodel_type': 'note_singlepart',
+                              'content': n,
+                              } for n in data['documentation']]
+
+            person = {
+                      'title': data['title'],
+                      'names': names,
+        '        related_agents':relatedAgents,
+        'notes':notes,
+        is_linked_to_published_record
+                            true if /site/data/collections/*.json contains .linked_agents[].ref == agent.url
+                            # TODO we haven't used a url yet - it's like /agents/people/*.json (right?)
+            // TODO requires site.data.collections[][1].linked_agents[].ref == agent.url
+                          }
             self.saveFile(resourceId, collection, config.destinations['collections'])
 
     def extractDatabase(self, database):
