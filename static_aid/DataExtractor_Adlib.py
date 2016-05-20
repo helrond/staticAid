@@ -53,6 +53,9 @@ class DataExtractor_Adlib(DataExtractor):
     def extractPeople(self):
         for data in self.extractDatabase(config.adlib['peopledb'], searchTerm='name.type=person'):
             person = self._extractAgent(data)
+            person['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
+                                             'end':data.get('death.date.start', ''),
+                                             }]
             resourceId = data['priref'][0]
             self.saveFile(resourceId, person, config.destinations['people'])
 
@@ -135,13 +138,18 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('content.description', [])]
 
+        linkedAgents = [{"role": "subject", "title": name} for name in data.get('content.person.name', [])]
+        # TODO
+        # linkedAgents += [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
+
         archivalObject = {'title': data['title'][0],
                           'display_string': data['title'][0],
                           'level': data['description_level'],
                           'instances': instances,
-                          'linked_agents': [],  # TODO linkedAgents,
+                          'linked_agents': linkedAgents,
                           'subjects': subjects,
                           'notes': notes,
+                          'dates': [{'expression':data.get('input.date', '')}],
                           }
 
         self.saveFile(resourceId, archivalObject, config.destinations['objects'])
