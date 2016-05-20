@@ -17,10 +17,12 @@ class DataExtractor_Adlib(DataExtractor):
         logging.debug('Extracting fake sample data %s into folder: %s...' % (archiveFilename, config.DATA_DIR))
 
         self.makeDataDir(config.destinations['people'])
+        self.makeDataDir(config.destinations['organizations'])
         self.makeDataDir(config.destinations['collections'])
         self.makeDataDir(config.destinations['objects'])
 
         self.extractPeople()
+        self.extractOrganizations()
         self.extractCollections()
         self.extractFileLevelObjects()
         self.extractItemLevelObjects()
@@ -49,46 +51,53 @@ class DataExtractor_Adlib(DataExtractor):
             self.saveFile(resourceId, collection, config.destinations['collections'])
 
     def extractPeople(self):
-
-        def getEquivalentNames(person):
-            for equivalent in person['Equivalent']:
-                for equivalentName in equivalent.get('equivalent_name', []):
-                    for name in equivalentName['value']:
-                        yield name
-
-        def getRelatedAgents(person, firstKey, secondKey):
-            for outer in person.get(firstKey, []):
-                for inner in outer.get(secondKey, []):
-                    for name in inner.get('value', []):
-                        yield {'_resolved':{'title': name},
-                               'dates':[{'expression':''}],  # TODO
-                               'description': 'part of',
-                               }
-
         for data in self.extractDatabase(config.adlib['peopledb'], searchTerm='name.type=person'):
+            person = self._extractAgent(data)
             resourceId = data['priref'][0]
-            names = [{'authorized': True,
-                      'sort_name': name,
-                      'use_dates': False,
-                      } for name in getEquivalentNames(data)]
-
-            relatedAgents = [agent for agent in getRelatedAgents(data, 'Part_of', 'part_of')]
-            relatedAgents += [agent for agent in getRelatedAgents(data, 'Parts', 'parts')]
-            relatedAgents += [agent for agent in getRelatedAgents(data, 'Related', 'relationship')]
-
-            notes = [{'type': 'note',
-                      'jsonmodel_type': 'note_singlepart',
-                      'content': n,
-                      }
-                     for n in data['documentation']]
-
-            person = {'title': data['name'][0]['value'][0],
-                      'names': names,
-                      'related_agents':relatedAgents,
-                      'notes':notes,
-                      }
-
             self.saveFile(resourceId, person, config.destinations['people'])
+
+    def extractOrganizations(self):
+        for data in self.extractDatabase(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
+            organization = self._extractAgent(data)
+            resourceId = data['priref'][0]
+            self.saveFile(resourceId, organization, config.destinations['organizations'])
+
+    def _extractAgent(self, data):
+        names = [{'authorized': True,
+                  'sort_name': name,
+                  'use_dates': False,
+                  } for name in self.getEquivalentNames(data)]
+
+        relatedAgents = [agent for agent in self.getRelatedAgents(data, 'Part_of', 'part_of')]
+        relatedAgents += [agent for agent in self.getRelatedAgents(data, 'Parts', 'parts')]
+        relatedAgents += [agent for agent in self.getRelatedAgents(data, 'Related', 'relationship')]
+
+        notes = [{'type': 'note',
+                  'jsonmodel_type': 'note_singlepart',
+                  'content': n,
+                  }
+                 for n in data['documentation']]
+
+        return {'title': data['name'][0]['value'][0],
+                'names': names,
+                'related_agents':relatedAgents,
+                'notes':notes,
+                }
+
+    def getEquivalentNames(self, person):
+        for equivalent in person['Equivalent']:
+            for equivalentName in equivalent.get('equivalent_name', []):
+                for name in equivalentName['value']:
+                    yield name
+
+    def getRelatedAgents(self, person, firstKey, secondKey):
+        for outer in person.get(firstKey, []):
+            for inner in outer.get(secondKey, []):
+                for name in inner.get('value', []):
+                    yield {'_resolved':{'title': name},
+                           'dates':[{'expression':''}],  # TODO
+                           'description': 'part of',
+                           }
 
     def extractFileLevelObjects(self):
         for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=file'):
@@ -174,6 +183,9 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
         if database == config.adlib['peopledb'] and searchTerm == 'name.type=person':
             result = jsonFileContents('person')
+
+        elif database == config.adlib['peopledb'] and searchTerm == 'name.type=inst':
+            result = jsonFileContents('organization')
 
         elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=collection':
             result = jsonFileContents('collection')
