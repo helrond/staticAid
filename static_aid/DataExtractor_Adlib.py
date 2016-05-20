@@ -6,6 +6,7 @@ from static_aid import config
 from static_aid.DataExtractor import DataExtractor
 from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
+from json import load
 
 class DataExtractor_Adlib(DataExtractor):
 
@@ -162,27 +163,13 @@ class DataGetter_AdlibRestEndpoint(DataGetter):
 
 class DataGetter_Fake(DataGetter):
     def getData(self, database, searchTerm,):
+
         if database == config.adlib['peopleDb'] and searchTerm == 'name.type=person':
-            return {'adlibJSON': {'recordList':{'record':[{
-                                                           }]
-                                                }
-                                  }
-                    }
-        if database == config.adlib['collectionDb'] and searchTerm == 'description_level=collection':
-            return {'adlibJSON': {'recordList':{'record':[{
-                                                           }]
-                                                }
-                                  }
-                    }
-        if database == config.adlib['collectionDb'] and searchTerm == 'description_level=file':
-            return {'adlibJSON': {'recordList':{'record':[{
-                                                           }]
-                                                }
-                                  }
-                    }
-        if database == config.adlib['collectionDb'] and searchTerm == 'description_level=item':
-            return {'adlibJSON': {'recordList':{'record':[{
-                                                           }]
-                                                }
-                                  }
-                    }
+            data = load(open(__file__.replace('.py', '.sample.person.json')))
+        elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=collection':
+            data = load(open(__file__.replace('.py', '.sample.collection.json')))
+        elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=file':
+            data = load(open(__file__.replace('.py', '.sample.file.json')))
+        elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=item':
+            data = load(open(__file__.replace('.py', '.sample.file.json')))
+        return {'adlibJSON': {'recordList': {'record': data}}}
