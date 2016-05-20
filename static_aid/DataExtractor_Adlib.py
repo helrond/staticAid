@@ -27,7 +27,7 @@ class DataExtractor_Adlib(DataExtractor):
             pass
 
     def extractCollections(self):
-        for data in self.extractDatabase(config.adlib['collectionDb']):
+        for data in self.extractDatabase(config.adlib['collectionDb'], searchTerm='description_level=collection'):
             linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
             linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
             subjects = [{"title": subject} for subject in data['content.subject']]
@@ -139,11 +139,11 @@ class DataExtractor_Adlib(DataExtractor):
         return self.dataGetter.getData(database, searchTerm)
 
 class DataGetter:
-    def getData(self):
+    def getData(self, *args, **kwargs):
         raise Exception("Please implement this in subclasses. It should return a JSON object.")
 
 class DataGetter_AdlibRestEndpoint(DataGetter):
-    def GetData(self, database, searchTerm,):
+    def getData(self, database, searchTerm,):
         startFrom = 1
         numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
         while numResults >= ROW_FETCH_LIMIT:
@@ -161,5 +161,28 @@ class DataGetter_AdlibRestEndpoint(DataGetter):
                 yield record
 
 class DataGetter_Fake(DataGetter):
-    def GetData(self, database, searchTerm,):
-        pass
+    def getData(self, database, searchTerm,):
+        if database == config.adlib['peopleDb'] and searchTerm == 'name.type=person':
+            return {'adlibJSON': {'recordList':{'record':[{
+                                                           }]
+                                                }
+                                  }
+                    }
+        if database == config.adlib['collectionDb'] and searchTerm == 'description_level=collection':
+            return {'adlibJSON': {'recordList':{'record':[{
+                                                           }]
+                                                }
+                                  }
+                    }
+        if database == config.adlib['collectionDb'] and searchTerm == 'description_level=file':
+            return {'adlibJSON': {'recordList':{'record':[{
+                                                           }]
+                                                }
+                                  }
+                    }
+        if database == config.adlib['collectionDb'] and searchTerm == 'description_level=item':
+            return {'adlibJSON': {'recordList':{'record':[{
+                                                           }]
+                                                }
+                                  }
+                    }
