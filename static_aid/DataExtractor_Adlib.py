@@ -170,7 +170,7 @@ class DataGetter_Fake(DataGetter):
         elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=file':
             data = load(open(__file__.replace('.py', '.sample.file.json')))
         elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=item':
-            data = load(open(__file__.replace('.py', '.sample.file.json')))
+            data = load(open(__file__.replace('.py', '.sample.item.json')))
         else:
             raise Exception("Please create a mock JSON config for extractDatabase('%s', '%s')!" % (database, searchTerm))
         return {'adlibJSON': {'recordList': {'record': data}}}
