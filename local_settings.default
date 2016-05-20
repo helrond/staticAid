@@ -17,6 +17,7 @@ password:
 collectionDb: archive
 
 peopleDb: people
+institutionsDb: people
 thesaurusDb: thesau
 
 # {baseURL}?database={database}&search=modification%20greater%20%272015-12-10%27&xmltype=unstructured&limit=100&startfrom=1&output=json
