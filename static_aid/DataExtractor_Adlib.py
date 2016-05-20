@@ -10,13 +10,6 @@ from json import load
 
 class DataExtractor_Adlib(DataExtractor):
 
-    def __init__(self, update=False, mockDataAccessor=False):
-        super(DataExtractor_Adlib, self).__init__(update)
-        if mockDataAccessor:
-            self.dataGetter = DataGetter_Fake()
-        else:
-            self.dataGetter = DataGetter_AdlibRestEndpoint()
-
     def _run(self):
         archiveFilename = config.sampleData['filename']
         logging.debug('Extracting fake sample data %s into folder: %s...' % (archiveFilename, config.DATA_DIR))
@@ -137,14 +130,9 @@ class DataExtractor_Adlib(DataExtractor):
         elif not searchTerm or searchTerm.strip() == '':
             searchTerm = 'all'
 
-        return self.dataGetter.getData(database, searchTerm)
+        return self._extractDatabase(database, searchTerm)
 
-class DataGetter:
-    def getData(self, *args, **kwargs):
-        raise Exception("Please implement this in subclasses. It should return a JSON object.")
-
-class DataGetter_AdlibRestEndpoint(DataGetter):
-    def getData(self, database, searchTerm,):
+    def _extractDatabase(self, database, searchTerm,):
         startFrom = 1
         numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
         while numResults >= ROW_FETCH_LIMIT:
@@ -161,8 +149,9 @@ class DataGetter_AdlibRestEndpoint(DataGetter):
             for record in records:
                 yield record
 
-class DataGetter_Fake(DataGetter):
-    def getData(self, database, searchTerm):
+class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
+
+    def _extractDatabase(self, database, searchTerm):
         if database == config.adlib['peopleDb'] and searchTerm == 'name.type=person':
             data = load(open(__file__.replace('.py', '.sample.person.json')))
         elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=collection':
