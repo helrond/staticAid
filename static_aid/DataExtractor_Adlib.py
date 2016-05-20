@@ -8,6 +8,14 @@ from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
 
 class DataExtractor_Adlib(DataExtractor):
+
+    def __init__(self, update=False, mockDataAccessor=False):
+        super(DataExtractor_Adlib, self).__init__(update)
+        if mockDataAccessor:
+            self.dataGetter = DataGetter_Fake()
+        else:
+            self.dataGetter = DataGetter_AdlibRestEndpoint()
+
     def _run(self):
         archiveFilename = config.sampleData['filename']
         logging.debug('Extracting fake sample data %s into folder: %s...' % (archiveFilename, config.DATA_DIR))
@@ -79,40 +87,47 @@ class DataExtractor_Adlib(DataExtractor):
             self.saveFile(resourceId, person, config.destinations['people'])
 
     def extractFileLevelObjects(self):
-        for data in self.extractDatabase(config.adlib['peopleDb'], searchTerm='description_level=file'):
-            resourceId = data['priref']
+        for data in self.extractDatabase(config.adlib['collectionDb'], searchTerm='description_level=file'):
+            self.extractArchivalObject(data)
 
-            # TODO this is fake code
-            # linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
-            # linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
+    def extractItemLevelObjects(self):
+        for data in self.extractDatabase(config.adlib['collectionDb'], searchTerm='description_level=item'):
+            self.extractArchivalObject(data)
 
-            # TODO make the whole thing optional? (if current_location.* isn't set)
-            instances = [{
-                          'container.type_1': data['current_location.name'],
-                          'container.indicator_1':data['current_location'],
-                          'container.type_2':data['current_location.package.location'],  # optional
-                          'container.indicator_2':data['current_location.package.context'],  # optional
-                          }
-                         ]
+    def extractArchivalObject(self, data):
+        resourceId = data['priref']
 
-            # TODO is this a list or a string in file-level data?
-            subjects = [{"title": subject} for subject in data['content.subject']]
+        # TODO this is fake code
+        # linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
+        # linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
 
-            notes = [{'type': 'note',
-                      'jsonmodel_type': 'note_singlepart',
-                      'content': n,
+        # TODO make the whole thing optional? (if current_location.* isn't set)
+        instances = [{
+                      'container.type_1': data['current_location.name'],
+                      'container.indicator_1':data['current_location'],
+                      'container.type_2':data['current_location.package.location'],  # optional
+                      'container.indicator_2':data['current_location.package.context'],  # optional
                       }
-                     for n in data['content.description']]
+                     ]
 
-            archivalObject = {'title': data['title'],
-                              'level': data['description_level'],
-                              'instances': instances,
-                              'linked_agents': [],  # TODO linkedAgents,
-                              'subjects': subjects,
-                              'notes': notes,
-                              }
+        # TODO is this a list or a string in file-level data?
+        subjects = [{"title": subject} for subject in data['content.subject']]
 
-            self.saveFile(resourceId, archivalObject, config.destinations['objects'])
+        notes = [{'type': 'note',
+                  'jsonmodel_type': 'note_singlepart',
+                  'content': n,
+                  }
+                 for n in data['content.description']]
+
+        archivalObject = {'title': data['title'],
+                          'level': data['description_level'],
+                          'instances': instances,
+                          'linked_agents': [],  # TODO linkedAgents,
+                          'subjects': subjects,
+                          'notes': notes,
+                          }
+
+        self.saveFile(resourceId, archivalObject, config.destinations['objects'])
 
     def extractDatabase(self, database, searchTerm=''):
         if self.update:
@@ -121,6 +136,14 @@ class DataExtractor_Adlib(DataExtractor):
         elif not searchTerm or searchTerm.strip() == '':
             searchTerm = 'all'
 
+        return self.dataGetter.getData(database, searchTerm)
+
+class DataGetter:
+    def getData(self):
+        raise Exception("Please implement this in subclasses. It should return a JSON object.")
+
+class DataGetter_AdlibRestEndpoint(DataGetter):
+    def GetData(self, database, searchTerm,):
         startFrom = 1
         numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
         while numResults >= ROW_FETCH_LIMIT:
@@ -136,3 +159,7 @@ class DataExtractor_Adlib(DataExtractor):
 
             for record in records:
                 yield record
+
+class DataGetter_Fake(DataGetter):
+    def GetData(self, database, searchTerm,):
+        pass
