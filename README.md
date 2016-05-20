@@ -40,7 +40,7 @@ and should work on OSX, RedHat, etc. with minimal modification.
 ### Building the HTML Site
 
 You have three options for building the HTML site using Jekyll. In all cases, Jekyll will place the generated site
-in `data/site/`.
+in `build/site/`.
 
 #### Build without updating data
 

@@ -1,1 +1,4 @@
-[{"title":"an item"}]
+[{"title":"an item",        "priref": [
+            "101"
+        ],"description_level":"item"
+}]

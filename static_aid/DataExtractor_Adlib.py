@@ -6,7 +6,9 @@ from static_aid import config
 from static_aid.DataExtractor import DataExtractor
 from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
-from json import load
+from json import load, dump
+from logging import DEBUG
+from os.path import join, splitext, realpath
 
 class DataExtractor_Adlib(DataExtractor):
 
@@ -14,14 +16,24 @@ class DataExtractor_Adlib(DataExtractor):
         archiveFilename = config.sampleData['filename']
         logging.debug('Extracting fake sample data %s into folder: %s...' % (archiveFilename, config.DATA_DIR))
 
+        self.makeDataDir(config.destinations['people'])
+        self.makeDataDir(config.destinations['collections'])
+        self.makeDataDir(config.destinations['objects'])
+
+        self.extractPeople()
+        self.extractCollections()
+        self.extractFileLevelObjects()
+        self.extractItemLevelObjects()
+
+    def makeDataDir(self, destination):
         try:
-            makedirs(config.DATA_DIR)
+            makedirs(self.getDestinationDirname(destination))
         except OSError:
             # exists
             pass
 
     def extractCollections(self):
-        for data in self.extractDatabase(config.adlib['collectionDb'], searchTerm='description_level=collection'):
+        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=collection'):
             linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
             linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
             subjects = [{"title": subject} for subject in data['content.subject']]
@@ -33,38 +45,36 @@ class DataExtractor_Adlib(DataExtractor):
                           "linked_agents": linkedAgents,
                           "subjects": subjects,
                           }
-            resourceId = data['priref']
+            resourceId = data['priref'][0]
             self.saveFile(resourceId, collection, config.destinations['collections'])
 
     def extractPeople(self):
 
-        def getEquivalentNames(self, person):
+        def getEquivalentNames(person):
             for equivalent in person['Equivalent']:
-                if 'equivalent_name' not in equivalent:
-                    continue
-                    for equivalentName in equivalent['equivalent_name']:
-                        for name in equivalentName['value']:
-                            yield name
+                for equivalentName in equivalent.get('equivalent_name', []):
+                    for name in equivalentName['value']:
+                        yield name
 
-        for data in self.extractDatabase(config.adlib['peopleDb'], searchTerm='name.type=person'):
-            resourceId = data['priref']
+        def getRelatedAgents(person, firstKey, secondKey):
+            for outer in person.get(firstKey, []):
+                for inner in outer.get(secondKey, []):
+                    for name in inner.get('value', []):
+                        yield {'_resolved':{'title': name},
+                               'dates':[{'expression':''}],  # TODO
+                               'description': 'part of',
+                               }
+
+        for data in self.extractDatabase(config.adlib['peopledb'], searchTerm='name.type=person'):
+            resourceId = data['priref'][0]
             names = [{'authorized': True,
-                'sort_name': name,
-                'use_dates': False,
-                } for name in getEquivalentNames(data)]
+                      'sort_name': name,
+                      'use_dates': False,
+                      } for name in getEquivalentNames(data)]
 
-            relatedAgents = [{'_resolved':{'title': r['part_of']},
-                              'description': 'part of',
-                              }
-                             for r in data.get('Part_of', [])]
-            relatedAgents += [{'_resolved':{'title': r['part_of']},
-                              'description': 'part',
-                              }
-                              for r in data.get('Parts', [])]
-            relatedAgents += [{'_resolved':{'title': r['part_of']},
-                              'description': 'related',
-                              }
-                              for r in data.get('Related', [])]
+            relatedAgents = [agent for agent in getRelatedAgents(data, 'Part_of', 'part_of')]
+            relatedAgents += [agent for agent in getRelatedAgents(data, 'Parts', 'parts')]
+            relatedAgents += [agent for agent in getRelatedAgents(data, 'Related', 'relationship')]
 
             notes = [{'type': 'note',
                       'jsonmodel_type': 'note_singlepart',
@@ -72,7 +82,7 @@ class DataExtractor_Adlib(DataExtractor):
                       }
                      for n in data['documentation']]
 
-            person = {'title': data['title'],
+            person = {'title': data['name'][0]['value'][0],
                       'names': names,
                       'related_agents':relatedAgents,
                       'notes':notes,
@@ -81,37 +91,40 @@ class DataExtractor_Adlib(DataExtractor):
             self.saveFile(resourceId, person, config.destinations['people'])
 
     def extractFileLevelObjects(self):
-        for data in self.extractDatabase(config.adlib['collectionDb'], searchTerm='description_level=file'):
+        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=file'):
             self.extractArchivalObject(data)
 
     def extractItemLevelObjects(self):
-        for data in self.extractDatabase(config.adlib['collectionDb'], searchTerm='description_level=item'):
+        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=item'):
             self.extractArchivalObject(data)
 
     def extractArchivalObject(self, data):
-        resourceId = data['priref']
+        resourceId = data['priref'][0]
 
         # TODO this is fake code
         # linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
         # linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
 
         # TODO make the whole thing optional? (if current_location.* isn't set)
-        instances = [{
-                      'container.type_1': data['current_location.name'],
-                      'container.indicator_1':data['current_location'],
-                      'container.type_2':data['current_location.package.location'],  # optional
-                      'container.indicator_2':data['current_location.package.context'],  # optional
-                      }
-                     ]
+        try:
+            instances = [{
+                          'container.type_1': data['current_location.name'],
+                          'container.indicator_1':data['current_location'],
+                          'container.type_2':data['current_location.package.location'],  # optional
+                          'container.indicator_2':data['current_location.package.context'],  # optional
+                          }
+                         ]
+        except:
+            instances = []
 
         # TODO is this a list or a string in file-level data?
-        subjects = [{"title": subject} for subject in data['content.subject']]
+        subjects = [{"title": subject} for subject in data.get('content.subject', [])]
 
         notes = [{'type': 'note',
                   'jsonmodel_type': 'note_singlepart',
                   'content': n,
                   }
-                 for n in data['content.description']]
+                 for n in data.get('content.description', [])]
 
         archivalObject = {'title': data['title'],
                           'level': data['description_level'],
@@ -152,14 +165,39 @@ class DataExtractor_Adlib(DataExtractor):
 class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
     def _extractDatabase(self, database, searchTerm):
-        if database == config.adlib['peopleDb'] and searchTerm == 'name.type=person':
-            data = load(open(__file__.replace('.py', '.sample.person.json')))
-        elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=collection':
-            data = load(open(__file__.replace('.py', '.sample.collection.json')))
-        elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=file':
-            data = load(open(__file__.replace('.py', '.sample.file.json')))
-        elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=item':
-            data = load(open(__file__.replace('.py', '.sample.item.json')))
+
+        def jsonFileContents(sampleDataType):
+            filename = '%s.sample.%s.json' % (splitext(realpath(__file__))[0] , sampleDataType)
+            data = load(open(filename))
+            return data
+
+        if database == config.adlib['peopledb'] and searchTerm == 'name.type=person':
+            result = jsonFileContents('person')
+
+        elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=collection':
+            result = jsonFileContents('collection')
+
+        elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=file':
+            result = jsonFileContents('file')
+
+        elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=item':
+            result = jsonFileContents('item')
+
         else:
             raise Exception("Please create a mock JSON config for extractDatabase('%s', '%s')!" % (database, searchTerm))
-        return {'adlibJSON': {'recordList': {'record': data}}}
+        # we actually return the contents of adlibJSON > recordList > record
+        # return {'adlibJSON': {'recordList': {'record': data}}}
+        return result
+
+    def saveFile(self, identifier, data, destination):
+        '''a reader-friendly version of the save-JSON method in DataExtractor (indent + sort keys)'''
+        filename = join(self.getDestinationDirname(destination), '%s.json' % str(identifier))
+        with open(filename, 'wb+') as fp:
+            dump(data, fp, indent=4, sort_keys=True)
+            fp.close
+            logging.info('%s exported to %s', identifier, filename)
+
+if __name__ == '__main__':
+    logging.basicConfig(level=DEBUG)
+    e = DataExtractor_Adlib_Fake()
+    e.run()
