@@ -162,8 +162,7 @@ class DataGetter_AdlibRestEndpoint(DataGetter):
                 yield record
 
 class DataGetter_Fake(DataGetter):
-    def getData(self, database, searchTerm,):
-
+    def getData(self, database, searchTerm):
         if database == config.adlib['peopleDb'] and searchTerm == 'name.type=person':
             data = load(open(__file__.replace('.py', '.sample.person.json')))
         elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=collection':
@@ -172,4 +171,6 @@ class DataGetter_Fake(DataGetter):
             data = load(open(__file__.replace('.py', '.sample.file.json')))
         elif database == config.adlib['collectionDb'] and searchTerm == 'description_level=item':
             data = load(open(__file__.replace('.py', '.sample.file.json')))
+        else:
+            raise Exception("Please create a mock JSON config for extractDatabase('%s', '%s')!" % (database, searchTerm))
         return {'adlibJSON': {'recordList': {'record': data}}}
