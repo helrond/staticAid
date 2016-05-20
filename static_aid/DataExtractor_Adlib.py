@@ -39,7 +39,7 @@ class DataExtractor_Adlib(DataExtractor):
             subjects = [{"title": subject} for subject in data['content.subject']]
             collection = {
                           "id_0": data['object_number'],
-                          "title": data['title'],
+                          "title": data['title'][0],
                           "dates": [{"expression": data['production.date.start'][0]}],
                           "extents": [],
                           "linked_agents": linkedAgents,
@@ -126,7 +126,8 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('content.description', [])]
 
-        archivalObject = {'title': data['title'],
+        archivalObject = {'title': data['title'][0],
+                          'display_string': data['title'][0],
                           'level': data['description_level'],
                           'instances': instances,
                           'linked_agents': [],  # TODO linkedAgents,
