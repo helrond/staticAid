@@ -7,7 +7,7 @@ from static_aid.DataExtractor import DataExtractor
 from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
 from json import load, dump
-from logging import DEBUG, ERROR
+from logging import DEBUG, INFO, ERROR
 from os.path import join, splitext, realpath
 
 class DataExtractor_Adlib(DataExtractor):
@@ -150,9 +150,9 @@ class DataExtractor_Adlib(DataExtractor):
         except:
             instances = []
 
-        if 'Content_subject' in data:
+        try:
             subjects = [{"title": subject} for subject in data['Content_subject'][0]['content.subject'][0]['value']]
-        else:
+        except:
             subjects = []
 
         notes = [{'type': 'note',
@@ -170,7 +170,7 @@ class DataExtractor_Adlib(DataExtractor):
         if 'Title' in data:
             title = data['Title'][0]['title'][0]
         elif 'Object_name' in data:
-            title = data['Object_name'][0]['object_name'][0]
+            title = data['Object_name'][0]['object_name'][0]['value'][0]
         else:
             logging.error('No Title or Object_name found for %s with ID %s' % (level, resourceId))
             title = ''
@@ -200,6 +200,10 @@ class DataExtractor_Adlib(DataExtractor):
         startFrom = 1
         numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
         while numResults >= ROW_FETCH_LIMIT:
+            logging.info("Fetching %s:%s records %d-%d..." % (database,
+                                                              searchTerm,
+                                                              startFrom,
+                                                              startFrom + ROW_FETCH_LIMIT))
             url = "%s?database=%s&search=%s&xmltype=grouped&limit=%d&startfrom=%d&output=json" % (config.adlib['baseurl'],
                                                                                                   database,
                                                                                                   searchTerm.strip(),
@@ -255,7 +259,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
             logging.info('%s exported to %s', identifier, filename)
 
 if __name__ == '__main__':
-    logging.basicConfig(level=ERROR)
+    logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib_Fake()
     e = DataExtractor_Adlib()
     e.run()
