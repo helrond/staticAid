@@ -259,8 +259,11 @@
 		"system_of_arrangement": [
 			"The collection has been organized into sub-collections by family member. Each sub-collection is separated into series for personal and professional activities. Within series, original order and file names have for the most part been retained."
 		],
-		"title": [
-			"Henry Smith family collection"
-		]
+        "Title":[
+            {
+    		  "title": [
+    			"Henry Smith family collection"
+    		]
+		}]
 	}
 ]

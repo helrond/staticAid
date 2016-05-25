@@ -100,7 +100,7 @@ class DataExtractor(object):
         with open(filename, 'wb+') as fp:
             json.dump(data, fp)
             fp.close
-            logging.info('%s exported to %s', identifier, filename)
+            logging.debug('ID %s exported to %s', identifier, filename)
 
 
 

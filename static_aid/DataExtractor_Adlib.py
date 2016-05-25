@@ -23,7 +23,12 @@ class DataExtractor_Adlib(DataExtractor):
 
         self.extractPeople()
         self.extractOrganizations()
+
         self.extractCollections()
+        self.extractSubCollections()
+        self.extractSeries()
+        self.extractSubSeries()
+
         self.extractFileLevelObjects()
         self.extractItemLevelObjects()
 
@@ -35,22 +40,32 @@ class DataExtractor_Adlib(DataExtractor):
             pass
 
     def extractCollections(self):
-        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=collection'):
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=collection'):
             self._extractCollectionOrSeries(data, config.destinations['collections'])
 
-    # TODO is this right? or is series/subseries more like a 'file'?
+    def extractSubCollections(self):
+        # TODO is it ok to store all levels as 'collection'?
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-collection"'):
+            self._extractCollectionOrSeries(data, config.destinations['collections'])
+
     def extractSeries(self):
-        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=collection'):
-            # TODO is there a precedent for series-level data in makePages.py?
-            self._extractCollectionOrSeries(data, config.destinations['series'])
+        # TODO is it ok to store all levels as 'collection'?
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=series'):
+            self._extractCollectionOrSeries(data, config.destinations['collections'])
+
+    def extractSubSeries(self):
+        # TODO is it ok to store all levels as 'collection'?
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-series"'):
+            self._extractCollectionOrSeries(data, config.destinations['collections'])
 
     def _extractCollectionOrSeries(self, data, destination):
-        linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
-        linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
-        subjects = [{"title": subject} for subject in data['content.subject']]
+        linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data.get('creator', [])]
+        linkedAgents += [{"role": "subject", "title": name} for name in data.get('content.person.name', [])]
+        subjects = [{"title": subject} for subject in data.get('content.subject', [])]
+
         result = {
                   "id_0": data['object_number'],
-                  "title": data['title'][0],
+                  "title": data['Title'][0]['title'][0],
                   "dates": [{"expression": data['production.date.start'][0]}],
                   "extents": [],
                   "linked_agents": linkedAgents,
@@ -60,7 +75,7 @@ class DataExtractor_Adlib(DataExtractor):
         self.saveFile(resourceId, result, destination)
 
     def extractPeople(self):
-        for data in self.extractDatabase(config.adlib['peopledb'], searchTerm='name.type=person'):
+        for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
             person = self._extractAgent(data)
             person['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
                                              'end':data.get('death.date.start', ''),
@@ -69,12 +84,14 @@ class DataExtractor_Adlib(DataExtractor):
             self.saveFile(resourceId, person, config.destinations['people'])
 
     def extractOrganizations(self):
-        for data in self.extractDatabase(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
+        for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
             organization = self._extractAgent(data)
             resourceId = data['priref'][0]
             self.saveFile(resourceId, organization, config.destinations['organizations'])
 
     def _extractAgent(self, data):
+
+        title = data.get('name', [{'value':['']}])[0]['value'][0]
         names = [{'authorized': True,
                   'sort_name': name,
                   'use_dates': False,
@@ -88,16 +105,16 @@ class DataExtractor_Adlib(DataExtractor):
                   'jsonmodel_type': 'note_singlepart',
                   'content': n,
                   }
-                 for n in data['documentation']]
+                 for n in data.get('documentation', [])]
 
-        return {'title': data['name'][0]['value'][0],
+        return {'title': title,
                 'names': names,
                 'related_agents':relatedAgents,
                 'notes':notes,
                 }
 
     def getEquivalentNames(self, person):
-        for equivalent in person['Equivalent']:
+        for equivalent in person.get('Equivalent', []):
             for equivalentName in equivalent.get('equivalent_name', []):
                 for name in equivalentName['value']:
                     yield name
@@ -112,11 +129,11 @@ class DataExtractor_Adlib(DataExtractor):
                            }
 
     def extractFileLevelObjects(self):
-        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=file'):
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=file'):
             self.extractArchivalObject(data)
 
     def extractItemLevelObjects(self):
-        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=item'):
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=item'):
             self.extractArchivalObject(data)
 
     def extractArchivalObject(self, data):
@@ -163,16 +180,16 @@ class DataExtractor_Adlib(DataExtractor):
 
         self.saveFile(resourceId, archivalObject, config.destinations['objects'])
 
-    def extractDatabase(self, database, searchTerm=''):
+    def getApiData(self, database, searchTerm=''):
         if self.update:
             lastExport = datetime.fromtimestamp(self.lastExportTime())
             searchTerm += " modification greater '%4d-%02d-%02d'" % (lastExport.year, lastExport.month, lastExport.day)
         elif not searchTerm or searchTerm.strip() == '':
             searchTerm = 'all'
 
-        return self._extractDatabase(database, searchTerm)
+        return self._getApiData(database, searchTerm)
 
-    def _extractDatabase(self, database, searchTerm,):
+    def _getApiData(self, database, searchTerm,):
         startFrom = 1
         numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
         while numResults >= ROW_FETCH_LIMIT:
@@ -191,7 +208,7 @@ class DataExtractor_Adlib(DataExtractor):
 
 class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
-    def _extractDatabase(self, database, searchTerm):
+    def _getApiData(self, database, searchTerm):
 
         def jsonFileContents(sampleDataType):
             filename = '%s.sample.%s.json' % (splitext(realpath(__file__))[0] , sampleDataType)
@@ -217,7 +234,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
             result = jsonFileContents('item')
 
         else:
-            raise Exception("Please create a mock JSON config for extractDatabase('%s', '%s')!" % (database, searchTerm))
+            raise Exception("Please create a mock JSON config for getApiData('%s', '%s')!" % (database, searchTerm))
         # we actually return the contents of adlibJSON > recordList > record
         # return {'adlibJSON': {'recordList': {'record': data}}}
         return result
@@ -233,4 +250,5 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 if __name__ == '__main__':
     logging.basicConfig(level=DEBUG)
     e = DataExtractor_Adlib_Fake()
+    e = DataExtractor_Adlib()
     e.run()
