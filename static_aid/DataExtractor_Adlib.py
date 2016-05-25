@@ -36,19 +36,28 @@ class DataExtractor_Adlib(DataExtractor):
 
     def extractCollections(self):
         for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=collection'):
-            linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
-            linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
-            subjects = [{"title": subject} for subject in data['content.subject']]
-            collection = {
-                          "id_0": data['object_number'],
-                          "title": data['title'][0],
-                          "dates": [{"expression": data['production.date.start'][0]}],
-                          "extents": [],
-                          "linked_agents": linkedAgents,
-                          "subjects": subjects,
-                          }
-            resourceId = data['priref'][0]
-            self.saveFile(resourceId, collection, config.destinations['collections'])
+            self._extractCollectionOrSeries(data, config.destinations['collections'])
+
+    # TODO is this right? or is series/subseries more like a 'file'?
+    def extractSeries(self):
+        for data in self.extractDatabase(config.adlib['collectiondb'], searchTerm='description_level=collection'):
+            # TODO is there a precedent for series-level data in makePages.py?
+            self._extractCollectionOrSeries(data, config.destinations['series'])
+
+    def _extractCollectionOrSeries(self, data, destination):
+        linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
+        linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
+        subjects = [{"title": subject} for subject in data['content.subject']]
+        result = {
+                  "id_0": data['object_number'],
+                  "title": data['title'][0],
+                  "dates": [{"expression": data['production.date.start'][0]}],
+                  "extents": [],
+                  "linked_agents": linkedAgents,
+                  "subjects": subjects,
+                  }
+        resourceId = data['priref'][0]
+        self.saveFile(resourceId, result, destination)
 
     def extractPeople(self):
         for data in self.extractDatabase(config.adlib['peopledb'], searchTerm='name.type=person'):
@@ -197,6 +206,9 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
         elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=collection':
             result = jsonFileContents('collection')
+
+        elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=series':
+            result = jsonFileContents('series')
 
         elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=file':
             result = jsonFileContents('file')
