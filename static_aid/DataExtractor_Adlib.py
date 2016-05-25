@@ -7,7 +7,7 @@ from static_aid.DataExtractor import DataExtractor
 from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
 from json import load, dump
-from logging import DEBUG
+from logging import DEBUG, ERROR
 from os.path import join, splitext, realpath
 
 class DataExtractor_Adlib(DataExtractor):
@@ -66,7 +66,7 @@ class DataExtractor_Adlib(DataExtractor):
         result = {
                   "id_0": data['object_number'],
                   "title": data['Title'][0]['title'][0],
-                  "dates": [{"expression": data['production.date.start'][0]}],
+                  "dates": [{"expression": data.get('production.date.start', [''])[0]}],
                   "extents": [],
                   "linked_agents": linkedAgents,
                   "subjects": subjects,
@@ -139,24 +139,21 @@ class DataExtractor_Adlib(DataExtractor):
     def extractArchivalObject(self, data):
         resourceId = data['priref'][0]
 
-        # TODO this is fake code
-        # linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
-        # linkedAgents += [{"role": "subject", "title": name} for name in data['content.person.name']]
-
-        # TODO make the whole thing optional? (if current_location.* isn't set)
         try:
             instances = [{
                           'container.type_1': data['current_location.name'],
                           'container.indicator_1':data['current_location'],
-                          'container.type_2':data['current_location.package.location'],  # optional
-                          'container.indicator_2':data['current_location.package.context'],  # optional
+                          'container.type_2':data.get('current_location.package.location', ''),  # optional
+                          'container.indicator_2':data.get('current_location.package.context', ''),  # optional
                           }
                          ]
         except:
             instances = []
 
-        # TODO is this a list or a string in file-level data?
-        subjects = [{"title": subject} for subject in data.get('content.subject', [])]
+        if 'Content_subject' in data:
+            subjects = [{"title": subject} for subject in data['Content_subject'][0]['content.subject'][0]['value']]
+        else:
+            subjects = []
 
         notes = [{'type': 'note',
                   'jsonmodel_type': 'note_singlepart',
@@ -168,9 +165,19 @@ class DataExtractor_Adlib(DataExtractor):
         # TODO
         # linkedAgents += [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
 
-        archivalObject = {'title': data['title'][0],
-                          'display_string': data['title'][0],
-                          'level': data['description_level'],
+        level = data['description_level'][0]['value'][0]
+
+        if 'Title' in data:
+            title = data['Title'][0]['title'][0]
+        elif 'Object_name' in data:
+            title = data['Object_name'][0]['object_name'][0]
+        else:
+            logging.error('No Title or Object_name found for %s with ID %s' % (level, resourceId))
+            title = ''
+
+        archivalObject = {'title': title,
+                          'display_string': title,
+                          'level': level,
                           'instances': instances,
                           'linked_agents': linkedAgents,
                           'subjects': subjects,
@@ -248,7 +255,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
             logging.info('%s exported to %s', identifier, filename)
 
 if __name__ == '__main__':
-    logging.basicConfig(level=DEBUG)
+    logging.basicConfig(level=ERROR)
     e = DataExtractor_Adlib_Fake()
     e = DataExtractor_Adlib()
     e.run()
