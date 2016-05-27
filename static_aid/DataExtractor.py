@@ -11,6 +11,7 @@ from time import time
 from zipfile import ZipFile
 
 from static_aid import config
+from json import dump
 
 class DataExtractor(object):
 
@@ -98,11 +99,9 @@ class DataExtractor(object):
     def saveFile(self, identifier, data, destination):
         filename = join(self.getDestinationDirname(destination), '%s.json' % str(identifier))
         with open(filename, 'wb+') as fp:
-            json.dump(data, fp)
+            dump(data, fp, indent=4, sort_keys=True)
             fp.close
             logging.debug('ID %s exported to %s', identifier, filename)
-
-
 
 
 class DataExtractor_SampleData(DataExtractor):

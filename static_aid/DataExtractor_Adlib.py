@@ -6,9 +6,9 @@ from static_aid import config
 from static_aid.DataExtractor import DataExtractor
 from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
-from json import load, dump
+from json import load
 from logging import DEBUG, INFO, ERROR
-from os.path import join, splitext, realpath
+from os.path import splitext, realpath
 
 class DataExtractor_Adlib(DataExtractor):
 
@@ -250,13 +250,6 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
         # return {'adlibJSON': {'recordList': {'record': data}}}
         return result
 
-    def saveFile(self, identifier, data, destination):
-        '''a reader-friendly version of the save-JSON method in DataExtractor (indent + sort keys)'''
-        filename = join(self.getDestinationDirname(destination), '%s.json' % str(identifier))
-        with open(filename, 'wb+') as fp:
-            dump(data, fp, indent=4, sort_keys=True)
-            fp.close
-            logging.info('%s exported to %s', identifier, filename)
 
 if __name__ == '__main__':
     logging.basicConfig(level=INFO)
