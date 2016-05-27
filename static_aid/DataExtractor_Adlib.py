@@ -12,7 +12,10 @@ from os.path import splitext, realpath, join
 
 class DataExtractor_Adlib(DataExtractor):
 
+    # set to True to cache the raw JSON result from Adlib (before it is converted to StaticAid-friendly JSON)
     DUMP_RAW_DATA = False
+    # set to True to read raw JSON results from the cache instead of from Adlib endpoints (offline/debug mode)
+    READ_FROM_RAW_DUMP = False
 
     def _run(self):
         archiveFilename = config.sampleData['filename']
@@ -201,32 +204,41 @@ class DataExtractor_Adlib(DataExtractor):
 
         return self._getApiData(database, searchTerm)
 
-    def _getApiData(self, database, searchTerm,):
+    def _getApiData(self, database, searchTerm):
         startFrom = 1
         numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
         while numResults >= ROW_FETCH_LIMIT:
-            logging.info("Fetching %s:%s records %d-%d..." % (database,
-                                                              searchTerm,
-                                                              startFrom,
-                                                              startFrom + ROW_FETCH_LIMIT))
-            url = "%s?database=%s&search=%s&xmltype=grouped&limit=%d&startfrom=%d&output=json" % (config.adlib['baseurl'],
-                                                                                                  database,
-                                                                                                  searchTerm.strip(),
-                                                                                                  ROW_FETCH_LIMIT,
-                                                                                                  startFrom)
-            response = requests.get(url)
-            rawJson = response.json()
-
-            if self.DUMP_RAW_DATA:
-                targetDir = join(config.RAW_DATA_DIR, database)
-                filename = join(targetDir,
-                                '%s.%s-%s.json' % ((searchTerm,
-                                                    startFrom,
-                                                    startFrom + ROW_FETCH_LIMIT,
-                                                    )
-                                                   )
+            targetDir = join(config.RAW_DATA_DIR, database)
+            filename = join(targetDir,
+                            '%s.%s-%s.json' % ((searchTerm,
+                                                startFrom,
+                                                startFrom + ROW_FETCH_LIMIT,
+                                                )
+                                               )
                                 )
 
+            rawJson = None
+            if self.READ_FROM_RAW_DUMP:
+                try:
+                    with open(filename, 'r') as fp:
+                        rawJson = load(fp)
+                except:
+                    pass
+
+            if rawJson is None:
+                logging.info("Fetching %s:%s records %d-%d..." % (database,
+                                                                  searchTerm,
+                                                                  startFrom,
+                                                                  startFrom + ROW_FETCH_LIMIT))
+                url = "%s?database=%s&search=%s&xmltype=grouped&limit=%d&startfrom=%d&output=json" % (config.adlib['baseurl'],
+                                                                                                      database,
+                                                                                                      searchTerm.strip(),
+                                                                                                      ROW_FETCH_LIMIT,
+                                                                                                      startFrom)
+                response = requests.get(url)
+                rawJson = response.json()
+
+            if self.DUMP_RAW_DATA:
                 logging.info('Dumping raw data to %s...' % filename)
                 self.makeDir(targetDir)
                 with open(filename, 'w') as fp:
@@ -278,5 +290,5 @@ if __name__ == '__main__':
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib_Fake()
     e = DataExtractor_Adlib()
-    e.DUMP_RAW_DATA = True
+    e.READ_FROM_RAW_DUMP = True
     e.run()
