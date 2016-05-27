@@ -12,6 +12,7 @@ DATA_DIR = join(ROOT, 'build', 'data')
 PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
 PID_FILE_PATH = join(ROOT, 'build', 'tmp', 'daemon.pid')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
+RAW_DATA_DIR = join(ROOT, 'build', 'raw')
 SITE_SRC_DIR = join(ROOT, 'site')
 ROW_FETCH_LIMIT = 100
 

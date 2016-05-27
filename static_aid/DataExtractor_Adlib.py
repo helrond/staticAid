@@ -6,11 +6,13 @@ from static_aid import config
 from static_aid.DataExtractor import DataExtractor
 from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
-from json import load
+from json import load, dump
 from logging import DEBUG, INFO, ERROR
-from os.path import splitext, realpath
+from os.path import splitext, realpath, join
 
 class DataExtractor_Adlib(DataExtractor):
+
+    DUMP_RAW_DATA = False
 
     def _run(self):
         archiveFilename = config.sampleData['filename']
@@ -33,8 +35,11 @@ class DataExtractor_Adlib(DataExtractor):
         self.extractItemLevelObjects()
 
     def makeDataDir(self, destination):
+        self.makeDir(self.getDestinationDirname(destination))
+
+    def makeDir(self, dirPath):
         try:
-            makedirs(self.getDestinationDirname(destination))
+            makedirs(dirPath)
         except OSError:
             # exists
             pass
@@ -210,12 +215,30 @@ class DataExtractor_Adlib(DataExtractor):
                                                                                                   ROW_FETCH_LIMIT,
                                                                                                   startFrom)
             response = requests.get(url)
-            records = response.json()['adlibJSON']['recordList']['record']
+            rawJson = response.json()
+
+            if self.DUMP_RAW_DATA:
+                targetDir = join(config.RAW_DATA_DIR, database)
+                filename = join(targetDir,
+                                '%s.%s-%s.json' % ((searchTerm,
+                                                    startFrom,
+                                                    startFrom + ROW_FETCH_LIMIT,
+                                                    )
+                                                   )
+                                )
+
+                logging.info('Dumping raw data to %s...' % filename)
+                self.makeDir(targetDir)
+                with open(filename, 'w') as fp:
+                    dump(rawJson, fp, indent=4, sort_keys=True)
+
+            records = rawJson['adlibJSON']['recordList']['record']
             numResults = len(records)
             startFrom += ROW_FETCH_LIMIT
 
             for record in records:
                 yield record
+
 
 class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
@@ -255,4 +278,5 @@ if __name__ == '__main__':
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib_Fake()
     e = DataExtractor_Adlib()
+    e.DUMP_RAW_DATA = True
     e.run()
