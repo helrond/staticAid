@@ -70,7 +70,7 @@ class DataExtractor_Adlib(DataExtractor):
 
         result = {
                   "id_0": data['object_number'],
-                  "title": data['Title'][0]['title'][0],
+                  "title": data['title'][0],
                   "dates": [{"expression": data.get('production.date.start', [''])[0]}],
                   "extents": [],
                   "linked_agents": linkedAgents,
@@ -96,7 +96,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def _extractAgent(self, data):
 
-        title = data.get('name', [{'value':['']}])[0]['value'][0]
+        title = data.get('name', [''])[0]
         names = [{'authorized': True,
                   'sort_name': name,
                   'use_dates': False,
@@ -172,12 +172,14 @@ class DataExtractor_Adlib(DataExtractor):
 
         level = data['description_level'][0]['value'][0]
 
-        if 'Title' in data:
-            title = data['Title'][0]['title'][0]
-        elif 'Object_name' in data:
-            title = data['Object_name'][0]['object_name'][0]['value'][0]
+        if 'title' in data and 'object_name' in data:
+            title = '%s (%s)' % (data['title'][0], data['object_name'][0])
+        elif 'title' in data:
+            title = data['title'][0]
+        elif 'object_name' in data:
+            title = data['object_name'][0]
         else:
-            logging.error('No Title or Object_name found for %s with ID %s' % (level, resourceId))
+            logging.error('No title or object_name found for %s with ID %s' % (level, resourceId))
             title = ''
 
         archivalObject = {'title': title,
@@ -187,7 +189,7 @@ class DataExtractor_Adlib(DataExtractor):
                           'linked_agents': linkedAgents,
                           'subjects': subjects,
                           'notes': notes,
-                          'dates': [{'expression':data.get('input.date', '')}],
+                          'dates': [{'expression':data.get('production.date.start', '')}],
                           }
 
         self.saveFile(resourceId, archivalObject, config.destinations['objects'])
@@ -209,11 +211,11 @@ class DataExtractor_Adlib(DataExtractor):
                                                               searchTerm,
                                                               startFrom,
                                                               startFrom + ROW_FETCH_LIMIT))
-            url = "%s?database=%s&search=%s&xmltype=grouped&limit=%d&startfrom=%d&output=json" % (config.adlib['baseurl'],
-                                                                                                  database,
-                                                                                                  searchTerm.strip(),
-                                                                                                  ROW_FETCH_LIMIT,
-                                                                                                  startFrom)
+            url = "%s?database=%s&search=%s&xmltype=structured&limit=%d&startfrom=%d&output=json" % (config.adlib['baseurl'],
+                                                                                                     database,
+                                                                                                     searchTerm.strip(),
+                                                                                                     ROW_FETCH_LIMIT,
+                                                                                                     startFrom)
             response = requests.get(url)
             rawJson = response.json()
 
