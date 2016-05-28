@@ -35,6 +35,11 @@ def get_note(note):
         content = note["content"]
     return content
 
+noteExtractor = {'abstract': get_note,
+                 'scopecontent': get_note,
+                 'bioghist': get_note,
+                 'general': get_note,
+                 }
 
 def make_page_data_dir(category):
     pageDataDir = join(config.PAGE_DATA_DIR, category)
@@ -61,23 +66,16 @@ def make_pages(category):
                     title = data["display_string"].strip().replace('"', "'")
                 else:
                     title = data["title"].strip().replace('"', "'")
-                raw_description = ''
-                description = ''
 
+                raw_description = []
                 notes = data.get('notes', [])
                 for note in notes:
-                    if note.has_key("type"):
-                        if note["type"] == 'abstract':
-                            raw_description = get_note(note)
-                        elif note["type"] == 'scopecontent':
-                            raw_description = get_note(note)
-                        elif note["type"] == 'bioghist':
-                            raw_description = get_note(note)
-                        else:
-                            pass
-                    else:
-                        pass
-                description = (raw_description.strip().replace('"', "'")[:200] + '...') if len(raw_description) > 200 else description
+                    noteType = note.get('type')
+                    if noteType in noteExtractor:
+                        note = noteExtractor[noteType](note).strip().replace('"', "'")
+                        if len(note) > 200:
+                            note = note[:197] + '...'
+                        raw_description.append('<p>%s</p>' % note)
 
                 targetFilename = join(pageDataDir, '%s.html' % identifier)
                 with open(targetFilename, 'w+') as new_file:
@@ -86,7 +84,7 @@ def make_pages(category):
                     new_file.write("id: %s\n" % identifier)
                     new_file.write("type: %s\n" % category)
                     new_file.write("permalink: %s/%s/\n" % (category, identifier))
-                    new_file.write("description: \"%s\"\n" % description.encode('utf-8'))
+                    new_file.write("description: \"%s\"\n" % ''.join(raw_description).encode('utf-8'))
                     new_file.write("---")
                     new_file.close
 
