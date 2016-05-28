@@ -104,11 +104,11 @@ class DataExtractor_Adlib(DataExtractor):
         names = [{'authorized': True,
                   'sort_name': name,
                   'use_dates': False,
-                  } for name in self.getEquivalentNames(data)]
+                  } for name in data.get('equivalent_name', [])]
 
-        relatedAgents = [agent for agent in self.getRelatedAgents(data, 'Part_of', 'part_of')]
-        relatedAgents += [agent for agent in self.getRelatedAgents(data, 'Parts', 'parts')]
-        relatedAgents += [agent for agent in self.getRelatedAgents(data, 'Related', 'relationship')]
+        relatedAgents = self.getRelatedAgents(data, 'part_of')
+        relatedAgents += self.getRelatedAgents(data, 'parts')
+        relatedAgents += self.getRelatedAgents(data, 'relationship')
 
         notes = [{'type': 'note',
                   'jsonmodel_type': 'note_singlepart',
@@ -122,20 +122,13 @@ class DataExtractor_Adlib(DataExtractor):
                 'notes':notes,
                 }
 
-    def getEquivalentNames(self, person):
-        for equivalent in person.get('Equivalent', []):
-            for equivalentName in equivalent.get('equivalent_name', []):
-                for name in equivalentName['value']:
-                    yield name
-
-    def getRelatedAgents(self, person, firstKey, secondKey):
-        for outer in person.get(firstKey, []):
-            for inner in outer.get(secondKey, []):
-                for name in inner.get('value', []):
-                    yield {'_resolved':{'title': name},
-                           'dates':[{'expression':''}],  # TODO
-                           'description': 'part of',
-                           }
+    def getRelatedAgents(self, person, k):
+        return [{'_resolved':{'title': name},
+                 'dates':[{'expression':''}],  # TODO
+                 'description': 'part of',
+                 }
+                for name in person.get(k, [])
+                ]
 
     def extractFileLevelObjects(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=file'):
@@ -151,9 +144,9 @@ class DataExtractor_Adlib(DataExtractor):
         try:
             instances = [{
                           'container.type_1': data['current_location.name'],
-                          'container.indicator_1':data['current_location'],
-                          'container.type_2':data.get('current_location.package.location', ''),  # optional
-                          'container.indicator_2':data.get('current_location.package.context', ''),  # optional
+                          'container.indicator_1':data.get('current_location', ''),
+                          'container.type_2':data.get('current_location.package.location', ''),
+                          'container.indicator_2':data.get('current_location.package.context', ''),
                           }
                          ]
         except:
