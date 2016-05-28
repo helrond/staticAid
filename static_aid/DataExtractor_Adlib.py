@@ -76,7 +76,7 @@ class DataExtractor_Adlib(DataExtractor):
                   "title": data['title'][0],
                   "dates": [{"expression": data.get('production.date.start', [''])[0]}],
                   "extents": [],
-                  "notes": {'type':'general', 'content':None},  # TODO
+                  "notes": [{'type':'general', 'content':'TODO: COLLECTION-OR-SERIES NOTE CONTENT'}],  # TODO
                   "linked_agents": linkedAgents,
                   "subjects": subjects,
                   }
