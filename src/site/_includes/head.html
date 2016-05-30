@@ -1,4 +1,5 @@
-{% capture title %}{% if page.title %}{{ site.title | escape }}: {{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}{% endcapture %}
+{% capture site_title %}{% if site.title %}{{ site.title | escape }}{% else %}staticAid{% endif %}{% endcapture %}
+{% capture title %}{% if page.title %}{{ site_title }}: {{ page.title | escape }}{% else %}{{ site_title }}{% endif %}{% endcapture %}
 {% capture description %}{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
 {% capture canonical_url %}{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}{% endcapture %}
 <head>
