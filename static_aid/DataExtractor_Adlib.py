@@ -2,8 +2,8 @@ from datetime import datetime
 from json import load, dump
 import logging
 from logging import DEBUG, INFO, ERROR
-from os import makedirs, remove
-from os.path import splitext, realpath, join
+from os import listdir, makedirs, remove
+from os.path import splitext, realpath, join, exists
 import requests
 import shelve
 
@@ -297,16 +297,19 @@ class DataExtractor_Adlib(DataExtractor):
                 yield record
 
     def cacheFilename(self, category):
-        return join(config.TEMP_DIR, '%s.cache' % category)
+        return join(config.OBJECT_CACHE_DIR, category)
 
     def clearCache(self):
         for category in self.objectCaches:
             self.objectCaches[category].close()
-            remove(self.cacheFilename(category))
+        if exists(config.OBJECT_CACHE_DIR):
+            for category in listdir(config.OBJECT_CACHE_DIR):
+                remove(self.cacheFilename(category))
         self.objectCaches = {}
 
     def cacheJson(self, category, result):
         if category not in self.objectCaches:
+            makeDir(config.OBJECT_CACHE_DIR)
             self.objectCaches[category] = shelve.open(self.cacheFilename(category))
         collection = self.objectCaches[category]
         adlibKey = result['adlib_key']
