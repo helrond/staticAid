@@ -66,44 +66,50 @@ class DataExtractor_Adlib(DataExtractor):
             makeDir(self.getDestinationDirname(destination))
             for objectNumber in self.objectCaches[category]:
                 data = self.objectCaches[category][objectNumber]
-                resourceId = data['priref']
-                self.saveFile(resourceId, data, destination)
+                self.saveFile(data['priref'], data, destination)
 
     def extractCollections(self):
+        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=collection'):
-            self._extractCollectionOrSeries(data, config.destinations['collections'])
+            result = self.getCollectionOrSeries(data)
+            self.cacheJson(destination, result)
 
     def extractSubCollections(self):
-        # TODO is it ok to store all levels as 'collection'?
+        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-collection"'):
-            self._extractCollectionOrSeries(data, config.destinations['collections'])
+            result = self.getCollectionOrSeries(data)
+            self.cacheJson(destination, result)
 
     def extractSeries(self):
-        # TODO is it ok to store all levels as 'collection'?
+        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=series'):
-            self._extractCollectionOrSeries(data, config.destinations['collections'])
+            result = self.getCollectionOrSeries(data)
+            self.cacheJson(destination, result)
 
     def extractSubSeries(self):
-        # TODO is it ok to store all levels as 'collection'?
+        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-series"'):
-            self._extractCollectionOrSeries(data, config.destinations['collections'])
+            result = self.getCollectionOrSeries(data)
+            self.cacheJson(destination, result)
 
-    def _extractCollectionOrSeries(self, data, destination):
+    def getCollectionOrSeries(self, data):
+        priref = data['priref'][0]
+        objectNumber = data['object_number'][0]
         linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data.get('creator', [])]
         linkedAgents += [{"role": "subject", "title": name} for name in data.get('content.person.name', [])]
         subjects = [{"title": subject} for subject in data.get('content.subject', [])]
 
-        result = {
-                  "id_0": data['object_number'],
-                  "title": data['title'][0],
-                  "dates": [{"expression": data.get('production.date.start', [''])[0]}],
-                  "extents": [],
-                  "notes": [{'type':'general', 'content':'TODO: COLLECTION-OR-SERIES NOTE CONTENT'}],  # TODO
-                  "linked_agents": linkedAgents,
-                  "subjects": subjects,
+        result = {'priref': priref,
+                  'object_number': objectNumber,
+                  'id_0': data['object_number'],
+                  'title': data['title'][0],
+                  'dates': [{'expression': data.get('production.date.start', [''])[0]}],
+                  'extents': [],
+                  'notes': [{'type':'general', 'content':'TODO: COLLECTION-OR-SERIES NOTE CONTENT'}],  # TODO
+                  'linked_agents': linkedAgents,
+                  'subjects': subjects,
                   }
-        resourceId = data['priref'][0]
-        self.cacheJson(destination, resourceId, result)
+        return result
 
     def extractPeople(self):
         destination = config.destinations['people']
@@ -112,17 +118,17 @@ class DataExtractor_Adlib(DataExtractor):
             result['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
                                              'end':data.get('death.date.start', ''),
                                              }]
-            resourceId = data['priref'][0]
-            self.cacheJson(destination, resourceId, result)
+            self.cacheJson(destination, result)
 
     def extractOrganizations(self):
         destination = config.destinations['organizations']
         for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
-            resourceId = data['priref'][0]
             result = self.getAgentData(data)
-            self.cacheJson(destination, resourceId, result)
+            self.cacheJson(destination, result)
 
     def getAgentData(self, data):
+        priref = data['priref'][0]
+        objectNumber = data['object_number'][0]
         title = data.get('name', [''])[0]
         names = [{'authorized': True,
                   'sort_name': name,
@@ -139,7 +145,9 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('documentation', [])]
 
-        return {'title': title,
+        return {'priref': priref,
+                'object_number': objectNumber,
+                'title': title,
                 'names': names,
                 'related_agents':relatedAgents,
                 'notes':notes,
@@ -154,15 +162,20 @@ class DataExtractor_Adlib(DataExtractor):
                 ]
 
     def extractFileLevelObjects(self):
+        destination = config.destinations['objects']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=file'):
-            self.extractArchivalObject(data)
+            result = self.getArchivalObject(data)
+            self.cacheJson(destination, result)
 
     def extractItemLevelObjects(self):
+        destination = config.destinations['objects']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=item'):
-            self.extractArchivalObject(data)
+            result = self.getArchivalObject(data)
+            self.cacheJson(destination, result)
 
-    def extractArchivalObject(self, data):
-        resourceId = data['priref'][0]
+    def getArchivalObject(self, data):
+        priref = data['priref'][0]
+        objectNumber = data['object_number'][0]
 
         try:
             instances = [{
@@ -176,7 +189,7 @@ class DataExtractor_Adlib(DataExtractor):
             instances = []
 
         try:
-            subjects = [{"title": subject} for subject in data['Content_subject'][0]['content.subject'][0]['value']]
+            subjects = [{'title': subject} for subject in data['Content_subject'][0]['content.subject'][0]['value']]
         except:
             subjects = []
 
@@ -186,9 +199,9 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('content.description', [])]
 
-        linkedAgents = [{"role": "subject", "title": name} for name in data.get('content.person.name', [])]
+        linkedAgents = [{'role': 'subject', 'title': name} for name in data.get('content.person.name', [])]
         # TODO
-        # linkedAgents += [{"role": "creator", "type": "", "title": creator} for creator in data['creator']]
+        # linkedAgents += [{'role': 'creator', 'type': '', 'title': creator} for creator in data['creator']]
 
         level = data['description_level'][0]['value'][0]
 
@@ -199,20 +212,21 @@ class DataExtractor_Adlib(DataExtractor):
         elif 'object_name' in data:
             title = data['object_name'][0]
         else:
-            logging.error('No title or object_name found for %s with ID %s' % (level, resourceId))
+            logging.error('No title or object_name found for %s with ID %s' % (level, priref))
             title = ''
 
-        archivalObject = {'title': title,
-                          'display_string': title,
-                          'level': level,
-                          'instances': instances,
-                          'linked_agents': linkedAgents,
-                          'subjects': subjects,
-                          'notes': notes,
-                          'dates': [{'expression':data.get('production.date.start', '')}],
-                          }
-
-        self.saveFile(resourceId, archivalObject, config.destinations['objects'])
+        result = {'priref': priref,
+                  'object_number': objectNumber,
+                  'title': title,
+                  'display_string': title,
+                  'level': level,
+                  'instances': instances,
+                  'linked_agents': linkedAgents,
+                  'subjects': subjects,
+                  'notes': notes,
+                  'dates': [{'expression':data.get('production.date.start', '')}],
+                  }
+        return result
 
     def getApiData(self, database, searchTerm=''):
         if self.update:
@@ -245,11 +259,11 @@ class DataExtractor_Adlib(DataExtractor):
                     pass
 
             if rawJson is None:
-                logging.info("Fetching %s:%s records %d-%d..." % (database,
+                logging.info('Fetching %s:%s records %d-%d...' % (database,
                                                                   searchTerm,
                                                                   startFrom,
                                                                   startFrom + ROW_FETCH_LIMIT))
-                url = "%s?database=%s&search=%s&xmltype=structured&limit=%d&startfrom=%d&output=json" % (config.adlib['baseurl'],
+                url = '%s?database=%s&search=%s&xmltype=structured&limit=%d&startfrom=%d&output=json' % (config.adlib['baseurl'],
                                                                                                       database,
                                                                                                       searchTerm.strip(),
                                                                                                       ROW_FETCH_LIMIT,
