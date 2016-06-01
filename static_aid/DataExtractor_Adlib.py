@@ -73,9 +73,9 @@ class DataExtractor_Adlib(DataExtractor):
                 # TODO forall object link fields: object.refUrl[] > related_object.priref
 
                 data = cache[adlibKey]
+
+                # linked_agents[]: (objects OR collections) => (people OR organizations)
                 for linkedAgent in data.get('linked_agents', []):
-                    # linked_agents are present for category=object and category=collections,
-                    # and point to category=people and category=organizations
                     if 'ref' not in linkedAgent:
                         linkKey = adlibKeyFromUnicode(linkedAgent['title'])
                         if linkKey in self.objectCaches['people']:
@@ -91,6 +91,26 @@ class DataExtractor_Adlib(DataExtractor):
                         priref = self.objectCaches[linkCategory][linkKey]['priref']
                         linkDestination = config.destinations[linkCategory].strip('/ ')
                         linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
+
+                # resource_ref: (objects OR collections) => (objects OR collections)
+                # TODO this should be added to 'tree' data
+                partsReference = []
+                for linkKey in data.get('parts_reference', []): #TODO pre-transform this to resource_ref
+                    linkKey = adlibKeyFromUnicode(linkKey)
+                    if linkKey in self.objectCaches['objects']:
+                        linkCategory = 'objects'
+                    elif linkKey in self.objectCaches['collections']:
+                        linkCategory = 'collections'
+                    else:
+                        msg = '''
+                        While processing '%s/%s', parts_reference '%s' could not be found in 'objects' or 'collections' caches.
+                        '''.strip() % (category, adlibKey, linkKey)
+                        logging.error(msg)
+                        continue
+                    priref = self.objectCaches[linkCategory][linkKey]['priref']
+                    linkDestination = config.destinations[linkCategory].strip('/ ')
+                    partsReference.append({'ref':'/%s/%s' % (linkDestination, priref)})
+
 
                 # this is necessary because the 'shelve' library doesn't behave *exactly* like a dict
                 self.objectCaches[category][adlibKey] = data

@@ -8,14 +8,20 @@ from shutil import copyfile
 ROOT = realpath(join(dirname(__file__), '..'))
 
 CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
-DATA_DIR = join(ROOT, 'build', 'data')
-PAGE_DATA_DIR = join(ROOT, 'build', 'staging')
-TEMP_DIR = join(ROOT, 'build', 'tmp')
+SAMPLE_DATA_DIR = join(ROOT, 'data')
+SITE_SRC_DIR = join(ROOT, 'site')
+
+# build dirs
+BUILD_DIR = join(ROOT, 'build')
+DATA_DIR = join(BUILD_DIR, 'data')
+PAGE_DATA_DIR = join(BUILD_DIR, 'staging')
+RAW_DATA_DIR = join(BUILD_DIR, 'raw')
+
+# temp dir
+TEMP_DIR = join(BUILD_DIR, 'tmp')
 PID_FILE_PATH = join(TEMP_DIR, 'daemon.pid')
 OBJECT_CACHE_DIR = join(TEMP_DIR, 'object_cache')
-SAMPLE_DATA_DIR = join(ROOT, 'data')
-RAW_DATA_DIR = join(ROOT, 'build', 'raw')
-SITE_SRC_DIR = join(ROOT, 'site')
+
 ROW_FETCH_LIMIT = 100
 
 def _configSection(section):
