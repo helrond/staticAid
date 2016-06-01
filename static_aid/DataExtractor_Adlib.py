@@ -19,7 +19,7 @@ def makeDir(dirPath):
         pass
 
 def adlibKeyFromUnicode(u):
-    return u.encode('ascii', errors='backslashreplace')
+    return u.encode('ascii', errors='backslashreplace').lower()
 
 class DataExtractor_Adlib(DataExtractor):
 
@@ -75,21 +75,21 @@ class DataExtractor_Adlib(DataExtractor):
                     # linked_agents are present for category=object and category=collections,
                     # and point to category=people and category=organizations
                     if 'ref' not in linkedAgent:
-                        linkKey = linkedAgent['title']
+                        linkKey = adlibKeyFromUnicode(linkedAgent['title'])
                         if linkKey in self.objectCaches['people']:
                             linkCategory = 'people'
                         elif linkKey in self.objectCaches['organizations']:
                             linkCategory = 'organizations'
                         else:
                             msg = '''
-                            While processing %s '%s', linked_agent '%s' could not be found in 'people' or 'organizations' caches.
+                            While processing '%s/%s', linked_agent '%s' could not be found in 'people' or 'organizations' caches.
                             '''.strip() % (category, adlibKey, linkKey)
-                            raise Exception(msg)
+                            logging.error(msg)
+                            continue
                         priref = self.objectCaches[linkCategory][linkKey]['priref']
                         linkDestination = config.destinations[linkCategory].strip('/ ')
                         linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
-            # sync all cache to disk
-            cache.sync()
+                        cache.sync()
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
@@ -174,9 +174,18 @@ class DataExtractor_Adlib(DataExtractor):
     def getCollectionOrSeries(self, data):
         priref = data['priref'][0]
         adlibKey = adlibKeyFromUnicode(data['object_number'][0])
-        linkedAgents = [{'title':creator, 'role':'creator'} for creator in data.get('creator', [])]
-        linkedAgents += [{'title':name, 'role':'subject'} for name in data.get('content.person.name', [])]
-        subjects = [{'title': subject} for subject in data.get('content.subject', [])]
+        linkedAgents = [{'title':creator, 'role':'creator'}
+                        for creator in data.get('creator', [])
+                        if creator
+                        ]
+        linkedAgents += [{'title':name, 'role':'subject'}
+                         for name in data.get('content.person.name', [])
+                         if name
+                         ]
+        subjects = [{'title': subject}
+                    for subject in data.get('content.subject', [])
+                    if subject
+                    ]
 
         result = {'priref': priref,
                   'adlib_key': adlibKey,
@@ -217,10 +226,7 @@ class DataExtractor_Adlib(DataExtractor):
         except:
             instances = []
 
-        try:
-            subjects = [{'title': subject} for subject in data['Content_subject'][0]['content.subject'][0]['value']]
-        except:
-            subjects = []
+        subjects = [{'title': subject} for subject in data.get('content.subject', [])]
 
         notes = [{'type': 'note',
                   'jsonmodel_type': 'note_singlepart',
@@ -228,14 +234,14 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('content.description', [])]
 
-        linkedAgents = [{
-                         'title': name,
-                         'role': 'subject',
-                         }
+        linkedAgents = [{'title':name, 'role':'subject'}
                         for name in data.get('content.person.name', [])
+                        if name
                         ]
-        # TODO
-        # linkedAgents += [{'role': 'creator', 'type': '', 'title': creator} for creator in data['creator']]
+        linkedAgents += [{'title':creator, 'role':'creator'}
+                         for creator in data.get('creator', [])
+                         if creator
+                         ]
 
         level = data['description_level'][0]['value'][0]
 

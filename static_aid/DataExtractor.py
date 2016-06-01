@@ -57,7 +57,11 @@ class DataExtractor(object):
         unlink(config.PID_FILE_PATH)
 
     def removeDataDir(self):
-        rmtree(config.DATA_DIR)
+        try:
+            rmtree(config.DATA_DIR)
+        except OSError:
+            # n'existe pas
+            pass
 
     def getDestinationDirname(self, destinationName):
         return join(config.DATA_DIR, destinationName)
