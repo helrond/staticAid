@@ -157,7 +157,7 @@ class DataExtractor_Adlib(DataExtractor):
 
         result = {'priref': priref,
                   'adlib_key': adlibKey,
-                  'id_0': data['object_number'][0],
+                  'id_0': adlibKey,
                   'title': data['title'][0],
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
                   'extents': [],
