@@ -1,6 +1,7 @@
 import logging
 from os import makedirs
 import requests
+import shelve
 
 from static_aid import config
 from static_aid.DataExtractor import DataExtractor
@@ -23,11 +24,15 @@ class DataExtractor_Adlib(DataExtractor):
     def __init__(self, *args, **kwargs):
         super(DataExtractor_Adlib, self).__init__(*args, **kwargs)
         self.objectCaches = {}  # contains 'shelve' instances keyed by collection name
+        self.objectCacheInsertionCount = 0
 
     # set to True to cache the raw JSON result from Adlib (before it is converted to StaticAid-friendly JSON)
     DUMP_RAW_DATA = False
     # set to True to read raw JSON results from the cache instead of from Adlib endpoints (offline/debug mode)
     READ_FROM_RAW_DUMP = False
+
+    # number of records to save to JSON cache before syncing to disk
+    CACHE_SYNC_INTERVAL = 100
 
 
     ### Top-level stuff ###
@@ -36,7 +41,6 @@ class DataExtractor_Adlib(DataExtractor):
         self.cacheAllCollections()
         self.linkRecordsByPriref()
         self.saveAllRecords()
-
 
     def cacheAllCollections(self):
         logging.debug('Extracting data from Adlib into object cache...')
@@ -52,10 +56,12 @@ class DataExtractor_Adlib(DataExtractor):
         self.extractFileLevelObjects()
         self.extractItemLevelObjects()
 
-
     def linkRecordsByPriref(self):
-        # TODO
-        pass
+        # TODO forall objects: object.refUrl[] > related_object.priref
+
+        # sync all cache to disk
+        for destination in self.objectCaches:
+            self.objectCaches[destination].sync()
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
@@ -291,7 +297,20 @@ class DataExtractor_Adlib(DataExtractor):
                 yield record
 
     def cacheJson(self, destination, result):
-        collection = self.objectCaches.get(destination, {})
+        if destination not in self.objectCaches:
+            filename = join(config.TEMP_DIR, '%s.cache' % destination)
+            self.objectCaches[destination] = shelve.open(filename, writeback=True)
+        collection = self.objectCaches[destination]
+        adlibKey = result['adlib_key']
+        if adlibKey in collection:
+            raise Exception("Refusing to insert duplicate object '%s' into JSON cache '%s'." % (adlibKey, destination))
+        collection[adlibKey] = result
+
+        # flush at regular intervals
+        self.objectCacheInsertionCount += 1
+        if self.objectCacheInsertionCount > self.CACHE_SYNC_INTERVAL:
+            collection.sync()
+            self.objectCacheInsertionCount = 0
 
 
 class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
