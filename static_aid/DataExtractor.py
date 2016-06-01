@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 
-import json
 import logging
 from os.path import join, exists, isfile, dirname
 from os import getpid, makedirs, remove, unlink
 import pickle
 from psutil import pid_exists
 from sys import exit
+from shutil import rmtree
 from time import time
 from zipfile import ZipFile
+from json import dump
 
 from static_aid import config
-from json import dump
 
 class DataExtractor(object):
 
@@ -24,12 +24,12 @@ class DataExtractor(object):
         logging.info('*** Export started ***')
 
         exportStartTime = int(time())
+        self.removeDataDir()
         self._run()
         self.updateLastExportTime(exportStartTime)
 
         logging.info('*** Export completed ***')
         self.unregisterPid()
-
 
     def _run(self):
         raise Exception('override this method for each DataExtractor subclass')
@@ -56,6 +56,8 @@ class DataExtractor(object):
     def unregisterPid(self):
         unlink(config.PID_FILE_PATH)
 
+    def removeDataDir(self):
+        rmtree(config.DATA_DIR)
 
     def getDestinationDirname(self, destinationName):
         return join(config.DATA_DIR, destinationName)

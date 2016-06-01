@@ -18,6 +18,8 @@ def makeDir(dirPath):
         # exists
         pass
 
+def adlibKeyFromUnicode(u):
+    return u.encode('ascii', errors='backslashreplace')
 
 class DataExtractor_Adlib(DataExtractor):
 
@@ -64,21 +66,34 @@ class DataExtractor_Adlib(DataExtractor):
         self.extractItemLevelObjects()
 
     def linkRecordsByPriref(self):
-        # TODO forall objects: object.refUrl[] > related_object.priref
-
-
-        # sync all cache to disk
-        for destination in self.objectCaches:
-            self.objectCaches[destination].sync()
+        for category in self.objectCaches:
+            cache = self.objectCaches[category]
+            for adlibKey in cache:
+                # TODO forall object link fields: object.refUrl[] > related_object.priref
+                data = cache[adlibKey]
+                for linkedAgent in data.get('linked_agents', []):
+                    # linked_agents are present for category=object and category=collections,
+                    # and point to category=people and category=organizations
+                    if 'ref' not in linkedAgent:
+                        linkKey = linkedAgent['title']
+                        if linkKey in self.objectCaches['people']:
+                            linkCategory = 'people'
+                        elif linkKey in self.objectCaches['organizations']:
+                            linkCategory = 'organizations'
+                        else:
+                            msg = '''
+                            While processing %s '%s', linked_agent '%s' could not be found in 'people' or 'organizations' caches.
+                            '''.strip() % (category, adlibKey, linkKey)
+                            raise Exception(msg)
+                        priref = self.objectCaches[linkCategory][linkKey]['priref']
+                        linkDestination = config.destinations[linkCategory].strip('/ ')
+                        linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
+            # sync all cache to disk
+            cache.sync()
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
-        for category in [
-                         'people',
-                         'organizations',
-                         'collections',
-                         'objects',
-                         ]:
+        for category in self.objectCaches:
             destination = config.destinations[category]
             makeDir(self.getDestinationDirname(destination))
             for adlibKey in self.objectCaches[category]:
@@ -103,8 +118,8 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getAgentData(self, data):
         priref = data['priref'][0]
-        adlibKey = data['name'][0]  # 'name' field applies to both 'people' and 'organizations'
-        title = data.get('name', [''])[0]
+        title = data['name'][0]  # not using .get() because we want an exception if 'name' is not present for people/orgs
+        adlibKey = adlibKeyFromUnicode(title)
         names = [{'authorized': True,
                   'sort_name': name,
                   'use_dates': False,
@@ -158,13 +173,14 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getCollectionOrSeries(self, data):
         priref = data['priref'][0]
-        adlibKey = data['object_number'][0]
-        linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data.get('creator', [])]
-        linkedAgents += [{"role": "subject", "title": name} for name in data.get('content.person.name', [])]
-        subjects = [{"title": subject} for subject in data.get('content.subject', [])]
+        adlibKey = adlibKeyFromUnicode(data['object_number'][0])
+        linkedAgents = [{'title':creator, 'role':'creator'} for creator in data.get('creator', [])]
+        linkedAgents += [{'title':name, 'role':'subject'} for name in data.get('content.person.name', [])]
+        subjects = [{'title': subject} for subject in data.get('content.subject', [])]
 
         result = {'priref': priref,
                   'adlib_key': adlibKey,
+                  'adlib_category': 'collections',
                   'id_0': adlibKey,
                   'title': data['title'][0],
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
@@ -173,6 +189,7 @@ class DataExtractor_Adlib(DataExtractor):
                   'linked_agents': linkedAgents,
                   'subjects': subjects,
                   }
+
         return result
 
     def extractFileLevelObjects(self):
@@ -187,7 +204,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getArchivalObject(self, data):
         priref = data['priref'][0]
-        adlibKey = data['object_number'][0]
+        adlibKey = adlibKeyFromUnicode(data['object_number'][0])
 
         try:
             instances = [{
@@ -211,7 +228,12 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('content.description', [])]
 
-        linkedAgents = [{'role': 'subject', 'title': name} for name in data.get('content.person.name', [])]
+        linkedAgents = [{
+                         'title': name,
+                         'role': 'subject',
+                         }
+                        for name in data.get('content.person.name', [])
+                        ]
         # TODO
         # linkedAgents += [{'role': 'creator', 'type': '', 'title': creator} for creator in data['creator']]
 
@@ -243,7 +265,7 @@ class DataExtractor_Adlib(DataExtractor):
     def getApiData(self, database, searchTerm=''):
         if self.update:
             lastExport = datetime.fromtimestamp(self.lastExportTime())
-            searchTerm += " modification greater '%4d-%02d-%02d'" % (lastExport.year, lastExport.month, lastExport.day)
+            searchTerm += ' modification greater "%4d-%02d-%02d"' % (lastExport.year, lastExport.month, lastExport.day)
         elif not searchTerm or searchTerm.strip() == '':
             searchTerm = 'all'
 
@@ -314,7 +336,9 @@ class DataExtractor_Adlib(DataExtractor):
         collection = self.objectCaches[category]
         adlibKey = result['adlib_key']
         if adlibKey in collection:
-            raise Exception("Refusing to insert duplicate object '%s' into JSON cache '%s'." % (adlibKey, category))
+            msg = '''Refusing to insert duplicate object '%s/%s' into JSON cache.''' % (category, adlibKey)
+            # raise Exception(msg)
+            logging.error(msg)
         collection[adlibKey] = result
 
         # flush at regular intervals
@@ -352,7 +376,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
             result = jsonFileContents('item')
 
         else:
-            raise Exception("Please create a mock JSON config for getApiData('%s', '%s')!" % (database, searchTerm))
+            raise Exception('''Please create a mock JSON config for getApiData('%s', '%s')!''' % (database, searchTerm))
         # we actually return the contents of adlibJSON > recordList > record
         # return {'adlibJSON': {'recordList': {'record': data}}}
         return result

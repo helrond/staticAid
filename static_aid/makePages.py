@@ -32,7 +32,7 @@ def get_note(note):
     if note.get("jsonmodel_type") == 'note_multipart':
         content = note["subnotes"][0]["content"]
     else:
-        content = note["content"]
+        content = note["content"][0]
     return content
 
 noteExtractor = {'abstract': get_note,
