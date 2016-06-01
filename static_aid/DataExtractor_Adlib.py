@@ -29,6 +29,9 @@ class DataExtractor_Adlib(DataExtractor):
     # set to True to read raw JSON results from the cache instead of from Adlib endpoints (offline/debug mode)
     READ_FROM_RAW_DUMP = False
 
+
+    ### Top-level stuff ###
+
     def _run(self):
         self.cacheAllCollections()
         self.linkRecordsByPriref()
@@ -36,7 +39,7 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def cacheAllCollections(self):
-        logging.debug('Extracting data from Adlib into cache...' % (config.DATA_DIR))
+        logging.debug('Extracting data from Adlib into object cache...')
 
         self.extractPeople()
         self.extractOrganizations()
@@ -55,7 +58,7 @@ class DataExtractor_Adlib(DataExtractor):
         pass
 
     def saveAllRecords(self):
-        logging.debug('Saving data from cache into folder: %s...' % (config.DATA_DIR))
+        logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
         for category in [
                          'people',
                          'organizations',
@@ -64,9 +67,62 @@ class DataExtractor_Adlib(DataExtractor):
                          ]:
             destination = config.destinations[category]
             makeDir(self.getDestinationDirname(destination))
-            for objectNumber in self.objectCaches[category]:
-                data = self.objectCaches[category][objectNumber]
+            for adlibKey in self.objectCaches[category]:
+                data = self.objectCaches[category][adlibKey]
                 self.saveFile(data['priref'], data, destination)
+
+
+    ### Object-Extraction stuff ###
+
+    def extractPeople(self):
+        destination = config.destinations['people']
+        for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
+            result = self.getAgentData(data)
+            result['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
+                                             'end':data.get('death.date.start', ''),
+                                             }]
+            self.cacheJson(destination, result)
+
+    def extractOrganizations(self):
+        destination = config.destinations['organizations']
+        for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
+            result = self.getAgentData(data)
+            self.cacheJson(destination, result)
+
+    def getAgentData(self, data):
+        priref = data['priref'][0]
+        adlibKey = data['name'][0]  # 'name' field applies to both 'people' and 'organizations'
+        title = data.get('name', [''])[0]
+        names = [{'authorized': True,
+                  'sort_name': name,
+                  'use_dates': False,
+                  } for name in data.get('equivalent_name', [])]
+
+        relatedAgents = self.getRelatedAgents(data, 'part_of')
+        relatedAgents += self.getRelatedAgents(data, 'parts')
+        relatedAgents += self.getRelatedAgents(data, 'relationship')
+
+        notes = [{'type': 'note',
+                  'jsonmodel_type': 'note_singlepart',
+                  'content': n,
+                  }
+                 for n in data.get('documentation', [])]
+
+        return {'priref': priref,
+                'adlib_key': adlibKey,
+                'title': title,
+                'names': names,
+                'related_agents':relatedAgents,
+                'notes':notes,
+                }
+
+    def getRelatedAgents(self, person, k):
+        return [{'_resolved':{'title': name},
+                 'dates':[{'expression':''}],  # TODO
+                 'description': 'part of',
+                 }
+                for name in person.get(k, [])
+                ]
 
     def extractCollections(self):
         destination = config.destinations['collections']
@@ -94,14 +150,14 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getCollectionOrSeries(self, data):
         priref = data['priref'][0]
-        objectNumber = data['object_number'][0]
+        adlibKey = data['object_number'][0]
         linkedAgents = [{"role": "creator", "type": "", "title": creator} for creator in data.get('creator', [])]
         linkedAgents += [{"role": "subject", "title": name} for name in data.get('content.person.name', [])]
         subjects = [{"title": subject} for subject in data.get('content.subject', [])]
 
         result = {'priref': priref,
-                  'object_number': objectNumber,
-                  'id_0': data['object_number'],
+                  'adlib_key': adlibKey,
+                  'id_0': data['object_number'][0],
                   'title': data['title'][0],
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
                   'extents': [],
@@ -110,56 +166,6 @@ class DataExtractor_Adlib(DataExtractor):
                   'subjects': subjects,
                   }
         return result
-
-    def extractPeople(self):
-        destination = config.destinations['people']
-        for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
-            result = self.getAgentData(data)
-            result['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
-                                             'end':data.get('death.date.start', ''),
-                                             }]
-            self.cacheJson(destination, result)
-
-    def extractOrganizations(self):
-        destination = config.destinations['organizations']
-        for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
-            result = self.getAgentData(data)
-            self.cacheJson(destination, result)
-
-    def getAgentData(self, data):
-        priref = data['priref'][0]
-        objectNumber = data['object_number'][0]
-        title = data.get('name', [''])[0]
-        names = [{'authorized': True,
-                  'sort_name': name,
-                  'use_dates': False,
-                  } for name in data.get('equivalent_name', [])]
-
-        relatedAgents = self.getRelatedAgents(data, 'part_of')
-        relatedAgents += self.getRelatedAgents(data, 'parts')
-        relatedAgents += self.getRelatedAgents(data, 'relationship')
-
-        notes = [{'type': 'note',
-                  'jsonmodel_type': 'note_singlepart',
-                  'content': n,
-                  }
-                 for n in data.get('documentation', [])]
-
-        return {'priref': priref,
-                'object_number': objectNumber,
-                'title': title,
-                'names': names,
-                'related_agents':relatedAgents,
-                'notes':notes,
-                }
-
-    def getRelatedAgents(self, person, k):
-        return [{'_resolved':{'title': name},
-                 'dates':[{'expression':''}],  # TODO
-                 'description': 'part of',
-                 }
-                for name in person.get(k, [])
-                ]
 
     def extractFileLevelObjects(self):
         destination = config.destinations['objects']
@@ -175,7 +181,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getArchivalObject(self, data):
         priref = data['priref'][0]
-        objectNumber = data['object_number'][0]
+        adlibKey = data['object_number'][0]
 
         try:
             instances = [{
@@ -216,7 +222,7 @@ class DataExtractor_Adlib(DataExtractor):
             title = ''
 
         result = {'priref': priref,
-                  'object_number': objectNumber,
+                  'adlib_key': adlibKey,
                   'title': title,
                   'display_string': title,
                   'level': level,
@@ -283,6 +289,9 @@ class DataExtractor_Adlib(DataExtractor):
 
             for record in records:
                 yield record
+
+    def cacheJson(self, destination, result):
+        collection = self.objectCaches.get(destination, {})
 
 
 class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
