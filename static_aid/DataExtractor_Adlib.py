@@ -1,15 +1,15 @@
+from datetime import datetime
+from json import load, dump
 import logging
-from os import makedirs
+from logging import DEBUG, INFO, ERROR
+from os import makedirs, remove
+from os.path import splitext, realpath, join
 import requests
 import shelve
 
 from static_aid import config
 from static_aid.DataExtractor import DataExtractor
-from datetime import datetime
 from static_aid.config import ROW_FETCH_LIMIT
-from json import load, dump
-from logging import DEBUG, INFO, ERROR
-from os.path import splitext, realpath, join
 
 def makeDir(dirPath):
     try:
@@ -50,6 +50,8 @@ class DataExtractor_Adlib(DataExtractor):
     def cacheAllCollections(self):
         logging.debug('Extracting data from Adlib into object cache...')
 
+        self.clearCache()
+
         self.extractPeople()
         self.extractOrganizations()
 
@@ -87,19 +89,17 @@ class DataExtractor_Adlib(DataExtractor):
     ### Object-Extraction stuff ###
 
     def extractPeople(self):
-        destination = config.destinations['people']
         for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
             result = self.getAgentData(data)
             result['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
                                              'end':data.get('death.date.start', ''),
                                              }]
-            self.cacheJson(destination, result)
+            self.cacheJson('people', result)
 
     def extractOrganizations(self):
-        destination = config.destinations['organizations']
         for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
             result = self.getAgentData(data)
-            self.cacheJson(destination, result)
+            self.cacheJson('organizations', result)
 
     def getAgentData(self, data):
         priref = data['priref'][0]
@@ -137,28 +137,24 @@ class DataExtractor_Adlib(DataExtractor):
                 ]
 
     def extractCollections(self):
-        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=collection'):
             result = self.getCollectionOrSeries(data)
-            self.cacheJson(destination, result)
+            self.cacheJson('collections', result)
 
     def extractSubCollections(self):
-        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-collection"'):
             result = self.getCollectionOrSeries(data)
-            self.cacheJson(destination, result)
+            self.cacheJson('collections', result)
 
     def extractSeries(self):
-        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=series'):
             result = self.getCollectionOrSeries(data)
-            self.cacheJson(destination, result)
+            self.cacheJson('collections', result)
 
     def extractSubSeries(self):
-        destination = config.destinations['collections']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-series"'):
             result = self.getCollectionOrSeries(data)
-            self.cacheJson(destination, result)
+            self.cacheJson('collections', result)
 
     def getCollectionOrSeries(self, data):
         priref = data['priref'][0]
@@ -180,16 +176,14 @@ class DataExtractor_Adlib(DataExtractor):
         return result
 
     def extractFileLevelObjects(self):
-        destination = config.destinations['objects']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=file'):
             result = self.getArchivalObject(data)
-            self.cacheJson(destination, result)
+            self.cacheJson('objects', result)
 
     def extractItemLevelObjects(self):
-        destination = config.destinations['objects']
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=item'):
             result = self.getArchivalObject(data)
-            self.cacheJson(destination, result)
+            self.cacheJson('objects', result)
 
     def getArchivalObject(self, data):
         priref = data['priref'][0]
@@ -302,14 +296,22 @@ class DataExtractor_Adlib(DataExtractor):
             for record in records:
                 yield record
 
-    def cacheJson(self, destination, result):
-        if destination not in self.objectCaches:
-            filename = join(config.TEMP_DIR, '%s.cache' % destination)
-            self.objectCaches[destination] = shelve.open(filename)
-        collection = self.objectCaches[destination]
+    def cacheFilename(self, category):
+        return join(config.TEMP_DIR, '%s.cache' % category)
+
+    def clearCache(self):
+        for category in self.objectCaches:
+            self.objectCaches[category].close()
+            remove(self.cacheFilename(category))
+        self.objectCaches = {}
+
+    def cacheJson(self, category, result):
+        if category not in self.objectCaches:
+            self.objectCaches[category] = shelve.open(self.cacheFilename(category))
+        collection = self.objectCaches[category]
         adlibKey = result['adlib_key']
         if adlibKey in collection:
-            raise Exception("Refusing to insert duplicate object '%s' into JSON cache '%s'." % (adlibKey, destination))
+            raise Exception("Refusing to insert duplicate object '%s' into JSON cache '%s'." % (adlibKey, category))
         collection[adlibKey] = result
 
         # flush at regular intervals
@@ -355,7 +357,6 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
 if __name__ == '__main__':
     logging.basicConfig(level=INFO)
-    e = DataExtractor_Adlib_Fake()
     e = DataExtractor_Adlib()
     e.READ_FROM_RAW_DUMP = True
     e.run()
