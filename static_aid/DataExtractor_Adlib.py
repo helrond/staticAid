@@ -69,7 +69,9 @@ class DataExtractor_Adlib(DataExtractor):
         for category in self.objectCaches:
             cache = self.objectCaches[category]
             for adlibKey in cache:
+
                 # TODO forall object link fields: object.refUrl[] > related_object.priref
+
                 data = cache[adlibKey]
                 for linkedAgent in data.get('linked_agents', []):
                     # linked_agents are present for category=object and category=collections,
@@ -89,7 +91,12 @@ class DataExtractor_Adlib(DataExtractor):
                         priref = self.objectCaches[linkCategory][linkKey]['priref']
                         linkDestination = config.destinations[linkCategory].strip('/ ')
                         linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
-                        cache.sync()
+
+                # this is necessary because the 'shelve' library doesn't behave *exactly* like a dict
+                self.objectCaches[category][adlibKey] = data
+
+            # sync after each category so the in-memory map doesn't get too heavy
+            cache.sync()
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
