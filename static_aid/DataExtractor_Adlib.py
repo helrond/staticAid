@@ -38,8 +38,13 @@ class DataExtractor_Adlib(DataExtractor):
     ### Top-level stuff ###
 
     def _run(self):
+        # create a collection > key > object cache so that we can generate links between them
         self.cacheAllCollections()
+
+        # link each cached object by priref wherever there is a reference to agent name, part_of, parts, etc.
         self.linkRecordsByPriref()
+
+        # save the results to build/data/**.json
         self.saveAllRecords()
 
     def cacheAllCollections(self):
@@ -58,6 +63,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def linkRecordsByPriref(self):
         # TODO forall objects: object.refUrl[] > related_object.priref
+
 
         # sync all cache to disk
         for destination in self.objectCaches:
@@ -299,7 +305,7 @@ class DataExtractor_Adlib(DataExtractor):
     def cacheJson(self, destination, result):
         if destination not in self.objectCaches:
             filename = join(config.TEMP_DIR, '%s.cache' % destination)
-            self.objectCaches[destination] = shelve.open(filename, writeback=True)
+            self.objectCaches[destination] = shelve.open(filename)
         collection = self.objectCaches[destination]
         adlibKey = result['adlib_key']
         if adlibKey in collection:
