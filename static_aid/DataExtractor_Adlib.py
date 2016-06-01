@@ -10,7 +10,19 @@ from json import load, dump
 from logging import DEBUG, INFO, ERROR
 from os.path import splitext, realpath, join
 
+def makeDir(dirPath):
+    try:
+        makedirs(dirPath)
+    except OSError:
+        # exists
+        pass
+
+
 class DataExtractor_Adlib(DataExtractor):
+
+    def __init__(self, *args, **kwargs):
+        super(DataExtractor_Adlib, self).__init__(*args, **kwargs)
+        self.objectCaches = {}  # contains 'shelve' instances keyed by collection name
 
     # set to True to cache the raw JSON result from Adlib (before it is converted to StaticAid-friendly JSON)
     DUMP_RAW_DATA = False
@@ -18,13 +30,13 @@ class DataExtractor_Adlib(DataExtractor):
     READ_FROM_RAW_DUMP = False
 
     def _run(self):
-        archiveFilename = config.sampleData['filename']
-        logging.debug('Extracting fake sample data %s into folder: %s...' % (archiveFilename, config.DATA_DIR))
+        self.cacheAllCollections()
+        self.linkRecordsByPriref()
+        self.saveAllRecords()
 
-        self.makeDataDir(config.destinations['people'])
-        self.makeDataDir(config.destinations['organizations'])
-        self.makeDataDir(config.destinations['collections'])
-        self.makeDataDir(config.destinations['objects'])
+
+    def cacheAllCollections(self):
+        logging.debug('Extracting data from Adlib into cache...' % (config.DATA_DIR))
 
         self.extractPeople()
         self.extractOrganizations()
@@ -37,15 +49,25 @@ class DataExtractor_Adlib(DataExtractor):
         self.extractFileLevelObjects()
         self.extractItemLevelObjects()
 
-    def makeDataDir(self, destination):
-        self.makeDir(self.getDestinationDirname(destination))
 
-    def makeDir(self, dirPath):
-        try:
-            makedirs(dirPath)
-        except OSError:
-            # exists
-            pass
+    def linkRecordsByPriref(self):
+        # TODO
+        pass
+
+    def saveAllRecords(self):
+        logging.debug('Saving data from cache into folder: %s...' % (config.DATA_DIR))
+        for category in [
+                         'people',
+                         'organizations',
+                         'collections',
+                         'objects',
+                         ]:
+            destination = config.destinations[category]
+            makeDir(self.getDestinationDirname(destination))
+            for objectNumber in self.objectCaches[category]:
+                data = self.objectCaches[category][objectNumber]
+                resourceId = data['priref']
+                self.saveFile(resourceId, data, destination)
 
     def extractCollections(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=collection'):
@@ -81,25 +103,26 @@ class DataExtractor_Adlib(DataExtractor):
                   "subjects": subjects,
                   }
         resourceId = data['priref'][0]
-        self.saveFile(resourceId, result, destination)
+        self.cacheJson(destination, resourceId, result)
 
     def extractPeople(self):
+        destination = config.destinations['people']
         for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
-            person = self._extractAgent(data)
-            person['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
+            result = self.getAgentData(data)
+            result['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
                                              'end':data.get('death.date.start', ''),
                                              }]
             resourceId = data['priref'][0]
-            self.saveFile(resourceId, person, config.destinations['people'])
+            self.cacheJson(destination, resourceId, result)
 
     def extractOrganizations(self):
+        destination = config.destinations['organizations']
         for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
-            organization = self._extractAgent(data)
             resourceId = data['priref'][0]
-            self.saveFile(resourceId, organization, config.destinations['organizations'])
+            result = self.getAgentData(data)
+            self.cacheJson(destination, resourceId, result)
 
-    def _extractAgent(self, data):
-
+    def getAgentData(self, data):
         title = data.get('name', [''])[0]
         names = [{'authorized': True,
                   'sort_name': name,
@@ -236,7 +259,7 @@ class DataExtractor_Adlib(DataExtractor):
 
             if self.DUMP_RAW_DATA:
                 logging.info('Dumping raw data to %s...' % filename)
-                self.makeDir(targetDir)
+                makeDir(targetDir)
                 with open(filename, 'w') as fp:
                     dump(rawJson, fp, indent=4, sort_keys=True)
 
