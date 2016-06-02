@@ -21,6 +21,11 @@ def makeDir(dirPath):
 def adlibKeyFromUnicode(u):
     return u.encode('ascii', errors='backslashreplace').lower()
 
+def prirefString(u):
+    if type(u) == int:
+        return str(u)
+    return u.encode('ascii', errors='backslashreplace').lower()
+
 def uriRef(category, priref):
     linkDestination = config.destinations[category].strip('/ ')
     return '/%s/%s' % (linkDestination, priref)
@@ -141,33 +146,57 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def createParentChildStructure(self):
-        tree = self.objectCaches['trees']
-        collections = self.objectCaches['collections']
+        # IMPORTANT!!! This must go in parent > child order, because updating parts_reference links may
+        # require calling .sync() on the 'shelve' object, which is only done at the end of _createParentChildStructure()
+        self._createParentChildStructure('collections')
+        self._createParentChildStructure('objects')
 
-        for adlibKey in collections:
+    def _createParentChildStructure(self, category):
 
-            data = collections[adlibKey]
+        objects = self.objectCaches[category]
+        trees = self.objectCaches['trees']
+
+        for adlibKey in objects:
+
+            data = objects[adlibKey]
             priref = data['id']
-            treeNode = tree[priref]
+            selfRef = {'ref': uriRef(category, priref)}
+            node = trees[priref]
 
-            if 'parts_reference' in data:
-                selfRef = {'ref': uriRef('collections', priref)}
-                for adlibKey in data['parts_reference']:
+            for childKey in data['parts_reference']:
 
-                    # connect the 'collections' objects by 'parent.ref' field
-                    child = collections[adlibKey]
-                    child['parent'] = selfRef
+                # connect the objects by 'parent.ref' field
+                if category == 'collections' and childKey in self.objectCaches['collections']:
+                    # parts_reference links which point TO collections are only valid FROM collections.
+                    linkCategory = 'collections'
+                elif childKey in self.objectCaches['objects']:
+                    linkCategory = 'objects'
+                else:
+                    msg = '''
+                    While processing '%s/%s', parts_reference '%s' could not be found in 'objects' or 'collections' caches.
+                    '''.strip() % (category, adlibKey, childKey)
+                    logging.error(msg)
+                    continue
 
-                    # connect the tree-node objects by children[] list
-                    treeNode['children'].append(tree[child['id']])
+                child = self.objectCaches[linkCategory][childKey]
+                child['parent'] = selfRef
+
+                # connect the tree-node objects by children[] list
+                node['children'].append(trees[child['id']])
 
             # connect the object to its collection by the 'resource.ref' field
             if 'related_accession_number' in data:
                 collectionPriref = data['related_accession_number']['id']
                 data['resource'] = {'ref': uriRef('collections', collectionPriref)}
 
-        tree.sync()
-        self.objectCaches['trees'] = tree
+            # this is necessary because the 'shelve' objects don't behave *exactly* like a dict
+            trees[priref] = node
+            objects[adlibKey] = data
+
+        trees.sync()
+        objects.sync()
+        self.objectCaches['trees'] = trees
+        self.objectCaches[category] = objects
 
 
     def saveAllRecords(self):
@@ -198,7 +227,7 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def getAgentData(self, data):
-        priref = data['priref'][0]
+        priref = prirefString(data['priref'][0])
         title = data['name'][0]  # not using .get() because we want an exception if 'name' is not present for people/orgs
         adlibKey = adlibKeyFromUnicode(title)
         names = [{'authorized': True,
@@ -264,7 +293,7 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def getCollectionOrSeries(self, data):
-        priref = data['priref'][0]
+        priref = prirefString(data['priref'][0])
         adlibKey = adlibKeyFromUnicode(data['object_number'][0])
         linkedAgents = [{'title':creator, 'role':'creator'}
                         for creator in data.get('creator', [])
@@ -290,6 +319,7 @@ class DataExtractor_Adlib(DataExtractor):
                   'uri':  uriRef('collections', priref),
                   'level': level,
                   'linked_agents': linkedAgents,
+                  'parts_reference': [adlibKeyFromUnicode(r) for r in data.get('parts_reference', [])],
 
                   'title': data['title'][0],
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
@@ -314,7 +344,7 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def getArchivalObject(self, data):
-        priref = data['priref'][0]
+        priref = prirefString(data['priref'][0])
         adlibKey = adlibKeyFromUnicode(data['object_number'][0])
 
         try:
@@ -363,6 +393,7 @@ class DataExtractor_Adlib(DataExtractor):
                   'parent_adlib_key': data.get('related_accession_number'),
                   'level': level,
                   'linked_agents': linkedAgents,
+                  'parts_reference': [adlibKeyFromUnicode(r) for r in data.get('parts_reference', [])],
 
                   'title': title,
                   'display_string': title,
