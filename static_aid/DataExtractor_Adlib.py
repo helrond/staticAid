@@ -159,30 +159,10 @@ class DataExtractor_Adlib(DataExtractor):
         for adlibKey in objects:
 
             data = objects[adlibKey]
-            priref = data['id']
-            selfRef = {'ref': uriRef(category, priref)}
-            node = trees[priref]
+            node = trees[data['id']]
 
-            for childKey in data['parts_reference']:
-
-                # connect the objects by 'parent.ref' field
-                if category == 'collections' and childKey in self.objectCaches['collections']:
-                    # parts_reference links which point TO collections are only valid FROM collections.
-                    linkCategory = 'collections'
-                elif childKey in self.objectCaches['objects']:
-                    linkCategory = 'objects'
-                else:
-                    msg = '''
-                    While processing '%s/%s', parts_reference '%s' could not be found in 'objects' or 'collections' caches.
-                    '''.strip() % (category, adlibKey, childKey)
-                    logging.error(msg)
-                    continue
-
-                child = self.objectCaches[linkCategory][childKey]
-                child['parent'] = selfRef
-
-                # connect the tree-node objects by children[] list
-                node['children'].append(trees[child['id']])
+            if category == 'collections':
+                self.createNodeChildren(node, data, category)
 
             # connect the object to its collection by the 'resource.ref' field
             if 'related_accession_number' in data:
@@ -190,13 +170,39 @@ class DataExtractor_Adlib(DataExtractor):
                 data['resource'] = {'ref': uriRef('collections', collectionPriref)}
 
             # this is necessary because the 'shelve' objects don't behave *exactly* like a dict
-            trees[priref] = node
+            trees[data['id']] = node
             objects[adlibKey] = data
 
         trees.sync()
         objects.sync()
         self.objectCaches['trees'] = trees
         self.objectCaches[category] = objects
+
+
+    def createNodeChildren(self, node, data, category):
+        selfRef = {'ref': uriRef(category, data['id'])}
+
+        for childKey in data['parts_reference']:
+            # connect the objects by 'parent.ref' field
+            if category == 'collections' and childKey in self.objectCaches['collections']:
+                # parts_reference links which point TO collections are only valid FROM collections.
+                childCategory = 'collections'
+            elif childKey in self.objectCaches['objects']:
+                childCategory = 'objects'
+            else:
+                msg = '''
+                While processing '%s/%s', parts_reference '%s' could not be found in 'objects' or 'collections' caches.
+                '''.strip() % (category, data['adlib_key'], childKey)
+                logging.error(msg)
+                continue
+
+            child = self.objectCaches[childCategory][childKey]
+            child['parent'] = selfRef
+
+            # connect the tree-node objects by children[] list
+            childNode = self.objectCaches['trees'][child['id']]
+            node['children'].append(childNode)
+            self.createNodeChildren(childNode, child, childCategory)
 
 
     def saveAllRecords(self):
