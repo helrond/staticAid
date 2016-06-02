@@ -3,5 +3,20 @@
     "priref": [
         "101"
     ],
-    "description_level": "item"
+    "object_number": ["1000001"],
+    "description_level": [
+        {
+            "@lang": "neutral", 
+            "value": [
+                "ITEM", 
+                "item", 
+                "stuk", 
+                "pi\u00e8ce", 
+                "Einzelst\u00fcck, Einheit", 
+                "\u0648\u0639\u0627\u0621", 
+                "pezzo", 
+                "\u03c4\u03b5\u03ba\u03bc\u03ae\u03c1\u03b9\u03bf"
+            ]
+        }
+    ]
 }]

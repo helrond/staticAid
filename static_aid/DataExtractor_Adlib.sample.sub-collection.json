@@ -1,0 +1,137 @@
+[
+    {
+        "content.person.name": [
+            "University of Washington"
+        ],
+        "content.person.name.type": [
+            {
+                "@lang": "neutral",
+                "value": [
+                    "INST",
+                    "institution",
+                    "instelling",
+                    "institution",
+                    "Institution",
+                    "\u0627\u0644\u0645\u0624\u0633\u0633\u0629",
+                    "istituto",
+                    "\u03bf\u03c1\u03b3\u03b1\u03bd\u03b9\u03c3\u03bc\u03cc\u03c2"
+                ]
+            }
+        ],
+        "content.subject": [
+            "Nigeria"
+        ],
+        "content.subject.type": [
+            {
+                "@lang": "neutral",
+                "value": [
+                    "GEOKEYW",
+                    "geography",
+                    "geografie",
+                    "g\u00e9ographie",
+                    "Geografie",
+                    "\u062c\u063a\u0631\u0627\u0641\u064a",
+                    "geografia",
+                    "\u03b3\u03b5\u03c9\u03b3\u03c1\u03b1\u03c6\u03af\u03b1"
+                ]
+            }
+        ],
+        "creator": [
+            "Scott, Luke"
+        ],
+        "creator.history": [
+            "\ufeff\r\n<P>Interesting history text here.</P>"
+        ],
+        "current_location.name": [
+            "Box 12"
+        ],
+        "description_level": [
+            {
+                "@lang": "neutral", 
+                "value": [
+                    "SUB-COLLECTION", 
+                    "sub-collection", 
+                    "deelarchief", 
+                    "sous-fonds", 
+                    "Teilbestand", 
+                    "\u0631\u0635\u064a\u062f-\u0641\u0631\u0639\u064a", 
+                    "sottofondo", 
+                    "\u03c5\u03c0\u03bf-\u03b1\u03c1\u03c7\u03b5\u03af\u03bf"
+                ]
+            }
+        ], 
+        "digital_extent": [
+            "\u202a3565158400\u202c"
+        ],
+        "dimension.free": [
+            "134"
+        ],
+        "inscription.language": [
+            "English"
+        ],
+        "object_number": [
+            "0004a"
+        ],
+        "parts_reference": [
+            "0004a-1",
+            "0004a-2"
+        ],
+        "physical_description": [
+            "Collection contains audiovisual materials and digital media carriers that may require reformatting for access."
+        ],
+        "priref": [
+            "110000179"
+        ],
+        "process.archivist": [
+            "Luke Scott",
+            "Hillel Arnold",
+            "Kevin Clair"
+        ],
+        "processing_status": [
+            {
+                "@lang": "neutral",
+                "value": [
+                    "IN_PROGRESS",
+                    "In progress"
+                ]
+            }
+        ],
+        "production.date.end": [
+            "2015"
+        ],
+        "production.date.notes": [
+            "1925-2015"
+        ],
+        "production.date.start": [
+            "1925"
+        ],
+        "related_accession_number": [
+            "2013-004",
+            "2013-012",
+            "2013-029",
+            "2014-088",
+            "2014-057",
+            "2015-220",
+            "2014-121",
+            "2015-013",
+            "2015-022",
+            "2015-063",
+            "2015-074",
+            "2015-092",
+            "2015-166",
+            "2015-173",
+            "2015-214",
+            "2013-059",
+            "2016-050"
+        ],
+        "rights.notes": [
+            "This collection contains materials that may be subject to copyright. Contact Your System Administrator for more information."
+        ],
+        "system_of_arrangement": [
+            "The collection has been organized into sub-collections by family member. Each sub-collection is separated into series for personal and professional activities. Within series, original order and file names have for the most part been retained."
+        ],
+        "title": [
+            "Henry Smith family collection, sub-collection A (Nigeria+UW)"
+        ]
+    }
+]

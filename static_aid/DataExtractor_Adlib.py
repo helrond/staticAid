@@ -78,6 +78,10 @@ class DataExtractor_Adlib(DataExtractor):
                     self.addRefToLinkedAgents(data, category)
                     self.createTreeNode(tree, data, 'archival_object')
                 elif category == 'collections':
+                    # NOTE: in ArchivesSpace, collection.tree.ref is something like "/repositories/2/resources/91/tree"
+                    # but in collections.html, it's only used as an indicator of whether a tree node exists.
+                    data['tree'] = {'ref': True}
+
                     self.addRefToLinkedAgents(data, category)
                     self.createTreeNode(tree, data, 'resource')
 
@@ -123,6 +127,7 @@ class DataExtractor_Adlib(DataExtractor):
                                      'publish': True,
                                      'children': [],
                                      }
+
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
@@ -414,8 +419,18 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
         elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=collection':
             result = jsonFileContents('collection')
 
+        elif database == config.adlib['collectiondb'] and searchTerm == 'description_level="sub-collection"':
+            result = jsonFileContents('sub-collection')
+
         elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=series':
-            result = jsonFileContents('series')
+            # TODO if you care
+            # result = jsonFileContents('series')
+            result = []
+
+        elif database == config.adlib['collectiondb'] and searchTerm == 'description_level="sub-series"':
+            # TODO if you care
+            # result = jsonFileContents('sub-series')
+            result = []
 
         elif database == config.adlib['collectiondb'] and searchTerm == 'description_level=file':
             result = jsonFileContents('file')

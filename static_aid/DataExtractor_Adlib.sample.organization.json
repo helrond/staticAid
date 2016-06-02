@@ -6,90 +6,58 @@
 			"priref": "1",
 			"selected": "False"
 		},
-		"Equivalent": [
+		"equivalent_name": [
 			{
-				"equivalent_name": [
-					{
-						"@lang": "",
-						"value": [
-							"Henry & June Smith Ironworks"
-						]
-					}
+				"@lang": "",
+				"value": [
+					"Henry & June Smith Ironworks"
 				]
 			}
 		],
-		"Part_of": [
+		"part_of": [
 			{
-				"part_of": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, Eunice Patricia"
-						]
-					}
+				"@lang": "",
+				"value": [
+					"Smith, Eunice Patricia"
 				]
 			},
 			{
-				"part_of": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, Henry H."
-						]
-					}
+				"@lang": "",
+				"value": [
+					"Smith, Henry H."
 				]
 			}
 		],
-		"Related": [
+		"relationship": [
 			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"XYZ Incorporated"
-						]
-					}
-				],
-				"relationship.date.start": [
-					"2001-09-11"
-				],
-				"relationship.notes": [
-					"Partners with"
+				"@lang": "",
+				"value": [
+					"XYZ Incorporated"
 				]
 			},
 			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"Steelworxz Inc."
-						]
-					}
-				],
-				"relationship.notes": [
-					"Owned by"
+				"@lang": "",
+				"value": [
+					"Steelworxz Inc."
 				]
 			},
 			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"Wilson, Valerie"
-						]
-					}
-				],
-				"relationship.notes": [
-					"Administrative Assistant"
+				"@lang": "",
+				"value": [
+					"Wilson, Valerie"
 				]
 			}
 		],
-		"Source": [
-			{
-				"source": [
-					"LCNAF"
-				]
-			}
+		"relationship.date.start": [
+			"2001-09-11"
+		],
+		"relationship.notes": [
+			"Partners with",
+			"Owned by",
+			"Administrative Assistant"
+		],
+		"source": [
+			"LCNAF"
 		],
 		"birth.date.start": [
 			"1949-08-05"
@@ -98,12 +66,7 @@
 			"http://wikipedia.org/Henry_June_Smith_Ironworks"
 		],
 		"name": [
-			{
-				"@lang": "",
-				"value": [
-					"Henry & June Smith Ironworks"
-				]
-			}
+			"Henry & June Smith Ironworks"
 		],
 		"name.status": [
 			{
@@ -118,6 +81,21 @@
 				]
 			}
 		],
+        "name.type": [
+            {
+                "@lang": "neutral", 
+                "value": [
+                    "INST", 
+                    "institution", 
+                    "instelling", 
+                    "institution", 
+                    "Institution", 
+                    "\u0627\u0644\u0645\u0624\u0633\u0633\u0629", 
+                    "istituto", 
+                    "\u03bf\u03c1\u03b3\u03b1\u03bd\u03b9\u03c3\u03bc\u03cc\u03c2"
+                ]
+            }
+        ], 
 		"priref": [
 			"1001"
 		]

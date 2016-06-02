@@ -1,226 +1,180 @@
 [
-	{
-		"@attributes": {
-			"created": "2013-05-09T22:03:48",
-			"modification": "2016-04-22T10:10:25",
-			"priref": "1",
-			"selected": "False"
-		},
-		"Equivalent": [
-			{
-				"equivalent_name": [
-					{
-						"@lang": "",
-						"value": [
-							"Henry"
-						]
-					}
-				]
-			}
-		],
-		"Part_of": [
-			{
-				"part_of": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, Eunice Patricia"
-						]
-					}
-				]
-			},
-			{
-				"part_of": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, Henry H."
-						]
-					}
-				]
-			}
-		],
-		"Parts": [
-			{
-				"parts": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, Spencer John"
-						]
-					}
-				]
-			},
-			{
-				"parts": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, Greta Maude"
-						]
-					}
-				]
-			},
-			{
-				"parts": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, Penelope Dorothy"
-						]
-					}
-				]
-			}
-		],
-		"Related": [
-			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"Smith, June"
-						]
-					}
-				],
-				"relationship.date.start": [
-					"1994-01-01"
-				],
-				"relationship.notes": [
-					"Spouse of"
-				]
-			},
-			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"Henry & June Smith Ironworks"
-						]
-					}
-				],
-				"relationship.notes": [
-					"Co-Chaired by"
-				]
-			},
-			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"Steelworxz Inc."
-						]
-					}
-				],
-				"relationship.notes": [
-					"Owned by"
-				]
-			},
-			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"Jones, Hank"
-						]
-					}
-				],
-				"relationship.notes": [
-					"Chief of Staff"
-				]
-			},
-			{
-				"relationship": [
-					{
-						"@lang": "",
-						"value": [
-							"Slade, Monica"
-						]
-					}
-				],
-				"relationship.notes": [
-					"Personal Assistant"
-				]
-			}
-		],
-		"Source": [
-			{
-				"source": [
-					"LCNAF"
-				]
-			}
-		],
-		"biography": [
-			"<A href=\"https://en.wikipedia.org/wiki/Henry_Smith\">https://en.wikipedia.org/wiki/Henry_Smith</A>"
-		],
-		"birth.date.start": [
-			"1949-08-05"
-		],
-		"birth.place": [
-			{
-				"@lang": "",
-				"value": [
-					"Seattle (Washington)"
-				]
-			}
-		],
-		"documentation": [
-			"http://id.loc.gov/authorities/names/n998768654"
-		],
-		"name": [
-			{
-				"@lang": "",
-				"value": [
-					"Smith, Henry"
-				]
-			}
-		],
-		"name.status": [
-			{
-				"@lang": "neutral",
-				"value": [
-					"1",
-					"approved preferred term",
-					"descriptor",
-					"descripteur",
-					"Deskriptor",
-					"termine preferenziale approvato"
-				]
-			}
-		],
-		"priref": [
-			"1"
-		],
-		"used_for": [
-			{
-				"@lang": "",
-				"value": [
-					"HS"
-				]
-			},
-			{
-				"@lang": "",
-				"value": [
-					"Henry Smith"
-				]
-			},
-			{
-				"@lang": "",
-				"value": [
-					"Smith, Henry"
-				]
-			},
-			{
-				"@lang": "",
-				"value": [
-					"Smith, Henry H. III"
-				]
-			},
-			{
-				"@lang": "",
-				"value": [
-					"Hank"
-				]
-			}
-		]
-	}
+    {
+        "@attributes": {
+            "created": "2013-05-09T22:03:48",
+            "modification": "2016-04-22T10:10:25",
+            "priref": "1",
+            "selected": "False"
+        },
+        "equivalent_name": [
+            {
+                "@lang": "",
+                "value": [
+                    "Henry"
+                ]
+            }
+        ],
+        "part_of": [
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, Eunice Patricia"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, Henry H."
+                ]
+            }
+        ],
+        "parts": [
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, Spencer John"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, Greta Maude"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, Penelope Dorothy"
+                ]
+            }
+        ],
+        "relationship": [
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, June"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Henry & June Smith Ironworks"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Steelworxz Inc."
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Jones, Hank"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Slade, Monica"
+                ]
+            }
+        ],
+        "relationship.date.start": [
+            "1994-01-01"
+        ],
+        "relationship.notes": [
+            "Spouse of",
+            "Co-Chaired by",
+            "Owned by",
+            "Chief of Staff",
+            "Personal Assistant"
+        ],
+        "source": [
+            "LCNAF"
+        ],
+        "biography": [
+            "<A href=\"https://en.wikipedia.org/wiki/Henry_Smith\">https://en.wikipedia.org/wiki/Henry_Smith</A>"
+        ],
+        "birth.date.start": [
+            "1949-08-05"
+        ],
+        "birth.place": [
+            {
+                "@lang": "",
+                "value": [
+                    "Seattle (Washington)"
+                ]
+            }
+        ],
+        "documentation": [
+            "http://id.loc.gov/authorities/names/n998768654"
+        ],
+        "name": [
+            "Smith, Henry"
+        ],
+        "name.status": [
+            {
+                "@lang": "neutral",
+                "value": [
+                    "1",
+                    "approved preferred term",
+                    "descriptor",
+                    "descripteur",
+                    "Deskriptor",
+                    "termine preferenziale approvato"
+                ]
+            }
+        ],
+        "name.type": [
+            {
+                "@lang": "neutral", 
+                "value": [
+                    "PERSON", 
+                    "person", 
+                    "persoon", 
+                    "personne", 
+                    "Person", 
+                    "\u0625\u0633\u0645 \u0634\u062e\u0635", 
+                    "persona", 
+                    "\u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf"
+                ]
+            }
+        ], 
+        "priref": [
+            "1"
+        ],
+        "used_for": [
+            {
+                "@lang": "",
+                "value": [
+                    "HS"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Henry Smith"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, Henry"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Smith, Henry H. III"
+                ]
+            },
+            {
+                "@lang": "",
+                "value": [
+                    "Hank"
+                ]
+            }
+        ]
+    }
 ]
