@@ -105,7 +105,7 @@ class DataExtractor_Adlib(DataExtractor):
         # now we have all records joined by ID, and we have un-linked tree nodes.
         # Go through each tree node and recursively link them using the format:
         #     node.children = [node, node, ...]
-        self.convertTreeNodesToParentChildStructure()
+        self.createParentChildStructure()
 
 
     def addRefToLinkedAgents(self, data, category):
@@ -140,14 +140,34 @@ class DataExtractor_Adlib(DataExtractor):
         tree[str(data['id'])] = node
 
 
-    def convertTreeNodesToParentChildStructure(self):
+    def createParentChildStructure(self):
         tree = self.objectCaches['trees']
-        for priref in tree:
-            data = tree[priref]
-            if data['level'] != 'collection':
-                # TODO attach this node to the parent record
-                pass
+        collections = self.objectCaches['collections']
+
+        for adlibKey in collections:
+
+            data = collections[adlibKey]
+            priref = data['id']
+            treeNode = tree[priref]
+
+            if 'parts_reference' in data:
+                selfRef = {'ref': uriRef('collections', priref)}
+                for adlibKey in data['parts_reference']:
+
+                    # connect the 'collections' objects by 'parent.ref' field
+                    child = collections[adlibKey]
+                    child['parent'] = selfRef
+
+                    # connect the tree-node objects by children[] list
+                    treeNode['children'].append(tree[child['id']])
+
+            # connect the object to its collection by the 'resource.ref' field
+            if 'related_accession_number' in data:
+                collectionPriref = data['related_accession_number']['id']
+                data['resource'] = {'ref': uriRef('collections', collectionPriref)}
+
         tree.sync()
+        self.objectCaches['trees'] = tree
 
 
     def saveAllRecords(self):
@@ -202,6 +222,7 @@ class DataExtractor_Adlib(DataExtractor):
                 'id': priref,
                 'adlib_key': adlibKey,
                 'level': level,
+
                 'title': title,
                 'names': names,
                 'related_agents':relatedAgents,
@@ -263,15 +284,17 @@ class DataExtractor_Adlib(DataExtractor):
 
         result = {
                   'id': priref,
-                  'uri':  uriRef('collections', priref),
-                  'title': data['title'][0],
-                  'adlib_key': adlibKey,
-                  'level': level,
                   'id_0': adlibKey,
+                  'adlib_key': adlibKey,
+                  'parent_adlib_key': data.get('related_accession_number'),
+                  'uri':  uriRef('collections', priref),
+                  'level': level,
+                  'linked_agents': linkedAgents,
+
+                  'title': data['title'][0],
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
                   'extents': [],
                   'notes': [{'type':'general', 'content':'TODO: COLLECTION-OR-SERIES NOTE CONTENT'}],  # TODO
-                  'linked_agents': linkedAgents,
                   'subjects': subjects,
                   }
 
@@ -334,13 +357,16 @@ class DataExtractor_Adlib(DataExtractor):
             logging.error('No title or object_name found for %s with ID %s' % (level, priref))
             title = ''
 
-        result = {'id': priref,
+        result = {
+                  'id': priref,
                   'adlib_key': adlibKey,
+                  'parent_adlib_key': data.get('related_accession_number'),
                   'level': level,
+                  'linked_agents': linkedAgents,
+
                   'title': title,
                   'display_string': title,
                   'instances': instances,
-                  'linked_agents': linkedAgents,
                   'subjects': subjects,
                   'notes': notes,
                   'dates': [{'expression':data.get('production.date.start', '')}],
