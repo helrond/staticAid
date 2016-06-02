@@ -66,6 +66,7 @@ class DataExtractor_Adlib(DataExtractor):
         self.extractItemLevelObjects()
 
     def linkRecordsByPriref(self):
+        tree = shelve.open(self.cacheFilename('trees'))
         for category in self.objectCaches:
             cache = self.objectCaches[category]
             for adlibKey in cache:
@@ -93,9 +94,10 @@ class DataExtractor_Adlib(DataExtractor):
                         linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
 
                 # resource_ref: (objects OR collections) => (objects OR collections)
+                # example: object 30700 > collection 97 (in Hillel data)
                 # TODO this should be added to 'tree' data
                 partsReference = []
-                for linkKey in data.get('parts_reference', []): #TODO pre-transform this to resource_ref
+                for linkKey in data.get('resource_ref', []):
                     linkKey = adlibKeyFromUnicode(linkKey)
                     if linkKey in self.objectCaches['objects']:
                         linkCategory = 'objects'
@@ -112,11 +114,30 @@ class DataExtractor_Adlib(DataExtractor):
                     partsReference.append({'ref':'/%s/%s' % (linkDestination, priref)})
 
 
+
+                # add a node to the tree
+                tree[str(data['priref'])] = {
+                                             'priref': data['priref'],
+                                             'title': data['title'],
+                                             'level': data['level'],  # item/file/collection/etc
+                                             'publish': True,
+                                             'child_keys': [
+                                                            'abc123',
+                                                            '123abc'
+                                                            ],
+                                             'children': {}
+                                             }
+
+
+
                 # this is necessary because the 'shelve' library doesn't behave *exactly* like a dict
                 self.objectCaches[category][adlibKey] = data
 
             # sync after each category so the in-memory map doesn't get too heavy
             cache.sync()
+
+        self.objectCaches['trees'] = tree
+        tree.sync()
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
@@ -152,6 +173,8 @@ class DataExtractor_Adlib(DataExtractor):
                   'use_dates': False,
                   } for name in data.get('equivalent_name', [])]
 
+        level = data['name.type'][0]['value'][0].lower()  # person/inst
+
         relatedAgents = self.getRelatedAgents(data, 'part_of')
         relatedAgents += self.getRelatedAgents(data, 'parts')
         relatedAgents += self.getRelatedAgents(data, 'relationship')
@@ -162,8 +185,10 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('documentation', [])]
 
-        return {'priref': priref,
+        return {
+                'priref': priref,
                 'adlib_key': adlibKey,
+                'level': level,
                 'title': title,
                 'names': names,
                 'related_agents':relatedAgents,
@@ -214,11 +239,15 @@ class DataExtractor_Adlib(DataExtractor):
                     if subject
                     ]
 
-        result = {'priref': priref,
-                  'adlib_key': adlibKey,
-                  'adlib_category': 'collections',
-                  'id_0': adlibKey,
+        level = data['description_level'][0]['value'][0].lower()  # collection/series/etc.
+
+
+        result = {
+                  'priref': priref,
                   'title': data['title'][0],
+                  'adlib_key': adlibKey,
+                  'level': level,
+                  'id_0': adlibKey,
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
                   'extents': [],
                   'notes': [{'type':'general', 'content':'TODO: COLLECTION-OR-SERIES NOTE CONTENT'}],  # TODO
@@ -270,7 +299,7 @@ class DataExtractor_Adlib(DataExtractor):
                          if creator
                          ]
 
-        level = data['description_level'][0]['value'][0]
+        level = data['description_level'][0]['value'][0].lower() # file/item
 
         if 'title' in data and 'object_name' in data:
             title = '%s (%s)' % (data['title'][0], data['object_name'][0])
@@ -284,9 +313,9 @@ class DataExtractor_Adlib(DataExtractor):
 
         result = {'priref': priref,
                   'adlib_key': adlibKey,
+                  'level': level,
                   'title': title,
                   'display_string': title,
-                  'level': level,
                   'instances': instances,
                   'linked_agents': linkedAgents,
                   'subjects': subjects,
