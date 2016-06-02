@@ -44,7 +44,7 @@ class DataExtractor_Adlib(DataExtractor):
         self.cacheAllCollections()
 
         # link each cached object by priref wherever there is a reference to agent name, part_of, parts, etc.
-        self.linkRecordsByPriref()
+        self.linkRecordsById()
 
         # save the results to build/data/**.json
         self.saveAllRecords()
@@ -65,79 +65,64 @@ class DataExtractor_Adlib(DataExtractor):
         self.extractFileLevelObjects()
         self.extractItemLevelObjects()
 
-    def linkRecordsByPriref(self):
+    def linkRecordsById(self):
         tree = shelve.open(self.cacheFilename('trees'))
         for category in self.objectCaches:
             cache = self.objectCaches[category]
             for adlibKey in cache:
 
-                # TODO forall object link fields: object.refUrl[] > related_object.priref
-
                 data = cache[adlibKey]
 
-                # linked_agents[]: (objects OR collections) => (people OR organizations)
-                for linkedAgent in data.get('linked_agents', []):
-                    if 'ref' not in linkedAgent:
-                        linkKey = adlibKeyFromUnicode(linkedAgent['title'])
-                        if linkKey in self.objectCaches['people']:
-                            linkCategory = 'people'
-                        elif linkKey in self.objectCaches['organizations']:
-                            linkCategory = 'organizations'
-                        else:
-                            msg = '''
-                            While processing '%s/%s', linked_agent '%s' could not be found in 'people' or 'organizations' caches.
-                            '''.strip() % (category, adlibKey, linkKey)
-                            logging.error(msg)
-                            continue
-                        priref = self.objectCaches[linkCategory][linkKey]['priref']
-                        linkDestination = config.destinations[linkCategory].strip('/ ')
-                        linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
+                # link records together by type
+                if category == 'objects':
+                    self.addRefToLinkedAgents(data, category)
+                    self.createTreeNode(tree, data, 'archival_object')
+                elif category == 'collections':
+                    self.addRefToLinkedAgents(data, category)
+                    self.createTreeNode(tree, data, 'resource')
 
-                # resource_ref: (objects OR collections) => (objects OR collections)
-                # example: object 30700 > collection 97 (in Hillel data)
-                # TODO this should be added to 'tree' data
-                partsReference = []
-                for linkKey in data.get('resource_ref', []):
-                    linkKey = adlibKeyFromUnicode(linkKey)
-                    if linkKey in self.objectCaches['objects']:
-                        linkCategory = 'objects'
-                    elif linkKey in self.objectCaches['collections']:
-                        linkCategory = 'collections'
-                    else:
-                        msg = '''
-                        While processing '%s/%s', parts_reference '%s' could not be found in 'objects' or 'collections' caches.
-                        '''.strip() % (category, adlibKey, linkKey)
-                        logging.error(msg)
-                        continue
-                    priref = self.objectCaches[linkCategory][linkKey]['priref']
-                    linkDestination = config.destinations[linkCategory].strip('/ ')
-                    partsReference.append({'ref':'/%s/%s' % (linkDestination, priref)})
-
-
-
-                # add a node to the tree
-                tree[str(data['priref'])] = {
-                                             'priref': data['priref'],
-                                             'title': data['title'],
-                                             'level': data['level'],  # item/file/collection/etc
-                                             'publish': True,
-                                             'child_keys': [
-                                                            'abc123',
-                                                            '123abc'
-                                                            ],
-                                             'children': {}
-                                             }
-
-
-
-                # this is necessary because the 'shelve' library doesn't behave *exactly* like a dict
+                # this is necessary because the 'shelve' objects don't behave *exactly* like a dict
                 self.objectCaches[category][adlibKey] = data
 
             # sync after each category so the in-memory map doesn't get too heavy
             cache.sync()
+            tree.sync()
 
+        # combine the tree with the other data so that it gets saved to *.json
         self.objectCaches['trees'] = tree
-        tree.sync()
+
+
+    def addRefToLinkedAgents(self, data, category):
+        # linked_agents[]: (objects OR collections) => (people OR organizations)
+        for linkedAgent in data.get('linked_agents', []):
+            if 'ref' not in linkedAgent:
+                linkKey = adlibKeyFromUnicode(linkedAgent['title'])
+                if linkKey in self.objectCaches['people']:
+                    linkCategory = 'people'
+                elif linkKey in self.objectCaches['organizations']:
+                    linkCategory = 'organizations'
+                else:
+                    msg = '''
+                    While processing '%s/%s', linked_agent '%s' could not be found in 'people' or 'organizations' caches.
+                    '''.strip() % (category, data['adlib_key'], linkKey)
+                    logging.error(msg)
+                    continue
+                priref = self.objectCaches[linkCategory][linkKey]['id']
+                linkDestination = config.destinations[linkCategory].strip('/ ')
+                linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
+
+
+    def createTreeNode(self, tree, data, nodeType):
+        # TODO create children
+        tree[str(data['id'])] = {
+                                     'id': data['id'],
+                                     'title': data['title'],
+                                     'level': data['level'],  # item/file/collection/etc
+                                     'node_type': nodeType,
+                                     'jsonmodel_type': 'resource_tree',
+                                     'publish': True,
+                                     'children': [],
+                                     }
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
@@ -146,7 +131,7 @@ class DataExtractor_Adlib(DataExtractor):
             makeDir(self.getDestinationDirname(destination))
             for adlibKey in self.objectCaches[category]:
                 data = self.objectCaches[category][adlibKey]
-                self.saveFile(data['priref'], data, destination)
+                self.saveFile(data['id'], data, destination)
 
 
     ### Object-Extraction stuff ###
@@ -186,7 +171,7 @@ class DataExtractor_Adlib(DataExtractor):
                  for n in data.get('documentation', [])]
 
         return {
-                'priref': priref,
+                'id': priref,
                 'adlib_key': adlibKey,
                 'level': level,
                 'title': title,
@@ -243,7 +228,8 @@ class DataExtractor_Adlib(DataExtractor):
 
 
         result = {
-                  'priref': priref,
+                  'id': priref,
+                  'uri': '/collections/%s' % priref,
                   'title': data['title'][0],
                   'adlib_key': adlibKey,
                   'level': level,
@@ -299,7 +285,7 @@ class DataExtractor_Adlib(DataExtractor):
                          if creator
                          ]
 
-        level = data['description_level'][0]['value'][0].lower() # file/item
+        level = data['description_level'][0]['value'][0].lower()  # file/item
 
         if 'title' in data and 'object_name' in data:
             title = '%s (%s)' % (data['title'][0], data['object_name'][0])
@@ -311,7 +297,7 @@ class DataExtractor_Adlib(DataExtractor):
             logging.error('No title or object_name found for %s with ID %s' % (level, priref))
             title = ''
 
-        result = {'priref': priref,
+        result = {'id': priref,
                   'adlib_key': adlibKey,
                   'level': level,
                   'title': title,
