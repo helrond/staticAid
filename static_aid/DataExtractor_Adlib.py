@@ -21,6 +21,10 @@ def makeDir(dirPath):
 def adlibKeyFromUnicode(u):
     return u.encode('ascii', errors='backslashreplace').lower()
 
+def uriRef(category, priref):
+    linkDestination = config.destinations[category].strip('/ ')
+    return '/%s/%s' % (linkDestination, priref)
+
 class DataExtractor_Adlib(DataExtractor):
 
     def __init__(self, *args, **kwargs):
@@ -77,6 +81,7 @@ class DataExtractor_Adlib(DataExtractor):
                 if category == 'objects':
                     self.addRefToLinkedAgents(data, category)
                     self.createTreeNode(tree, data, 'archival_object')
+
                 elif category == 'collections':
                     # NOTE: in ArchivesSpace, collection.tree.ref is something like "/repositories/2/resources/91/tree"
                     # but in collections.html, it's only used as an indicator of whether a tree node exists.
@@ -95,6 +100,11 @@ class DataExtractor_Adlib(DataExtractor):
         # combine the tree with the other data so that it gets saved to *.json
         self.objectCaches['trees'] = tree
 
+        # now we have all records joined by ID, and we have un-linked tree nodes.
+        # Go through each tree node and recursively link them using the format:
+        #     node.children = [node, node, ...]
+        self.convertTreeNodesToParentChildStructure()
+
 
     def addRefToLinkedAgents(self, data, category):
         # linked_agents[]: (objects OR collections) => (people OR organizations)
@@ -112,22 +122,29 @@ class DataExtractor_Adlib(DataExtractor):
                     logging.error(msg)
                     continue
                 priref = self.objectCaches[linkCategory][linkKey]['id']
-                linkDestination = config.destinations[linkCategory].strip('/ ')
-                linkedAgent['ref'] = '/%s/%s' % (linkDestination, priref)
+                linkedAgent['ref'] = uriRef(linkCategory, priref)
 
 
-    def createTreeNode(self, tree, data, nodeType):
-        # TODO create children
-        tree[str(data['id'])] = {
-                                     'id': data['id'],
-                                     'title': data['title'],
-                                     'level': data['level'],  # item/file/collection/etc
-                                     'node_type': nodeType,
-                                     'jsonmodel_type': 'resource_tree',
-                                     'publish': True,
-                                     'children': [],
-                                     }
+    def getTreeNode(self, tree, data, nodeType):
+        node = {
+                'id': data['id'],
+                'title': data['title'],
+                'level': data['level'],  # item/file/collection/etc
+                'node_type': nodeType,
+                'jsonmodel_type': 'resource_tree',
+                'publish': True,
+                'children': [],
+                }
+        tree[str(data['id'])] = node
 
+    def convertTreeNodesToParentChildStructure(self):
+        tree = self.objectCaches['trees']
+        for priref in tree:
+            data = tree[priref]
+            if data['level'] != 'collection':
+                # TODO attach this node to the parent record
+                pass
+        tree.sync()
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
@@ -234,7 +251,7 @@ class DataExtractor_Adlib(DataExtractor):
 
         result = {
                   'id': priref,
-                  'uri': '/collections/%s' % priref,
+                  'uri':  uriRef('collections', priref),
                   'title': data['title'][0],
                   'adlib_key': adlibKey,
                   'level': level,
