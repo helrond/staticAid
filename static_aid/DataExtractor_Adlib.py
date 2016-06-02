@@ -202,6 +202,7 @@ class DataExtractor_Adlib(DataExtractor):
             # connect the tree-node objects by children[] list
             childNode = self.objectCaches['trees'][child['id']]
             node['children'].append(childNode)
+            node['has_children'] = True
             self.createNodeChildren(childNode, child, childCategory)
 
 
