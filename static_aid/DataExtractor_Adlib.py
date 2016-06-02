@@ -53,6 +53,7 @@ class DataExtractor_Adlib(DataExtractor):
         # save the results to build/data/**.json
         self.saveAllRecords()
 
+
     def cacheAllCollections(self):
         logging.debug('Extracting data from Adlib into object cache...')
 
@@ -68,6 +69,7 @@ class DataExtractor_Adlib(DataExtractor):
 
         self.extractFileLevelObjects()
         self.extractItemLevelObjects()
+
 
     def linkRecordsById(self):
         tree = shelve.open(self.cacheFilename('trees'))
@@ -125,7 +127,7 @@ class DataExtractor_Adlib(DataExtractor):
                 linkedAgent['ref'] = uriRef(linkCategory, priref)
 
 
-    def getTreeNode(self, tree, data, nodeType):
+    def createTreeNode(self, tree, data, nodeType):
         node = {
                 'id': data['id'],
                 'title': data['title'],
@@ -137,6 +139,7 @@ class DataExtractor_Adlib(DataExtractor):
                 }
         tree[str(data['id'])] = node
 
+
     def convertTreeNodesToParentChildStructure(self):
         tree = self.objectCaches['trees']
         for priref in tree:
@@ -145,6 +148,7 @@ class DataExtractor_Adlib(DataExtractor):
                 # TODO attach this node to the parent record
                 pass
         tree.sync()
+
 
     def saveAllRecords(self):
         logging.debug('Saving data from object cache into folder: %s...' % (config.DATA_DIR))
@@ -166,10 +170,12 @@ class DataExtractor_Adlib(DataExtractor):
                                              }]
             self.cacheJson('people', result)
 
+
     def extractOrganizations(self):
         for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
             result = self.getAgentData(data)
             self.cacheJson('organizations', result)
+
 
     def getAgentData(self, data):
         priref = data['priref'][0]
@@ -202,6 +208,7 @@ class DataExtractor_Adlib(DataExtractor):
                 'notes':notes,
                 }
 
+
     def getRelatedAgents(self, person, k):
         return [{'_resolved':{'title': name},
                  'dates':[{'expression':''}],  # TODO
@@ -210,25 +217,30 @@ class DataExtractor_Adlib(DataExtractor):
                 for name in person.get(k, [])
                 ]
 
+
     def extractCollections(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=collection'):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
+
 
     def extractSubCollections(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-collection"'):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
+
     def extractSeries(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=series'):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
+
     def extractSubSeries(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-series"'):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
+
 
     def getCollectionOrSeries(self, data):
         priref = data['priref'][0]
@@ -265,15 +277,18 @@ class DataExtractor_Adlib(DataExtractor):
 
         return result
 
+
     def extractFileLevelObjects(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=file'):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
 
+
     def extractItemLevelObjects(self):
         for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=item'):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
+
 
     def getArchivalObject(self, data):
         priref = data['priref'][0]
@@ -332,6 +347,7 @@ class DataExtractor_Adlib(DataExtractor):
                   }
         return result
 
+
     def getApiData(self, database, searchTerm=''):
         if self.update:
             lastExport = datetime.fromtimestamp(self.lastExportTime())
@@ -340,6 +356,7 @@ class DataExtractor_Adlib(DataExtractor):
             searchTerm = 'all'
 
         return self._getApiData(database, searchTerm)
+
 
     def _getApiData(self, database, searchTerm):
         startFrom = 1
@@ -388,8 +405,10 @@ class DataExtractor_Adlib(DataExtractor):
             for record in records:
                 yield record
 
+
     def cacheFilename(self, category):
         return join(config.OBJECT_CACHE_DIR, category)
+
 
     def clearCache(self):
         for category in self.objectCaches:
@@ -398,6 +417,7 @@ class DataExtractor_Adlib(DataExtractor):
             for category in listdir(config.OBJECT_CACHE_DIR):
                 remove(self.cacheFilename(category))
         self.objectCaches = {}
+
 
     def cacheJson(self, category, result):
         if category not in self.objectCaches:
