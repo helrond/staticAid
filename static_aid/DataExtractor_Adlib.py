@@ -213,6 +213,9 @@ class DataExtractor_Adlib(DataExtractor):
             makeDir(self.getDestinationDirname(destination))
             for adlibKey in self.objectCaches[category]:
                 data = self.objectCaches[category][adlibKey]
+                if category == 'trees' and data['level'] != 'collection':
+                    # trees are cached as a recursive node graph, so we only want to save the top-level nodes
+                    continue
                 self.saveFile(data['id'], data, destination)
 
 
@@ -254,12 +257,17 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('documentation', [])]
 
+        preferred = False
+        if 'name.status' in data:
+            preferred = str(data['name.status'][0]['value'][0]) == '1'
+
         return {
                 'id': priref,
                 'adlib_key': adlibKey,
                 'level': level,
 
                 'title': title,
+                'preferred': preferred,
                 'names': names,
                 'related_agents':relatedAgents,
                 'notes':notes,
@@ -316,7 +324,7 @@ class DataExtractor_Adlib(DataExtractor):
                     ]
 
         level = data['description_level'][0]['value'][0].lower()  # collection/series/etc.
-
+        hide = level != 'collection'  # only show top-level collections on the main page
 
         result = {
                   'id': priref,
@@ -327,6 +335,7 @@ class DataExtractor_Adlib(DataExtractor):
                   'level': level,
                   'linked_agents': linkedAgents,
                   'parts_reference': [adlibKeyFromUnicode(r) for r in data.get('parts_reference', [])],
+                  'hide_on_main_page': hide,
 
                   'title': data['title'][0],
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
@@ -483,17 +492,24 @@ class DataExtractor_Adlib(DataExtractor):
         self.objectCaches = {}
 
 
-    def cacheJson(self, category, result):
+    def cacheJson(self, category, data):
         if category not in self.objectCaches:
             makeDir(config.OBJECT_CACHE_DIR)
             self.objectCaches[category] = shelve.open(self.cacheFilename(category))
         collection = self.objectCaches[category]
-        adlibKey = result['adlib_key']
+
+        adlibKey = data['adlib_key']
         if adlibKey in collection:
-            msg = '''Refusing to insert duplicate object '%s/%s' into JSON cache.''' % (category, adlibKey)
-            # raise Exception(msg)
-            logging.error(msg)
-        collection[adlibKey] = result
+            # 'preferred' names can supersede non-preferred ones.
+            if data.get('preferred'):
+                msg = '''Duplicate object '%s/%s' is superseding an existing one in the JSON cache because it is marked as 'preferred'.''' % (category, adlibKey)
+                collection[adlibKey] = data
+                logging.warn(msg)
+            else:
+                msg = '''Refusing to insert duplicate object '%s/%s' into JSON cache.''' % (category, adlibKey)
+                logging.error(msg)
+        else:
+            collection[adlibKey] = data
 
         # flush at regular intervals
         self.objectCacheInsertionCount += 1
