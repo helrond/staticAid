@@ -165,9 +165,10 @@ class DataExtractor_Adlib(DataExtractor):
                 self.createNodeChildren(node, data, category)
 
             # connect the object to its collection by the 'resource.ref' field
-            if 'related_accession_number' in data:
-                collectionPriref = data['related_accession_number']['id']
-                data['resource'] = {'ref': uriRef('collections', collectionPriref)}
+            # TODO this doesn't actually work
+            if data.get('parent_adlib_key'):
+                parent = self.objectCaches['collections'][collectionKey]
+                data['resource'] = {'ref': uriRef('collections', parent['id'])}
 
             # this is necessary because the 'shelve' objects don't behave *exactly* like a dict
             trees[data['id']] = node
@@ -203,6 +204,8 @@ class DataExtractor_Adlib(DataExtractor):
             childNode = self.objectCaches['trees'][child['id']]
             node['children'].append(childNode)
             node['has_children'] = True
+            node['tree'] = {'ref': True}
+
             self.createNodeChildren(childNode, child, childCategory)
 
 
@@ -322,6 +325,11 @@ class DataExtractor_Adlib(DataExtractor):
                     for subject in data.get('content.subject', [])
                     if subject
                     ]
+        notes = [{'type': 'note',
+                  'jsonmodel_type': 'note_singlepart',
+                  'content': n,
+                  }
+                 for n in data.get('content.description', [])]
 
         level = data['description_level'][0]['value'][0].lower()  # collection/series/etc.
         hide = level != 'collection'  # only show top-level collections on the main page
@@ -340,7 +348,7 @@ class DataExtractor_Adlib(DataExtractor):
                   'title': data['title'][0],
                   'dates': [{'expression': data.get('production.date.start', [''])[0]}],
                   'extents': [],
-                  'notes': [{'type':'general', 'content':'TODO: COLLECTION-OR-SERIES NOTE CONTENT'}],  # TODO
+                  'notes': notes,
                   'subjects': subjects,
                   }
 
