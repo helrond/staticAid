@@ -1,14 +1,14 @@
 from datetime import datetime
 from json import load, dump
 import logging
-from logging import DEBUG, INFO, ERROR
+from logging import INFO
 from os import listdir, makedirs, remove
-from os.path import splitext, realpath, join, exists
+from os.path import join, exists
 import requests
 import shelve
 
 from static_aid import config
-from static_aid.DataExtractor import DataExtractor
+from static_aid.DataExtractor import DataExtractor, bytesLabel
 from static_aid.config import ROW_FETCH_LIMIT, DATA_DIR
 
 def makeDir(dirPath):
@@ -292,6 +292,11 @@ class DataExtractor_Adlib(DataExtractor):
                   'content': n,
                   }
                  for n in data.get('documentation', [])]
+        notes += [{'type': 'bioghist',
+                   'jsonmodel_type': 'note_singlepart',
+                   'content': n,
+                   }
+                  for n in data.get('biography', [])]
 
         dates = [{'expression': '%s - %s' % (data.get('birth.date.start', [''])[0],
                                              data.get('death.date.start', [''])[0],
@@ -384,7 +389,7 @@ class DataExtractor_Adlib(DataExtractor):
                     'extent_type': extentType,
                     'container_summary': '%s level' % level,
                     }
-        extents = [extentObject(d, 'digital_extent', level)
+        extents = [extentObject(bytesLabel(d), 'digital_extent', level)
                    for d in data.get('digital_extent', [])]
         extents += [extentObject(d, 'dimension-free', level)  # TODO syntax?
                     for d in data.get('dimension.free', [])]
@@ -629,6 +634,5 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 if __name__ == '__main__':
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib()
-#     e.READ_FROM_RAW_DUMP = True
-    e.DUMP_RAW_DATA = True
+    e.READ_FROM_RAW_DUMP = True
     e.run()
