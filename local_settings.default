@@ -9,7 +9,6 @@ user: admin
 password: admin
 
 [Adlib]
-# {baseURL}?database={database}&search=modification%20greater%20%272015-12-10%27&xmltype=unstructured&limit=100&startfrom=1&output=json
 baseURL: http://whatever
 user: 
 password: 
@@ -18,11 +17,6 @@ collectionDb: archive
 peopleDb: people
 institutionsDb: people
 thesaurusDb: thesau
-
-# TODO requires site.data.collections[][1].linked_agents[].ref == agent.url
-#is_linked_to_published_record:  
-#url
-
 
 
 [SampleData]

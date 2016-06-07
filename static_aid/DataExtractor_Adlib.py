@@ -264,7 +264,19 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getAgentData(self, data, level):
         priref = prirefString(data['priref'][0])
-        title = data['name'][0]['value'][0]  # not using .get() because we want an exception if 'name' is not present for people/orgs
+
+        # written this way because we want an exception if 'name' is not present for people/orgs
+        title = None
+        for name in data['name']:
+            # first non-empty name wins
+            if type(name) == str or type(name) == unicode:
+                title = name
+                break
+            if type(name) == dict:
+                title = name['value'][0]
+                break
+        if title is None:
+            pass
         adlibKey = adlibKeyFromUnicode(title)
         names = [{'authorized': True,
                   'sort_name': name,
@@ -617,5 +629,6 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 if __name__ == '__main__':
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib()
-    e.READ_FROM_RAW_DUMP = True
+#     e.READ_FROM_RAW_DUMP = True
+    e.DUMP_RAW_DATA = True
     e.run()
