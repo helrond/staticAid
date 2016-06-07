@@ -55,6 +55,9 @@ class DataExtractor_Adlib(DataExtractor):
         # link each cached object by priref wherever there is a reference to agent name, part_of, parts, etc.
         self.linkRecordsById()
 
+        # analyze the extent records by item > ... > collection
+        self.propagateDefaultExtentsToChildren()
+
         # save the results to build/data/**.json
         self.saveAllRecords()
 
@@ -87,7 +90,7 @@ class DataExtractor_Adlib(DataExtractor):
                 # link records together by type
                 if category == 'objects':
                     self.addRefToLinkedAgents(data, category)
-                    self.createTreeNode(tree, data, 'archival_object')
+                    self.createTreeNode(tree, data, 'archival_object', category)
 
                 elif category == 'collections':
                     # NOTE: in ArchivesSpace, collection.tree.ref is something like "/repositories/2/resources/91/tree"
@@ -95,7 +98,7 @@ class DataExtractor_Adlib(DataExtractor):
                     data['tree'] = {'ref': True}
 
                     self.addRefToLinkedAgents(data, category)
-                    self.createTreeNode(tree, data, 'resource')
+                    self.createTreeNode(tree, data, 'resource', category)
 
                 # this is necessary because the 'shelve' objects don't behave *exactly* like a dict
                 self.objectCaches[category][adlibKey] = data
@@ -132,11 +135,13 @@ class DataExtractor_Adlib(DataExtractor):
                 linkedAgent['ref'] = uriRef(linkCategory, priref)
 
 
-    def createTreeNode(self, tree, data, nodeType):
+    def createTreeNode(self, tree, data, nodeType, category):
         node = {
                 'id': data['id'],
                 'title': data['title'],
                 'level': data['level'],  # item/file/collection/etc
+                'adlib_key': data['adlib_key'],  # for traversing node > data
+                'category': category,  # for traversing node > data
                 'node_type': nodeType,
                 'jsonmodel_type': 'resource_tree',
                 'publish': True,
@@ -173,6 +178,7 @@ class DataExtractor_Adlib(DataExtractor):
             # connect the objects by 'parent.ref' field
             if category == 'collections' and childKey in self.objectCaches['collections']:
                 # parts_reference links which point TO collections are only valid FROM collections.
+                # if this is wrong, it will mess up link creation.
                 childCategory = 'collections'
             elif childKey in self.objectCaches['objects']:
                 childCategory = 'objects'
@@ -185,6 +191,7 @@ class DataExtractor_Adlib(DataExtractor):
 
             child = self.objectCaches[childCategory][childKey]
             child['parent'] = selfRef
+            child['parent_node_object'] = node
             child['resource'] = {'ref': selfRef}
 
             # connect the tree-node objects by children[] list
@@ -194,6 +201,38 @@ class DataExtractor_Adlib(DataExtractor):
             node['tree'] = {'ref': True}
 
             self.createNodeChildren(childNode, child, childCategory)
+
+
+    def propagateDefaultExtentsToChildren(self):
+        '''start at the top-level collections and recurse downward by 'parts_reference' links'''
+        collections = self.objectCaches['collections']
+        for adlibKey in collections:
+            data = collections[adlibKey]
+
+            if data['level'] == 'collection':
+                # start the recursion process at the toplevel ('collection') nodes only
+                self._propagateDefaultExtentsToChildren(data)
+
+
+    def _propagateDefaultExtentsToChildren(self, data, default=[]):
+        '''
+        recursively propagate extent information, going from parent to child levels,
+        such that parent info is the default for its children
+        '''
+
+        # MERGE the default extents from parent record(s) with any other extents present
+        # NOTE: this will have no effect at the top (collection) level because default == []
+        data['extents'] = data.get('extents', []) + default
+
+        # recurse to children
+        # child = data > node > node.child > childData
+        node = self.objectCaches['trees'][data['id']]
+        for childNode in node['children']:
+            childData = self.objectCaches[childNode['category']][childNode['adlib_key']]
+            self._propagateDefaultExtentsToChildren(childData, data['extents'])
+
+            # this is necessary because the 'shelve' objects don't behave *exactly* like a dict
+            self.objectCaches[childNode['category']][childNode['adlib_key']] = childData
 
 
     def saveAllRecords(self):
@@ -305,6 +344,10 @@ class DataExtractor_Adlib(DataExtractor):
     def getCollectionOrSeries(self, data):
         priref = prirefString(data['priref'][0])
         adlibKey = adlibKeyFromUnicode(data['object_number'][0])
+        level = data['description_level'][0]['value'][0].lower()  # collection/series/etc.
+        hide = level != 'collection'  # only show top-level collections on the main page
+
+        # NOTE: 'ref' is added later, in addRefToLinkedAgents()
         linkedAgents = [{'title':creator, 'role':'creator'}
                         for creator in data.get('creator', [])
                         if creator
@@ -317,6 +360,7 @@ class DataExtractor_Adlib(DataExtractor):
                     for subject in data.get('content.subject', [])
                     if subject
                     ]
+
         notes = [{'type': 'scopecontent',
                   'jsonmodel_type': 'note_singlepart',
                   # 2 note representations for each record:
@@ -325,8 +369,15 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('content.description', [])]
 
-        level = data['description_level'][0]['value'][0].lower()  # collection/series/etc.
-        hide = level != 'collection'  # only show top-level collections on the main page
+        def extentObject(text, extentType, level):
+            return {'number': text,
+                    'extent_type': extentType,
+                    'container_summary': '%s level' % level,
+                    }
+        extents = [extentObject(d, 'digital_extent', level)
+                   for d in data.get('digital_extent', [])]
+        extents += [extentObject(d, 'dimension-free', level)  # TODO syntax?
+                    for d in data.get('dimension.free', [])]
 
         result = {
                   'id': priref,
@@ -343,6 +394,7 @@ class DataExtractor_Adlib(DataExtractor):
                   'extents': [],
                   'notes': notes,
                   'subjects': subjects,
+                  'extents': extents,
                   }
 
         return result
@@ -383,6 +435,7 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('content.description', [])]
 
+        # NOTE: 'ref' is added later, in addRefToLinkedAgents()
         linkedAgents = [{'title':name, 'role':'subject'}
                         for name in data.get('content.person.name', [])
                         if name
