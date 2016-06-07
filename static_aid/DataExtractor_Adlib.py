@@ -9,7 +9,7 @@ import shelve
 
 from static_aid import config
 from static_aid.DataExtractor import DataExtractor
-from static_aid.config import ROW_FETCH_LIMIT
+from static_aid.config import ROW_FETCH_LIMIT, DATA_DIR
 
 def makeDir(dirPath):
     try:
@@ -146,38 +146,24 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def createParentChildStructure(self):
-        # IMPORTANT!!! This must go in parent > child order, because updating parts_reference links may
-        # require calling .sync() on the 'shelve' object, which is only done at the end of _createParentChildStructure()
-        self._createParentChildStructure('collections')
-        self._createParentChildStructure('objects')
-
-    def _createParentChildStructure(self, category):
-
-        objects = self.objectCaches[category]
+        '''start at the top-level collections and recurse downward by 'parts_reference' links'''
+        collections = self.objectCaches['collections']
         trees = self.objectCaches['trees']
 
-        for adlibKey in objects:
+        for adlibKey in collections:
 
-            data = objects[adlibKey]
+            data = collections[adlibKey]
             node = trees[data['id']]
 
-            if category == 'collections':
-                self.createNodeChildren(node, data, category)
+            self.createNodeChildren(node, data, 'collections')
 
-            # connect the object to its collection by the 'resource.ref' field
-            # TODO this doesn't actually work
-            if data.get('parent_adlib_key'):
-                parent = self.objectCaches['collections'][collectionKey]
-                data['resource'] = {'ref': uriRef('collections', parent['id'])}
-
-            # this is necessary because the 'shelve' objects don't behave *exactly* like a dict
+            # this is necessary for updates because the 'shelve' objects don't behave *exactly* like a dict
             trees[data['id']] = node
-            objects[adlibKey] = data
 
         trees.sync()
-        objects.sync()
+
+        # TODO necessary?
         self.objectCaches['trees'] = trees
-        self.objectCaches[category] = objects
 
 
     def createNodeChildren(self, node, data, category):
@@ -199,6 +185,7 @@ class DataExtractor_Adlib(DataExtractor):
 
             child = self.objectCaches[childCategory][childKey]
             child['parent'] = selfRef
+            child['resource'] = {'ref': selfRef}
 
             # connect the tree-node objects by children[] list
             childNode = self.objectCaches['trees'][child['id']]
@@ -227,9 +214,6 @@ class DataExtractor_Adlib(DataExtractor):
     def extractPeople(self):
         for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
             result = self.getAgentData(data)
-            result['dates_of_existence'] = [{'begin':data.get('birth.date.start', ''),
-                                             'end':data.get('death.date.start', ''),
-                                             }]
             self.cacheJson('people', result)
 
 
@@ -260,6 +244,11 @@ class DataExtractor_Adlib(DataExtractor):
                   }
                  for n in data.get('documentation', [])]
 
+        dates = [{'expression': '%s - %s' % (data.get('birth.date.start', [''])[0],
+                                             data.get('death.date.start', [''])[0],
+                                             )
+                  }]
+
         preferred = False
         if 'name.status' in data:
             preferred = str(data['name.status'][0]['value'][0]) == '1'
@@ -272,15 +261,18 @@ class DataExtractor_Adlib(DataExtractor):
                 'title': title,
                 'preferred': preferred,
                 'names': names,
-                'related_agents':relatedAgents,
-                'notes':notes,
+                'related_agents': relatedAgents,
+                'notes': notes,
+                'dates_of_existence': dates,
                 }
 
 
     def getRelatedAgents(self, person, k):
         return [{'_resolved':{'title': name},
-                 'dates':[{'expression':''}],  # TODO
-                 'description': 'part of',
+                 'relator': k.replace('_', ' '),
+                 # TODO
+                 # 'dates':[{'expression':''}],
+                 # 'description': '',
                  }
                 for name in person.get(k, [])
                 ]
@@ -325,9 +317,11 @@ class DataExtractor_Adlib(DataExtractor):
                     for subject in data.get('content.subject', [])
                     if subject
                     ]
-        notes = [{'type': 'note',
+        notes = [{'type': 'scopecontent',
                   'jsonmodel_type': 'note_singlepart',
-                  'content': n,
+                  # 2 note representations for each record:
+                  'subnotes':[{'content': n}],  # list format is compatible with 'scopecontent' type
+                  'content': n,  # single format is compatible with 'note_singlepart' (technically this isn't 'scopecontent' format)
                   }
                  for n in data.get('content.description', [])]
 
@@ -338,7 +332,6 @@ class DataExtractor_Adlib(DataExtractor):
                   'id': priref,
                   'id_0': adlibKey,
                   'adlib_key': adlibKey,
-                  'parent_adlib_key': data.get('related_accession_number'),
                   'uri':  uriRef('collections', priref),
                   'level': level,
                   'linked_agents': linkedAgents,
@@ -414,7 +407,6 @@ class DataExtractor_Adlib(DataExtractor):
         result = {
                   'id': priref,
                   'adlib_key': adlibKey,
-                  'parent_adlib_key': data.get('related_accession_number'),
                   'level': level,
                   'linked_agents': linkedAgents,
                   'parts_reference': [adlibKeyFromUnicode(r) for r in data.get('parts_reference', [])],
@@ -458,7 +450,7 @@ class DataExtractor_Adlib(DataExtractor):
                     with open(filename, 'r') as fp:
                         rawJson = load(fp)
                 except:
-                    pass
+                    logging.info('Loading from %s failed.' % filename)
 
             if rawJson is None:
                 logging.info('Fetching %s:%s records %d-%d...' % (database,
@@ -531,7 +523,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
     def _getApiData(self, database, searchTerm):
 
         def jsonFileContents(sampleDataType):
-            filename = '%s.sample.%s.json' % (splitext(realpath(__file__))[0] , sampleDataType)
+            filename = join(DATA_DIR, 'adlib-sampledata', '%s.json' % sampleDataType)
             data = load(open(filename))
             return data
 
