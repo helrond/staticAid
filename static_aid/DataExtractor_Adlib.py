@@ -252,26 +252,24 @@ class DataExtractor_Adlib(DataExtractor):
 
     def extractPeople(self):
         for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
-            result = self.getAgentData(data)
+            result = self.getAgentData(data, 'person')
             self.cacheJson('people', result)
 
 
     def extractOrganizations(self):
         for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
-            result = self.getAgentData(data)
+            result = self.getAgentData(data, 'inst')
             self.cacheJson('organizations', result)
 
 
-    def getAgentData(self, data):
+    def getAgentData(self, data, level):
         priref = prirefString(data['priref'][0])
-        title = data['name'][0]  # not using .get() because we want an exception if 'name' is not present for people/orgs
+        title = data['name'][0]['value'][0]  # not using .get() because we want an exception if 'name' is not present for people/orgs
         adlibKey = adlibKeyFromUnicode(title)
         names = [{'authorized': True,
                   'sort_name': name,
                   'use_dates': False,
                   } for name in data.get('equivalent_name', [])]
-
-        level = data['name.type'][0]['value'][0].lower()  # person/inst
 
         relatedAgents = self.getRelatedAgents(data, 'part_of')
         relatedAgents += self.getRelatedAgents(data, 'parts')
@@ -500,6 +498,7 @@ class DataExtractor_Adlib(DataExtractor):
             rawJson = None
             if self.READ_FROM_RAW_DUMP:
                 try:
+                    logging.info('Loading from %s...' % filename)
                     with open(filename, 'r') as fp:
                         rawJson = load(fp)
                 except:
