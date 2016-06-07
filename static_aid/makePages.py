@@ -16,23 +16,29 @@ def get_json(filename):
 
 
 def create_initial_structure():
-    target = config.PAGE_DATA_DIR
-    if isdir(target):
-        rmtree(target)
-    if isfile(target):
+    if isdir(config.PAGE_DATA_DIR):
+        rmtree(config.PAGE_DATA_DIR)
+    if isfile(config.PAGE_DATA_DIR):
         # in case someone put something (like a softlink) in its place
-        remove(target)
-    copytree(config.SITE_SRC_DIR, target)
+        remove(config.PAGE_DATA_DIR)
+
+    try:
+        makedirs(config.BUILD_DIR)
+    except OSError:
+        # dir exists
+        pass
+
+    copytree(config.SITE_SRC_DIR, config.PAGE_DATA_DIR)
 
     # copy _data into place so that JSON is available to the Liquid templates
-    copytree(config.DATA_DIR, join(target, '_data'))
+    copytree(config.DATA_DIR, join(config.PAGE_DATA_DIR, '_data'))
 
 
 def get_note(note):
     if note.get("jsonmodel_type") == 'note_multipart':
         content = note["subnotes"][0]["content"]
     else:
-        content = note["content"]
+        content = note["content"][0]
     return content
 
 noteExtractor = {'abstract': get_note,

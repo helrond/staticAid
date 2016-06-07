@@ -1,0 +1,103 @@
+[
+	{
+		"@attributes": {
+			"created": "2013-05-09T22:03:48",
+			"modification": "2016-04-22T10:10:25",
+			"priref": "1",
+			"selected": "False"
+		},
+		"equivalent_name": [
+			{
+				"@lang": "",
+				"value": [
+					"Henry & June Smith Ironworks"
+				]
+			}
+		],
+		"part_of": [
+			{
+				"@lang": "",
+				"value": [
+					"Smith, Eunice Patricia"
+				]
+			},
+			{
+				"@lang": "",
+				"value": [
+					"Smith, Henry H."
+				]
+			}
+		],
+		"relationship": [
+			{
+				"@lang": "",
+				"value": [
+					"XYZ Incorporated"
+				]
+			},
+			{
+				"@lang": "",
+				"value": [
+					"Steelworxz Inc."
+				]
+			},
+			{
+				"@lang": "",
+				"value": [
+					"Wilson, Valerie"
+				]
+			}
+		],
+		"relationship.date.start": [
+			"2001-09-11"
+		],
+		"relationship.notes": [
+			"Partners with",
+			"Owned by",
+			"Administrative Assistant"
+		],
+		"source": [
+			"LCNAF"
+		],
+		"birth.date.start": [
+			"1949-08-05"
+		],
+		"documentation": [
+			"http://wikipedia.org/Henry_June_Smith_Ironworks"
+		],
+		"name": [
+			"Henry & June Smith Ironworks"
+		],
+		"name.status": [
+			{
+				"@lang": "neutral",
+				"value": [
+					"1",
+					"approved preferred term",
+					"descriptor",
+					"descripteur",
+					"Deskriptor",
+					"termine preferenziale approvato"
+				]
+			}
+		],
+        "name.type": [
+            {
+                "@lang": "neutral", 
+                "value": [
+                    "INST", 
+                    "institution", 
+                    "instelling", 
+                    "institution", 
+                    "Institution", 
+                    "\u0627\u0644\u0645\u0624\u0633\u0633\u0629", 
+                    "istituto", 
+                    "\u03bf\u03c1\u03b3\u03b1\u03bd\u03b9\u03c3\u03bc\u03cc\u03c2"
+                ]
+            }
+        ], 
+		"priref": [
+			"1001"
+		]
+	}
+]

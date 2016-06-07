@@ -9,7 +9,14 @@
   {% else %}
     <div class="component {{component.level}} no-children" id="{{component_detail.ref_id}}">
   {% endif %}
-  <a class="title" href="../../objects/{{component_id}}">{{ component.title }}</a>
+
+  {% if component.node_type == "resource" %}
+    <a class="title" href="../../collections/{{component_id}}">{{ component.title }}</a>
+  {% else %}
+    <!-- component.node_type == "archival_object" or is not set (ex: it's not set by ArchivesSpace extractor) -->
+    <a class="title" href="../../objects/{{component_id}}">{{ component.title }}</a>
+  {% endif %}
+
   {% for instance in component_detail.instances %}
     <div class="instance">{% include instance.html %}</div>
   {% endfor %}

@@ -1,5 +1,5 @@
 [DataExtractor]
-# dataSource can be one of SampleData, ArchivesSpace, Adlib (case-insensitive)
+# dataSource can be one of SampleData, ArchivesSpace, Adlib, Adlib-sampledata (case-insensitive)
 dataSource: SampleData
 
 [ArchivesSpace]

@@ -1,0 +1,22 @@
+[{
+    "title": ["a file"],
+    "priref": [
+        "100"
+    ],
+    "object_number": ["1000000"],
+    "description_level": [
+        {
+            "@lang": "neutral", 
+            "value": [
+                "FILE", 
+                "file", 
+                "bestanddeel", 
+                "dossier", 
+                "Akte", 
+                "\u0645\u0644\u0641", 
+                "file", 
+                "\u03c6\u03ac\u03ba\u03b5\u03bb\u03bf\u03c2 "
+            ]
+        }
+    ]
+}]
