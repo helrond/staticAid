@@ -18,6 +18,7 @@ peopleDb: people
 institutionsDb: people
 
 collectionFilter:
+objectFilter: 
 peopleFilter:
 institutionsFilter:
 

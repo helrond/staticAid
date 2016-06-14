@@ -40,6 +40,8 @@ class DataExtractor_Adlib(DataExtractor):
     DUMP_RAW_DATA = False
     # set to True to read raw JSON results from the cache instead of from Adlib endpoints (offline/debug mode)
     READ_FROM_RAW_DUMP = False
+    # set to False for testing purposes (quicker processing when using RAW_DUMP mechanism)
+    READ_FROM_ADLIB_API = True
 
     # number of records to save to JSON cache before syncing to disk
     CACHE_SYNC_INTERVAL = 100
@@ -421,13 +423,15 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def extractFileLevelObjects(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=file'):
+        searchTerm = 'description_level=file %s' % config.adlib.get('objectfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
 
 
     def extractItemLevelObjects(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=item'):
+        searchTerm = 'description_level=item %s' % config.adlib.get('objectfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
 
@@ -525,6 +529,9 @@ class DataExtractor_Adlib(DataExtractor):
                         rawJson = load(fp)
                 except:
                     logging.info('Loading from %s failed.' % filename)
+
+            if rawJson is None and not self.READ_FROM_ADLIB_API:
+                rawJson = {'adlibJSON':{'recordList':{'record':[]}}}
 
             if rawJson is None:
                 logging.info('Fetching %s:%s records %d-%d...' % (database,
@@ -644,4 +651,5 @@ if __name__ == '__main__':
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib()
     e.READ_FROM_RAW_DUMP = True
+    e.READ_FROM_ADLIB_API = False
     e.run()
