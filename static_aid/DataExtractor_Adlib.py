@@ -9,7 +9,6 @@ import shelve
 
 from static_aid import config
 from static_aid.DataExtractor import DataExtractor, bytesLabel
-from static_aid.config import ROW_FETCH_LIMIT, DATA_DIR
 
 def makeDir(dirPath):
     try:
@@ -501,13 +500,13 @@ class DataExtractor_Adlib(DataExtractor):
 
     def _getApiData(self, database, searchTerm):
         startFrom = 1
-        numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
-        while numResults >= ROW_FETCH_LIMIT:
+        numResults = config.ROW_FETCH_LIMIT + 1  # fake to force while() == True
+        while numResults >= config.ROW_FETCH_LIMIT:
             targetDir = join(config.RAW_DATA_DIR, database)
             filename = join(targetDir,
                             '%s.%s-%s.json' % ((searchTerm,
                                                 startFrom,
-                                                startFrom + ROW_FETCH_LIMIT,
+                                                startFrom + config.ROW_FETCH_LIMIT,
                                                 )
                                                )
                                 )
@@ -525,14 +524,18 @@ class DataExtractor_Adlib(DataExtractor):
                 logging.info('Fetching %s:%s records %d-%d...' % (database,
                                                                   searchTerm,
                                                                   startFrom,
-                                                                  startFrom + ROW_FETCH_LIMIT))
+                                                                  startFrom + config.ROW_FETCH_LIMIT))
                 url = '%s?database=%s&search=%s&xmltype=structured&limit=%d&startfrom=%d&output=json' % (config.adlib['baseurl'],
                                                                                                       database,
                                                                                                       searchTerm.strip(),
-                                                                                                      ROW_FETCH_LIMIT,
+                                                                                                      config.ROW_FETCH_LIMIT,
                                                                                                       startFrom)
-                response = requests.get(url)
-                rawJson = response.json()
+                try:
+                    response = requests.get(url)
+                    rawJson = response.json()
+                except Exception, e:
+                    logging.error("Exception while retrieving URL %s: %s" % (url, e))
+                    return
 
             if self.DUMP_RAW_DATA:
                 logging.info('Dumping raw data to %s...' % filename)
@@ -542,7 +545,7 @@ class DataExtractor_Adlib(DataExtractor):
 
             records = rawJson['adlibJSON']['recordList']['record']
             numResults = len(records)
-            startFrom += ROW_FETCH_LIMIT
+            startFrom += config.ROW_FETCH_LIMIT
 
             for record in records:
                 yield record
@@ -592,7 +595,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
     def _getApiData(self, database, searchTerm):
 
         def jsonFileContents(sampleDataType):
-            filename = join(DATA_DIR, 'adlib-sampledata', '%s.json' % sampleDataType)
+            filename = join(config.SAMPLE_DATA_DIR, 'adlib-sampledata', '%s.json' % sampleDataType)
             data = load(open(filename))
             return data
 
