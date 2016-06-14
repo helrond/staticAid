@@ -12,11 +12,14 @@ password: admin
 baseURL: http://whatever
 user: 
 password: 
-collectionDb: archive
 
+collectionDb: archive
 peopleDb: people
 institutionsDb: people
-thesaurusDb: thesau
+
+collectionFilter:
+peopleFilter:
+institutionsFilter:
 
 
 [SampleData]

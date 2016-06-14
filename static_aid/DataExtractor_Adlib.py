@@ -250,13 +250,15 @@ class DataExtractor_Adlib(DataExtractor):
     ### Object-Extraction stuff ###
 
     def extractPeople(self):
-        for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
+        searchTerm = 'name.type=person %s' % config.adlib.get('peoplefilter', '')
+        for data in self.getApiData(config.adlib['peopledb'], searchTerm=searchTerm.strip()):
             result = self.getAgentData(data, 'person')
             self.cacheJson('people', result)
 
 
     def extractOrganizations(self):
-        for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
+        searchTerm = 'name.type=inst %s' % config.adlib.get('institutionsfilter', '')
+        for data in self.getApiData(config.adlib['institutionsdb'], searchTerm=searchTerm.strip()):
             result = self.getAgentData(data, 'inst')
             self.cacheJson('organizations', result)
 
@@ -332,25 +334,29 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def extractCollections(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=collection'):
+        searchTerm = 'description_level=collection %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
 
     def extractSubCollections(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-collection"'):
+        searchTerm = 'description_level="sub-collection" %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
 
     def extractSeries(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=series'):
+        searchTerm = 'description_level=series %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
 
     def extractSubSeries(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-series"'):
+        searchTerm = 'description_level="sub-series" %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
