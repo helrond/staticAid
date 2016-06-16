@@ -424,14 +424,14 @@ class DataExtractor_Adlib(DataExtractor):
 
     def extractFileLevelObjects(self):
         searchTerm = 'description_level=file %s' % config.adlib.get('objectfilter', '')
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm):
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
 
 
     def extractItemLevelObjects(self):
         searchTerm = 'description_level=item %s' % config.adlib.get('objectfilter', '')
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm):
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
 
