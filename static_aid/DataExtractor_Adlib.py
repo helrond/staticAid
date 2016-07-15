@@ -82,6 +82,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def linkRecordsById(self):
         tree = shelve.open(self.cacheFilename('trees'))
+
         for category in self.objectCaches:
             cache = self.objectCaches[category]
             for adlibKey in cache:
@@ -122,9 +123,9 @@ class DataExtractor_Adlib(DataExtractor):
         for linkedAgent in data.get('linked_agents', []):
             if 'ref' not in linkedAgent:
                 linkKey = adlibKeyFromUnicode(linkedAgent['title'])
-                if linkKey in self.objectCaches['people']:
+                if linkKey in self.objectCaches.get('people', []):
                     linkCategory = 'people'
-                elif linkKey in self.objectCaches['organizations']:
+                elif linkKey in self.objectCaches.get('organizations', []):
                     linkCategory = 'organizations'
                 else:
                     msg = '''
