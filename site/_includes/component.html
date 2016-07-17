@@ -21,10 +21,10 @@
         {% endif %}
 
   {% if component.node_type == "resource" %}
-    <a title="More information" class="more-link" href="../../collections/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
+    <a title="More information" class="more-link" href="{{ site.url }}{{ site.baseurl }}{{ component.uri }}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
   {% else %}
     <!-- component.node_type == "archival_object" or is not set (ex: it's not set by ArchivesSpace extractor) -->
-    <a title="More information" class="more-link" href="../../objects/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
+    <a title="More information" class="more-link" href="{{ site.url }}{{ site.baseurl }}/objects/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
   {% endif %}
 
         {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
