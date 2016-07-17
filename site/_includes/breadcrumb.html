@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-  <li><a href="/{{ site.baseurl }}">home</a></li>
+  <li><a href="{{ site.baseurl }}">home</a></li>
   {% if breadcrumbs %}
     {% for breadcrumb in breadcrumbs.path_to_root %}
       {% if breadcrumb.node_type == "resource" %}
