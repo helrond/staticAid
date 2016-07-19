@@ -14,7 +14,7 @@ SITE_SRC_DIR = join(ROOT, 'site')
 # build dirs
 BUILD_DIR = join(ROOT, 'build')
 DATA_DIR = join(BUILD_DIR, 'data')
-PAGE_DATA_DIR = join(BUILD_DIR, 'staging')
+STAGING_DIR = join(BUILD_DIR, 'staging')
 RAW_DATA_DIR = join(BUILD_DIR, 'raw')
 
 # temp dir
