@@ -1,12 +1,12 @@
 from ConfigParser import ConfigParser, NoSectionError
-from os.path import dirname, join, exists, realpath
+from os.path import join, exists, realpath, curdir
 from shutil import copyfile
 
 ### Application constants - these are not exposed to users via config files ###
 
 # NOTE: Directories must match Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
-ROOT = realpath(join(dirname(__file__), '..'))
-
+ROOT = realpath(curdir)
+CONFIG_DEFAULTS_FILE_PATH = join(ROOT, 'local_settings.default')
 CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'site')
@@ -54,9 +54,14 @@ def _stringToList(string):
 ### Config file values ###
 
 # read the config file
+if not exists(CONFIG_FILE_PATH) and not exists(CONFIG_DEFAULTS_FILE_PATH):
+    print "Unable to find any config settings! Please create one of these two files:"
+    print "", CONFIG_FILE_PATH
+    print "", CONFIG_DEFAULTS_FILE_PATH
+    exit(1)
+
 if not exists(CONFIG_FILE_PATH):
-    defaultConfigFile = join(ROOT, 'local_settings.default')
-    copyfile(defaultConfigFile, CONFIG_FILE_PATH)
+    copyfile(CONFIG_DEFAULTS_FILE_PATH, CONFIG_FILE_PATH)
 _config = ConfigParser()
 _config.read(CONFIG_FILE_PATH)
 
@@ -89,4 +94,4 @@ logging = _configSection('Logging')
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
 
-lastExportFilepath = join(dirname(__file__), _config.get('LastExport', 'filepath'))
+lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
