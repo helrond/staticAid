@@ -19,10 +19,15 @@ module.exports = function(grunt) {
         stderr: true
       },
       makePages_embedded: {
-        command: 'static-aid-build --embedded',
-        stdout: true,
-        stderr: true
-      }
+          command: 'static-aid-build --embedded',
+          stdout: true,
+          stderr: true
+        },
+      deploy: {
+          command: 'static-aid-deploy',
+          stdout: true,
+          stderr: true
+        }
     },
     jekyll: {
       serve: {
@@ -59,5 +64,6 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build']);
   grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
   grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
+  grunt.registerTask('deploy', ['exec:deploy']);
 
 };

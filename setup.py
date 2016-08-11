@@ -13,6 +13,7 @@ setup(name='static-aid',
       entry_points={'console_scripts': [
                                         'static-aid-get-data=static_aid.getJson:main',
                                         'static-aid-build=static_aid.makePages:main',
+                                        'static-aid-deploy=static_aid.makePages:deploy',
                                         ],
                     },
     zip_safe=False

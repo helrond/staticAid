@@ -118,5 +118,9 @@ def main():
     for category in config.destinations:
         make_pages(category)
 
+def deploy():
+    # TODO
+    pass
+
 if __name__ == '__main__':
     main()
