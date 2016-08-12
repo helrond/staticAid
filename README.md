@@ -31,9 +31,23 @@ You can see a live version of this site with sample data [here](http://hillelarn
     to `local_settings.cfg` and make your changes. Otherwise, this file will be created for you.
 5.  Change the values in `_config.yml` to match your preferences. Make sure to change `url` and `baseurl`.
 
-NOTE: For Linux-like systems, you can simply run `install.sh`. 
-It has only been tested on Linux Mint but should work on any Debian based distribution, 
+**NOTE:** For Linux-like systems, you can simply run `install.sh`. 
+It has only been tested on Mint 17+ and Ubuntu 14+, but should work on any Debian based distribution, 
 and should work on OSX, RedHat, etc. with minimal modification.
+
+If you would like to auto-generate StaticAid content using a cron job (on Linux systems), you can
+link one of the rebuild scripts to an appropriate cron job folder. To auto-generate full-page
+content every day, you could do this:
+
+	ln -s scripts/static-aid-rebuild /etc/cron.daily/
+	chmod +x /etc/cron.daily/static-aid-rebuild
+
+or to auto-generate embedded content every week, you could do this:
+
+	ln -s scripts/static-aid-rebuild-embedded /etc/cron.weekly/
+	chmod +x /etc/cron.daily/static-aid-rebuild-embedded
+
+**NOTE:** it is important to softlink (`ln -s src dest`) instead of copying (`cp src dest`). 
 
 ## Usage
 

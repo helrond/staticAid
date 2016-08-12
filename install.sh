@@ -55,6 +55,4 @@ To view the generated HTML in the test server, run:
 and then open:
 
     http://localhost:4000
-
-(NOTE: These steps are automated in cleanRebuildAndRun.sh)
 "
