@@ -653,6 +653,8 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
 
 if __name__ == '__main__':
+    # NOTE: this is useful for launching in a debugger or for isolated testing;
+    # it will not run when StaticAid is launched via 'grunt rebuild', so it is safe to leave in place.
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib()
     e.READ_FROM_RAW_DUMP = True
