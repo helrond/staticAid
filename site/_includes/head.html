@@ -1,6 +1,6 @@
 {% capture title %}{% if page.title %}{{ site.title | escape }}: {{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}{% endcapture %}
 {% capture description %}{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
-{% capture canonical_url %}{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}{% endcapture %}
+{% capture canonical_url %}{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}{% endcapture %}
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,13 +11,13 @@
   <meta name="author" content="{{ site.author }}" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@duspeccoll" />
+  <meta name="twitter:site" content="@helrond" />
   <meta property="og:title" name="twitter:title" content="{{ title }}" />
   <meta property="og:description" name="twitter:description" content="{{ description}}" />
   <meta property="og:url" content="{{ canonical_url }}" />
   <meta property="og:site_name" content="{{ site.title }}" />
 
-  <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.baseurl | prepend: site.url }}" />
+  <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/css/styles.css" />
   <link rel="canonical" href="{{ canonical_url }}" />
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ site.baseurl }}/feed.xml" />
 </head>
