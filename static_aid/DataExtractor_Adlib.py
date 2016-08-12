@@ -545,6 +545,7 @@ class DataExtractor_Adlib(DataExtractor):
                                                                                                       config.ROW_FETCH_LIMIT,
                                                                                                       startFrom)
                 try:
+                    logging.info("GET " + url)
                     response = requests.get(url)
                     rawJson = response.json()
                 except Exception, e:
