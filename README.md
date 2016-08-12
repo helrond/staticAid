@@ -76,7 +76,7 @@ Github Pages support Jekyll sites, so a quick way to make your description publi
 `gh-pages` branch in a Github repository. See the [Github Pages](https://pages.github.com/) documentation
 for more information.
 
-### Auto Generating StaticAid Content (Cron Jobs)
+### Auto Generating StaticAid Content (via Cron Job)
 
 If you would like to auto-generate StaticAid content using a cron job (on Linux systems), you can
 link one of the rebuild scripts to an appropriate cron job folder. To auto-generate full-page
