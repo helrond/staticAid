@@ -82,11 +82,11 @@ If you would like to auto-generate StaticAid content using a cron job (on OSX/Li
 link one of the rebuild scripts to an appropriate cron job folder. To auto-generate full-page
 content every day, you could do this:
 
-	ln -s scripts/static-aid-rebuild /etc/cron.daily/
+    sudo ln -s scripts/static-aid-rebuild /etc/cron.daily/
 
 or to auto-generate embedded content every week, you could do this:
 
-	ln -s scripts/static-aid-rebuild-embedded /etc/cron.weekly/
+    sudo ln -s scripts/static-aid-rebuild-embedded /etc/cron.weekly/
 
 **NOTE:** it is important to softlink (`ln -s src dest`) instead of copying (`cp src dest`). 
 

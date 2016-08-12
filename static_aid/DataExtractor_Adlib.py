@@ -37,7 +37,7 @@ class DataExtractor_Adlib(DataExtractor):
         self.objectCacheInsertionCount = 0
 
     # set to True to cache the raw JSON result from Adlib (before it is converted to StaticAid-friendly JSON)
-    DUMP_RAW_DATA = False
+    DUMP_RAW_DATA = True
     # set to True to read raw JSON results from the cache instead of from Adlib endpoints (offline/debug mode)
     READ_FROM_RAW_DUMP = False
     # set to False for testing purposes (quicker processing when using RAW_DUMP mechanism)
