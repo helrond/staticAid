@@ -439,7 +439,10 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getArchivalObject(self, data):
         priref = prirefString(data['priref'][0])
-        adlibKey = adlibKeyFromUnicode(data['object_number'][0])
+        try:
+            adlibKey = adlibKeyFromUnicode(data['object_number'][0])
+        except:
+            adlibKey = None
 
         try:
             instances = [{
