@@ -1,5 +1,5 @@
 from ConfigParser import ConfigParser, NoSectionError
-from os.path import join, exists, realpath, curdir
+from os.path import join, exists, realpath, curdir, dirname
 from shutil import copyfile
 
 ### Application constants - these are not exposed to users via config files ###
@@ -7,6 +7,11 @@ from shutil import copyfile
 # NOTE: Directories must match Gruntfile.js: jekyll > (serve|build) > options > (src|dest)
 ROOT = realpath(curdir)
 CONFIG_DEFAULTS_FILE_PATH = join(ROOT, 'local_settings.default')
+if not exists(CONFIG_DEFAULTS_FILE_PATH):
+    # probably because we're debugging directly (PWD = dirname(__file__))
+    ROOT = realpath(join(dirname(__file__), '..'))
+    CONFIG_DEFAULTS_FILE_PATH = join(ROOT, 'local_settings.default')
+
 CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'site')
@@ -16,6 +21,7 @@ BUILD_DIR = join(ROOT, 'build')
 DATA_DIR = join(BUILD_DIR, 'data')
 STAGING_DIR = join(BUILD_DIR, 'staging')
 RAW_DATA_DIR = join(BUILD_DIR, 'raw')
+SITE_BUILD_DIR = join(BUILD_DIR, 'site')  # must match 'dest' settings in Gruntfile.js
 
 # temp dir
 TEMP_DIR = join(BUILD_DIR, 'tmp')
@@ -94,4 +100,8 @@ logging = _configSection('Logging')
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
 
+# a state file that stores the most recent export date
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
+
+# the target directory when deploying/embedding to a web server via cron job
+deployTargetPath = join(ROOT, _config.get('Deploy', 'targetPath'))

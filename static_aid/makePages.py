@@ -4,7 +4,7 @@ from json import load
 from os import listdir, makedirs
 from os.path import exists, join, splitext, isdir, isfile
 from shutil import copyfile, copytree, rmtree
-from posix import remove
+from posix import remove, rmdir
 
 from static_aid import config
 from argparse import ArgumentParser
@@ -119,8 +119,15 @@ def main():
         make_pages(category)
 
 def deploy():
-    # TODO
-    pass
+    # TODO copy tree from build/site to config.deployTargetPath
+    if exists(config.deployTargetPath):
+        for filename in listdir(config.deployTargetPath):
+            filename = join(config.deployTargetPath, filename)
+            if isdir(filename):
+                rmtree(filename)
+            else:
+                remove(filename)
+    copytree(config.SITE_BUILD_DIR, config.deployTargetPath)
 
 if __name__ == '__main__':
-    main()
+    deploy()

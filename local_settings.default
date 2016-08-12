@@ -46,3 +46,7 @@ datefmt: %m/%d/%Y %I:%M:%S %p
 
 [LastExport]
 filepath: lastExport.pickle
+
+[Deploy]
+# this should match filesystem.dir.staticAidRoot in AccessUI's application.properties if applicable
+targetPath: /opt/static-aid
