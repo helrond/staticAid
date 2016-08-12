@@ -32,8 +32,8 @@ You can see a live version of this site with sample data [here](http://hillelarn
 5.  Change the values in `_config.yml` to match your preferences. Make sure to change `url` and `baseurl`.
 
 **NOTE:** For Linux-like systems, you can simply run `install.sh`. 
-It has only been tested on Mint 17+ and Ubuntu 14+, but should work on any Debian based distribution, 
-and should work on OSX, RedHat, etc. with minimal modification.
+It has only been tested on Mint 18+ and Ubuntu 16+, but should work on any Debian based distribution, 
+OSX, RedHat, etc. with minimal modification.
 
 If you would like to auto-generate StaticAid content using a cron job (on Linux systems), you can
 link one of the rebuild scripts to an appropriate cron job folder. To auto-generate full-page
