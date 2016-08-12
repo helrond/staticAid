@@ -102,6 +102,3 @@ destinations = _configSection('Destinations')
 
 # a state file that stores the most recent export date
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
-
-# the target directory when deploying/embedding to a web server via cron job
-deployTargetPath = join(ROOT, _config.get('Deploy', 'targetPath'))
