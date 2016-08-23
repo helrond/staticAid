@@ -263,6 +263,7 @@ class DataExtractor_Adlib(DataExtractor):
         searchTerm = 'name.type=inst %s' % config.adlib.get('institutionsfilter', '')
         for data in self.getApiData(config.adlib['institutionsdb'], searchTerm=searchTerm.strip()):
             result = self.getAgentData(data, 'inst')
+            result['uri'] = uriRef('organizations', result['id'])
             self.cacheJson('organizations', result)
 
 

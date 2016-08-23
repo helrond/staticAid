@@ -4,7 +4,17 @@
     {% for item_hash in list_data %}
       {% assign item = item_hash[1] %}
       {% assign id = item_hash[0] %}
-      {% capture description %}{% for note in item.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content}}{% endif %}{% endfor %}{% endcapture %}
+      {% capture description %}
+        {% for note in item.notes %}
+          {% if note.type == 'abstract' %}
+            {{note.subnotes[0].content}}
+          {% elsif note.type == 'scopecontent' %}
+            {{note.subnotes[0].content}}
+          {% elsif note.type == 'bioghist' %}
+            {{note.subnotes[0].content}}
+          {% endif %}
+        {% endfor %}
+      {% endcapture %}
       <h3><a href="{{ site.url }}{{ site.baseurl }}{{ item.uri }}">{{ item.title }}</a></h3>
       {% if description != '' %}
         <p>{{ description | truncatewords: 50 }}</p>
