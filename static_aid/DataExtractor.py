@@ -15,7 +15,11 @@ from static_aid import config
 
 
 def bytesLabel(size):
-    size = float(size.encode('ascii', errors='ignore').strip())
+    try:
+        size = float(size.encode('ascii', errors='ignore').strip())
+    except:
+        # probably already text-formatted
+        return size
     suffix = 'B'
     suffixes = ['PB', 'TB', 'GB', 'MB', 'KB']
     while size >= 1024 and len(suffixes) > 0:
