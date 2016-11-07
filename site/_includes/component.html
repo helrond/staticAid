@@ -1,44 +1,48 @@
+{% if tree.children[0] %}
+  <h3>Contents List</h3>
+{% endif %}
 {% for component in tree %}
   {% capture component_id %}{{component.id}}{% endcapture %}
   {% assign component_detail = site.data.objects[{{component_id}}] %}
-  {% if component.has_children %}
-    <div class="component {{component.level}} has-children" id="{{component_detail.ref_id}}">
-      <a class="container-list-toggle" href="#">
-        <span class="container-list-toggle-icon"></span>
-      </a>
-  {% else %}
-    <div class="component {{component.level}} no-children" id="{{component_detail.ref_id}}">
-  {% endif %}
+
+  <div class="col-md-12 {{component.level}}">
+    <div id="{{component_detail.ref_id}}" class="row">
+      <div class="col-md-9">
+        {% if component.level == 'series' %}
+          <span class="group-title-top">{{ component.title }}</span>
+        {% elsif component.level == 'recordgrp' %}
+          <span class="group-title-top">{{ component.title }}</span>
+        {% elsif component.level == 'subseries' %}
+          <span class="group-title-intermediate">{{ component.title }}</span>
+        {% elsif component.level == 'subgrp' %}
+          <span class="group-title-intermediate">{{ component.title }}</span>
+        {% else %}
+          <span class="component-title">{{ component.title }}</span>
+        {% endif %}
 
   {% if component.node_type == "resource" %}
-    <a class="title" href="../../collections/{{component_id}}">{{ component.title }}</a>
+    <a title="More information" class="more-link" href="{{ site.url }}{{ site.baseurl }}/collections/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
   {% else %}
     <!-- component.node_type == "archival_object" or is not set (ex: it's not set by ArchivesSpace extractor) -->
-    <a class="title" href="../../objects/{{component_id}}">{{ component.title }}</a>
+    <a title="More information" class="more-link" href="{{ site.url }}{{ site.baseurl }}/objects/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
   {% endif %}
 
-  {% for instance in component_detail.instances %}
-    <div class="instance">{% include instance.html %}</div>
-  {% endfor %}
-  {% for note in component_detail.notes %}
-    <div class="description">
-    {% case {{note.jsonmodel_type}} %}
-      {% when 'note_multipart' %}
-        {% for subnote in note.subnotes %}
-          {% if subnote.jsonmodel_type == 'note_text' %}
-            {{ subnote.content | strip_tags | markdownify }}
-          {% endif %}
+        {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
+          <span class="more-link glyphicon glyphicon-comment" aria-hidden="true"></span>
+        {% endif %}
+      </div>
+      <div class="col-md-3">
+
+        {% for instance in component_detail.instances %}
+          <p>{% include instance.html %}</p>
         {% endfor %}
-      {% when 'note_singlepart' %}
-        {{ note.content | strip_tags }}
-    {% endcase %}
+
+      </div>
     </div>
-  {% endfor %}
-  {% if component.has_children %}
-    <div class="container-list list-{{component.level}}">
+
+  {% if component.children %}
       {% assign tree = component.children %}
       {% include component.html %}
-    </div>
-  {% endif %}
+    {% endif %}
   </div>
 {% endfor %}

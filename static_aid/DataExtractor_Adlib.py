@@ -1,15 +1,14 @@
 from datetime import datetime
 from json import load, dump
 import logging
-from logging import DEBUG, INFO, ERROR
+from logging import INFO
 from os import listdir, makedirs, remove
-from os.path import splitext, realpath, join, exists
+from os.path import join, exists
 import requests
 import shelve
 
 from static_aid import config
-from static_aid.DataExtractor import DataExtractor
-from static_aid.config import ROW_FETCH_LIMIT, DATA_DIR
+from static_aid.DataExtractor import DataExtractor, bytesLabel
 
 def makeDir(dirPath):
     try:
@@ -41,6 +40,8 @@ class DataExtractor_Adlib(DataExtractor):
     DUMP_RAW_DATA = False
     # set to True to read raw JSON results from the cache instead of from Adlib endpoints (offline/debug mode)
     READ_FROM_RAW_DUMP = False
+    # set to False for testing purposes (quicker processing when using RAW_DUMP mechanism)
+    READ_FROM_ADLIB_API = True
 
     # number of records to save to JSON cache before syncing to disk
     CACHE_SYNC_INTERVAL = 100
@@ -81,6 +82,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def linkRecordsById(self):
         tree = shelve.open(self.cacheFilename('trees'))
+
         for category in self.objectCaches:
             cache = self.objectCaches[category]
             for adlibKey in cache:
@@ -121,9 +123,9 @@ class DataExtractor_Adlib(DataExtractor):
         for linkedAgent in data.get('linked_agents', []):
             if 'ref' not in linkedAgent:
                 linkKey = adlibKeyFromUnicode(linkedAgent['title'])
-                if linkKey in self.objectCaches['people']:
+                if linkKey in self.objectCaches.get('people', []):
                     linkCategory = 'people'
-                elif linkKey in self.objectCaches['organizations']:
+                elif linkKey in self.objectCaches.get('organizations', []):
                     linkCategory = 'organizations'
                 else:
                     msg = '''
@@ -251,27 +253,39 @@ class DataExtractor_Adlib(DataExtractor):
     ### Object-Extraction stuff ###
 
     def extractPeople(self):
-        for data in self.getApiData(config.adlib['peopledb'], searchTerm='name.type=person'):
-            result = self.getAgentData(data)
+        searchTerm = 'name.type=person %s' % config.adlib.get('peoplefilter', '')
+        for data in self.getApiData(config.adlib['peopledb'], searchTerm=searchTerm.strip()):
+            result = self.getAgentData(data, 'person')
             self.cacheJson('people', result)
 
 
     def extractOrganizations(self):
-        for data in self.getApiData(config.adlib['institutionsdb'], searchTerm='name.type=inst'):
-            result = self.getAgentData(data)
+        searchTerm = 'name.type=inst %s' % config.adlib.get('institutionsfilter', '')
+        for data in self.getApiData(config.adlib['institutionsdb'], searchTerm=searchTerm.strip()):
+            result = self.getAgentData(data, 'inst')
             self.cacheJson('organizations', result)
 
 
-    def getAgentData(self, data):
+    def getAgentData(self, data, level):
         priref = prirefString(data['priref'][0])
-        title = data['name'][0]  # not using .get() because we want an exception if 'name' is not present for people/orgs
+
+        # written this way because we want an exception if 'name' is not present for people/orgs
+        title = None
+        for name in data['name']:
+            # first non-empty name wins
+            if type(name) == str or type(name) == unicode:
+                title = name
+                break
+            if type(name) == dict:
+                title = name['value'][0]
+                break
+        if title is None:
+            pass
         adlibKey = adlibKeyFromUnicode(title)
         names = [{'authorized': True,
                   'sort_name': name,
                   'use_dates': False,
                   } for name in data.get('equivalent_name', [])]
-
-        level = data['name.type'][0]['value'][0].lower()  # person/inst
 
         relatedAgents = self.getRelatedAgents(data, 'part_of')
         relatedAgents += self.getRelatedAgents(data, 'parts')
@@ -282,6 +296,11 @@ class DataExtractor_Adlib(DataExtractor):
                   'content': n,
                   }
                  for n in data.get('documentation', [])]
+        notes += [{'type': 'bioghist',
+                   'jsonmodel_type': 'note_singlepart',
+                   'content': n,
+                   }
+                  for n in data.get('biography', [])]
 
         dates = [{'expression': '%s - %s' % (data.get('birth.date.start', [''])[0],
                                              data.get('death.date.start', [''])[0],
@@ -318,25 +337,29 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def extractCollections(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=collection'):
+        searchTerm = 'description_level=collection %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
 
     def extractSubCollections(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-collection"'):
+        searchTerm = 'description_level="sub-collection" %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
 
     def extractSeries(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=series'):
+        searchTerm = 'description_level=series %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
 
     def extractSubSeries(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level="sub-series"'):
+        searchTerm = 'description_level="sub-series" %s' % config.adlib.get('collectionfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getCollectionOrSeries(data)
             self.cacheJson('collections', result)
 
@@ -374,7 +397,7 @@ class DataExtractor_Adlib(DataExtractor):
                     'extent_type': extentType,
                     'container_summary': '%s level' % level,
                     }
-        extents = [extentObject(d, 'digital_extent', level)
+        extents = [extentObject(bytesLabel(d), 'digital_extent', level)
                    for d in data.get('digital_extent', [])]
         extents += [extentObject(d, 'dimension-free', level)  # TODO syntax?
                     for d in data.get('dimension.free', [])]
@@ -401,13 +424,15 @@ class DataExtractor_Adlib(DataExtractor):
 
 
     def extractFileLevelObjects(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=file'):
+        searchTerm = 'description_level=file %s' % config.adlib.get('objectfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
 
 
     def extractItemLevelObjects(self):
-        for data in self.getApiData(config.adlib['collectiondb'], searchTerm='description_level=item'):
+        searchTerm = 'description_level=item %s' % config.adlib.get('objectfilter', '')
+        for data in self.getApiData(config.adlib['collectiondb'], searchTerm=searchTerm.strip()):
             result = self.getArchivalObject(data)
             self.cacheJson('objects', result)
 
@@ -486,13 +511,13 @@ class DataExtractor_Adlib(DataExtractor):
 
     def _getApiData(self, database, searchTerm):
         startFrom = 1
-        numResults = ROW_FETCH_LIMIT + 1  # fake to force while() == True
-        while numResults >= ROW_FETCH_LIMIT:
+        numResults = config.ROW_FETCH_LIMIT + 1  # fake to force while() == True
+        while numResults >= config.ROW_FETCH_LIMIT:
             targetDir = join(config.RAW_DATA_DIR, database)
             filename = join(targetDir,
                             '%s.%s-%s.json' % ((searchTerm,
                                                 startFrom,
-                                                startFrom + ROW_FETCH_LIMIT,
+                                                startFrom + config.ROW_FETCH_LIMIT,
                                                 )
                                                )
                                 )
@@ -500,23 +525,31 @@ class DataExtractor_Adlib(DataExtractor):
             rawJson = None
             if self.READ_FROM_RAW_DUMP:
                 try:
+                    logging.info('Loading from %s...' % filename)
                     with open(filename, 'r') as fp:
                         rawJson = load(fp)
                 except:
                     logging.info('Loading from %s failed.' % filename)
 
+            if rawJson is None and not self.READ_FROM_ADLIB_API:
+                rawJson = {'adlibJSON':{'recordList':{'record':[]}}}
+
             if rawJson is None:
                 logging.info('Fetching %s:%s records %d-%d...' % (database,
                                                                   searchTerm,
                                                                   startFrom,
-                                                                  startFrom + ROW_FETCH_LIMIT))
+                                                                  startFrom + config.ROW_FETCH_LIMIT))
                 url = '%s?database=%s&search=%s&xmltype=structured&limit=%d&startfrom=%d&output=json' % (config.adlib['baseurl'],
                                                                                                       database,
                                                                                                       searchTerm.strip(),
-                                                                                                      ROW_FETCH_LIMIT,
+                                                                                                      config.ROW_FETCH_LIMIT,
                                                                                                       startFrom)
-                response = requests.get(url)
-                rawJson = response.json()
+                try:
+                    response = requests.get(url)
+                    rawJson = response.json()
+                except Exception, e:
+                    logging.error("Exception while retrieving URL %s: %s" % (url, e))
+                    return
 
             if self.DUMP_RAW_DATA:
                 logging.info('Dumping raw data to %s...' % filename)
@@ -526,7 +559,7 @@ class DataExtractor_Adlib(DataExtractor):
 
             records = rawJson['adlibJSON']['recordList']['record']
             numResults = len(records)
-            startFrom += ROW_FETCH_LIMIT
+            startFrom += config.ROW_FETCH_LIMIT
 
             for record in records:
                 yield record
@@ -576,7 +609,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
     def _getApiData(self, database, searchTerm):
 
         def jsonFileContents(sampleDataType):
-            filename = join(DATA_DIR, 'adlib-sampledata', '%s.json' % sampleDataType)
+            filename = join(config.SAMPLE_DATA_DIR, 'adlib-sampledata', '%s.json' % sampleDataType)
             data = load(open(filename))
             return data
 
@@ -619,4 +652,5 @@ if __name__ == '__main__':
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib()
     e.READ_FROM_RAW_DUMP = True
+    e.READ_FROM_ADLIB_API = False
     e.run()

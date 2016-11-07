@@ -13,6 +13,17 @@ from json import dump
 
 from static_aid import config
 
+
+def bytesLabel(size):
+    size = float(size.encode('ascii', errors='ignore').strip())
+    suffix = 'B'
+    suffixes = ['PB', 'TB', 'GB', 'MB', 'KB']
+    while size >= 1024 and len(suffixes) > 0:
+        size = size / 1024.0
+        suffix = suffixes.pop()
+    return '%.1f %s' % (size, suffix)
+
+
 class DataExtractor(object):
 
     def __init__(self, update=False):

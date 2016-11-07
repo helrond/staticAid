@@ -2,7 +2,16 @@
 #Base SCSS
 ---
 
-@import "bootstrap-yeti";
+/*
+Choose the bootstrap theme by un-commenting one of the @imports below.
+
+NOTE: you will have to place the proper CSS file into site/_sass/_bootstrap-*.scss.
+      The file does not have to be SCSS-specific; a plain CSS file can be renamed 
+      to fit the pattern.
+*/
+/* @import "bootstrap-yeti"; */
+@import "bootstrap-default";
+/* @import "bootstrap- <etc> "; */
 
 /* custom */
 @import "custom";
