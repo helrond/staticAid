@@ -16,25 +16,36 @@ def get_json(filename):
 
 
 def create_initial_structure():
-    target = config.PAGE_DATA_DIR
-    if isdir(target):
-        rmtree(target)
-    if isfile(target):
+    if isdir(config.PAGE_DATA_DIR):
+        rmtree(config.PAGE_DATA_DIR)
+    if isfile(config.PAGE_DATA_DIR):
         # in case someone put something (like a softlink) in its place
-        remove(target)
-    copytree(config.SITE_SRC_DIR, target)
+        remove(config.PAGE_DATA_DIR)
+
+    try:
+        makedirs(config.BUILD_DIR)
+    except OSError:
+        # dir exists
+        pass
+
+    copytree(config.SITE_SRC_DIR, config.PAGE_DATA_DIR)
 
     # copy _data into place so that JSON is available to the Liquid templates
-    copytree(config.DATA_DIR, join(target, '_data'))
+    copytree(config.DATA_DIR, join(config.PAGE_DATA_DIR, '_data'))
 
 
 def get_note(note):
-    if note["jsonmodel_type"] == 'note_multipart':
+    if note.get("jsonmodel_type") == 'note_multipart':
         content = note["subnotes"][0]["content"]
     else:
-        content = note["content"]
+        content = note["content"][0]
     return content
 
+noteExtractor = {'abstract': get_note,
+                 'scopecontent': get_note,
+                 'bioghist': get_note,
+                 'general': get_note,
+                 }
 
 def make_page_data_dir(category):
     pageDataDir = join(config.PAGE_DATA_DIR, category)
@@ -47,6 +58,7 @@ def make_page_data_dir(category):
 
 
 def make_pages(category):
+    # ex: families > agents/families/
     sourceDataDir = join(config.DATA_DIR, config.destinations[category])
     if exists(sourceDataDir):
         pageDataDir = make_page_data_dir(category)
@@ -60,23 +72,16 @@ def make_pages(category):
                     title = data["display_string"].strip().replace('"', "'")
                 else:
                     title = data["title"].strip().replace('"', "'")
-                raw_description = ''
-                description = ''
 
+                raw_description = []
                 notes = data.get('notes', [])
                 for note in notes:
-                    if note.has_key("type"):
-                        if note["type"] == 'abstract':
-                            raw_description = get_note(note)
-                        elif note["type"] == 'scopecontent':
-                            raw_description = get_note(note)
-                        elif note["type"] == 'bioghist':
-                            raw_description = get_note(note)
-                        else:
-                            pass
-                    else:
-                        pass
-                description = (raw_description.strip().replace('"', "'")[:200] + '...') if len(raw_description) > 200 else description
+                    noteType = note.get('type')
+                    if noteType in noteExtractor:
+                        note = noteExtractor[noteType](note).strip().replace('"', "'")
+                        if len(note) > 200:
+                            note = note[:197] + '...'
+                        raw_description.append('<p>%s</p>' % note)
 
                 targetFilename = join(pageDataDir, '%s.html' % identifier)
                 with open(targetFilename, 'w+') as new_file:
@@ -85,12 +90,11 @@ def make_pages(category):
                     new_file.write("id: %s\n" % identifier)
                     new_file.write("type: %s\n" % category)
                     new_file.write("permalink: %s/%s/\n" % (category, identifier))
-                    new_file.write("description: \"%s\"\n" % description.encode('utf-8'))
+                    new_file.write("description: \"%s\"\n" % ''.join(raw_description).encode('utf-8'))
                     new_file.write("---")
                     new_file.close
 
 def main():
-    # ex: {families: agents/families}
     create_initial_structure()
     for category in config.destinations:
         make_pages(category)

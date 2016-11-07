@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 
-import json
 import logging
 from os.path import join, exists, isfile, dirname
 from os import getpid, makedirs, remove, unlink
 import pickle
 from psutil import pid_exists
 from sys import exit
+from shutil import rmtree
 from time import time
 from zipfile import ZipFile
+from json import dump
 
 from static_aid import config
 
@@ -23,12 +24,12 @@ class DataExtractor(object):
         logging.info('*** Export started ***')
 
         exportStartTime = int(time())
+        self.removeDataDir()
         self._run()
         self.updateLastExportTime(exportStartTime)
 
         logging.info('*** Export completed ***')
         self.unregisterPid()
-
 
     def _run(self):
         raise Exception('override this method for each DataExtractor subclass')
@@ -55,6 +56,12 @@ class DataExtractor(object):
     def unregisterPid(self):
         unlink(config.PID_FILE_PATH)
 
+    def removeDataDir(self):
+        try:
+            rmtree(config.DATA_DIR)
+        except OSError:
+            # n'existe pas
+            pass
 
     def getDestinationDirname(self, destinationName):
         return join(config.DATA_DIR, destinationName)
@@ -98,11 +105,9 @@ class DataExtractor(object):
     def saveFile(self, identifier, data, destination):
         filename = join(self.getDestinationDirname(destination), '%s.json' % str(identifier))
         with open(filename, 'wb+') as fp:
-            json.dump(data, fp)
+            dump(data, fp, indent=4, sort_keys=True)
             fp.close
-            logging.info('%s exported to %s', identifier, filename)
-
-
+            logging.debug('ID %s exported to %s', identifier, filename)
 
 
 class DataExtractor_SampleData(DataExtractor):

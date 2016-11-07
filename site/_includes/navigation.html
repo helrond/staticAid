@@ -15,7 +15,8 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav">{{ current }}
+        <li{% unless current[1] %} class='active'{% endunless %}><a href="{{"/" | prepend: site.baseurl | prepend: site.url }}">home</a></li>
         <li{% if current[1] == 'collections' %} class='active'{% endif %}><a href="{{"/collections/" | prepend: site.baseurl | prepend: site.url }}">collections</a></li>
         <li{% if current[1] == 'organizations' %} class='active'{% endif %}><a href="{{"/organizations/" | prepend: site.baseurl | prepend: site.url }}">organizations</a></li>
         <li{% if current[1] == 'people' %} class='active'{% endif %}><a href="{{"/people/" | prepend: site.baseurl | prepend: site.url }}">people</a></li>

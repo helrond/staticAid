@@ -1,5 +1,5 @@
 [DataExtractor]
-# dataSource can be one of SampleData, ArchivesSpace, Adlib (case-insensitive)
+# dataSource can be one of SampleData, ArchivesSpace, Adlib, Adlib-sampledata (case-insensitive)
 dataSource: SampleData
 
 [ArchivesSpace]
@@ -9,30 +9,15 @@ user: admin
 password: admin
 
 [Adlib]
+# {baseURL}?database={database}&search=modification%20greater%20%272015-12-10%27&xmltype=unstructured&limit=100&startfrom=1&output=json
 baseURL: http://whatever
-database: collect.inf
 user: 
 password: 
+collectionDb: archive
 
-# {baseURL}?database={database}&search=modification%20greater%20%272015-12-10%27&xmltype=unstructured&limit=100&startfrom=1&output=json
-
-# TODO need to add nested configs, or at least make it easy to do this kind of thing cleanly
-[Adlib.FieldMapping.Agents]
-title: name
-display_name.rules: null
-display_name.source: equivalent_name
-names: null
-#names[i].authorized: 
-#names[i].sort_name: 
-#names[i].use_dates: 
-#names[i].use_dates[i].expression:  // TODO allow .begin and .end?
-dates_of_existence: [{begin: birth.date.start end: death.date.start}]
-related_agents: relationship
-#related_agents[i]._resolved.title: relationship[x]
-#related_agents[i].relator: null
-#related_agents[i].description: relationship.notes[x]
-#related_agents[i].dates[0].expression: relationship.date.start[x] - relationship.date.end[x]
-#notes[i]: {jsonmodel_type: 'note_singlepart', content: documentation[i]},
+peopleDb: people
+institutionsDb: people
+thesaurusDb: thesau
 
 # TODO requires site.data.collections[][1].linked_agents[].ref == agent.url
 #is_linked_to_published_record:  

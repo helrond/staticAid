@@ -5,12 +5,13 @@ import logging
 from shutil import rmtree
 
 from static_aid import config
-from static_aid.DataExtractor_Adlib import DataExtractor_Adlib
+from static_aid.DataExtractor_Adlib import DataExtractor_Adlib, DataExtractor_Adlib_Fake
 from static_aid.DataExtractor_ArchivesSpace import DataExtractor_ArchivesSpace
 from static_aid.DataExtractor import DataExtractor_SampleData
 from os.path import isdir
 
 DATA_SOURCE_EXTRACTORS = {'adlib': DataExtractor_Adlib,
+                          'adlib-sampledata': DataExtractor_Adlib_Fake,
                           'archivesspace': DataExtractor_ArchivesSpace,
                           'sampledata': DataExtractor_SampleData,
                           'DEFAULT': DataExtractor_SampleData,

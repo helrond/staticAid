@@ -31,11 +31,11 @@ class DataExtractor_ArchivesSpace(DataExtractor):
             token = {'X-ArchivesSpace-Session':auth["session"]}
             return token
         except requests.exceptions.RequestException as e:
-            print 'Authentication failed! Make sure the baseURL setting in %s is correct and that your ArchivesSpace instance is running.' % config.configFilePath
-            print e
+            logging.error('Authentication failed! Make sure the baseURL setting in %s is correct and that your ArchivesSpace instance is running.' % config.CONFIG_FILE_PATH)
+            logging.error(e)
             sys.exit(1)
         except KeyError:
-            print 'Authentication failed! It looks like you entered the wrong password. Please check the information in %s.' % config.configFilePath
+            logging.error('Authentication failed! It looks like you entered the wrong password. Please check the information in %s.' % config.CONFIG_FILE_PATH)
             sys.exit(1)
 
 
