@@ -37,7 +37,7 @@ class DataExtractor_Adlib(DataExtractor):
         self.objectCacheInsertionCount = 0
 
     # set to True to cache the raw JSON result from Adlib (before it is converted to StaticAid-friendly JSON)
-    DUMP_RAW_DATA = False
+    DUMP_RAW_DATA = True
     # set to True to read raw JSON results from the cache instead of from Adlib endpoints (offline/debug mode)
     READ_FROM_RAW_DUMP = False
     # set to False for testing purposes (quicker processing when using RAW_DUMP mechanism)
@@ -263,6 +263,7 @@ class DataExtractor_Adlib(DataExtractor):
         searchTerm = 'name.type=inst %s' % config.adlib.get('institutionsfilter', '')
         for data in self.getApiData(config.adlib['institutionsdb'], searchTerm=searchTerm.strip()):
             result = self.getAgentData(data, 'inst')
+            result['uri'] = uriRef('organizations', result['id'])
             self.cacheJson('organizations', result)
 
 
@@ -439,7 +440,10 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getArchivalObject(self, data):
         priref = prirefString(data['priref'][0])
-        adlibKey = adlibKeyFromUnicode(data['object_number'][0])
+        try:
+            adlibKey = adlibKeyFromUnicode(data['object_number'][0])
+        except:
+            adlibKey = None
 
         try:
             instances = [{
@@ -545,6 +549,7 @@ class DataExtractor_Adlib(DataExtractor):
                                                                                                       config.ROW_FETCH_LIMIT,
                                                                                                       startFrom)
                 try:
+                    logging.info("GET " + url)
                     response = requests.get(url)
                     rawJson = response.json()
                 except Exception, e:
@@ -649,6 +654,8 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
 
 if __name__ == '__main__':
+    # NOTE: this is useful for launching in a debugger or for isolated testing;
+    # it will not run when StaticAid is launched via 'grunt rebuild', so it is safe to leave in place.
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib()
     e.READ_FROM_RAW_DUMP = True

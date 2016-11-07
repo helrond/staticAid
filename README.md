@@ -36,20 +36,6 @@ You can see a live version of this site with sample data [here](http://hillelarn
 It has only been tested on Mint 18+ and Ubuntu 16+, but should work on any Debian based distribution, 
 OSX, RedHat, etc. with minimal modification.
 
-If you would like to auto-generate StaticAid content using a cron job (on Linux systems), you can
-link one of the rebuild scripts to an appropriate cron job folder. To auto-generate full-page
-content every day, you could do this:
-
-	ln -s scripts/static-aid-rebuild /etc/cron.daily/
-	chmod +x /etc/cron.daily/static-aid-rebuild
-
-or to auto-generate embedded content every week, you could do this:
-
-	ln -s scripts/static-aid-rebuild-embedded /etc/cron.weekly/
-	chmod +x /etc/cron.daily/static-aid-rebuild-embedded
-
-**NOTE:** it is important to softlink (`ln -s src dest`) instead of copying (`cp src dest`). 
-
 ## Usage
 
 ### Building the HTML Site
@@ -90,6 +76,20 @@ you'll need to build the site in order to see those changes (see above).
 Github Pages support Jekyll sites, so a quick way to make your description publicly accessible is to push to a
 `gh-pages` branch in a Github repository. See the [Github Pages](https://pages.github.com/) documentation
 for more information. -->
+
+### Auto Generating StaticAid Content via Cron Job
+
+If you would like to auto-generate StaticAid content using a cron job (on OSX/Linux systems), you can
+link one of the rebuild scripts to an appropriate cron job folder. To auto-generate full-page
+content every day, you could do this:
+
+    sudo ln -s scripts/static-aid-rebuild /etc/cron.daily/
+
+or to auto-generate embedded content every week, you could do this:
+
+    sudo ln -s scripts/static-aid-rebuild-embedded /etc/cron.weekly/
+
+**NOTE:** it is important to softlink (`ln -s src dest`) instead of copying (`cp src dest`). 
 
 ## Contributing
 
