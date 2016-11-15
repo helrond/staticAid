@@ -3,14 +3,31 @@
 # these install steps should work on all Ubuntu-based systems
 # (tested on Mint 17.3)
 
-DIR=$(cd $(dirname $(readlink -f "$0" )); pwd)
-
-
-sudo apt-get -y install \
-    git make gcc \
-    python-pip python-setuptools \
-    ruby ruby-dev \
+if [ "`uname`" = "Darwin" ]
+then
+  DIR=$(cd $(dirname $0); pwd)
+  which -s brew
+    if [[ $? != 0 ]] ; then
+      echo "
+      Installing Homebrew"
+      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+      echo "
+      Updating Homebrew"
+      brew update
+    fi
+  brew install gcc \
+    python \
+    ruby \
     nodejs npm
+else
+  DIR=$(cd $(dirname $(readlink -f "$0" )); pwd)
+  sudo apt-get -y install \
+      git make gcc \
+      python-pip python-setuptools \
+      ruby ruby-dev \
+      nodejs npm
+fi
 
 # UGLY HACK to work around the 'node' vs 'nodejs' issue in the shebangs of StaticAid .js files
 if [ "x`which node`" = "x" ]
