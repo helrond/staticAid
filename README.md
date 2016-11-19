@@ -18,7 +18,7 @@ You can see a live version of this site with sample data [here](http://hillelarn
 *   [Jekyll](http://jekyllrb.com/) (to build the site)
 *   [Node Package Manager or NPM](https://www.npmjs.com/)
 *   [Grunt](http://gruntjs.com/getting-started) (for running build and deployment tasks)
-*   An [ArchivesSpace](http://archivesspace.org/) or Adlib instance with some data entered (a sample data set is included for testing).
+*   An [ArchivesSpace](http://archivesspace.org/) or Adlib instance with some data entered (sample data sets are included for testing).
 
 ## Installation
 
@@ -31,10 +31,14 @@ You can see a live version of this site with sample data [here](http://hillelarn
     to `local_settings.cfg` and make your changes.
 
 **NOTE:** For Linux-like systems, you can simply run `install.sh`.
-It has only been tested on Mint 18+ and Ubuntu 16+, but should work on any Debian based distribution,
-OSX, RedHat, etc. with minimal modification.
+It has only been tested on Mint 18+, Ubuntu 16+ and Mac OSX, but should work on any Debian based distribution,
+RedHat, etc. with minimal modification.
 
 ## Usage
+
+### Sample data
+
+Three sample data sets are included in the `data/` directory. To use, unzip and place in `build/data` before building the site.
 
 ### Building the HTML Site
 
