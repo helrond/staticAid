@@ -31,7 +31,7 @@ module.exports = function(grunt) {
             dest: 'build/site',
             skip_initial_build: true,
             verbose: true,
-            incremental: true
+            no_watch: true
         }
       },
       build: {
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
   else {
       var pageType = "fullpage";
   }
-  
+
   grunt.registerTask('serve', ['jekyll:serve']);
   grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build']);
   grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
