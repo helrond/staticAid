@@ -12,7 +12,7 @@ layout: default
     <div class="col-sm-4">
       <div class="panel panel-primary home-panel">
         <div class="panel-heading">
-          <h3 class="panel-title"><a href="{{ site.url }}{{ site.baseurl }}{{ collection.uri }}">{{ collection.title }} ({{fa_number}})</a></h3>
+          <h3 class="panel-title"><a href="{{ site.url }}{{ site.baseurl }}/collections/{{id}}">{{ collection.title }} ({{fa_number}})</a></h3>
         </div>
         <div class="panel-body">
           {% if description == '' %}
@@ -21,7 +21,7 @@ layout: default
             {{description | truncatewords: 50}}
           {% endif %}
           <div class="row">
-            <a class="btn btn-info btn-sm pull-right collection-button" href="{{ site.url }}{{ site.baseurl }}{{ collection.uri }}">Read more</a>
+            <a class="btn btn-info btn-sm pull-right collection-button" href="{{ site.url }}{{ site.baseurl }}/collections/{{id}}">Read more</a>
           </div>
         </div>
       </div>

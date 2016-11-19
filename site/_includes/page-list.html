@@ -15,7 +15,7 @@
           {% endif %}
         {% endfor %}
       {% endcapture %}
-      <h3><a href="{{ site.url }}{{ site.baseurl }}{{ item.uri }}">{{ item.title }}</a></h3>
+      <h3><a href="{{ site.url }}{{ site.baseurl }}{{ id }}">{{ item.title }}</a></h3>
       {% if description != '' %}
         <p>{{ description | truncatewords: 50 }}</p>
       {% endif %}

@@ -5,7 +5,7 @@
     {% capture collection_id %}{{collection_hash[0]}}{% endcapture %}
     {% capture description %}{% for note in collection.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content}}{% endif %}{% endfor %}{% endcapture %}
     {% if resource_ref == collection.uri %}
-     <h4><a href="{{ site.url }}{{ site.baseurl }}{{ collection.uri }}">{{collection.title}}</a> <small>{{collection.dates[0].expression}}</small></h4>
+     <h4><a href="{{ site.url }}{{ site.baseurl }}/collections/{{ collection_id }}">{{collection.title}}</a> <small>{{collection.dates[0].expression}}</small></h4>
      {% for extent in collection.extents %}
        {% include extent.html %}
      {% endfor %}
