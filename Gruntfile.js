@@ -31,7 +31,8 @@ module.exports = function(grunt) {
             dest: 'build/site',
             skip_initial_build: true,
             verbose: true,
-            no_watch: true
+            no_watch: true,
+            open_url: true
         }
       },
       build: {

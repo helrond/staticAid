@@ -10,7 +10,7 @@ var index = lunr(function () {
   this.ref('href')
 });
 
-var search_data = $.getJSON("http://localhost:4000/search_data.json");
+var search_data = $.getJSON("/search_data.json");
 search_data.then(function(data) {
   $.each(data, function(i, value) {
     index.add(value);
@@ -24,12 +24,18 @@ $(document).ready(function() {
     var query = $('#query').val();
     var result = index.search(query);
     results.empty();
-    results.prepend('<p>Found '+result.length+' result(s)</p>');
+    results.prepend('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><p>Found '+result.length+' result(s) for "'+query+'"</p>');
     result.forEach(function(result) {
       search_data.then(function(data) {
         var item = data[result.ref];
         results.append('<p><a href="'+item.url+'">'+item.title+'</a></p>');
       });
     });
+    results.fadeIn(200);
+    // results.parent('.row').next('div').hide();
+  });
+  $('#results').on('click', 'button.close', function(){
+    $('#results').fadeOut(200);
+    $('#query').val('');
   });
 });
