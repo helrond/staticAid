@@ -31,11 +31,11 @@ $(document).ready(function() {
         results.append('<p><a href="'+item.url+'">'+item.title+'</a></p>');
       });
     });
-    results.fadeIn(200);
+    results.slideDown().fadeIn(200);
     // results.parent('.row').next('div').hide();
   });
   $('#results').on('click', 'button.close', function(){
-    $('#results').fadeOut(200);
+    $('#results').slideUp().fadeOut(200);
     $('#query').val('');
   });
 });
