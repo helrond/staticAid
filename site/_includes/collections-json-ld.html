@@ -1,0 +1,56 @@
+{% capture canonical_url %}{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}{% endcapture %}
+{
+  "@context": "http://schema.org/",
+  "@type": "Collection",
+  "name": "{{collection.title}}",
+  "description": [
+      "<< Abstract >>",
+      "<< Scope and Contents >>",
+      "<< Biographical Note >>"
+      ],
+  "datePublished": "<< Finding Aid Date >>",
+  "creator": [
+      {"@type": "Person", "name": "<< Person Agent(s) >>"},
+      {"@type": "Organization", "name": "<< Corporate Entity Agent(s) >>"},
+      {"@type": "Organization", "name": "<< Family Entity Agent(s) >>"}
+    ],
+    "temporalCoverage": "{{collection.dates[0].expression}}",
+    "about": [
+        "<< subject(s) >>"
+        ],
+  "url": "{{canonical_url}}",
+  "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStoreOnly",
+      "serialNumber": "<< Identifier >>",
+      "priceCurrency": "USD",
+      "price": 0,
+      "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
+      "offeredBy": {
+          "@type": "% Library or Organization %",
+          "@id": "% link to Wikidata/Freebase URI, if available %",
+          "name": "% Name of archive/library %",
+          "url": "% link %",
+          "image": "% link to logo/building image %",
+          "sameAs": "% links to wikipedia, twitter, facebook, etc %",
+          "priceRange": 0,
+          "alternateName": "% other names in use %",
+          "telephone": "% phone number %",
+          "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "% street and number %",
+              "addressLocality": "% city %",
+              "addressRegion": "% state %",
+              "postalCode": "% zip code %"
+           },
+           "parentOrganization": {
+              "@type": "% Organization or CollegeOrUniversity etc %",
+              "@id": "% link to Wikidata/Freebase URI, if available %",
+              "name": "% Name of parent org %",
+              "url": "% link %",
+              "sameAs": "% links to wikipedia, twitter, facebook, etc %"
+            }
+         }  
+      }
+   }
+}
