@@ -1,4 +1,6 @@
 {% capture canonical_url %}{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}{% endcapture %}
+{% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
+
 {
   "@context": "http://schema.org/",
   "@type": "Collection",
@@ -22,7 +24,7 @@
   "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStoreOnly",
-      "serialNumber": "<< Identifier >>",
+      "serialNumber": "{{fa_number}}",
       "priceCurrency": "USD",
       "price": 0,
       "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
