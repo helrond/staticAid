@@ -1,15 +1,12 @@
 {% capture canonical_url %}{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}{% endcapture %}
+{% capture description %}{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
 {% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
 
 {
   "@context": "http://schema.org/",
   "@type": "Collection",
   "name": "{{collection.title}}",
-  "description": [
-      "<< Abstract >>",
-      "<< Scope and Contents >>",
-      "<< Biographical Note >>"
-      ],
+  "description": "{{description}}",
   "datePublished": "<< Finding Aid Date >>",
   "creator": [
       {"@type": "Person", "name": "<< Person Agent(s) >>"},
