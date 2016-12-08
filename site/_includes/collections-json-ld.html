@@ -97,28 +97,6 @@
       {% endif %}
     {% endif %}  
   {% endfor %}
-        {% assign agent_detail = agent %}
-        {% assign type = false %}
-        {% assign label = false %}
-        {% assign id = false %}
-      {% endif %}
-  "contributor": [
-        {
-        {% if type and id %}
-            "@type": "{{type}}",
-            "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
-            "{{label}}": "{{agent_detail.title}}"
-        {% else %}
-            "@type": "Thing",
-            "name": "{{agent_detail.title}}"
-        {% endif %}
-        }
-        {% if forloop.last == false %}
-        ,
-        {% endif %}
-  ],
-  {% endif %}
-{% endfor %}
     "temporalCoverage": "{{collection.dates[0].expression}}",
     {% for subject in subjects %}
       {% if subject.ref %}
