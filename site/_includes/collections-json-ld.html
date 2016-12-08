@@ -37,12 +37,13 @@
       {% endif %}
       {% if agent_detail %}
   "creator": [
-        {
         {% if type and id %}
+        {
             "@type": "{{type}}",
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
         {% else %}
+        {
             "@type": "Thing",
             "name": "{{agent_detail.title}}"
       {% endif %}
@@ -80,12 +81,13 @@
       {% endif %}
       {% if agent_detail %}
   "contributor": [
-        {
           {% if type and id %}
+        {
             "@type": "{{type}}",
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
           {% else %}
+        {
             "@type": "Thing",
             "name": "{{agent_detail.title}}"
           {% endif %}
