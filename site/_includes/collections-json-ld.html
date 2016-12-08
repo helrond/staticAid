@@ -31,8 +31,8 @@
       {% else %}
         <!-- no external .json file - just use agent as agent_detail -->
         {% assign agent_detail = agent %}
-        {% assign type = "Thing" %}
-        {% assign label = "name" %}
+        {% assign type = false %}
+        {% assign label = false %}
         {% assign id = false %}
       {% endif %}
       {% if agent_detail %}
@@ -43,8 +43,8 @@
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
         {% else %}
-            "@type": "{{type}}",
-            "{{label}}": "{{agent_detail.title}}"
+            "@type": "Thing",
+            "name": "{{agent_detail.title}}"
       {% endif %}
         }
         {% if forloop.last == false %}
