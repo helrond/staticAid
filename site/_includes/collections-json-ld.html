@@ -35,19 +35,25 @@
         {% assign label = "name" %}
         {% assign id = false %}
       {% endif %}
+      {% if agent_detail %}
   "creator": [
         {
+        {% if type and id %}
             "@type": "{{type}}",
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
+        {% else %}
+            "@type": "{{type}}",
+            "{{label}}": "{{agent_detail.title}}"
+      {% endif %}
         }
         {% if forloop.last == false %}
         ,
         {% endif %}
   ],
-    {% endif %}
-    {% if {{agent.role}} == 'contributor' %}
-     {% if agent.ref %}
+      {% endif %}
+    {% elseif {{agent.role}} == 'contributor' %}
+      {% if agent.ref %}
           <!-- there is an external .json file to read agent_detail from -->
           {% if agent.ref contains "corporate_entities" %}
             {% assign type = "Organization" %}
@@ -67,6 +73,30 @@
           {% endif %}
       {% else %}
         <!-- no external .json file - just use agent as agent_detail -->
+          {% assign agent_detail = agent %}
+          {% assign type = "Thing" %}
+          {% assign label = "name" %}
+          {% assign id = false %}
+      {% endif %}
+      {% if agent_detail %}
+  "contributor": [
+        {
+          {% if type and id %}
+            "@type": "{{type}}",
+            "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
+            "{{label}}": "{{agent_detail.title}}"
+          {% else %}
+            "@type": "{{type}}",
+            "{{label}}": "{{agent_detail.title}}"
+          {% endif %}
+        }
+          {% if forloop.last == false %}
+        ,
+          {% endif %}
+  ],
+      {% endif %}
+    {% endif %}  
+  {% endfor %}
         {% assign agent_detail = agent %}
         {% assign type = "Thing" %}
         {% assign label = "name" %}
@@ -74,15 +104,20 @@
       {% endif %}
   "contributor": [
         {
+        {% if type and id %}
             "@type": "{{type}}",
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
+        {% else %}
+            "@type": "{{type}}",
+            "{{label}}": "{{agent_detail.title}}"
+        {% endif %}
         }
         {% if forloop.last == false %}
         ,
         {% endif %}
   ],
-    {% endif %}
+  {% endif %}
 {% endfor %}
     "temporalCoverage": "{{collection.dates[0].expression}}",
     {% for subject in subjects %}
@@ -108,28 +143,28 @@
       "price": 0,
       "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
       "offeredBy": {
-          "@type": "% Library or Organization %",
-          "@id": "% link to Wikidata/Freebase URI, if available %",
-          "name": "% Name of archive/library %",
-          "url": "% link %",
-          "image": "% link to logo/building image %",
-          "sameAs": "% links to wikipedia, twitter, facebook, etc %",
+          "@type": "{% Library or Organization %}",
+          "@id": "{% link to Wikidata/Freebase URI, if available %}",
+          "name": "{% Name of archive/library %}",
+          "url": "{% link %}",
+          "image": "{% link to logo/building image %}",
+          "sameAs": "{% links to wikipedia, twitter, facebook, etc %}",
           "priceRange": 0,
-          "alternateName": "% other names in use %",
-          "telephone": "% phone number %",
+          "alternateName": "{% other names in use %}",
+          "telephone": "{% phone number %}",
           "address": {
               "@type": "PostalAddress",
-              "streetAddress": "% street and number %",
-              "addressLocality": "% city %",
-              "addressRegion": "% state %",
-              "postalCode": "% zip code %"
+              "streetAddress": "{% street and number %}",
+              "addressLocality": "{% city %}",
+              "addressRegion": "{% state %}",
+              "postalCode": "{% zip code %}"
            },
            "parentOrganization": {
-              "@type": "% Organization or CollegeOrUniversity etc %",
-              "@id": "% link to Wikidata/Freebase URI, if available %",
-              "name": "% Name of parent org %",
-              "url": "% link %",
-              "sameAs": "% links to wikipedia, twitter, facebook, etc %"
+              "@type": "{% Organization or CollegeOrUniversity etc %}",
+              "@id": "{% link to Wikidata/Freebase URI, if available %}",
+              "name": "{% Name of parent org %}",
+              "url": "{% link %}",
+              "sameAs": "{% links to wikipedia, twitter, facebook, etc %}"
             }
          }  
       }
