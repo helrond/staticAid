@@ -13,17 +13,20 @@
       {% if agent.ref %}
           <!-- there is an external .json file to read agent_detail from -->
           {% if agent.ref contains "corporate_entities" %}
-            {% assign type = "Organization" %}
+            {% assign schtype = "Organization" %}
+            {% assign type = "organizations" %}
             {% assign label = "name" %}
             {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
             {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
           {% elsif agent.ref contains "families" %}
-            {% assign type = "Person" %}
+            {% assign schtype = "Person" %}
+            {% assign type = "families" %}
             {% assign label = "familyName" %}
             {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
             {% assign agent_detail = site.data.agents.families[{{id}}] %}
           {% elsif agent.ref contains "people" %}
-            {% assign type = "Person" %}
+            {% assign schtype = "Person" %}
+            {% assign type = "people" %}
             {% assign label = "name" %}
             {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
             {% assign agent_detail = site.data.agents.people[{{id}}] %}
@@ -39,7 +42,7 @@
   "creator": [
         {% if type and id %}
         {
-            "@type": "{{type}}",
+            "@type": "{{schtype}}",
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
         {% else %}
@@ -57,17 +60,20 @@
       {% if agent.ref %}
           <!-- there is an external .json file to read agent_detail from -->
           {% if agent.ref contains "corporate_entities" %}
-            {% assign type = "Organization" %}
+            {% assign schtype = "Organization" %}
+            {% assign type = "organizations" %}
             {% assign label = "name" %}
             {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
             {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
           {% elsif agent.ref contains "families" %}
-            {% assign type = "Person" %}
+            {% assign schtype = "Person" %}
+            {% assign type = "families" %}
             {% assign label = "familyName" %}
             {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
             {% assign agent_detail = site.data.agents.families[{{id}}] %}
           {% elsif agent.ref contains "people" %}
-            {% assign type = "Person" %}
+            {% assign schtype = "Person" %}
+            {% assign type = "people" %}
             {% assign label = "name" %}
             {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
             {% assign agent_detail = site.data.agents.people[{{id}}] %}
@@ -83,7 +89,7 @@
   "contributor": [
           {% if type and id %}
         {
-            "@type": "{{type}}",
+            "@type": "{{schtype}}",
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
           {% else %}
