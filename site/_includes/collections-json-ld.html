@@ -7,7 +7,7 @@
   "@type": "Collection",
   "name": "{{collection.title}}",
   "description": "{{description}}",
-  "datePublished": "<< Finding Aid Date >>",
+  "datePublished": "{{system_mtime}}",
   {% for agent in agents %}
     {% if {{agent.role}} == 'creator' %}
       {% if agent.ref %}
