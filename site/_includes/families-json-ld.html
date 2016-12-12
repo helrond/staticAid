@@ -1,1 +1,8 @@
-
+{% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
+{% assign agent_detail = site.data.agents.families[{{id}}] %}
+{
+  "@context": "http://schema.org/",
+  "@type": "Person",
+  "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
+  "familyName": "{{agent_detail.title}}"
+}
