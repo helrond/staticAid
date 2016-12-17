@@ -102,3 +102,6 @@ destinations = _configSection('Destinations')
 
 # a state file that stores the most recent export date
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
+
+# all the bits of info needed to generate a JSON-LD object
+destinations = _configSection('JsonLD')
