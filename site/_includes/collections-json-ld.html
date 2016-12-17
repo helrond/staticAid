@@ -129,45 +129,51 @@
       "price": 0,
       "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
       "offeredBy": {
-          "@type": "{% Library or Organization %}",
-          "@id": "{% link to Wikidata/Freebase URI, if available %}",
-          "name": "{% Name of archive/library %}",
-          "url": "{% link %}",
-          "image": "{% link to logo/building image %}",
-          "sameAs": [
-      		"{% links to wikipedia, twitter, facebook, etc %}"
-     		{% if forloop.last == false %}
-				,
-			{% endif %}
-		  ],
-          "priceRange": 0,
-          "alternateName": [
-			  "{% other names in use %}"
-			  {% if forloop.last == false %}
-			  	,
-			  {% endif %}
-		  ],
-          "telephone": "{% phone number %}",
-          "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "{% street and number %}",
-              "addressLocality": "{% city %}",
-              "addressRegion": "{% state %}",
-              "postalCode": "{% zip code %}"
-           },
-           "parentOrganization": {
-              "@type": "{% Organization or CollegeOrUniversity etc %}",
-              "@id": "{% link to Wikidata/Freebase URI, if available %}",
-              "name": "{% Name of parent org %}",
-              "url": "{% link %}",
-              "sameAs": [
-				  "{% links to wikipedia, twitter, facebook, etc %}"
-				  {% if forloop.last == false %}
-				  	,
-				  {% endif %}
-			  ]
-            }
-         }  
+             "@type": "{{instType}}",
+             {% if instID == '' %}
+             {% else  %}
+             "@id": "{{instID}}",
+             {% endif %}
+             "name": "{{instName}}",
+             "url": "{{instURL}}",
+             "image": "{{instImage}}",
+             {% if instSameAs == '' %}
+             {% else  %}
+             "sameAs": "{{instSameAs}}",
+             {% endif %}
+             "priceRange": 0,
+             {% if instAltName == '' %}
+             {% else  %}
+             "alternateName": "{{instAltName}}",
+             {% endif %}
+             "telephone": "{{instPhone}}",
+             "address": {
+                     "@type": "PostalAddress",
+                     "streetAddress": "{{instStreetAddress}",
+                     "addressLocality": "{{instCity}}",
+                     "addressRegion": "{{instState}}",
+                     "postalCode": "{{instZipCode}}"
+             {% if parentOrg == 'Yes' %}
+             },
+             "parentOrganization": {
+                     "@type": "{{parentType}}",
+                     {% if parentID == '' %}
+                     {% else  %}
+                     "@id": "{{parentID}}",
+                     {% endif %}
+                     "name": "{{parentName}}",
+                     {% if parentSameAs == '' %}
+                     {% else  %}
+                     "sameAs": "{{parentSameAs}}",
+                     {% endif %}
+                     "url": "{{parentURL}}"
+             }
       }
-   }
+  }
 }
+             {% else  %}
+             }
+      }
+  }
+}
+             {% endif %}
