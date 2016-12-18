@@ -104,4 +104,4 @@ destinations = _configSection('Destinations')
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
 
 # all the bits of info needed to generate a JSON-LD object
-destinations = _configSection('JsonLD')
+jsonld = _configSection('JsonLD')
