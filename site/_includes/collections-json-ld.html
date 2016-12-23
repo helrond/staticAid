@@ -129,44 +129,44 @@
       "price": 0,
       "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
       "offeredBy": {
-             "@type": "{{instType}}",
-             {% if instID == '' %}
+             "@type": "{{ site.instyType }}",
+             {% if site.instyID == '' %}
              {% else  %}
-             "@id": "{{instID}}",
+             "@id": "{{ site.instyID }}",
              {% endif %}
-             "name": "{{instName}}",
-             "url": "{{instURL}}",
-             "image": "{{instImage}}",
-             {% if instSameAs == '' %}
+             "name": "{{ site.instyName }}",
+             "url": "{{ site.instyURL }}",
+             "image": "{{ site.instyImage }}",
+             {% if site.instySameAs == '' %}
              {% else  %}
-             "sameAs": "{{instSameAs}}",
+             "sameAs": "{{ site.instySameAs }}",
              {% endif %}
              "priceRange": 0,
-             {% if instAltName == '' %}
+             {% if site.instyAltName == '' %}
              {% else  %}
-             "alternateName": "{{instAltName}}",
+             "alternateName": "{{ site.instyAltName }}",
              {% endif %}
-             "telephone": "{{instPhone}}",
+             "telephone": "{{ site.instyPhone }}",
              "address": {
                      "@type": "PostalAddress",
-                     "streetAddress": "{{instStreetAddress}",
-                     "addressLocality": "{{instCity}}",
-                     "addressRegion": "{{instState}}",
-                     "postalCode": "{{instZipCode}}"
-             {% if parentOrg == 'Yes' %}
+                     "streetAddress": "{{ site.instyStreetAddress }}",
+                     "addressLocality": "{{ site.instyCity }}",
+                     "addressRegion": "{{ site.instyState }}",
+                     "postalCode": "{{ site.instyZipCode }}"
+             {% if site.parentOrg == 'Yes' %}
              },
              "parentOrganization": {
-                     "@type": "{{parentType}}",
-                     {% if parentID == '' %}
+                     "@type": "{{ site.parentType }}",
+                     {% if site.parentID == '' %}
                      {% else  %}
-                     "@id": "{{parentID}}",
+                     "@id": "{{ site.parentID }}",
                      {% endif %}
-                     "name": "{{parentName}}",
-                     {% if parentSameAs == '' %}
+                     "name": "{{ site.parentName }}",
+                     {% if site.parentSameAs == '' %}
                      {% else  %}
-                     "sameAs": "{{parentSameAs}}",
+                     "sameAs": "{{ site.parentSameAs }}",
                      {% endif %}
-                     "url": "{{parentURL}}"
+                     "url": "{{ site.parentURL }}"
              }
       }
   }
