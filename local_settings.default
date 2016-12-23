@@ -48,21 +48,21 @@ datefmt: %m/%d/%Y %I:%M:%S %p
 filepath: lastExport.pickle
 
 [JsonLD]
-# instType describes the function of your organization and can currently be Library or Organization (case-sensitive) -- REQUIRED
+# the function of your organization -- can currently be Library or Organization (case-sensitive) -- REQUIRED
 instyType: Library
-# instID is a Wikidata, Freebase or other URI for your organization, if available -- not required
+# a Wikidata, Freebase or other URI for your organization, if available -- not required
 instyID: https://g.co/kgs/zu3Qqy
-# instName is the commonly known name of your organization -- REQUIRED
+# the commonly known name of your organization -- REQUIRED
 instyName: Rockefeller Archive Center
-# instURL is your organization's URL -- REQUIRED
+# your organization's URL -- REQUIRED
 instyURL: http://rockarch.org/
-# instImage is an image of your organization or its logo -- REQUIRED
+# is an image of your organization or its logo -- REQUIRED
 instyImage: http://rockarch.org/images/RAC-logo.png
-# instSameAs is your org's Wikipedia URL, or a social media URL -- not required
+# your org's Wikipedia URL, or a social media URL -- not required
 instySameAs:
-# instAltName is another name commonly used for your org -- not required
+# another name commonly used for your org -- not required
 instyAltName: Rockefeller Archives
-# instPhone is your org's phpne number, eg xxx-xxx-xxxx -- REQUIRED
+# your org's phpne number, eg xxx-xxx-xxxx -- REQUIRED
 instyPhone: 914-366-6300
 # fields below collect your institution's address -- all are REQUIRED
 instyStreetAddress: 15 Dayton Avenue
