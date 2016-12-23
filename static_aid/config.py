@@ -110,7 +110,7 @@ with open('_config.yml', 'a') as start:
 searchquery1 = 'insty'
 searchquery2 = 'parent'
 
-with open('local_settings.default', 'r') as f1:
+with open(CONFIG_DEFAULTS_FILE_PATH, 'r') as f1:
 	with open('_config.yml', 'a') as f2:
 		lines = f1.readlines()
 		for i, line in enumerate(lines):
