@@ -35,44 +35,44 @@ layout: default
 <script type="application/ld+json">
 {
   "@context": "http://schema.org/",
-  "@type": "{{instyType}}",
-  {% if instyID == '' %}
+  "@type": "{{ site.instyType }}",
+  {% if site.instyID == '' %}
   {% else  %}
-  "@id": "{{instyID}}",
+  "@id": "{{ site.instyID }}",
   {% endif %}
-  "name": "{{instyName}}",
-  "url": "{{instyURL}}",
-  "image": "{{instyImage}}",
-  {% if instySameAs == '' %}
+  "name": "{{ site.instyName }}",
+  "url": "{{ site.instyURL }}",
+  "image": "{{ site.instyImage }}",
+  {% if site.instySameAs == '' %}
   {% else  %}
-  "sameAs": "{{instySameAs}}",
+  "sameAs": "{{ site.instySameAs }}",
   {% endif %}
   "priceRange": 0,
-  {% if instyAltName == '' %}
+  {% if site.instyAltName == '' %}
   {% else  %}
-  "alternateName": "{{instyAltName}}",
+  "alternateName": "{{ site.instyAltName }}",
   {% endif %}
-  "telephone": "{{instyPhone}}",
+  "telephone": "{{ site.instyPhone }}",
   "address": {
       "@type": "PostalAddress",
-      "streetAddress": "{{instyStreetAddress}",
-      "addressLocality": "{{instyCity}}",
-      "addressRegion": "{{instyState}}",
-      "postalCode": "{{instyZipCode}}"
-   {% if parentOrg == 'Yes' %}
+      "streetAddress": "{{ site.instyStreetAddress }}",
+      "addressLocality": "{{ site.instyCity }}",
+      "addressRegion": "{{ site.instyState }}",
+      "postalCode": "{{ site.instyZipCode }}"
+   {% if site.parentOrg == 'Yes' %}
    },
    "parentOrganization": {
-      "@type": "{{parentType}}",
-      {% if parentID == '' %}
+      "@type": "{{ site.parentType }}",
+      {% if site.parentID == '' %}
       {% else  %}
-      "@id": "{{parentID}}",
+      "@id": "{{ site.parentID }}",
       {% endif %}
-      "name": "{{parentName}}",
-      {% if parentSameAs == '' %}
+      "name": "{{ site.parentName }}",
+      {% if site.parentSameAs == '' %}
       {% else  %}
-      "sameAs": "{{parentSameAs}}",
+      "sameAs": "{{ site.parentSameAs }}",
       {% endif %}
-      "url": "{{parentURL}}"
+      "url": "{{ site.parentURL }}"
     }
 }
   {% else  %}
