@@ -35,30 +35,30 @@ layout: default
 <script type="application/ld+json">
 {
   "@context": "http://schema.org/",
-  "@type": "{{instType}}",
-  {% if instID == '' %}
+  "@type": "{{instyType}}",
+  {% if instyID == '' %}
   {% else  %}
-  "@id": "{{instID}}",
+  "@id": "{{instyID}}",
   {% endif %}
-  "name": "{{instName}}",
-  "url": "{{instURL}}",
-  "image": "{{instImage}}",
-  {% if instSameAs == '' %}
+  "name": "{{instyName}}",
+  "url": "{{instyURL}}",
+  "image": "{{instyImage}}",
+  {% if instySameAs == '' %}
   {% else  %}
-  "sameAs": "{{instSameAs}}",
+  "sameAs": "{{instySameAs}}",
   {% endif %}
   "priceRange": 0,
-  {% if instAltName == '' %}
+  {% if instyAltName == '' %}
   {% else  %}
-  "alternateName": "{{instAltName}}",
+  "alternateName": "{{instyAltName}}",
   {% endif %}
-  "telephone": "{{instPhone}}",
+  "telephone": "{{instyPhone}}",
   "address": {
       "@type": "PostalAddress",
-      "streetAddress": "{{instStreetAddress}",
-      "addressLocality": "{{instCity}}",
-      "addressRegion": "{{instState}}",
-      "postalCode": "{{instZipCode}}"
+      "streetAddress": "{{instyStreetAddress}",
+      "addressLocality": "{{instyCity}}",
+      "addressRegion": "{{instyState}}",
+      "postalCode": "{{instyZipCode}}"
    {% if parentOrg == 'Yes' %}
    },
    "parentOrganization": {
