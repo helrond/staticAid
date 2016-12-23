@@ -49,26 +49,26 @@ filepath: lastExport.pickle
 
 [JsonLD]
 # instType describes the function of your organization and can currently be Library or Organization (case-sensitive) -- REQUIRED
-instType: Library
+instyType: Library
 # instID is a Wikidata, Freebase or other URI for your organization, if available -- not required
-instID: https://g.co/kgs/zu3Qqy
+instyID: https://g.co/kgs/zu3Qqy
 # instName is the commonly known name of your organization -- REQUIRED
-instName: Rockefeller Archive Center
+instyName: Rockefeller Archive Center
 # instURL is your organization's URL -- REQUIRED
-instURL: http://rockarch.org/
+instyURL: http://rockarch.org/
 # instImage is an image of your organization or its logo -- REQUIRED
-instImage: http://rockarch.org/images/RAC-logo.png
+instyImage: http://rockarch.org/images/RAC-logo.png
 # instSameAs is your org's Wikipedia URL, or a social media URL -- not required
-instSameAs:
+instySameAs:
 # instAltName is another name commonly used for your org -- not required
-instAltName: Rockefeller Archives
+instyAltName: Rockefeller Archives
 # instPhone is your org's phpne number, eg xxx-xxx-xxxx -- REQUIRED
-instPhone: 914-366-6300
+instyPhone: 914-366-6300
 # fields below collect your institution's address -- all are REQUIRED
-instStreetAddress: 15 Dayton Avenue
-instCity: Sleepy Hollow
-instState: NY
-instZipCode: 10591
+instyStreetAddress: 15 Dayton Avenue
+instyCity: Sleepy Hollow
+instyState: NY
+instyZipCode: 10591
 # is your org a branch of another entity, or do you have a parent organization? Yes or No -- REQUIRED
 parentOrg: Yes
 # if Yes, fill out the below fields for your parent org, similar to the ones above
