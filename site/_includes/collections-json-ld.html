@@ -11,7 +11,6 @@
   {% for agent in agents %}
     {% if {{agent.role}} == 'creator' %}
       {% if agent.ref %}
-          <!-- there is an external .json file to read agent_detail from -->
           {% if agent.ref contains "corporate_entities" %}
             {% assign schtype = "Organization" %}
             {% assign type = "organizations" %}
@@ -32,7 +31,6 @@
             {% assign agent_detail = site.data.agents.people[{{id}}] %}
           {% endif %}
       {% else %}
-        <!-- no external .json file - just use agent as agent_detail -->
         {% assign agent_detail = agent %}
         {% assign type = false %}
         {% assign label = false %}
@@ -58,7 +56,6 @@
       {% endif %}
     {% elsif {{agent.role}} == 'contributor' %}
       {% if agent.ref %}
-          <!-- there is an external .json file to read agent_detail from -->
           {% if agent.ref contains "corporate_entities" %}
             {% assign schtype = "Organization" %}
             {% assign type = "organizations" %}
@@ -79,7 +76,6 @@
             {% assign agent_detail = site.data.agents.people[{{id}}] %}
           {% endif %}
       {% else %}
-        <!-- no external .json file - just use agent as agent_detail -->
           {% assign agent_detail = agent %}
           {% assign type = false %}
           {% assign label = false %}
@@ -115,7 +111,7 @@
       {% endif %}
     "about": [
       "{{subject_detail.title}}"
-    {% if forloop.last == false %}
+      {% if forloop.last == false %}
       ,
      {% endif %}
         ],
@@ -129,44 +125,44 @@
       "price": 0,
       "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
       "offeredBy": {
-             "@type": "{{ site.instyType }}",
+             "@type": "{{site.instyType}}",
              {% if site.instyID == '' %}
              {% else  %}
-             "@id": "{{ site.instyID }}",
+             "@id": "{{site.instyID}}",
              {% endif %}
-             "name": "{{ site.instyName }}",
-             "url": "{{ site.instyURL }}",
-             "image": "{{ site.instyImage }}",
+             "name": "{{site.instyName}}",
+             "url": "{{site.instyURL}}",
+             "image": "{{site.instyImage}}",
              {% if site.instySameAs == '' %}
              {% else  %}
-             "sameAs": "{{ site.instySameAs }}",
+             "sameAs": "{{site.instySameAs}}",
              {% endif %}
              "priceRange": 0,
              {% if site.instyAltName == '' %}
              {% else  %}
-             "alternateName": "{{ site.instyAltName }}",
+             "alternateName": "{{site.instyAltName}}",
              {% endif %}
-             "telephone": "{{ site.instyPhone }}",
+             "telephone": "{{site.instyPhone}}",
              "address": {
                      "@type": "PostalAddress",
-                     "streetAddress": "{{ site.instyStreetAddress }}",
-                     "addressLocality": "{{ site.instyCity }}",
-                     "addressRegion": "{{ site.instyState }}",
-                     "postalCode": "{{ site.instyZipCode }}"
+                     "streetAddress": "{{site.instyStreetAddress}}",
+                     "addressLocality": "{{site.instyCity}}",
+                     "addressRegion": "{{site.instyState}}",
+                     "postalCode": "{{site.instyZipCode}}"
              {% if site.parentOrg == 'Yes' %}
              },
              "parentOrganization": {
-                     "@type": "{{ site.parentType }}",
+                     "@type": "{{site.parentType}}",
                      {% if site.parentID == '' %}
                      {% else  %}
-                     "@id": "{{ site.parentID }}",
+                     "@id": "{{site.parentID}}",
                      {% endif %}
-                     "name": "{{ site.parentName }}",
+                     "name": "{{site.parentName}}",
                      {% if site.parentSameAs == '' %}
                      {% else  %}
-                     "sameAs": "{{ site.parentSameAs }}",
+                     "sameAs": "{{site.parentSameAs}}",
                      {% endif %}
-                     "url": "{{ site.parentURL }}"
+                     "url": "{{site.parentURL}}"
              }
       }
   }
