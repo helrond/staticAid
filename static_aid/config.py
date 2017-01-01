@@ -13,6 +13,7 @@ if not exists(CONFIG_DEFAULTS_FILE_PATH):
     CONFIG_DEFAULTS_FILE_PATH = join(ROOT, 'local_settings.default')
 
 CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
+YAML_CONFIG_PATH = join(ROOT, '_config.yml')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'site')
 
@@ -104,14 +105,14 @@ destinations = _configSection('Destinations')
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
 
 # all the bits of info needed to generate a JSON-LD object
-with open('_config.yml', 'a') as start:
+with open(YAML_CONFIG_PATH, 'a') as start:
 	start.write('\n' + '# JSON-LD material' + '\n')
 
 searchquery1 = 'insty'
 searchquery2 = 'parent'
 
 with open(CONFIG_DEFAULTS_FILE_PATH, 'r') as f1:
-	with open('_config.yml', 'a') as f2:
+	with open(YAML_CONFIG_PATH, 'a') as f2:
 		lines = f1.readlines()
 		for i, line in enumerate(lines):
 			if line.startswith(searchquery1):
