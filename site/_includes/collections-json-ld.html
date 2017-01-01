@@ -56,7 +56,7 @@
         {% endif %}
   ],
       {% endif %}
-    {% elseif {{agent.role}} == 'contributor' %}
+    {% elsif {{agent.role}} == 'contributor' %}
       {% if agent.ref %}
           <!-- there is an external .json file to read agent_detail from -->
           {% if agent.ref contains "corporate_entities" %}
