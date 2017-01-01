@@ -1,35 +1,36 @@
 {% capture page_url %}{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}{% endcapture %}
 {% capture description %}{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
 {% capture id_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
-
 {
   "@context": "http://schema.org/",
   "@type": "Collection",
   "name": "{{collection.title}}",
   "description": "{{description}}",
   "datePublished": "{{system_mtime}}",
+  {% assign separator = "" %}
+  "creator": [
   {% for agent in agents %}
     {% if {{agent.role}} == 'creator' %}
       {% if agent.ref %}
-          {% if agent.ref contains "corporate_entities" %}
-            {% assign schtype = "Organization" %}
-            {% assign type = "organizations" %}
-            {% assign label = "name" %}
-            {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
-            {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
-          {% elsif agent.ref contains "families" %}
-            {% assign schtype = "Person" %}
-            {% assign type = "families" %}
-            {% assign label = "familyName" %}
-            {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
-            {% assign agent_detail = site.data.agents.families[{{id}}] %}
-          {% elsif agent.ref contains "people" %}
-            {% assign schtype = "Person" %}
-            {% assign type = "people" %}
-            {% assign label = "name" %}
-            {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
-            {% assign agent_detail = site.data.agents.people[{{id}}] %}
-          {% endif %}
+        {% if agent.ref contains "corporate_entities" %}
+          {% assign schtype = "Organization" %}
+          {% assign type = "organizations" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+        {% elsif agent.ref contains "families" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "families" %}
+          {% assign label = "familyName" %}
+          {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+        {% elsif agent.ref contains "people" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "people" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+        {% endif %}
       {% else %}
         {% assign agent_detail = agent %}
         {% assign type = false %}
@@ -37,7 +38,8 @@
         {% assign id = false %}
       {% endif %}
       {% if agent_detail %}
-  "creator": [
+        {{separator}}
+        {% assign separator = "," %}
         {% if type and id %}
         {
             "@type": "{{schtype}}",
@@ -47,61 +49,62 @@
         {
             "@type": "Thing",
             "name": "{{agent_detail.title}}"
-      {% endif %}
-        }
-        {% if forloop.last == false %}
-        ,
         {% endif %}
-  ],
+        }
       {% endif %}
-    {% elsif {{agent.role}} == 'contributor' %}
+    {% endif %}
+  {% endfor %}
+  ],
+  {% assign separator = "" %}
+  "contributor": [
+  {% for agent in agents %}
+    {% if {{agent.role}} == 'contributor' %}
       {% if agent.ref %}
-          {% if agent.ref contains "corporate_entities" %}
-            {% assign schtype = "Organization" %}
-            {% assign type = "organizations" %}
-            {% assign label = "name" %}
-            {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
-            {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
-          {% elsif agent.ref contains "families" %}
-            {% assign schtype = "Person" %}
-            {% assign type = "families" %}
-            {% assign label = "familyName" %}
-            {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
-            {% assign agent_detail = site.data.agents.families[{{id}}] %}
-          {% elsif agent.ref contains "people" %}
-            {% assign schtype = "Person" %}
-            {% assign type = "people" %}
-            {% assign label = "name" %}
-            {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
-            {% assign agent_detail = site.data.agents.people[{{id}}] %}
-          {% endif %}
+        {% if agent.ref contains "corporate_entities" %}
+          {% assign schtype = "Organization" %}
+          {% assign type = "organizations" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+        {% elsif agent.ref contains "families" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "families" %}
+          {% assign label = "familyName" %}
+          {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+        {% elsif agent.ref contains "people" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "people" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+        {% endif %}
       {% else %}
-          {% assign agent_detail = agent %}
-          {% assign type = false %}
-          {% assign label = false %}
-          {% assign id = false %}
+        {% assign agent_detail = agent %}
+        {% assign type = false %}
+        {% assign label = false %}
+        {% assign id = false %}
       {% endif %}
       {% if agent_detail %}
-  "contributor": [
-          {% if type and id %}
+        {{separator}}
+        {% assign separator = "," %}
+        {% if type and id %}
         {
             "@type": "{{schtype}}",
             "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
             "{{label}}": "{{agent_detail.title}}"
-          {% else %}
+        {% else %}
         {
             "@type": "Thing",
             "name": "{{agent_detail.title}}"
-          {% endif %}
+        {% endif %}
         }
-          {% if forloop.last == false %}
-        ,
-          {% endif %}
-  ],
       {% endif %}
-    {% endif %}  
+    {% endif %}
   {% endfor %}
+  ],
     "temporalCoverage": "{{collection.dates[0].expression}}",
+    "about": [
     {% for subject in subjects %}
       {% if subject.ref %}
         {% capture subject_id %}{{subject.ref | replace: '/subjects/', ''}}{% endcapture %}
@@ -109,13 +112,9 @@
       {% else %}
         {% assign subject_detail = subject %}
       {% endif %}
-    "about": [
-      "{{subject_detail.title}}"
-      {% if forloop.last == false %}
-      ,
-     {% endif %}
-        ],
+      "{{subject_detail.title}}"{% unless forloop.last == true %},{% endunless %}
     {% endfor %}
+       ],
   "url": "{{page_url}}",
   "offers": {
       "@type": "Offer",
