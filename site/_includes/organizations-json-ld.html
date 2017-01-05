@@ -1,11 +1,12 @@
 {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
 {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+{% assign variant_names = agent_detail.names %}
 {
   "@context": "http://schema.org/",
   "@type": "Organization",
   "@id": "{{site.url}}{{site.baseurl}}/organizations/{{id}}",
-  {% for name in variant_names %}
   "additionalName": [
+  {% for name in variant_names %}
     {% if name.authorized %}
     {% else %}
 	  "{{name.sort_name}}"
@@ -13,7 +14,7 @@
 	   ,
 	  {% endif %}
     {% endif %}
-  ],
   {% endfor %}
+  ],
   "name": "{{agent_detail.title}}"
 }
