@@ -5,6 +5,14 @@
   "@context": "http://schema.org/",
   "@type": "Organization",
   "@id": "{{site.url}}{{site.baseurl}}/organizations/{{id}}",
+  {% if agent.dates_of_existence[0].begin %}
+  "foundingDate": "{{agent.dates_of_existence[0].begin}}",
+  {% else %}
+  {% endif %}
+  {% if agent.dates_of_existence[0].end %}
+  "dissolutionDate": "{{agent.dates_of_existence[0].end}}",
+  {% else %}
+  {% endif %}
   "additionalName": [
   {% for name in variant_names %}
     {% if name.authorized %}
