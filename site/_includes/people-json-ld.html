@@ -11,8 +11,8 @@
   "deathDate": "{{agent.dates_of_existence[0].end}}",
   {% else %}
   {% endif %}
-  {% for name in variant_names %}
   "additionalName": [
+  {% for name in variant_names %}
     {% if name.authorized %}
     {% else %}
 	  "{{name.sort_name}}"
@@ -20,7 +20,7 @@
 	   ,
 	  {% endif %}
     {% endif %}
-  ],
   {% endfor %}
+  ],
   "name": "{{agent_detail.title}}"
 }
