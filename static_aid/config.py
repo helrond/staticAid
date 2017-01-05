@@ -14,6 +14,7 @@ if not exists(CONFIG_DEFAULTS_FILE_PATH):
 
 CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
 YAML_CONFIG_PATH = join(ROOT, '_config.yml')
+YAML_CONFIG_SITE_PATH = join(SITE_SRC_DIR, '_config.yml')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'site')
 
@@ -104,14 +105,14 @@ destinations = _configSection('Destinations')
 # a state file that stores the most recent export date
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
 
-# all the bits of info needed to generate a JSON-LD object
+# generate JSON-LD object data
 with open(YAML_CONFIG_PATH, 'a') as start:
 	start.write('\n' + '# JSON-LD material' + '\n')
 
 searchquery1 = 'insty'
 searchquery2 = 'parent'
 
-with open(CONFIG_DEFAULTS_FILE_PATH, 'r') as f1:
+with open(CONFIG_FILE_PATH, 'r') as f1:
 	with open(YAML_CONFIG_PATH, 'a') as f2:
 		lines = f1.readlines()
 		for i, line in enumerate(lines):
@@ -119,3 +120,5 @@ with open(CONFIG_DEFAULTS_FILE_PATH, 'r') as f1:
 				f2.write(line)
 			if line.startswith(searchquery2):
 				f2.write(line)
+
+copyfile(YAML_CONFIG_PATH, YAML_CONFIG_SITE_PATH)
