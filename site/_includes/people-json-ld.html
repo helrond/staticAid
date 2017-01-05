@@ -7,6 +7,9 @@
   "@id": "{{site.url}}{{site.baseurl}}/people/{{id}}",
   {% if agent.dates_of_existence[0].begin %}
   "birthDate": "{{agent.dates_of_existence[0].begin}}",
+  {% else %}
+  {% endif %}
+  {% if agent.dates_of_existence[0].end %}
   "deathDate": "{{agent.dates_of_existence[0].end}}",
   {% else %}
   {% endif %}
