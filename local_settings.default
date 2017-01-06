@@ -69,7 +69,7 @@ instyStreetAddress: 15 Dayton Avenue
 instyCity: Sleepy Hollow
 instyState: NY
 instyZipCode: 10591
-# is your org a branch of another entity, or do you have a parent organization? Yes or No -- REQUIRED
+# is your org a branch of another entity, or do you have a parent organization? Write Yes or if not, leave blank -- REQUIRED
 parentOrg: Yes
 # if Yes, fill out the below fields for your parent org, similar to the ones above
 # parentType can currently be Organization, Corporation, or CollegeOrUniversity (case-sensitive) -- REQUIRED
