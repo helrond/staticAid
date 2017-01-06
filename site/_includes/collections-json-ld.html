@@ -1,12 +1,12 @@
 {% capture page_url %}{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}{% endcapture %}
-{% capture description %}{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+{% capture json_description %}{% for note in collection.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content | strip_newlines | replace: '"',''}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content | strip_newlines | replace: '"',''}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content | strip_newlines | replace: '"',''}}{% endif %}{% endfor %}{% endcapture %}
 {% capture id_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
 {
-  "@context": "http://schema.org/",
-  "@type": "Collection",
-  "name": "{{collection.title}}",
-  "description": "{{description}}",
-  "datePublished": "{{collection.system_mtime}}",
+"@context": "http://schema.org/",
+"@type": "Collection",
+"name": "{{collection.title}}",
+"description": "{{json_description}}",
+"datePublished": "{{collection.system_mtime}}",
   {% assign separator = "" %}
   "creator": [
   {% for agent in agents %}
