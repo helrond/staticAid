@@ -1,15 +1,11 @@
-{% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
-{% assign agent_detail = site.data.agents.people[{{id}}] %}
-{% assign variant_names = site.data.agents.people[{{id}}].names %}
+{% capture id %}{{ agent.uri | replace: '/agents/people/', '' }}{% endcapture %}
+{% assign variant_names = agent.names %}
 {
   "@context": "http://schema.org/",
   "@type": "Person",
   "@id": "{{site.url}}{{site.baseurl}}/people/{{id}}",
   {% if agent.dates_of_existence[0].begin %}
   "birthDate": "{{agent.dates_of_existence[0].begin}}",
-  {% else %}
-  {% endif %}
-  {% if agent.dates_of_existence[0].end %}
   "deathDate": "{{agent.dates_of_existence[0].end}}",
   {% else %}
   {% endif %}
@@ -24,5 +20,5 @@
     {% endif %}
   {% endfor %}
   ],
-  "name": "{{agent_detail.title}}"
+  "name": "{{ agent.title }}"
 }
