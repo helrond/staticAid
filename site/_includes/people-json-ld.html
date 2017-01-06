@@ -1,6 +1,6 @@
 {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
 {% assign agent_detail = site.data.agents.people[{{id}}] %}
-{% assign variant_names = agent_detail.names %}
+{% assign variant_names = site.data.agents.people[{{id}}].names %}
 {
   "@context": "http://schema.org/",
   "@type": "Person",
