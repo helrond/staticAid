@@ -46,39 +46,3 @@ datefmt: %m/%d/%Y %I:%M:%S %p
 
 [LastExport]
 filepath: lastExport.pickle
-
-[JsonLD]
-# the function of your organization -- can currently be Library or Organization (case-sensitive) -- REQUIRED
-instyType: Library
-# a Wikidata, Freebase or other URI for your organization, if available -- not required
-instyID: https://g.co/kgs/zu3Qqy
-# the commonly known name of your organization -- REQUIRED
-instyName: Rockefeller Archive Center
-# your organization's URL -- REQUIRED
-instyURL: http://rockarch.org/
-# is an image of your organization or its logo -- REQUIRED
-instyImage: http://rockarch.org/images/RAC-logo.png
-# your org's Wikipedia URL, or a social media URL -- not required
-instySameAs:
-# another name commonly used for your org -- not required
-instyAltName: Rockefeller Archives
-# your org's phpne number, eg xxx-xxx-xxxx -- REQUIRED
-instyPhone: 914-366-6300
-# fields below collect your institution's address -- all are REQUIRED
-instyStreetAddress: 15 Dayton Avenue
-instyCity: Sleepy Hollow
-instyState: NY
-instyZipCode: 10591
-# is your org a branch of another entity, or do you have a parent organization? Write Yes or if not, leave blank -- REQUIRED
-parentOrg: Yes
-# if Yes, fill out the below fields for your parent org, similar to the ones above
-# parentType can currently be Organization, Corporation, or CollegeOrUniversity (case-sensitive) -- REQUIRED
-parentType: Organization
-# parentID is a Wikidata, Freebase or other URI for your organization, if available -- not required
-parentID: http://www.wikidata.org/entity/Q862034
-# parentName is the commonly known name of your parent organization -- REQUIRED
-parentName: Rockefeller Foundation
-# parentURL is your parent organization's URL -- REQUIRED
-parentURL: https://www.rockefellerfoundation.org/
-# parentSameAs is your org's Wikipedia URL, or a social media URL -- not required
-parentSameAs: https://en.wikipedia.org/wiki/Rockefeller_Foundation
