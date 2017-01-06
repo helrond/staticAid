@@ -59,7 +59,10 @@ layout: default
       "addressLocality": "{{ site.instyCity }}",
       "addressRegion": "{{ site.instyState }}",
       "postalCode": "{{ site.instyZipCode }}"
-   {% if site.parentOrg == 'Yes' %}
+   {% if site.parentOrg == '' %}
+   }
+}
+  {% else  %}
    },
    "parentOrganization": {
       "@type": "{{ site.parentType }}",
@@ -73,9 +76,6 @@ layout: default
       "sameAs": "{{ site.parentSameAs }}",
       {% endif %}
       "url": "{{ site.parentURL }}"
-    }
-}
-  {% else  %}
     }
 }
   {% endif %}
