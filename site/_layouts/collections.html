@@ -5,7 +5,7 @@ layout: default
 {% assign collection = site.data.collections[{{collection_id}}] %}
 {% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
 
-<div itemscope itemtype="http://schema.org/CollectionPage" class="col-md-8 col-md-offset-2">
+<div class="col-md-8 col-md-offset-2">
 
   {% include breadcrumb.html %}
 
