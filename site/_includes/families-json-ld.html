@@ -1,7 +1,0 @@
-{% capture id %}{{agent.uri | replace: '/agents/families/', ''}}{% endcapture %}
-{
-  "@context": "http://schema.org/",
-  "@type": "Person",
-  "url": "{{site.url}}{{site.baseurl}}/families/{{id}}",
-  "familyName": "{{agent.title}}"
-}
