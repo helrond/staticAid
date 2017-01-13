@@ -63,7 +63,7 @@ By default, `grunt update` will only fetch JSON updated since the last time `sta
 At any point, you can run `grunt rebuild` to wipe out the existing data and build the site from scratch.
 
 **WARNING**: Depending on the size of your ArchivesSpace installation, it could take quite a while for this script to
-loop through all resource records and components. Be patient!
+loop through all resource records and components. Be patient!comca
 
 ### Starting the Local Server
 
@@ -78,6 +78,16 @@ you'll need to build the site in order to see those changes (see above).
 Github Pages support Jekyll sites, so a quick way to make your description publicly accessible is to push to a
 `gh-pages` branch in a Github repository. See the [Github Pages](https://pages.github.com/) documentation
 for more information. -->
+
+### JSON-LD Structured Data
+
+By default, StaticAid is set up to generate structured data in your HTML in the form of JSON-LD objects, coded according to the
+conventions of schema.org. JSON-LD is Google's recommended method of delivering structured data for its indexing algorithms.
+(More information [here](https://developers.google.com/search/docs/guides/intro-structured-data).)
+
+Variables used in the JSON-LD (as well as a few others in building your site) are stored in `_config.yml`. If you don't want
+JSON-LD generated, you can comment the variables out. The JSON-LD will be broken, but it will not affect the display of the
+web pages.
 
 ### Auto Generating StaticAid Content via Cron Job
 
@@ -107,6 +117,7 @@ Luke Scott / @v-lukes
 
 Erin O'Meara / @diplomatica
 
+Scott Carlson / @scottythered
 
 ## License
 
