@@ -3,7 +3,7 @@
 {
   "@context": "http://schema.org/",
   "@type": "Organization",
-  "@id": "{{site.url}}{{site.baseurl}}/organizations/{{id}}",
+  "url": "{{site.url}}{{site.baseurl}}/organizations/{{id}}",
   {% if agent.dates_of_existence[0].begin %}
   "foundingDate": "{{agent.dates_of_existence[0].begin}}",
   "dissolutionDate": "{{agent.dates_of_existence[0].end}}",
