@@ -63,7 +63,7 @@ By default, `grunt update` will only fetch JSON updated since the last time `sta
 At any point, you can run `grunt rebuild` to wipe out the existing data and build the site from scratch.
 
 **WARNING**: Depending on the size of your ArchivesSpace installation, it could take quite a while for this script to
-loop through all resource records and components. Be patient!comca
+loop through all resource records and components. Be patient!
 
 ### Starting the Local Server
 
