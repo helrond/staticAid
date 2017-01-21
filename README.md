@@ -29,6 +29,7 @@ You can see a live version of this site with sample data [here](http://hillelarn
 3.  In this project's root directory, run `npm install` to install dependencies for Grunt.
 4.  Review the default settings in `local_settings.default`; if you'd like to change them, copy this file
     to `local_settings.cfg` and make your changes.
+5.  Update settings in `_config.yml` to generate valid JSON-LD objects (See "JSON-LD Structured Data") below.
 
 **NOTE:** For Linux-like systems, you can simply run `install.sh`.
 It has only been tested on Mint 18+, Ubuntu 16+ and Mac OSX, but should work on any Debian based distribution,

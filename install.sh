@@ -55,6 +55,7 @@ Done installing StaticAid.
 
 To replace the current sample data set in build/data/ with real data from ArchiveSpace, Adlib, etc.,
 verify your settings in local_settings.cfg (specifically that dataSource and access settings are correct),
+update settings in _config.yml,
 make sure ArchivesSpace/Adlib is running, and then run:
 
     grunt update
