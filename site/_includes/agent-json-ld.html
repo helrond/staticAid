@@ -1,0 +1,25 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Person" or "Organization" (families are organizations),
+  "name": "<< Agent name >>",
+  "description": [
+      "<< Biographical Note >>"
+      ],
+  "datePublished": "<< Agent Record Date >>",
+  "temporalCoverage": "<<Creation Dates>>",
+  "about": [
+        "<< subject(s) >>"
+        ],
+  "url": "<< StaticAid URL >>",
+  "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStoreOnly",
+      "serialNumber": "<< Identifier >>",
+      "priceCurrency": "USD",
+      "price": 0,
+      "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
+      "offeredBy": {
+          {% include repo-json-ld.html %}
+         }
+      }
+   }

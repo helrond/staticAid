@@ -29,6 +29,7 @@ You can see a live version of this site with sample data [here](http://hillelarn
 3.  In this project's root directory, run `npm install` to install dependencies for Grunt.
 4.  Review the default settings in `local_settings.default`; if you'd like to change them, copy this file
     to `local_settings.cfg` and make your changes.
+5.  Update settings in `_config.yml` to generate valid JSON-LD objects (See "JSON-LD Structured Data") below.
 
 **NOTE:** For Linux-like systems, you can simply run `install.sh`.
 It has only been tested on Mint 18+, Ubuntu 16+ and Mac OSX, but should work on any Debian based distribution,
@@ -79,6 +80,22 @@ Github Pages support Jekyll sites, so a quick way to make your description publi
 `gh-pages` branch in a Github repository. See the [Github Pages](https://pages.github.com/) documentation
 for more information. -->
 
+### JSON-LD Structured Data
+
+By default, StaticAid is set up to generate structured data in your HTML in the form of JSON-LD objects, coded according to the
+conventions of schema.org. JSON-LD is Google's recommended method of delivering structured data for its indexing algorithms.
+(More information [here](https://developers.google.com/search/docs/guides/intro-structured-data).)
+
+Currently, JSON-LD objects are formed on three kinds of pages:
+
+*   Main index page, describing the holding archive ([Schema](https://gist.github.com/scottythered/68750a6032d3e72fe0bcb83789b64b55))
+*   Collection pages ([Schema](https://gist.github.com/scottythered/d79b8d63ca3a2da120f7efa3168ea8ac))
+*   Persona and Corporate Agent detail pages ([Schemas](https://gist.github.com/scottythered/090b3d05495ae991d7779bf06d08781a))
+
+Variables used in the JSON-LD objects (as well as a few others in building your site) are stored in `_config.yml`. If you don't want
+JSON-LD generated, you can comment the variables out. The JSON-LD will be broken, but it will not affect the display of the
+web pages.
+
 ### Auto Generating StaticAid Content via Cron Job
 
 If you would like to auto-generate StaticAid content using a cron job (on OSX/Linux systems), you can
@@ -107,6 +124,7 @@ Luke Scott / @v-lukes
 
 Erin O'Meara / @diplomatica
 
+Scott Carlson / @scottythered
 
 ## License
 

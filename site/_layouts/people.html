@@ -5,3 +5,7 @@ layout: default
 {% assign agent = site.data.agents.people[{{person_id}}] %}
 
 {% include agent.html %}
+
+<script type="application/ld+json">
+  {% include people-json-ld.html %}
+</script>

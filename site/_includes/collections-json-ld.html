@@ -1,0 +1,217 @@
+{% capture page_url %}{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}{% endcapture %}
+{% capture json_description %}{% for note in collection.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content | strip_newlines | replace: '"',''}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content | strip_newlines | replace: '"',''}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content | strip_newlines | replace: '"',''}}{% endif %}{% endfor %}{% endcapture %}
+{% capture id_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
+{
+"@context": "http://schema.org/",
+"@type": "Collection",
+"name": "{{collection.title}}",
+"description": "{{json_description}}",
+"datePublished": "{{collection.system_mtime}}",
+"temporalCoverage": "{{collection.dates[0].begin}}/{{collection.dates[0].end}}",
+{% assign separator = "" %}
+"creator": [
+  {% for agent in agents %}
+    {% if {{agent.role}} == 'creator' %}
+      {% if agent.ref %}
+        {% if agent.ref contains "corporate_entities" %}
+          {% assign schtype = "Organization" %}
+          {% assign type = "organizations" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+        {% elsif agent.ref contains "families" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "families" %}
+          {% assign label = "familyName" %}
+          {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+        {% elsif agent.ref contains "people" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "people" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+        {% endif %}
+      {% else %}
+        {% assign agent_detail = agent %}
+        {% assign type = false %}
+        {% assign label = false %}
+        {% assign id = false %}
+      {% endif %}
+      {% if agent_detail %}
+        {{separator}}
+        {% assign separator = "," %}
+        {% if type and id %}
+        {
+            "@type": "{{schtype}}",
+            "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
+            "{{label}}": "{{agent_detail.title}}"
+        {% else %}
+        {
+            "@type": "Thing",
+            "name": "{{agent_detail.title}}"
+        {% endif %}
+        }
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  ],
+  {% assign separator = "" %}
+"contributor": [
+  {% for agent in agents %}
+    {% if {{agent.role}} == 'contributor' %}
+      {% if agent.ref %}
+        {% if agent.ref contains "corporate_entities" %}
+          {% assign schtype = "Organization" %}
+          {% assign type = "organizations" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+        {% elsif agent.ref contains "families" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "families" %}
+          {% assign label = "familyName" %}
+          {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+        {% elsif agent.ref contains "people" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "people" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+        {% endif %}
+      {% else %}
+        {% assign agent_detail = agent %}
+        {% assign type = false %}
+        {% assign label = false %}
+        {% assign id = false %}
+      {% endif %}
+      {% if agent_detail %}
+        {{separator}}
+        {% assign separator = "," %}
+        {% if type and id %}
+        {
+            "@type": "{{schtype}}",
+            "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
+            "{{label}}": "{{agent_detail.title}}"
+        {% else %}
+        {
+            "@type": "Thing",
+            "name": "{{agent_detail.title}}"
+        {% endif %}
+        }
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  ],
+{% assign separator = "" %}
+"about": [
+  {% for agent in agents %}
+    {% if {{agent.role}} == 'subject' %}
+      {% if agent.ref %}
+        {% if agent.ref contains "corporate_entities" %}
+          {% assign schtype = "Organization" %}
+          {% assign type = "organizations" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+        {% elsif agent.ref contains "families" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "families" %}
+          {% assign label = "familyName" %}
+          {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+        {% elsif agent.ref contains "people" %}
+          {% assign schtype = "Person" %}
+          {% assign type = "people" %}
+          {% assign label = "name" %}
+          {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
+          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+        {% endif %}
+      {% else %}
+        {% assign agent_detail = agent %}
+        {% assign type = false %}
+        {% assign label = false %}
+        {% assign id = false %}
+      {% endif %}
+      {% if agent_detail %}
+        {{separator}}
+        {% assign separator = "," %}
+        {% if type and id %}
+        {
+            "@type": "{{schtype}}",
+            "@id": "{{site.url}}{{site.baseurl}}/{{type}}/{{id}}",
+            "{{label}}": "{{agent_detail.title}}"
+        {% else %}
+        {
+            "@type": "Thing",
+            "name": "{{agent_detail.title}}"
+        {% endif %}
+        }
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  ],
+"keywords": [
+    {% for subject in subjects %}
+      {% if subject.ref %}
+        {% capture subject_id %}{{subject.ref | replace: '/subjects/', ''}}{% endcapture %}
+        {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+      {% else %}
+        {% assign subject_detail = subject %}
+      {% endif %}
+      "{{subject_detail.title}}"{% unless forloop.last == true %},{% endunless %}
+    {% endfor %}
+       ],
+"url": "{{page_url}}",
+"offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStoreOnly",
+      "serialNumber": "{{id_number}}",
+      "priceCurrency": "USD",
+      "price": 0,
+      "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
+      "offeredBy": {
+             "@type": "{{site.instyType}}",
+             {% if site.instyID %}
+             "@id": "{{site.instyID}}",
+             {% endif %}
+             "name": "{{site.instyName}}",
+             "url": "{{site.instyURL}}",
+             "image": "{{site.instyImage}}",
+             {% if site.instySameAs %}
+             "sameAs": "{{site.instySameAs}}",
+             {% endif %}
+             "priceRange": 0,
+             {% if site.instyAltName %}
+             "alternateName": "{{site.instyAltName}}",
+             {% endif %}
+             "telephone": "{{site.instyPhone}}",
+             "address": {
+                     "@type": "PostalAddress",
+                     "streetAddress": "{{site.instyStreetAddress}}",
+                     "addressLocality": "{{site.instyCity}}",
+                     "addressRegion": "{{site.instyState}}",
+                     "postalCode": "{{site.instyZipCode}}"
+             {% if site.parentOrg %}
+             },
+             "parentOrganization": {
+                     "@type": "{{site.parentType}}",
+                     {% if site.parentID %}
+                     "@id": "{{site.parentID}}",
+                     {% endif %}
+                     "name": "{{site.parentName}}",
+                     {% if site.parentSameAs %}
+                     "sameAs": "{{site.parentSameAs}}",
+                     {% endif %}
+                     "url": "{{site.parentURL}}"
+             }
+      }
+  }
+}
+             {% else  %}
+             }
+      }
+  }
+}
+             {% endif %}

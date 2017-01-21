@@ -5,3 +5,7 @@ layout: default
 {% assign agent = site.data.agents.corporate_entities[{{organization_id}}] %}
 
 {% include agent.html %}
+
+<script type="application/ld+json">
+  {% include organizations-json-ld.html %}
+</script>

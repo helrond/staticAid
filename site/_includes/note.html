@@ -1,5 +1,5 @@
 <h3 id="{{note.persistent_id}}">{% include note-title.html %}</h3>
-<div {% if {{note.type}} == 'abstract' or {{note.type}} == 'scopecontent' or {{note.type}} == 'bioghist' %}itemprop="description"{% endif %}>
+<div>
   {% case {{note.jsonmodel_type}} %}
     {% when 'note_multipart' %}
       {% for subnote in note.subnotes %}

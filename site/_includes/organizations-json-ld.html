@@ -1,0 +1,24 @@
+{% capture id %}{{ agent.uri | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
+{% assign variant_names = agent.names %}
+{
+  "@context": "http://schema.org/",
+  "@type": "Organization",
+  "url": "{{site.url}}{{site.baseurl}}/organizations/{{id}}",
+  {% if agent.dates_of_existence[0].begin %}
+  "foundingDate": "{{agent.dates_of_existence[0].begin}}",
+  "dissolutionDate": "{{agent.dates_of_existence[0].end}}",
+  {% else %}
+  {% endif %}
+  "alternateName": [
+  {% for name in variant_names %}
+    {% if name.authorized %}
+    {% else %}
+	  "{{name.sort_name}}"
+	  {% if forloop.last == false %}
+	   ,
+	  {% endif %}
+    {% endif %}
+  {% endfor %}
+  ],
+  "name": "{{ agent.title }}"
+}
