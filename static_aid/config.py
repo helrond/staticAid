@@ -13,10 +13,8 @@ if not exists(CONFIG_DEFAULTS_FILE_PATH):
     CONFIG_DEFAULTS_FILE_PATH = join(ROOT, 'local_settings.default')
 
 CONFIG_FILE_PATH = join(ROOT, 'local_settings.cfg')
-YAML_CONFIG_PATH = join(ROOT, '_config.yml')
 SAMPLE_DATA_DIR = join(ROOT, 'data')
 SITE_SRC_DIR = join(ROOT, 'site')
-YAML_CONFIG_SITE_PATH = join(SITE_SRC_DIR, '_config.yml')
 
 # build dirs
 BUILD_DIR = join(ROOT, 'build')
@@ -105,5 +103,8 @@ destinations = _configSection('Destinations')
 # a state file that stores the most recent export date
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
 
-# copy config YAML file to site directory
-copyfile(YAML_CONFIG_PATH, YAML_CONFIG_SITE_PATH)
+# write variables to YAML config file
+site = _configSection('Site')
+
+# sitemap
+sitemap = join(STAGING_DIR, 'sitemap.xml')

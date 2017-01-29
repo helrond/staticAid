@@ -5,6 +5,7 @@ from os import listdir, makedirs
 from os.path import exists, join, splitext, isdir, isfile
 from shutil import copyfile, copytree, rmtree
 from posix import remove, rmdir
+from datetime import datetime
 
 from static_aid import config
 from argparse import ArgumentParser
@@ -103,15 +104,10 @@ def make_pages(category):
                     new_file.write("---")
                     new_file.close
 
-                sitemap = join(config.STAGING_DIR, 'sitemap.xml')
-                # this should append, not overwrite (and make sure that running it again wipes it out, then starts again)
-                # need some way to wrap this stuff in urlset and XML tags
-                with open(sitemap, 'w+') as s:
-                    #write sitemap here
+                with open(config.sitemap, 'a') as s:
                     s.write("<url>\n")
-                    # do these URLS need to be fully qualified?
-                    s.write("<loc>%s</loc>\n", % (category, identifier))
-                    s.write("<lastmod>%s</lastmod>\n", current date YYYY-MM-DD)
+                    s.write("<loc>%s/%s/%s</loc>\n" % (config.site["url"], category, identifier))
+                    s.write("<lastmod>%s</lastmod>\n" % str(datetime.now()))
                     s.write("</url>\n")
                     s.close
 
@@ -126,9 +122,23 @@ def main():
 
     args = vars(parser.parse_args())
 
+    with open(config.sitemap, 'w+') as s:
+        s.write('<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n')
+        s.write('<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n')
+        s.close
+
     create_initial_structure(args['embedded'])
     for category in config.destinations:
         make_pages(category)
+
+    with open(config.sitemap, 'a') as s:
+        s.write("</urlset>\n")
+        s.close
+
+    with open((join(config.STAGING_DIR, '_config.yml')), 'w+') as yaml:
+        #not quite right yet
+        yaml.write(str(config.site))
+        yaml.close
 
 if __name__ == '__main__':
     main()
