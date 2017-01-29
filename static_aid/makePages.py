@@ -122,12 +122,11 @@ def main():
 
     args = vars(parser.parse_args())
 
-    with open(config.sitemap, 'w+') as s:
-        s.write('<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n')
-        s.write('<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n')
-        s.close
-
     create_initial_structure(args['embedded'])
+    with open(config.sitemap, 'w+') as s:
+        s.write('<?xml version="1.0" encoding="UTF-8" ?>\n')
+        s.write("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n")
+        s.close
     for category in config.destinations:
         make_pages(category)
 
@@ -136,8 +135,12 @@ def main():
         s.close
 
     with open((join(config.STAGING_DIR, '_config.yml')), 'w+') as yaml:
-        #not quite right yet
-        yaml.write(str(config.site))
+        for i in config.site.iterkeys():
+            if config.site[i]:
+                yaml.write(i)
+                yaml.write(": ")
+                yaml.write(config.site[i])
+                yaml.write("\n")
         yaml.close
 
 if __name__ == '__main__':
