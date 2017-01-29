@@ -103,6 +103,18 @@ def make_pages(category):
                     new_file.write("---")
                     new_file.close
 
+                sitemap = join(config.STAGING_DIR, 'sitemap.xml')
+                # this should append, not overwrite (and make sure that running it again wipes it out, then starts again)
+                # need some way to wrap this stuff in urlset and XML tags
+                with open(sitemap, 'w+') as s:
+                    #write sitemap here
+                    s.write("<url>\n")
+                    # do these URLS need to be fully qualified?
+                    s.write("<loc>%s</loc>\n", % (category, identifier))
+                    s.write("<lastmod>%s</lastmod>\n", current date YYYY-MM-DD)
+                    s.write("</url>\n")
+                    s.close
+
 def main():
     parser = ArgumentParser(description='StaticAid Page Generator')
     parser.add_argument('-e',
