@@ -172,39 +172,39 @@
       "price": 0,
       "businessFunction": "http://purl.org/goodrelations/v1#ProvideService",
       "offeredBy": {
-             "@type": "{{site.instyType}}",
-             {% if site.instyID %}
-             "@id": "{{site.instyID}}",
+             "@type": "{{site.instytype}}",
+             {% if site.instyid %}
+             "@id": "{{site.instyid}}",
              {% endif %}
-             "name": "{{site.instyName}}",
-             "url": "{{site.instyURL}}",
-             "image": "{{site.instyImage}}",
-             {% if site.instySameAs %}
-             "sameAs": "{{site.instySameAs}}",
+             "name": "{{site.instyname}}",
+             "url": "{{site.instyurl}}",
+             "image": "{{site.instyimage}}",
+             {% if site.instysameas %}
+             "sameAs": "{{site.instysameas}}",
              {% endif %}
              "priceRange": 0,
-             {% if site.instyAltName %}
-             "alternateName": "{{site.instyAltName}}",
+             {% if site.instyaltname %}
+             "alternateName": "{{site.instyaltname}}",
              {% endif %}
-             "telephone": "{{site.instyPhone}}",
+             "telephone": "{{site.instyphone}}",
              "address": {
                      "@type": "PostalAddress",
-                     "streetAddress": "{{site.instyStreetAddress}}",
-                     "addressLocality": "{{site.instyCity}}",
-                     "addressRegion": "{{site.instyState}}",
-                     "postalCode": "{{site.instyZipCode}}"
+                     "streetAddress": "{{site.instystreetaddress}}",
+                     "addressLocality": "{{site.instycity}}",
+                     "addressRegion": "{{site.instystate}}",
+                     "postalCode": "{{site.instyzipcode}}"
              {% if site.parentOrg %}
              },
              "parentOrganization": {
-                     "@type": "{{site.parentType}}",
-                     {% if site.parentID %}
-                     "@id": "{{site.parentID}}",
+                     "@type": "{{site.parenttype}}",
+                     {% if site.parentid %}
+                     "@id": "{{site.parentid}}",
                      {% endif %}
-                     "name": "{{site.parentName}}",
-                     {% if site.parentSameAs %}
-                     "sameAs": "{{site.parentSameAs}}",
+                     "name": "{{site.parentname}}",
+                     {% if site.parentsameas %}
+                     "sameAs": "{{site.parentsameas}}",
                      {% endif %}
-                     "url": "{{site.parentURL}}"
+                     "url": "{{site.parenturl}}"
              }
       }
   }
