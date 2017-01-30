@@ -25,15 +25,10 @@ You can see a live version of this site with sample data [here](http://hillelarn
 ### Setup
 
 1.  Clone this repository `git clone git@github.com:helrond/staticAid.git` or download the ZIP file.
-2.  Install dependencies. See "Requirements" above for a list of things you'll need to have installed.
-3.  In this project's root directory, run `npm install` to install dependencies for Grunt.
-4.  Review the default settings in `local_settings.default`; if you'd like to change them, copy this file
+2.  Review the default settings in `local_settings.default`; if you'd like to change them, copy this file
     to `local_settings.cfg` and make your changes.
-5.  Update settings in `_config.yml` to generate valid JSON-LD objects (See "JSON-LD Structured Data") below.
-
-**NOTE:** For Linux-like systems, you can simply run `install.sh`.
-It has only been tested on Mint 18+, Ubuntu 16+ and Mac OSX, but should work on any Debian based distribution,
-RedHat, etc. with minimal modification.
+3.  Run `install.sh`. This has only been tested on Mint 18+, Ubuntu 16+ and Mac OSX, but should work on any Debian based distribution,
+    RedHat, etc. with minimal modification.
 
 ## Usage
 
@@ -92,8 +87,8 @@ Currently, JSON-LD objects are formed on three kinds of pages:
 *   Collection pages ([Schema](https://gist.github.com/scottythered/d79b8d63ca3a2da120f7efa3168ea8ac))
 *   Persona and Corporate Agent detail pages ([Schemas](https://gist.github.com/scottythered/090b3d05495ae991d7779bf06d08781a))
 
-Variables used in the JSON-LD objects (as well as a few others in building your site) are stored in `_config.yml`. If you don't want
-JSON-LD generated, you can comment the variables out. The JSON-LD will be broken, but it will not affect the display of the
+Variables used in the JSON-LD objects (as well as a few others in building your site) are stored in `local_settings.cfg`. If you don't want
+JSON-LD generated, you can leave those variables undefined. The JSON-LD will be broken, but it will not affect the display of the
 web pages.
 
 ### Auto Generating StaticAid Content via Cron Job
