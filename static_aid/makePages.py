@@ -107,7 +107,7 @@ def make_pages(category):
                 with open(config.sitemap, 'a') as s:
                     s.write("<url>\n")
                     s.write("<loc>%s/%s/%s</loc>\n" % (config.site["url"], category, identifier))
-                    s.write("<lastmod>%s</lastmod>\n" % str(datetime.now()))
+                    s.write("<lastmod>%s</lastmod>\n" % str(datetime.now().isoformat()))
                     s.write("</url>\n")
                     s.close
 
