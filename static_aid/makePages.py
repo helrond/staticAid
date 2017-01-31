@@ -5,6 +5,7 @@ from os import listdir, makedirs
 from os.path import exists, join, splitext, isdir, isfile
 from shutil import copyfile, copytree, rmtree
 from posix import remove, rmdir
+from datetime import datetime
 
 from static_aid import config
 from argparse import ArgumentParser
@@ -103,6 +104,13 @@ def make_pages(category):
                     new_file.write("---")
                     new_file.close
 
+                with open(config.sitemap, 'a') as s:
+                    s.write("<url>\n")
+                    s.write("<loc>%s/%s/%s</loc>\n" % (config.site["url"], category, identifier))
+                    s.write("<lastmod>%s</lastmod>\n" % str(datetime.now().isoformat()))
+                    s.write("</url>\n")
+                    s.close
+
 def main():
     parser = ArgumentParser(description='StaticAid Page Generator')
     parser.add_argument('-e',
@@ -115,8 +123,25 @@ def main():
     args = vars(parser.parse_args())
 
     create_initial_structure(args['embedded'])
+    with open(config.sitemap, 'w+') as s:
+        s.write('<?xml version="1.0" encoding="UTF-8" ?>\n')
+        s.write("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n")
+        s.close
     for category in config.destinations:
         make_pages(category)
+
+    with open(config.sitemap, 'a') as s:
+        s.write("</urlset>\n")
+        s.close
+
+    with open((join(config.STAGING_DIR, '_config.yml')), 'w+') as yaml:
+        for i in config.site.iterkeys():
+            if config.site[i]:
+                yaml.write(i)
+                yaml.write(": ")
+                yaml.write(config.site[i])
+                yaml.write("\n")
+        yaml.close
 
 if __name__ == '__main__':
     main()

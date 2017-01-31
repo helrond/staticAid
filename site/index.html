@@ -35,39 +35,39 @@ layout: default
 <script type="application/ld+json">
 {
   "@context": "http://schema.org/",
-  "@type": "{{ site.instyType }}",
+  "@type": "{{ site.instytype }}",
   {% if site.instyID %}
-  "@id": "{{ site.instyID }}",
+  "@id": "{{ site.instyid }}",
   {% endif %}
-  "name": "{{ site.instyName }}",
-  "url": "{{ site.instyURL }}",
-  "image": "{{ site.instyImage }}",
+  "name": "{{ site.instyname }}",
+  "url": "{{ site.instyurl }}",
+  "image": "{{ site.instyimage }}",
   {% if site.instySameAs %}
-  "sameAs": "{{ site.instySameAs }}",
+  "sameAs": "{{ site.instysameas }}",
   {% endif %}
   "priceRange": 0,
   {% if site.instyAltName %}
-  "alternateName": "{{ site.instyAltName }}",
+  "alternateName": "{{ site.instyaltname }}",
   {% endif %}
-  "telephone": "{{ site.instyPhone }}",
+  "telephone": "{{ site.instyphone }}",
   "address": {
       "@type": "PostalAddress",
-      "streetAddress": "{{ site.instyStreetAddress }}",
-      "addressLocality": "{{ site.instyCity }}",
-      "addressRegion": "{{ site.instyState }}",
-      "postalCode": "{{ site.instyZipCode }}"
+      "streetAddress": "{{ site.instystreetaddress }}",
+      "addressLocality": "{{ site.instycity }}",
+      "addressRegion": "{{ site.instystate }}",
+      "postalCode": "{{ site.instyzipcode }}"
    {% if site.parentOrg %}
    },
    "parentOrganization": {
-      "@type": "{{ site.parentType }}",
+      "@type": "{{ site.parenttype }}",
       {% if site.parentID %}
-      "@id": "{{ site.parentID }}",
+      "@id": "{{ site.parentid }}",
       {% endif %}
-      "name": "{{ site.parentName }}",
+      "name": "{{ site.parentname }}",
       {% if site.parentSameAs %}
-      "sameAs": "{{ site.parentSameAs }}",
+      "sameAs": "{{ site.parentsameas }}",
       {% endif %}
-      "url": "{{ site.parentURL }}"
+      "url": "{{ site.parenturl }}"
     }
 }
   {% else  %}
