@@ -20,10 +20,16 @@ then
     nodejs npm
 else
   DIR=$(cd $(dirname $(readlink -f "$0" )); pwd)
-  sudo apt-get -y install \
+  python -mplatform | grep -qi Ubuntu && sudo apt-get -y install \
       git make gcc \
       python-pip python-setuptools \
       ruby ruby-dev \
+      nodejs npm ||
+      sudo yum -y install \
+      epel-release \
+      git make gcc \
+      python-pip python-setuptools \
+      ruby ruby-devel \
       nodejs npm
 fi
 
