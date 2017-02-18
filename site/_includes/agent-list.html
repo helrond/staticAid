@@ -26,7 +26,7 @@
     {% assign id = false %}
   {% endif %}
   {% if agent_detail %}
-    <li itemscope="{{agent.role}}" class="{{ type }} agent">
+    <li class="{{ type }} agent">
         {% if type and id %}
             <a href="{{ site.url }}{{ site.baseurl }}/{{ type }}/{{ id }}">{{agent_detail.title}}</a>
         {% else %}
