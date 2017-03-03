@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <h1 id="asset-title" class="collection title">
+      {{ object.title }}
+      <small>
+        {% include avnumber.html %}
+      </small>
+    </h1>
+
+    <div class="object scopecontent text-center">
+      {% for note in object.notes %}
+        {% if note.type == 'scopecontent' %}
+          {% include note-lead.html %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <p>{{object.dates[0].expression}}</p>
+    {% for note in object.notes %}
+      {% if note.type == 'physdesc' %}
+        {% include note.html %}
+      {% endif %}
+    {% endfor %}
+    {% for note in object.notes %}
+      {% if note.type == 'materialspec' %}
+        {% include note.html %}
+      {% endif %}
+    {% endfor %}
+    {% for note in object.notes %}
+      {% if note.type == 'phystech' %}
+        {% include note.html %}
+      {% endif %}
+    {% endfor %}
+    {% for extent in object.extents %}
+      {% include extent.html %}
+    {% endfor %}
+  </div>
+  <div class="col-md-6">
+    <h3>Copyright notice</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at est faucibus, aliquet justo quis, rhoncus dolor. Pellentesque laoreet ac odio sit amet ornare. Curabitur volutpat risus eu molestie fermentum. Donec vulputate, risus ac tincidunt auctor, velit est scelerisque massa, pretium iaculis odio enim in sem. </p>
+  </div>
+</div>

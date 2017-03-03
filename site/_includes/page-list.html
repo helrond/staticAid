@@ -1,9 +1,16 @@
-<div class="col-sm-8 col-sm-offset-2">
+<div id="list" class="col-sm-8 col-sm-offset-2">
   <h1>{{page.title}}</h1>
+  <div class="col-sm-6 col-sm-offset-3">
+    <input style="margin-top:1.5em" type="text" class="form-control search" placeholder="Search" />
+    <p class="help-block">Search by keyword or AV number</p>
+  </div>
   {% if list_data %}
+  <table class="table table-striped">
+    <tbody class="list">
     {% for item_hash in list_data %}
       {% assign item = item_hash[1] %}
       {% assign id = item_hash[0] %}
+      {% assign instances = item.instances %}
       {% capture description %}
         {% for note in item.notes %}
           {% if note.type == 'abstract' %}
@@ -15,11 +22,12 @@
           {% endif %}
         {% endfor %}
       {% endcapture %}
-      <h3><a href="{{ site.url }}{{ site.baseurl }}{{ id }}">{{ item.title }}</a></h3>
-      {% if description != '' %}
-        <p>{{ description | truncatewords: 50 }}</p>
-      {% endif %}
-    {% endfor %}
+        <tr>
+          <td class="title"><a href="{{ site.url }}{{ site.baseurl }}{{ id }}">{{ item.title }}</a> <small>{% include avnumber.html %}</small></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   {% else %}
     <h4>There is nothing here...yet!</h4>
   {% endif %}

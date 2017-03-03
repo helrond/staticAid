@@ -38,6 +38,44 @@ layout: null
           "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
+    },
+  {% endfor %}
+  {% assign audio_data = site.data.audio %}
+  {% for item_hash in audio_data %}
+    {% assign object = item_hash[1] %}
+    {% assign id = item_hash[0] %}
+    "audio/{{id}}": {
+      "href": "audio/{{id}}",
+      "title": "{{object.title | escape | strip_newlines}}",
+      "url": "{{site.url}}/audio/{{id}}",
+      "record_type": "{{object.level}}",
+      "subjects": [
+        {% assign subjects = object.subjects %}
+        {% for subject in subjects %}
+          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
+          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    },
+  {% endfor %}
+  {% assign video_data = site.data.video %}
+  {% for item_hash in video_data %}
+    {% assign object = item_hash[1] %}
+    {% assign id = item_hash[0] %}
+    "video/{{id}}": {
+      "href": "video/{{id}}",
+      "title": "{{object.title | escape | strip_newlines}}",
+      "url": "{{site.url}}/video/{{id}}",
+      "record_type": "{{object.level}}",
+      "subjects": [
+        {% assign subjects = object.subjects %}
+        {% for subject in subjects %}
+          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
+          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 }
