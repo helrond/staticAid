@@ -93,3 +93,10 @@ button:hover {
 ::-webkit-media-controls {
   display:none !important;
 }
+
+video.background {
+  background: transparent url(/img/loading.gif) no-repeat 50% 50%;
+  -webkit-background-size: 100px;
+  -moz-background-size: 100px;
+  background-size: 100px;
+}

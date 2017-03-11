@@ -6,7 +6,7 @@ window.onload = function() {
 	if(asset) {
 
 		// Add loading gif
-		asset.setAttribute("poster", "/img/loading.gif");
+		asset.classList.add("background");
 
 		// Asset data
 		var assetType = asset.getAttribute('data-type');
@@ -50,7 +50,7 @@ window.onload = function() {
 		}
 
 		asset.addEventListener("canplay", function (event) {
-		  asset.removeAttribute("poster");
+		  asset.classList.remove("background");
 		});
 
 		// Event listener for the play/pause button
