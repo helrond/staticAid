@@ -5,6 +5,9 @@ window.onload = function() {
 
 	if(asset) {
 
+		// Add loading gif
+		asset.setAttribute("poster", "/img/loading.gif");
+
 		// Asset data
 		var assetType = asset.getAttribute('data-type');
 		var assetTitle = document.getElementById('asset-title');
@@ -45,6 +48,10 @@ window.onload = function() {
 						sessionStorage.setItem('three', null)
 				}
 		}
+
+		asset.addEventListener("canplay", function (event) {
+		  asset.removeAttribute("poster");
+		});
 
 		// Event listener for the play/pause button
 		playButton.addEventListener("click", function() {
