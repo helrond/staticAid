@@ -6,16 +6,16 @@
   margin-top: 1.5rem;
 }
 
+.well > p {
+  min-height: 4rem;
+}
+
 .contents .group-title-top {
   font-size: 2rem;
 }
 
 .contents .group-title-intermediate {
   font-size: 1.7rem;
-}
-
-.more-link {
-  padding-left: .5em;
 }
 
 .label {
@@ -40,30 +40,32 @@
 }
 
 #asset-controls {
-	padding: 5px;
 	background: #f8f8f8;
   border: 1px solid #e7e7e7;
-  height: 2.2em;
+  height: 3em;
   width:100%;
 }
 
 button, a[type="button"] {
-	background: rgba(0,0,0,.5);
-  padding: 3px;
+	background: rgba(0,0,0,0);
 	border: 0;
-	color: #EEE;
+  font-size: 1.5em;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-  margin: 0 1% 0 1%;
-}
-
-button {
-  float:left;
+  height: 2em;
+  color: #333;
+  float: left;
+  padding: 0 1%;
 }
 
 a[type="button"] {
-  float: right;
+  margin-top: .5em;
+}
+
+#time {
+  font-size: 1em;
+  margin-top: .5em;
 }
 
 .glyphicon {
@@ -75,15 +77,17 @@ button:hover {
 }
 
 #seek-bar {
-	width: 30%;
+	width: 25%;
   float: left;
   margin: 0 1% 0 1%;
+  height:3em;
 }
 
 #volume-bar {
-	width: 10%;
+	width: 15%;
   float:left;
   margin: 0 1% 0 1%;
+  height:3em;
 }
 
 ::-webkit-media-controls {

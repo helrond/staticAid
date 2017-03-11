@@ -14,10 +14,15 @@ window.onload = function() {
 		var muteButton = document.getElementById("mute");
 		var fullScreenButton = document.getElementById("full-screen");
 		var downloadButton = document.getElementById("download");
+		var timeButton = document.getElementById("time");
 
 		// Sliders
 		var seekBar = document.getElementById("seek-bar");
 		var volumeBar = document.getElementById("volume-bar");
+
+		function padLeft(string,pad,length) {
+    	return (new Array(length+1).join(pad)+string).slice(-length);
+		}
 
 		function setKeyFrames (duration) {
 			var quarter = (duration / 4).toFixed(1)
@@ -80,6 +85,7 @@ window.onload = function() {
 		asset.addEventListener("timeupdate", function() {
 			var value = (100 / asset.duration) * asset.currentTime;
 			seekBar.value = value;
+			timeButton.innerHTML = new Date(asset.currentTime * 1000).toISOString().substr(11, 8);;
 			assetTimeUpdate();
 		});
 
@@ -91,7 +97,7 @@ window.onload = function() {
 
 		// Play the asset when the seek handle is dropped
 		seekBar.addEventListener("mouseup", function() {
-			playButton.innerHTML = '<span class="glyphicon glyphicon-play" aria-hidden="true"></span>';
+			playButton.innerHTML = '<span class="glyphicon glyphicon-pause" aria-hidden="true"></span>';
 			asset.play();
 		});
 

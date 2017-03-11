@@ -6,22 +6,23 @@ layout: default
 {% assign breadcrumbs = site.data.breadcrumbs[{{object_id}}] %}
 {% assign instances = object.instances %}
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-6 col-md-offset-3">
 
   <video id="asset" data-type="video" width="100%">
-    <source type="video/mp4" src="{{ site.url }}{{ site.baseurl }}/assets/movie.mp4" />
+    <source type="video/mp4" src="{{ site.url }}{{ site.baseurl }}/assets/moving-image/{{ object_id }}/{{ object_id }}.mp4" />
     <p>
       Your browser doesn't support HTML5 video.
-      <a href="{{ site.url }}{{ site.baseurl }}/assets/movie.mp4" download>Download</a> the video instead.
+      <a href="{{ site.url }}{{ site.baseurl }}/assets/moving-image/{{ object_id }}/{{ object_id }}.mp4" download>Download</a> the video instead.
     </p>
   </video>
   <div id="asset-controls">
     <button type="button" id="play-pause" class="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
     <input type="range" id="seek-bar" value="0">
+    <button type="button" id="time">00:00:00</button>
     <button type="button" id="mute"><span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span></button>
     <input type="range" id="volume-bar" min="0" max="1" step="0.1" value=".5">
-    <button type="button" id="full-screen"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span></button>
-    <a type="button" href="{{ site.url }}{{ site.baseurl }}/assets/movie.mp4" id="download" download><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+    <a class="pull-right" type="button" href="{{ site.url }}{{ site.baseurl }}/assets/movie.mp4" id="download" download><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+    <button class="pull-right" type="button" id="full-screen"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span></button>
   </div>
 
   {% include av-metadata.html %}
