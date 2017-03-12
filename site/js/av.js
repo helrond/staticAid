@@ -5,9 +5,6 @@ window.onload = function() {
 
 	if(asset) {
 
-		// Add loading gif
-		asset.classList.add("background");
-
 		// Asset data
 		var assetType = asset.getAttribute('data-type');
 		var assetTitle = document.getElementById('asset-title');
