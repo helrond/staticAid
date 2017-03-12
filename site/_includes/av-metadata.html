@@ -1,14 +1,7 @@
 <div class="row">
   <div class="col-md-12">
 
-    <h1 id="asset-title" class="collection title">
-      {{ object.title }}
-      <small>
-        {% include avnumber.html %}
-      </small>
-    </h1>
-
-    <div class="object scopecontent text-center">
+    <div class="object scopecontent">
       {% for note in object.notes %}
         {% if note.type == 'scopecontent' %}
           {% include note-lead.html %}
