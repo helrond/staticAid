@@ -8,6 +8,13 @@ layout: default
 
 <div class="col-md-6 col-md-offset-3">
 
+  <h1 id="asset-title" class="collection title">
+    {{ object.title }}
+    <small>
+      {% include avnumber.html %}
+    </small>
+  </h1>
+
   <video id="asset" data-type="video" width="100%">
     <source type="video/mp4" src="{{ site.url }}{{ site.baseurl }}/assets/moving-image/{{ object_id }}/{{ object_id }}.mp4" />
     <p>
@@ -21,7 +28,7 @@ layout: default
     <button type="button" id="time">00:00:00</button>
     <button type="button" id="mute"><span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span></button>
     <input type="range" id="volume-bar" min="0" max="1" step="0.1" value=".5">
-    <a class="pull-right" type="button" href="{{ site.url }}{{ site.baseurl }}/assets/movie.mp4" id="download" download><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+    <a class="pull-right" type="button" href="{{ site.url }}{{ site.baseurl }}/assets/moving-image/{{ object_id }}/{{ object_id }}.mp4" id="download" download><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
     <button class="pull-right" type="button" id="full-screen"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span></button>
   </div>
 

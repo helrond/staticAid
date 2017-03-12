@@ -4,8 +4,16 @@ layout: default
 {% capture object_id %}{{page.id}}{% endcapture %}
 {% assign object = site.data.audio[{{object_id}}] %}
 {% assign breadcrumbs = site.data.breadcrumbs[{{object_id}}] %}
+{% assign instances = object.instances %}
 
 <div class="col-md-6 col-md-offset-3">
+
+  <h1 id="asset-title" class="collection title">
+    {{ object.title }}
+    <small>
+      {% include avnumber.html %}
+    </small>
+  </h1>
 
   <audio id="asset" class="center-block" data-type="audio" width="100%">
     <source src="{{ site.url }}{{ site.baseurl }}/assets/audio/{{ object_id }}/{{ object_id }}.mp3" type="audio/mp3">
@@ -20,7 +28,7 @@ layout: default
     <button type="button" id="time">00:00:00</button>
     <button type="button" id="mute"><span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span></button>
     <input type="range" id="volume-bar" min="0" max="1" step="0.1" value=".5">
-    <a class="pull-right" type="button" href="{{ site.url }}{{ site.baseurl }}/assets/audio.mp3" id="download" download><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+    <a class="pull-right" type="button" href="{{ site.url }}{{ site.baseurl }}/assets/audio/{{ object_id }}/{{ object_id }}.mp3" id="download" download><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
   </div>
 
   {% include av-metadata.html %}
