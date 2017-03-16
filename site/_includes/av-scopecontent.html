@@ -1,0 +1,7 @@
+<div class="object scopecontent">
+  {% for note in object.notes %}
+    {% if note.type == 'scopecontent' %}
+      {% include note-lead.html %}
+    {% endif %}
+  {% endfor %}
+</div>
