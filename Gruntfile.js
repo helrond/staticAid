@@ -62,7 +62,7 @@ module.exports = function(grunt) {
   }
 
   grunt.registerTask('serve', ['jekyll:serve']);
-  grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build']);
-  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
-  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
+  grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build', 'exec:linkAssets']);
+  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build', 'exec:linkAssets']);
+  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType, 'jekyll:build', 'exec:linkAssets']);
 };

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from json import load
-from os import listdir, makedirs
+from os import listdir, makedirs, symlink, walk, chmod
 from os.path import exists, join, splitext, isdir, isfile
 from shutil import copyfile, copytree, rmtree
 from posix import remove, rmdir
@@ -112,12 +112,13 @@ def make_pages(category):
                     s.close
 
 def link_assets():
-    os.symlink(config.assets[src], config.assets[dest])
-    for root, dirs, files in os.walk(config.assets[src]):
+    if not(isdir(config.assets['dest']))
+        symlink(config.assets['src'], config.assets['dest'])
+    for root, dirs, files in walk(config.assets['src']):
         for d in dirs:
-            os.chown(os.path.join(root, d), 664)
+            chmod(join(root, d), 664)
         for f in files:
-            os.chown(os.path.join(root, f), 775)
+            chmod(join(root, f), 775)
 
 def main():
     parser = ArgumentParser(description='StaticAid Page Generator')

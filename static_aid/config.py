@@ -99,6 +99,7 @@ logging = _configSection('Logging')
 
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
+assets = _configSection('Assets')
 
 # a state file that stores the most recent export date
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))
