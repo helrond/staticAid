@@ -111,6 +111,14 @@ def make_pages(category):
                     s.write("</url>\n")
                     s.close
 
+def link_assets():
+    os.symlink(config.assets[src], config.assets[dest])
+    for root, dirs, files in os.walk(config.assets[src]):
+        for d in dirs:
+            os.chown(os.path.join(root, d), 664)
+        for f in files:
+            os.chown(os.path.join(root, f), 775)
+
 def main():
     parser = ArgumentParser(description='StaticAid Page Generator')
     parser.add_argument('-e',

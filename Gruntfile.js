@@ -23,6 +23,11 @@ module.exports = function(grunt) {
           stdout: true,
           stderr: true
       },
+      linkAssets: {
+        command: 'static-aid-link-assets',
+        stdout: true,
+        stderr: true
+      }
     },
     jekyll: {
       serve: {
