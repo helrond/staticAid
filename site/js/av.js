@@ -68,12 +68,12 @@ window.onload = function() {
 		muteButton.addEventListener("click", function() {
 			if (asset.muted == false) {
 				asset.muted = true;
-				muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>';
+				muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>';
 				volumeBar.value = 0;
 				ga('send', 'event', assetType, 'mute', assetTitle)
 			} else {
 				asset.muted = false;
-				muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>';
+				muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>';
 				volumeBar.value = asset.value;
 				ga('send', 'event', assetType, 'unmute', assetTitle)
 			}
