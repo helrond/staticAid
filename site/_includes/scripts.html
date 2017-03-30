@@ -6,6 +6,9 @@
 <script>
 var options = { valueNames: [ 'title', 'date' ] };
 var reportList = new List('list', options);
+reportList.sort("title", {
+    order: "asc"
+})
 </script>
 
 <!-- Google Analytics -->
