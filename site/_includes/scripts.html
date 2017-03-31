@@ -8,7 +8,8 @@ var options = { valueNames: [ 'title', 'date' ] };
 var reportList = new List('list', options);
 reportList.sort("title", {
     order: "asc"
-})
+});
+$("#list .table").animate({opacity: 1}, 200);
 </script>
 
 <!-- Google Analytics -->
