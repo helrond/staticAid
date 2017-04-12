@@ -112,14 +112,18 @@ def make_pages(category):
                     s.close
 
 def link_assets():
-    print "doing nothing for now"
-    # if not(isdir(config.assets['dest'])):
-    #     symlink(config.assets['src'], config.assets['dest'])
-    # for root, dirs, files in walk(config.assets['src']):
-    #     for d in dirs:
-    #         chmod(join(root, d), 664)
-    #     for f in files:
-    #         chmod(join(root, f), 775)
+    if (config.assets['src'] and config.assets['dest']):
+        if not(isdir(config.assets['dest'])):
+            symlink(config.assets['src'], config.assets['dest'])
+            print "Assets linked!"
+        for root, dirs, files in walk(config.assets['src']):
+            for d in dirs:
+                chmod(join(root, d), 664)
+            for f in files:
+                chmod(join(root, f), 775)
+        print "Permissions updated!"
+    else:
+        print "Nothing linked because no source or destination directories were specified."
 
 def main():
     parser = ArgumentParser(description='StaticAid Page Generator')
