@@ -23,7 +23,7 @@
         {% endfor %}
       {% endcapture %}
         <tr>
-          <td><span class="title"><a href="{{ site.url }}{{ site.baseurl }}{{ id }}">{{ item.title }}</a> <small>{% include avnumber.html %}</small></span></td>
+          <td><a href="{{ site.url }}{{ site.baseurl }}{{ id }}"><span class="title">{{ item.title }}</span></a> <small><span class="av-number">{% include avnumber.html %}</span></small></td>
         </tr>
       {% endfor %}
     </tbody>
