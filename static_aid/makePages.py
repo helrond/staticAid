@@ -118,7 +118,7 @@ def link_assets():
             print "Assets linked!"
         for root, dirs, files in walk(config.assets['src']):
             for d in dirs:
-                chmod(join(root, d), 775)
+                chmod(join(root, d), 755)
             for f in files:
                 chmod(join(root, f), 775)
         print "Permissions updated!"
