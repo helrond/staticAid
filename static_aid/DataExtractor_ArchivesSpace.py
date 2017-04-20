@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import re
 import requests
 import sys
 
@@ -14,10 +15,11 @@ class DataExtractor_ArchivesSpace(DataExtractor):
         lastExport = self.lastExportTime()
         self.makeDestinations()
         headers = self.authenticate()
-        self.findResources(lastExport, headers)
-        self.findObjects(lastExport, headers)
-        self.findAgents(lastExport, headers)
-        self.findSubjects(lastExport, headers)
+        self.findObjectsById(lastExport, headers)
+        # self.findResources(lastExport, headers)
+        # self.findObjects(lastExport, headers)
+        # self.findAgents(lastExport, headers)
+        # self.findSubjects(lastExport, headers)
 
 
     # authenticates the session
@@ -98,6 +100,39 @@ class DataExtractor_ArchivesSpace(DataExtractor):
             else:
                 self.removeFile(objectId, config.destinations['objects'])
 
+    # Get a list of refids based on filenames
+    def getIds(self, location):
+        id_list = []
+        for dirpath, dirnames, filenames in os.walk(location):
+            for filename in [f for f in filenames if not f.startswith('.')]:
+                id_list.append(os.path.basename(os.path.splitext(filename)[0]))
+        return id_list
+
+    # Looks for objects based on a list of refids
+    def findObjectsById(self, lastExport, headers):
+        if lastExport > 0:
+            logging.info('*** Exporting requested objects modified since %d ***', lastExport)
+        else:
+            logging.info('*** Exporting all existing objects ***')
+        archival_objects = self.getIds(config.assets['src'])
+        for objectId in archival_objects:
+            url = '%s/find_by_id/archival_objects?ref_id[]=%s' % (config.archivesSpace['repository_url'], str(objectId))
+            results = requests.get(url, headers=headers).json()
+            for result in results["archival_objects"]:
+                result_url = '%s%s' % (config.archivesSpace['base_url'], result['ref'])
+                archival_object = requests.get(result_url, headers=headers).json()
+                if archival_object["publish"]:
+                    # evaluate instance types to see if this is audio or video
+                    for instance in archival_object["instances"]:
+                        if re.match('audio', instance["instance_type"], re.IGNORECASE):
+                            object_type = 'audio'
+                        elif re.match('moving images', instance["instance_type"], re.IGNORECASE):
+                            object_type = 'moving-image'
+                        else:
+                            object_type = 'objects'
+                    self.saveFile(objectId, archival_object, config.destinations[object_type])
+                else:
+                    self.removeFile(objectId, config.destinations['objects'])
 
     # Looks for agents
     def findAgents(self, lastExport, headers):
