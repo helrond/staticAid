@@ -116,12 +116,12 @@ def link_assets():
         if not(isdir(config.assets['dest'])):
             symlink(config.assets['src'], config.assets['dest'])
             print "Assets linked!"
-        for root, dirs, files in walk(config.assets['src']):
-            for d in dirs:
-                chmod(join(root, d), 775)
-            for f in files:
-                chmod(join(root, f), 775)
-        print "Permissions updated!"
+        # for root, dirs, files in walk(config.assets['src']):
+        #     for d in dirs:
+        #         chmod(join(root, d), 77)
+        #     for f in files:
+        #         chmod(join(root, f), 775)
+        # print "Permissions updated!"
     else:
         print "Nothing linked because no source or destination directories were specified."
 
