@@ -83,6 +83,7 @@ dataExtractor['dataSource'] = dataExtractor.get('datasource', 'DEFAULT').lower()
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
 if archivesSpace:
+    archivesSpace['base_url'] = archivesSpace.get('baseurl')
     archivesSpace['repository_url'] = '%s/repositories/%s' % (archivesSpace.get('baseurl'), archivesSpace.get('repository'))
     archivesSpace['breadcrumb_url'] = '%s/search/published_tree?node_uri=/repositories/%s' % (archivesSpace.get('baseurl'),
                                                                                               archivesSpace.get('repository'),
