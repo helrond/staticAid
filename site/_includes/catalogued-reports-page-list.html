@@ -1,33 +1,15 @@
-<div id="list" class="col-sm-8 col-sm-offset-2">
-  <div class="col-sm-7"><h1>{{page.title}}</h1></div>
-  <div class="col-sm-5">
-    <input style="margin-top:1.5em;" type="text" class="form-control search" placeholder="Search by keyword or report number" />
+<div id="catalogued-reports-list" class="col-sm-8 col-sm-offset-2">
+  <div class="col-sm-12"><h1>{{page.title}}</h1></div>
+  <div class="col-sm-12">
+    <form style="margin-top:1.5em;"  action="get" id="search" role="search">
+        <div class="form-group col-sm-7">
+          <input id="query" type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    <!-- <input style="margin-top:1.5em;" type="text" class="form-control search" placeholder="Search by keyword or report number" /> -->
   </div>
-  {% if list_data %}
-  <table class="table table-striped" style="opacity:0;">
-    <tbody class="list">
-    {% for item_hash in list_data %}
-      {% assign item = item_hash[1] %}
-      {% assign id = item_hash[0] %}
-      {% assign instances = item.instances %}
-      {% capture description %}
-        {% for note in item.notes %}
-          {% if note.type == 'abstract' %}
-            {{note.subnotes[0].content}}
-          {% elsif note.type == 'scopecontent' %}
-            {{note.subnotes[0].content}}
-          {% elsif note.type == 'bioghist' %}
-            {{note.subnotes[0].content}}
-          {% endif %}
-        {% endfor %}
-      {% endcapture %}
-        <tr>
-          <td><a href="{{ site.url }}{{ site.baseurl }}{{ id }}"><span class="title">{{ item.title }}</span></a> <small><span class="av-number">{% include avnumber.html %}</span></small></td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-    <h4>There is nothing here...yet!</h4>
-  {% endif %}
+  <div class="col-sm-12">
+    <div id="results" class="results jumbotron" style="display:none;"></div>
+  </div>
 </div>

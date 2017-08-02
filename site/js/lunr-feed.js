@@ -24,7 +24,8 @@ $(document).ready(function() {
     var query = $('#query').val();
     var result = index.search(query);
     results.empty();
-    results.prepend('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><p>Found '+result.length+' result(s) for "'+query+'"</p>');
+    // results.prepend('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><p>Found '+result.length+' result(s) for "'+query+'"</p>');
+    results.prepend('<p>Found '+result.length+' result(s) for "'+query+'"</p>');
     result.forEach(function(result) {
       search_data.then(function(data) {
         var item = data[result.ref];
