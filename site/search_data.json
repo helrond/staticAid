@@ -2,80 +2,37 @@
 layout: null
 ---
 {
-  {% assign collection_data = site.data.collections %}
-  {% for item_hash in collection_data %}
-    {% assign collection = item_hash[1] %}
-    {% assign id = item_hash[0] %}
-    "collections/{{id}}": {
-      "href": "collections/{{id}}",
-      "title": "{{collection.title | escape | strip_newlines}}",
-      "url": "{{site.url}}/collections/{{id}}",
-      "record_type": "collection",
-      "subjects": [
-        {% assign subjects = collection.subjects %}
-        {% for subject in subjects %}
-          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
-          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    },
-  {% endfor %}
-  {% assign object_data = site.data.objects %}
-  {% for item_hash in object_data %}
-    {% assign object = item_hash[1] %}
-    {% assign id = item_hash[0] %}
-    "objects/{{id}}": {
-      "href": "objects/{{id}}",
-      "title": "{{object.title | escape | strip_newlines}}",
-      "url": "{{site.url}}/objects/{{id}}",
-      "record_type": "{{object.level}}",
-      "subjects": [
-        {% assign subjects = object.subjects %}
-        {% for subject in subjects %}
-          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
-          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    },
-  {% endfor %}
   {% assign audio_data = site.data.audio %}
   {% for item_hash in audio_data %}
     {% assign object = item_hash[1] %}
     {% assign id = item_hash[0] %}
     "audio/{{id}}": {
       "href": "audio/{{id}}",
-      "title": "{{object.title | escape | strip_newlines}}",
+      "title": "{{object.title | escape | strip_newlines}} ({% for instance in object.instances %}{% if instance.instance_type == 'Moving Images' %}{{ instance.container.indicator_1 }}{% elsif instance.instance_type == 'audio' %}{{ instance.container.indicator_1 }}{% endif %}{% endfor %})",
       "url": "{{site.url}}/audio/{{id}}",
-      "record_type": "{{object.level}}",
-      "subjects": [
-        {% assign subjects = object.subjects %}
-        {% for subject in subjects %}
-          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
-          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
+      "record_type": "{{object.level}}"
     },
   {% endfor %}
-  {% assign video_data = site.data.video %}
-  {% for item_hash in video_data %}
+  {% assign moving-image_data = site.data.moving-image %}
+  {% for item_hash in moving-image_data %}
     {% assign object = item_hash[1] %}
     {% assign id = item_hash[0] %}
-    "video/{{id}}": {
-      "href": "video/{{id}}",
+    "moving-image/{{id}}": {
+      "href": "moving-image/{{id}}",
+      "title": "{{object.title | escape | strip_newlines}} ({% for instance in object.instances %}{% if instance.instance_type == 'Moving Images' %}{{ instance.container.indicator_1 }}{% elsif instance.instance_type == 'audio' %}{{ instance.container.indicator_1 }}{% endif %}{% endfor %})",
+      "url": "{{site.url}}/moving-image/{{id}}",
+      "record_type": "{{object.level}}"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %},
+  {% assign catalogued-reports_data = site.data.catalogued-reports %}
+  {% for item_hash in catalogued-reports_data %}
+    {% assign object = item_hash[1] %}
+    {% assign id = item_hash[0] %}
+    "catalogued-reports/{{id}}": {
+      "href": "catalogued-reports/{{id}}",
       "title": "{{object.title | escape | strip_newlines}}",
-      "url": "{{site.url}}/video/{{id}}",
-      "record_type": "{{object.level}}",
-      "subjects": [
-        {% assign subjects = object.subjects %}
-        {% for subject in subjects %}
-          {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
-          "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
+      "url": "{{site.url}}/catalogued-reports/{{id}}",
+      "record_type": "{{object.level}}"
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 }
