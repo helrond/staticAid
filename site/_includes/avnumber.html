@@ -1,0 +1,1 @@
+<span class="avnumber">{% for instance in instances %}{% if instance.instance_type == 'Moving Images' %}{{ instance.container.indicator_1 }}{% elsif instance.instance_type == 'audio' %}{{ instance.container.indicator_1 }}{% endif %}{% endfor %}</span>

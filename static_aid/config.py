@@ -83,6 +83,7 @@ dataExtractor['dataSource'] = dataExtractor.get('datasource', 'DEFAULT').lower()
 # baseURL, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
 if archivesSpace:
+    archivesSpace['base_url'] = archivesSpace.get('baseurl')
     archivesSpace['repository_url'] = '%s/repositories/%s' % (archivesSpace.get('baseurl'), archivesSpace.get('repository'))
     archivesSpace['breadcrumb_url'] = '%s/search/published_tree?node_uri=/repositories/%s' % (archivesSpace.get('baseurl'),
                                                                                               archivesSpace.get('repository'),
@@ -99,6 +100,7 @@ logging = _configSection('Logging')
 
 # the data locations - collections, objects, trees, agents, people, subjects
 destinations = _configSection('Destinations')
+assets = _configSection('Assets')
 
 # a state file that stores the most recent export date
 lastExportFilepath = join(ROOT, _config.get('LastExport', 'filepath'))

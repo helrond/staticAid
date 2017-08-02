@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from json import load
-from os import listdir, makedirs
+from os import listdir, makedirs, symlink, walk, chmod
 from os.path import exists, join, splitext, isdir, isfile
 from shutil import copyfile, copytree, rmtree
 from posix import remove, rmdir
@@ -110,6 +110,20 @@ def make_pages(category):
                     s.write("<lastmod>%s</lastmod>\n" % str(datetime.now().isoformat()))
                     s.write("</url>\n")
                     s.close
+
+def link_assets():
+    if (config.assets['src'] and config.assets['dest']):
+        if not(isdir(config.assets['dest'])):
+            symlink(config.assets['src'], config.assets['dest'])
+            print "Assets linked!"
+        # for root, dirs, files in walk(config.assets['src']):
+        #     for d in dirs:
+        #         chmod(join(root, d), 77)
+        #     for f in files:
+        #         chmod(join(root, f), 775)
+        # print "Permissions updated!"
+    else:
+        print "Nothing linked because no source or destination directories were specified."
 
 def main():
     parser = ArgumentParser(description='StaticAid Page Generator')

@@ -1,9 +1,18 @@
+.page-header h1 {
+  font-family: 'Satisfy', cursive;
+  font-size: 6rem;
+}
+
 .home-panel {
   min-height: 21em;
 }
 
-.collection-button {
-  margin-top: 1em;
+.well .btn {
+  margin-top: 1.5rem;
+}
+
+.well > p {
+  min-height: 4rem;
 }
 
 .contents .group-title-top {
@@ -14,10 +23,6 @@
   font-size: 1.7rem;
 }
 
-.more-link {
-  padding-left: .5em;
-}
-
 .label {
   line-height: 2.3;
 }
@@ -26,4 +31,79 @@
   margin: -1em;
   font-size: 5rem;
   font-weight: normal;
+}
+
+.footer-logo {
+    float: left;
+    height: 5em;
+    margin-right: 1em;
+    // filter: grayscale(100%);
+}
+
+.footer-heading {
+  margin-bottom: 0px;
+  font-family: 'Satisfy', cursive;
+  font-size: 3rem;
+}
+
+#asset-controls {
+	background: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  height: 3em;
+  width:100%;
+}
+
+button, a[type="button"] {
+	background: rgba(0,0,0,0);
+	border: 0;
+  font-size: 1.5em;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+  height: 2em;
+  color: #333;
+  float: left;
+  padding: 0 1%;
+}
+
+a[type="button"] {
+  margin-top: .5em;
+}
+
+#time {
+  font-size: 1em;
+  margin-top: .5em;
+}
+
+.glyphicon {
+  top: 0px;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+#seek-bar {
+	width: 25%;
+  float: left;
+  margin: 0 1% 0 1%;
+  height:3em;
+}
+
+#volume-bar {
+	width: 15%;
+  float:left;
+  margin: 0 1% 0 1%;
+  height:3em;
+}
+
+video.background {
+  background: transparent url(/img/loading.gif) no-repeat 50% 50%;
+  -webkit-background-size: 100px;
+  -moz-background-size: 100px;
+  background-size: 100px;
+}
+
+.avnumber {
+  white-space: nowrap;
 }

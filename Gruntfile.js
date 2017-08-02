@@ -23,6 +23,11 @@ module.exports = function(grunt) {
           stdout: true,
           stderr: true
       },
+      linkAssets: {
+        command: 'static-aid-link-assets',
+        stdout: true,
+        stderr: true
+      }
     },
     jekyll: {
       serve: {
@@ -57,7 +62,7 @@ module.exports = function(grunt) {
   }
 
   grunt.registerTask('serve', ['jekyll:serve']);
-  grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build']);
-  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
-  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
+  grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build', 'exec:linkAssets']);
+  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build', 'exec:linkAssets']);
+  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType, 'jekyll:build', 'exec:linkAssets']);
 };

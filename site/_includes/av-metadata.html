@@ -1,0 +1,23 @@
+<div>
+  <h3>Details</h3>
+  <p>{{object.dates[0].expression}}</p>
+  {% for note in object.notes %}
+    {% if note.type == 'physdesc' %}
+      {% include note.html %}
+    {% endif %}
+  {% endfor %}
+  {% for note in object.notes %}
+    {% if note.type == 'materialspec' %}
+      {% include note.html %}
+    {% endif %}
+  {% endfor %}
+  {% for note in object.notes %}
+    {% if note.type == 'phystech' %}
+      {% include note.html %}
+    {% endif %}
+  {% endfor %}
+  {% for extent in object.extents %}
+    {% include extent.html %}
+  {% endfor %}
+  <p id="download-details"></p>
+</div>

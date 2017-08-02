@@ -2,35 +2,44 @@
 layout: default
 ---
 
-<div class="col-sm-12">
-  <h1>Collections</h1>
-  {% for collection_hash in site.data.collections %}
-    {% assign collection = collection_hash[1] %}
-    {% unless collection.hide_on_main_page %}
-      {% assign id = collection_hash[0] %}
-      {% capture description %}{% for note in collection.notes %}{% if note.type == 'abstract' %}{{note.subnotes[0].content}}{% elsif note.type == 'scopecontent' %}{{note.subnotes[0].content}}{% elsif note.type == 'bioghist' %}{{note.subnotes[0].content}}{% endif %}{% endfor %}{% endcapture %}
-      {% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
-      <div class="col-sm-4">
-        <div class="panel panel-primary home-panel">
-          <div class="panel-heading">
-            <h3 class="panel-title"><a href="{{ site.url }}{{ site.baseurl }}/collections/{{id}}">{{ collection.title }} ({{fa_number}})</a></h3>
-          </div>
-          <div class="panel-body">
-            {% if description == '' %}
-              Sorry, no abstract, scope/content note, or biographical statement could be found for this collection.
-            {% else  %}
-              {{description | truncatewords: 50}}
-            {% endif %}
-            <div class="row">
-              <a class="btn btn-info btn-sm pull-right collection-button" href="{{ site.url }}{{ site.baseurl }}/collections/{{id}}">Read more</a>
-            </div>
-          </div>
-        </div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="page-header">
+      <h1 class="text-center">{{ site.title }}</h1>
+      <h4 class="text-center">{{ site.description }}</h4>
+    </div>
+    <div class="col-sm-6">
+      <div class="well well-lg">
+        <h2>Audio &#128266;</h2>
+        <p>Stream access copies of select archival audio material.</p>
+        <a class="btn btn-primary" href="{{ site.url }}{{ site.baseurl }}/audio">Browse audio</a>
       </div>
-    {% endunless %}
-  {% endfor %}
+    </div>
+    <div class="col-sm-6">
+      <div class="well well-lg">
+        <h2>Moving Images &#128253;</h2>
+        <p>Stream access copies of select moving images.</p>
+        <a class="btn btn-primary" href="{{ site.url }}{{ site.baseurl }}/moving-image">Browse moving images</a>
+      </div>
+    </div>
+    <!-- <div class="col-sm-6">
+      <div class="well well-lg">
+        <h2>Ford Foundation Catalogued Reports &#128203;</h2>
+        <p>View PDF copies of select Reports from the Ford Foundation.</p>
+        <a class="btn btn-primary" href="{{ site.url }}{{ site.baseurl }}/catalogued-reports">Browse catalogued reports</a>
+      </div>
+    </div> -->
+    <!-- <div class="col-sm-6">
+      <div class="well well-lg">
+        <h2>Archival Documents</h2>
+        <img alt="Under Construction" src="{{ site.url }}{{ site.baseurl }}/img/under-construction.gif" />
+      </div>
+    </div> -->
+    <div class="col-sm-12">
+      <p>The digitized content provided through this portal is intended for education and research purposes. The current copyright status of these materials has been described, to the best of our knowledge, in the associated archival descriptions. It is the user’s responsibility to abide by all applicable provisions of the United States copyright law.</p>
+    </div>
+  </div>
 </div>
-
 
 <script type="application/ld+json">
 {
