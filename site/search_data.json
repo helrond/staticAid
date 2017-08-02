@@ -10,7 +10,7 @@ layout: null
       "href": "audio/{{id}}",
       "title": "{{object.title | escape | strip_newlines}} ({% for instance in object.instances %}{% if instance.instance_type == 'Moving Images' %}{{ instance.container.indicator_1 }}{% elsif instance.instance_type == 'audio' %}{{ instance.container.indicator_1 }}{% endif %}{% endfor %})",
       "url": "{{site.url}}/audio/{{id}}",
-      "record_type": "{{object.level}}"
+      "record_type": "audio"
     },
   {% endfor %}
   {% assign moving-image_data = site.data.moving-image %}
@@ -21,7 +21,7 @@ layout: null
       "href": "moving-image/{{id}}",
       "title": "{{object.title | escape | strip_newlines}} ({% for instance in object.instances %}{% if instance.instance_type == 'Moving Images' %}{{ instance.container.indicator_1 }}{% elsif instance.instance_type == 'audio' %}{{ instance.container.indicator_1 }}{% endif %}{% endfor %})",
       "url": "{{site.url}}/moving-image/{{id}}",
-      "record_type": "{{object.level}}"
+      "record_type": "moving-image"
     }{% unless forloop.last %},{% endunless %}
   {% endfor %},
   {% assign catalogued-reports_data = site.data.catalogued-reports %}
@@ -32,7 +32,7 @@ layout: null
       "href": "catalogued-reports/{{id}}",
       "title": "{{object.title | escape | strip_newlines}}",
       "url": "{{site.url}}/catalogued-reports/{{id}}",
-      "record_type": "{{object.level}}"
+      "record_type": "catalogued-reports"
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 }
