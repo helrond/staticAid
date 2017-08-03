@@ -25,7 +25,6 @@ $(document).ready(function() {
     var result = index.search(query);
     var record_type = $('#search').attr('data-record-type');
     results.empty();
-    // results.prepend('<p>Found '+result.length+' result(s) for "'+query+'"</p>');
     result.forEach(function(result) {
       search_data.then(function(data) {
         var item = data[result.ref];
@@ -34,6 +33,7 @@ $(document).ready(function() {
         }
       });
     });
+    results.prepend('<p>Found '+$('#results p').length+' result(s) for "'+query+'"</p>');
     results.slideDown().fadeIn(200);
     // results.parent('.row').next('div').hide();
   });
