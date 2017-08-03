@@ -1,5 +1,5 @@
 <!-- <h3 id="{{note.persistent_id}}">{% include note-title.html %}</h3> -->
-<div>
+<div class="lead">
   {% case {{note.jsonmodel_type}} %}
     {% when 'note_multipart' %}
       {% for subnote in note.subnotes %}

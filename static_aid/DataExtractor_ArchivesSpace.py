@@ -14,10 +14,12 @@ class DataExtractor_ArchivesSpace(DataExtractor):
         lastExport = self.lastExportTime()
         self.makeDestinations()
         headers = self.authenticate()
-        self.findResources(lastExport, headers)
-        self.findObjects(lastExport, headers)
-        self.findAgents(lastExport, headers)
-        self.findSubjects(lastExport, headers)
+        self.findObjectsById(headers)
+        # self.findResources(lastExport, headers)
+        # self.findObjects(lastExport, headers)
+        # self.findAgents(lastExport, headers)
+        # self.findSubjects(lastExport, headers)
+        self.logout(headers)
 
 
     # authenticates the session
@@ -40,9 +42,9 @@ class DataExtractor_ArchivesSpace(DataExtractor):
 
 
     # logs out non-expiring session (not yet in AS core, so commented out)
-    # def logout(headers):
-    #    requests.post('{baseURL}/logout'.format(**archivesSpace), headers=headers)
-    #    logging.info('You have been logged out of your session')
+    def logout(self, headers):
+       requests.post('%s/logout' % config.archivesSpace['base_url'], headers=headers)
+       logging.info('You have been logged out of your session')
 
 
     # Looks for resources
@@ -98,6 +100,23 @@ class DataExtractor_ArchivesSpace(DataExtractor):
             else:
                 self.removeFile(objectId, config.destinations['objects'])
 
+    # Looks for objects based on a list of refids
+    def findObjectsById(self, headers):
+        for directory in os.listdir(config.assets['src']):
+            for dirpath, dirnames, filenames in os.walk('%s/%s' % (config.assets['src'], directory)):
+                id_list = []
+                for filename in [f for f in filenames if not f.startswith('.')]:
+                    id_list.append(os.path.basename(os.path.splitext(filename)[0]))
+                for objectId in id_list:
+                    url = '%s/find_by_id/archival_objects?ref_id[]=%s' % (config.archivesSpace['repository_url'], str(objectId))
+                    results = requests.get(url, headers=headers).json()
+                    for result in results["archival_objects"]:
+                        result_url = '%s%s' % (config.archivesSpace['base_url'], result['ref'])
+                        archival_object = requests.get(result_url, headers=headers).json()
+                        if archival_object["publish"]:
+                            self.saveFile(objectId, archival_object, config.destinations[directory])
+                        else:
+                            self.removeFile(objectId, config.destinations[directory])
 
     # Looks for agents
     def findAgents(self, lastExport, headers):

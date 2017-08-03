@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% capture object_id %}{{page.id}}{% endcapture %}
+{% assign object = site.data.catalogued-reports[{{object_id}}] %}
+{% assign breadcrumbs = site.data.breadcrumbs[{{object_id}}] %}
+{% assign instances = object.instances %}
+
+<div class="col-md-8 col-md-offset-2">
+
+  <h1 id="asset-title" class="collection title">
+    {{ object.title }}
+  </h1>
+
+  <div class="row">
+    <div class="col-md-12">
+      {% include av-scopecontent.html %}
+      <a href="{{ site.url }}{{ site.baseurl }}/assets/catalogued-reports/{{ object_id }}/{{ object_id }}.pdf" class="btn btn-primary btn-lg">View PDF</a>
+    </div>
+
+
+  </div>
+</div>
+
+{% include note-to-users.html %}
