@@ -1,15 +1,21 @@
 <div id="catalogued-reports-list" class="col-sm-8 col-sm-offset-2">
-  <div class="col-sm-12"><h1>{{page.title}}</h1></div>
-  <div class="col-sm-12">
-    <form style="margin-top:1.5em;"  action="get" id="search" role="search">
-        <div class="form-group col-sm-7">
-          <input id="query" type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    <!-- <input style="margin-top:1.5em;" type="text" class="form-control search" placeholder="Search by keyword or report number" /> -->
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-center">{{page.title}}</h1>
+    </div>
+    <div class="col-sm-12">
+      <form style="margin-top:1.5em;" class="col-xs-10 col-xs-offset-2" action="/catalogued-reports" id="search" role="search" data-record-type="catalogued-reports">
+          <div class="form-group col-xs-7">
+            <input id="query" type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      <!-- <input style="margin-top:1.5em;" type="text" class="form-control search" placeholder="Search by keyword or report number" /> -->
+    </div>
   </div>
-  <div class="col-sm-12">
-    <div id="results" class="results jumbotron" style="display:none;"></div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="results" class="results" style="display:none;"></div>
+    </div>
   </div>
 </div>

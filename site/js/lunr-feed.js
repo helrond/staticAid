@@ -23,13 +23,15 @@ $(document).ready(function() {
     var results = $('#results');
     var query = $('#query').val();
     var result = index.search(query);
+    var record_type = $('#search').attr('data-record-type');
     results.empty();
-    // results.prepend('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><p>Found '+result.length+' result(s) for "'+query+'"</p>');
-    results.prepend('<p>Found '+result.length+' result(s) for "'+query+'"</p>');
+    // results.prepend('<p>Found '+result.length+' result(s) for "'+query+'"</p>');
     result.forEach(function(result) {
       search_data.then(function(data) {
         var item = data[result.ref];
-        results.append('<p><a href="'+item.url+'">'+item.title+'</a></p>');
+        if (item.record_type == record_type) {
+          results.append('<p><a href="'+item.url+'">'+item.title+'</a></p>');
+        }
       });
     });
     results.slideDown().fadeIn(200);
