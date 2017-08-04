@@ -3,7 +3,7 @@
 {% endif %}
 {% for component in tree %}
   {% capture component_id %}{{component.id}}{% endcapture %}
-  {% assign component_detail = site.data.objects[{{component_id}}] %}
+  {% assign component_detail = site.data.objects[component_id] %}
 
   <div class="col-md-12 {{component.level}}">
     <div id="{{component_detail.ref_id}}" class="row">

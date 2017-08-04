@@ -2,6 +2,6 @@
 layout: default
 ---
 {% capture software_id %}{{page.id}}{% endcapture %}
-{% assign software = site.data.agents.software[{{software_id}}] %}
+{% assign software = site.data.agents.software[software_id] %}
 
 {% include agent.html %}

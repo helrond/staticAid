@@ -2,7 +2,7 @@
 layout: default
 ---
 {% capture organization_id %}{{page.id}}{% endcapture %}
-{% assign agent = site.data.agents.corporate_entities[{{organization_id}}] %}
+{% assign agent = site.data.agents.corporate_entities[organization_id] %}
 
 {% include agent.html %}
 
