@@ -5,19 +5,19 @@
       {% if agent.ref contains "corporate_entities" %}
         {% assign type = "organizations" %}
         {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
-        {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+        {% assign agent_detail = site.data.agents.corporate_entities[id] %}
       {% elsif agent.ref contains "families" %}
         {% assign type = "families" %}
         {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
-        {% assign agent_detail = site.data.agents.families[{{id}}] %}
+        {% assign agent_detail = site.data.agents.families[id] %}
       {% elsif agent.ref contains "people" %}
         {% assign type = "people" %}
         {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
-        {% assign agent_detail = site.data.agents.people[{{id}}] %}
+        {% assign agent_detail = site.data.agents.people[id] %}
       {% elsif agent.ref contains "software" %}
         {% assign type = "software" %}
         {% capture id %}{{agent.ref | replace: '/agents/software/', '' }}{% endcapture %}
-        {% assign agent_detail = site.data.agents.software[{{id}}] %}
+        {% assign agent_detail = site.data.agents.software[id] %}
       {% endif %}
   {% else %}
     <!-- no external .json file - just use agent as agent_detail -->

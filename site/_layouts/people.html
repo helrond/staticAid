@@ -2,7 +2,7 @@
 layout: default
 ---
 {% capture person_id %}{{page.id}}{% endcapture %}
-{% assign agent = site.data.agents.people[{{person_id}}] %}
+{% assign agent = site.data.agents.people[person_id] %}
 
 {% include agent.html %}
 

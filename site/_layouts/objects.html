@@ -2,8 +2,8 @@
 layout: default
 ---
 {% capture object_id %}{{page.id}}{% endcapture %}
-{% assign object = site.data.objects[{{object_id}}] %}
-{% assign breadcrumbs = site.data.breadcrumbs[{{object_id}}] %}
+{% assign object = site.data.objects[object_id] %}
+{% assign breadcrumbs = site.data.breadcrumbs[object_id] %}
 
 <div class="col-md-8 col-md-offset-2">
 

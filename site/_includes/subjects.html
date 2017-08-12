@@ -2,7 +2,7 @@
     {% if subject.ref %}
         <!-- there is an external .json file to read subject_detail from -->
         {% capture subject_id %}{{subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-        {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+        {% assign subject_detail = site.data.subjects[subject_id] %}
     {% else %}
         <!-- there is no external .json file - just use subject as subject_detail -->
         {% assign subject_detail = subject %}

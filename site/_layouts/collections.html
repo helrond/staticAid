@@ -2,7 +2,7 @@
 layout: default
 ---
 {% capture collection_id %}{{page.id}}{% endcapture %}
-{% assign collection = site.data.collections[{{collection_id}}] %}
+{% assign collection = site.data.collections[collection_id] %}
 {% capture fa_number %}{{ collection.id_0 }}{% if collection.id_1 %}.{{ collection.id_1 }}{% endif %}{% if collection.id_2 %}.{{ collection.id_2 }}{% endif %}{% if collection.id_3 %}.{{ collection.id_3 }}{% endif %}{% endcapture %}
 
 <div class="col-md-8 col-md-offset-2">
@@ -41,7 +41,7 @@ layout: default
   {% if collection.tree.ref %}
     <h3 id="{{collection.id_0}}-contents">Contents</h3>
     <div class="collection contents">
-      {% assign tree = site.data.trees[{{collection_id}}].children %}
+      {% assign tree = site.data.trees[collection_id].children %}
       {% include component.html %}
     </div>
   {% endif %}

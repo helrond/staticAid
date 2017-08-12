@@ -18,19 +18,19 @@
           {% assign type = "organizations" %}
           {% assign label = "name" %}
           {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+          {% assign agent_detail = site.data.agents.corporate_entities[id] %}
         {% elsif agent.ref contains "families" %}
           {% assign schtype = "Person" %}
           {% assign type = "families" %}
           {% assign label = "familyName" %}
           {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+          {% assign agent_detail = site.data.agents.families[id] %}
         {% elsif agent.ref contains "people" %}
           {% assign schtype = "Person" %}
           {% assign type = "people" %}
           {% assign label = "name" %}
           {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+          {% assign agent_detail = site.data.agents.people[id] %}
         {% endif %}
       {% else %}
         {% assign agent_detail = agent %}
@@ -66,19 +66,19 @@
           {% assign type = "organizations" %}
           {% assign label = "name" %}
           {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+          {% assign agent_detail = site.data.agents.corporate_entities[id] %}
         {% elsif agent.ref contains "families" %}
           {% assign schtype = "Person" %}
           {% assign type = "families" %}
           {% assign label = "familyName" %}
           {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+          {% assign agent_detail = site.data.agents.families[id] %}
         {% elsif agent.ref contains "people" %}
           {% assign schtype = "Person" %}
           {% assign type = "people" %}
           {% assign label = "name" %}
           {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+          {% assign agent_detail = site.data.agents.people[id] %}
         {% endif %}
       {% else %}
         {% assign agent_detail = agent %}
@@ -114,19 +114,19 @@
           {% assign type = "organizations" %}
           {% assign label = "name" %}
           {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.corporate_entities[{{id}}] %}
+          {% assign agent_detail = site.data.agents.corporate_entities[id] %}
         {% elsif agent.ref contains "families" %}
           {% assign schtype = "Person" %}
           {% assign type = "families" %}
           {% assign label = "familyName" %}
           {% capture id %}{{agent.ref | replace: '/agents/families/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.families[{{id}}] %}
+          {% assign agent_detail = site.data.agents.families[id] %}
         {% elsif agent.ref contains "people" %}
           {% assign schtype = "Person" %}
           {% assign type = "people" %}
           {% assign label = "name" %}
           {% capture id %}{{agent.ref | replace: '/agents/people/', '' }}{% endcapture %}
-          {% assign agent_detail = site.data.agents.people[{{id}}] %}
+          {% assign agent_detail = site.data.agents.people[id] %}
         {% endif %}
       {% else %}
         {% assign agent_detail = agent %}
@@ -156,7 +156,7 @@
     {% for subject in subjects %}
       {% if subject.ref %}
         {% capture subject_id %}{{subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-        {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+        {% assign subject_detail = site.data.subjects[subject_id] %}
       {% else %}
         {% assign subject_detail = subject %}
       {% endif %}

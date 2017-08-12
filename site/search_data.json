@@ -1,5 +1,5 @@
 ---
-layout: null
+layout: none
 ---
 {
   {% assign collection_data = site.data.collections %}
@@ -15,7 +15,7 @@ layout: null
         {% assign subjects = collection.subjects %}
         {% for subject in subjects %}
           {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+          {% assign subject_detail = site.data.subjects[subject_id] %}
           "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
@@ -34,7 +34,7 @@ layout: null
         {% assign subjects = object.subjects %}
         {% for subject in subjects %}
           {% capture subject_id %}{{ subject.ref | replace: '/subjects/', ''}}{% endcapture %}
-          {% assign subject_detail = site.data.subjects[{{subject_id}}] %}
+          {% assign subject_detail = site.data.subjects[subject_id] %}
           "{{subject_detail.title}}"{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
