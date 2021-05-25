@@ -1,0 +1,43 @@
+{
+    "lock_version": 801,
+    "title": "Life sciences",
+    "created_by": "admin",
+    "last_modified_by": "admin",
+    "create_time": "2014-12-06T02:29:51Z",
+    "system_mtime": "2015-12-16T19:31:29Z",
+    "user_mtime": "2014-12-06T02:29:51Z",
+    "source": "lcsh",
+    "jsonmodel_type": "subject",
+    "external_ids": [
+        {
+            "external_id": "90",
+            "source": "Archivists Toolkit Database::SUBJECT",
+            "created_by": "admin",
+            "last_modified_by": "admin",
+            "create_time": "2014-12-06T02:29:51Z",
+            "system_mtime": "2014-12-06T02:29:51Z",
+            "user_mtime": "2014-12-06T02:29:51Z",
+            "jsonmodel_type": "external_id"
+        }
+    ],
+    "publish": true,
+    "terms": [
+        {
+            "lock_version": 0,
+            "term": "Life sciences",
+            "created_by": "admin",
+            "last_modified_by": "admin",
+            "create_time": "2014-12-06T02:29:51Z",
+            "system_mtime": "2014-12-06T02:29:51Z",
+            "user_mtime": "2014-12-06T02:29:51Z",
+            "term_type": "topical",
+            "jsonmodel_type": "term",
+            "uri": "/terms/81",
+            "vocabulary": "/vocabularies/1"
+        }
+    ],
+    "external_documents": [],
+    "uri": "/subjects/78",
+    "is_linked_to_published_record": true,
+    "vocabulary": "/vocabularies/1"
+}

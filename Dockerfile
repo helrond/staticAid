@@ -16,10 +16,9 @@ RUN npm install -g grunt-cli
 
 COPY local_settings.default local_settings.default
 COPY Gruntfile.js Gruntfile.js
+COPY data/sample_data/ ./build/data
 COPY scripts ./scripts
 COPY site ./site
 COPY static_aid/ ./static_aid
-
-# TODO add data in build/data
 
 RUN python3 setup.py install

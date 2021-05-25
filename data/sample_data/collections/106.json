@@ -1,0 +1,252 @@
+{
+  "lock_version": 4,
+  "system_mtime": "2015-09-18T18:56:55Z",
+  "extents": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:56:55Z",
+    "jsonmodel_type": "extent",
+    "user_mtime": "2015-09-18T18:56:55Z",
+    "number": "650",
+    "last_modified_by": "admin",
+    "container_summary": "Volume is estimated.",
+    "portion": "whole",
+    "create_time": "2015-09-18T18:56:55Z",
+    "created_by": "admin",
+    "extent_type": "cubic_feet"
+  }],
+  "jsonmodel_type": "resource",
+  "external_documents": [],
+  "instances": [],
+  "create_time": "2014-12-06T04:14:20Z",
+  "created_by": "admin",
+  "external_ids": [{
+    "system_mtime": "2015-09-18T18:56:55Z",
+    "jsonmodel_type": "external_id",
+    "user_mtime": "2015-09-18T18:56:55Z",
+    "last_modified_by": "admin",
+    "source": "Archivists Toolkit Database::RESOURCE",
+    "create_time": "2015-09-18T18:56:55Z",
+    "created_by": "admin",
+    "external_id": "2224"
+  }],
+  "title": "Commonwealth Fund records",
+  "related_accessions": [],
+  "publish": true,
+  "subjects": [{
+    "ref": "/subjects/259"
+  }, {
+    "ref": "/subjects/204"
+  }, {
+    "ref": "/subjects/21"
+  }, {
+    "ref": "/subjects/257"
+  }, {
+    "ref": "/subjects/256"
+  }, {
+    "ref": "/subjects/246"
+  }, {
+    "ref": "/subjects/198"
+  }, {
+    "ref": "/subjects/261"
+  }, {
+    "ref": "/subjects/201"
+  }, {
+    "ref": "/subjects/175"
+  }, {
+    "ref": "/subjects/45"
+  }, {
+    "ref": "/subjects/262"
+  }, {
+    "ref": "/subjects/258"
+  }, {
+    "ref": "/subjects/218"
+  }, {
+    "ref": "/subjects/37"
+  }, {
+    "ref": "/subjects/260"
+  }, {
+    "ref": "/subjects/22"
+  }, {
+    "ref": "/subjects/245"
+  }, {
+    "ref": "/subjects/26"
+  }],
+  "deaccessions": [],
+  "ead_id": "FA018.xml",
+  "linked_agents": [{
+    "terms": [],
+    "ref": "/agents/people/284",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "ref": "/agents/corporate_entities/105",
+    "role": "subject"
+  }, {
+    "terms": [],
+    "ref": "/agents/corporate_entities/79",
+    "role": "subject"
+  }, {
+    "terms": [],
+    "ref": "/agents/corporate_entities/38",
+    "role": "subject"
+  }, {
+    "terms": [],
+    "ref": "/agents/people/283",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "ref": "/agents/corporate_entities/103",
+    "role": "subject"
+  }, {
+    "terms": [],
+    "relator": "aut",
+    "ref": "/agents/corporate_entities/15",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "ref": "/agents/people/282",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "ref": "/agents/corporate_entities/104",
+    "role": "subject"
+  }, {
+    "terms": [],
+    "ref": "/agents/people/281",
+    "role": "creator"
+  }],
+  "repository": {
+    "ref": "/repositories/2"
+  },
+  "user_mtime": "2015-09-18T18:56:55Z",
+  "rights_statements": [],
+  "revision_statements": [],
+  "linked_events": [],
+  "finding_aid_title": "A Guide to the Commonwealth Fund records\n",
+  "suppressed": false,
+  "restrictions": false,
+  "dates": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:56:55Z",
+    "begin": "1918",
+    "end": "2003",
+    "jsonmodel_type": "date",
+    "date_type": "inclusive",
+    "user_mtime": "2015-09-18T18:56:55Z",
+    "last_modified_by": "admin",
+    "label": "creation",
+    "create_time": "2015-09-18T18:56:55Z",
+    "created_by": "admin",
+    "expression": "1918-2003"
+  }],
+  "classifications": [],
+  "language": "eng",
+  "level": "collection",
+  "notes": [{
+    "subnotes": [{
+      "content": "Open for scholarly research, except where particular restrictions are noted.\n\nRAC is unable to provide access to obsolete media and original digital media. When feasible, a digital surrogate may be created via special order. All applicable charges will apply. See RAC Head of Archival Services or RAC Head of Digital Programs for details.\n\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "b1299f059c04b4f2014bba87e10f67e5",
+    "publish": true,
+    "label": "Conditions Governing Access note",
+    "type": "accessrestrict"
+  }, {
+    "subnotes": [{
+      "content": "RAC users must abide by all applicable provisions of United States copyright law. Reproduction/duplication of archival items is routinely provided in accordance with \"fair use.\" If the RAC does not hold copyright for an archival collection, or items within a collection, it is the user\u2019s responsibility to contact the copyright holder, or make a fair effort to do so, prior to publication.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "baed5504e923f13843a49873edaefb32",
+    "publish": true,
+    "label": "Conditions Governing Use note",
+    "type": "userestrict"
+  }, {
+    "subnotes": [{
+      "content": "Commonwealth Fund records are arranged into 2 subgroups.\n\nSubgroup 1 is currently available for scholarly research and it is arranged in 35 series:\n\n<extref href=\"../FA247/overview\">FA247 Commonwealth Fund Harkness House drawings</extref>\n\n<extref href=\"../FA275/overview\">FA275 Commonwealth Fund records, Advanced Medical Fellowships</extref>\n\n<extref href=\"../FA276/overview\">FA276 Commonwealth Fund records, Annual Reports</extref>\n\n<extref href=\"../FA277/overview\">FA277 Commonwealth Fund records, Archives/Library</extref>\n\n<extref href=\"../FA278/overview\">FA278 Commonwealth Fund records, Austrian Program</extref>\n\n<extref href=\"../FA279/overview\">FA279 Commonwealth Fund records, Board of Directors</extref>\n\n<extref href=\"../FA280/overview\">FA280 Commonwealth Fund records, Capital Grants</extref>\n\n<extref href=\"../FA281/overview\">FA281 Commonwealth Fund records, Child Health Demonstrations</extref>\n\n<extref href=\"../FA282/overview\">FA282 Commonwealth Fund records, Division of Community Clinics</extref>\n\n<extref href=\"../FA283/overview\">FA283 Commonwealth Fund records, Division of Health Studies</extref>\n\n<extref href=\"../FA284/overview\">FA284 Commonwealth Fund records, Division of Public Health</extref>\n\n<extref href=\"../FA285/overview\">FA285 Commonwealth Fund records, Division of Publications</extref>\n\n<extref href=\"../FA286/overview\">FA286 Commonwealth Fund records, Division of Rural Hospitals</extref>\n\n<extref href=\"../FA287/overview\">FA287 Commonwealth Fund records, Educational Research</extref>\n\n<extref href=\"../FA288/overview\">FA288 Commonwealth Fund records, English Mental Hygiene Program</extref>\n\n<extref href=\"../FA289/overview\">FA289 Commonwealth Fund records, Finance Committee</extref>\n\n<extref href=\"../FA290/overview\">FA290 Commonwealth Fund records, Grants</extref>\n\n<extref href=\"../FA291/overview\">FA291 Commonwealth Fund records, Harkness Family</extref>\n\n<extref href=\"../FA292/overview\">FA292 Commonwealth Fund records, Harkness Fellowships</extref>\n\n<extref href=\"../FA293/overview\">FA293 Commonwealth Fund records, Institute for Child Guidance</extref>\n\n<extref href=\"../FA294/overview\">FA294 Commonwealth Fund records, Interface Program</extref>\n\n<extref href=\"../FA295/overview\">FA295 Commonwealth Fund records, Legal Research Program</extref>\n\n<extref href=\"../FA296/overview\">FA296 Commonwealth Fund records, Living at Home Program</extref>\n\n<extref href=\"../FA297/overview\">FA297 Commonwealth Fund records, Mental Hygiene Program</extref>\n\n<extref href=\"../FA298/overview\">FA298 Commonwealth Fund records, Miscellaneous - unprocessed</extref>\n\n<extref href=\"../FA299/overview\">FA299 Commonwealth Fund records, Personnel - unprocessed</extref>\n\n<extref href=\"../FA300/overview\">FA300 Commonwealth Fund records, Pilgrim Trust</extref>\n\n<extref href=\"../FA301/overview\">FA301 Commonwealth Fund records, Program for the Prevention of Delinquency</extref>\n\n<extref href=\"../FA302/overview\">FA302 Commonwealth Fund records, Reference Files</extref>\n\n<extref href=\"../FA303/overview\">FA303 Commonwealth Fund records, Reports of the General Director</extref>\n\n<extref href=\"../FA304/overview\">FA304 Commonwealth Fund records, Treasurer</extref>\n\n<extref href=\"../FA305/overview\">FA305 Commonwealth Fund records, Turndown Lists - unprocessed</extref>\n\n<extref href=\"../FA306/overview\">FA306 Commonwealth Fund records, Vertical File (R. Fitz) - unprocessed</extref>\n\n<extref href=\"../FA307/overview\">FA307 Commonwealth Fund records, Visual Materials</extref>\n\n<extref href=\"../FA389/overview\">FA389 Commonwealth Fund records, Administration - Historical Files</extref>\n\n<extref href=\"../FA390/overview\">FA390 Commonwealth Fund records, Administration - Officers Files</extref>",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "a6dcad145f275c16f8145dcb8e2012f5",
+    "publish": true,
+    "label": "Arrangement note",
+    "type": "arrangement"
+  }, {
+    "subnotes": [{
+      "content": "The Commonwealth Fund was established in 1918 with an endowment of $10 million from Mrs. Stephen V. Harkness for \"benevolent, religious, educational and like purposes.\" The early grants supported a variety of programs while generally promoting welfare, especially child welfare. Several grants were made in the field of medical research, but the Board of Directors decided in 1920 that this field was already sufficiently supported by other philanthropic organizations.\n\nDespite this decision, by the mid-1920s the chief interest of the Fund had become public health, including mental hygiene, community health, rural hospitals, medical research, and medical education. Other grant areas included war relief, educational and legal research, child welfare, and international medical fellowships.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "f413020b390f95a2061e7bcb6eeec248",
+    "publish": true,
+    "label": "Biographical/Historical note",
+    "type": "bioghist"
+  }, {
+    "subnotes": [{
+      "content": "Former Classification: IX; IV 4B 4;\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "db269d59d4a71e0cbede0a94ac175c3f",
+    "publish": true,
+    "label": "File Plan note",
+    "type": "fileplan"
+  }, {
+    "subnotes": [{
+      "content": "Materials requiring specialized equipment for access (film, audio, video, slides) may be closed to research dependent on availability of the applicable equipment\n\nBrittle or damaged items, or materials otherwise in need of preservation care, may be closed to researchers at the discretion of the RAC Head of Archival Services/Head of Reference.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "92018591f7c75c378f95b831b2e07595",
+    "publish": true,
+    "label": "Physical Characteristics and Technical Requirements note",
+    "type": "phystech"
+  }, {
+    "subnotes": [{
+      "content": "Information regarding the Rockefeller Archive Center's preferred elements and forms of citation can be found at <extref href=\"http://www.rockarch.org/research/citations.php\">http://www.rockarch.org/research/citations.php</extref>",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "9c0c275e16306cef1e84d3ebfdd876f7",
+    "publish": true,
+    "label": "Preferred Citation note",
+    "type": "prefercite"
+  }, {
+    "subnotes": [{
+      "content": "Other available finding aids describing the Commonwealth Fund records include:\n\n<extref href=\"../FA247/overview\">FA247 Commonwealth Fund Harkness House drawings</extref>\n\n<extref href=\"../FA276/overview\">FA276 Commonwealth Fund records, Annual Reports, SG 1, Series 4</extref>\n\n<extref href=\"../FA277/overview\">FA277 Commonwealth Fund records, Archives/Library, SG 1, Series 5</extref>\n\n<extref href=\"../FA278/overview\">FA278 Commonwealth Fund records, Austrian Program, SG 1, Series 6</extref>\n\n<extref href=\"../FA279/overview\">FA279 Commonwealth Fund records, Board of Directors, SG 1, Series 7</extref>\n\n<extref href=\"../FA280/overview\">FA280 Commonwealth Fund records, Capital Grants, SG 1, Series 8</extref>\n\n<extref href=\"../FA281/overview\">FA281 Commonwealth Fund records, Child Health Demonstrations, SG 1, Series 9</extref>\n\n<extref href=\"../FA282/overview\">FA282 Commonwealth Fund records, Division of Community Clinics, SG 1, Series 10</extref>\n\n<extref href=\"../FA283/overview\">FA283 Commonwealth Fund records, Division of Health Studies, SG 1, Series 11</extref>\n\n<extref href=\"../FA284/overview\">FA284 Commonwealth Fund records, Division of Public Health, SG 1, Series 12</extref>\n\n<extref href=\"../FA285/overview\">FA285 Commonwealth Fund records, Division of Publications, SG 1, Series 13</extref>\n\n<extref href=\"../FA286/overview\">FA286 Commonwealth Fund records, Division of Rural Hospitals, SG 1, Series 14</extref>\n\n<extref href=\"../FA287/overview\">FA287 Commonwealth Fund records, Educational Research, SG 1, Series 15</extref>\n\n<extref href=\"../FA288/overview\">FA288 Commonwealth Fund records, English Mental Hygiene Program, SG 1, Series 16</extref>\n\n<extref href=\"../FA289/overview\">FA289 Commonwealth Fund records, Finance Committee, SG 1, Series 17</extref>\n\n<extref href=\"../FA290/overview\">FA290 Commonwealth Fund records, Grants, SG 1, Series 18</extref>\n\n<extref href=\"../FA291/overview\">FA291 Commonwealth Fund records, Harkness Family, SG 1, Series 19</extref>\n\n<extref href=\"../FA292/overview\">FA292 Commonwealth Fund records, Harkness Fellowships, SG 1, Series 20</extref>\n\n<extref href=\"../FA428/overview\">FA428 Commonwealth Fund records, Harkness Fellowships, Fellows Reports, SG 1, Series 20A</extref>\n\n<extref href=\"../FA293/overview\">FA293 Commonwealth Fund records, Institute for Child Guidance, SG 1, Series 21</extref>\n\n<extref href=\"../FA294/overview\">FA294 Commonwealth Fund records, Interface Program, SG 1, Series 22</extref>\n\n<extref href=\"../FA295/overview\">FA295 Commonwealth Fund records, Legal Research Program, SG 1, Series 23</extref>\n\n<extref href=\"../FA296/overview\">FA296 Commonwealth Fund records, Living at Home Program, SG 1, Series 24</extref>\n\n<extref href=\"../FA297/overview\">FA297 Commonwealth Fund records, Mental Hygiene Program, SG 1, Series 25</extref>\n\n<extref href=\"../FA298/overview\">FA298 Commonwealth Fund records, Miscellaneous - unprocessed</extref>\n\n<extref href=\"../FA299/overview\">FA299 Commonwealth Fund records, Personnel - unprocessed</extref>\n\n<extref href=\"../FA300/overview\">FA300 Commonwealth Fund records, Pilgrim Trust, SG 1, Series 28</extref>\n\n<extref href=\"../FA301/overview\">FA301 Commonwealth Fund records, Program for the Prevention of Delinquency, SG 1, Series 29</extref>\n\n<extref href=\"../FA302/overview\">FA302 Commonwealth Fund records, Reference Files, SG 1, Series 30</extref>\n\n<extref href=\"../FA303/overview\">FA303 Commonwealth Fund records, Reports of the General Director, SG 1, Series 31</extref>\n\n<extref href=\"../FA304/overview\">FA304 Commonwealth Fund records, Treasurer, SG 1, Series 32</extref>\n\n<extref href=\"../FA305/overview\">FA305 Commonwealth Fund records, Turndown Lists, SG 1, Series 33 - unprocessed</extref>\n\n<extref href=\"../FA306/overview\">FA306 Commonwealth Fund records, Vertical File (R. Fitz), SG 1, Series 34  - unprocessed</extref>\n\n<extref href=\"../FA307/overview\">FA307 Commonwealth Fund records, Visual Materials, SG 1, Series 35</extref>\n\n<extref href=\"../FA389/overview\">FA389 Commonwealth Fund records, Administration - Historical Files, SG 1, Series 1</extref>\n\n<extref href=\"../FA390/overview\">FA390 Commonwealth Fund records, Administration - Officers Files, SG 1, Series 2</extref>\n\n<extref href=\"../FA429/overview\">FA429 Commonwealth Fund records, President, Margaret E. Mahoney, SG 2, Series 1</extref>\n\n<extref href=\"../FA430/overview\">FA430 Commonwealth Fund records, Book Program, SG 2, Series 2</extref>\n\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }, {
+      "content": "Detailed finding aids for each series of this collection are available.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }, {
+      "items": ["Commonwealth Fund Records, Administration - Historical (FA389)", "Commonwealth Fund Records, Administration - Officers (FA390)", "Commonwealth Fund Records, Advanced Medical Fellowships (FA275)", "Commonwealth Fund Records, Annual Reports (FA276)", "Commonwealth Fund Records, Archives/Library (FA277)", "Commonwealth Fund Records, Austrian Program (FA278)", "Commonwealth Fund Records, Board of Directors (FA279)", "Commonwealth Fund Records, Capital Grants (FA280)", "Commonwealth Fund Records, Child Health Demonstrations (FA281)", "Commonwealth Fund Records, Division of Community Clinics (FA282)", "Commonwealth Fund Records, Division of Health Studies (FA283)", "Commonwealth Fund Records, Division of Public Health (FA284)", "Commonwealth Fund Records, Division of Publications (FA285)", "Commonwealth Fund Records, Division of Rural Hospitals (FA286)", "Commonwealth Fund Records, Educational Research (FA287)", "Commonwealth Fund Records, English Mental Hygiene Program (FA288)", "Commonwealth Fund Records, Finance Committee (FA289)", "Commonwealth Fund Records, Grants (FA290)", "Commonwealth Fund Records, Harkness Family (FA291)", "Commonwealth Fund Records, Harkness Fellowships (FA292)", "Commonwealth Fund Records, Institute for Child Guidance (FA293)", "Commonwealth Fund Records, Interface Program (FA294)", "Commonwealth Fund Records, Legal Research Program (FA295)", "Commonwealth Fund Records, Living at Home Program (FA296)", "Commonwealth Fund Records, Mental Hygiene Program (FA297)", "Commonwealth Fund Records, Miscellaneous - unprocessed (FA298)", "Commonwealth Fund Records, Personnel - unprocessed (FA299)", "Commonwealth Fund Records, Pilgrim Trust - unprocessed (FA300)", "Commonwealth Fund Records, Program for the Prevention of Delinquency (FA301)", "Commonwealth Fund Records, Reference Files - unprocessed (FA302)", "Commonwealth Fund Records, Reports of the General Director (FA303)", "Commonwealth Fund Records, Treasurer (FA304)", "Commonwealth Fund Records, Turndown Lists - unprocessed (FA305)", "Commonwealth Fund Records, Vertical File (R. Fitz) - unprocessed (FA306)", "Commonwealth Fund Records, Visual Materials (FA307)"],
+      "title": "Missing Title",
+      "publish": true,
+      "jsonmodel_type": "note_orderedlist",
+      "enumeration": "null"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "be599054deb763124510568ede4a22ac",
+    "publish": true,
+    "label": "Other Finding Aids note",
+    "type": "otherfindaid"
+  }],
+  "tree": {
+    "ref": "/repositories/2/resources/106/tree"
+  },
+  "uri": "/repositories/2/resources/106",
+  "last_modified_by": "admin",
+  "finding_aid_filing_title": "Commonwealth Fund records",
+  "id_0": "FA018",
+  "finding_aid_status": "under_revision"
+}

@@ -1,0 +1,375 @@
+{
+  "lock_version": 4,
+  "system_mtime": "2015-09-18T18:56:58Z",
+  "extents": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:56:58Z",
+    "jsonmodel_type": "extent",
+    "user_mtime": "2015-09-18T18:56:58Z",
+    "number": "42",
+    "last_modified_by": "admin",
+    "portion": "whole",
+    "create_time": "2015-09-18T18:56:58Z",
+    "created_by": "admin",
+    "extent_type": "cubic_feet"
+  }],
+  "jsonmodel_type": "resource",
+  "external_documents": [],
+  "instances": [],
+  "create_time": "2014-12-06T04:14:57Z",
+  "created_by": "admin",
+  "external_ids": [{
+    "system_mtime": "2015-09-18T18:56:58Z",
+    "jsonmodel_type": "external_id",
+    "user_mtime": "2015-09-18T18:56:58Z",
+    "last_modified_by": "admin",
+    "source": "Archivists Toolkit Database::RESOURCE",
+    "create_time": "2015-09-18T18:56:58Z",
+    "created_by": "admin",
+    "external_id": "31"
+  }],
+  "title": "Foundation for Child Development records",
+  "related_accessions": [],
+  "publish": true,
+  "subjects": [{
+    "ref": "/subjects/103"
+  }, {
+    "ref": "/subjects/27"
+  }, {
+    "ref": "/subjects/23"
+  }, {
+    "ref": "/subjects/22"
+  }, {
+    "ref": "/subjects/85"
+  }, {
+    "ref": "/subjects/237"
+  }, {
+    "ref": "/subjects/33"
+  }, {
+    "ref": "/subjects/26"
+  }, {
+    "ref": "/subjects/24"
+  }, {
+    "ref": "/subjects/25"
+  }],
+  "deaccessions": [],
+  "ead_id": "FA019.xml",
+  "linked_agents": [{
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/117",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/120",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/119",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/103",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/51",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/105",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/104",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/100",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/corporate_entities/37",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "aut",
+    "ref": "/agents/corporate_entities/36",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/99",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/118",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/116",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/114",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/115",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/112",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/113",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/111",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/110",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/109",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/8046",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/108",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/106",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/107",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/101",
+    "role": "creator"
+  }, {
+    "terms": [],
+    "relator": "ctb",
+    "ref": "/agents/people/102",
+    "role": "creator"
+  }],
+  "repository": {
+    "ref": "/repositories/2"
+  },
+  "user_mtime": "2015-09-18T18:56:58Z",
+  "rights_statements": [],
+  "revision_statements": [{
+    "system_mtime": "2015-09-18T18:56:58Z",
+    "description": "Migrated from Re:discovery to Archivists' Toolkit by Marisa Hudspeth",
+    "jsonmodel_type": "revision_statement",
+    "user_mtime": "2015-09-18T18:56:58Z",
+    "uri": "/revision_statement/1600",
+    "last_modified_by": "admin",
+    "repository": {
+      "ref": "/repositories/2"
+    },
+    "create_time": "2015-09-18T18:56:58Z",
+    "created_by": "admin",
+    "date": "5/28/2009"
+  }],
+  "linked_events": [],
+  "finding_aid_title": "A Guide to the Foundation for Child Development records\n",
+  "suppressed": false,
+  "restrictions": true,
+  "dates": [{
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:56:58Z",
+    "begin": "1898",
+    "end": "1998",
+    "jsonmodel_type": "date",
+    "date_type": "inclusive",
+    "user_mtime": "2015-09-18T18:56:58Z",
+    "last_modified_by": "admin",
+    "label": "creation",
+    "create_time": "2015-09-18T18:56:58Z",
+    "created_by": "admin",
+    "expression": "1898, 1902, 1907, 1909-1910, 1912-1998, bulk 1960-1998"
+  }, {
+    "lock_version": 0,
+    "system_mtime": "2015-09-18T18:56:58Z",
+    "begin": "1960",
+    "end": "1998",
+    "jsonmodel_type": "date",
+    "date_type": "bulk",
+    "user_mtime": "2015-09-18T18:56:58Z",
+    "last_modified_by": "admin",
+    "label": "creation",
+    "create_time": "2015-09-18T18:56:58Z",
+    "created_by": "admin"
+  }],
+  "classifications": [],
+  "language": "eng",
+  "level": "collection",
+  "notes": [{
+    "subnotes": [{
+      "content": "The Foundation for Child Development collection is arranged in six series:\n\nSeries 1 - Administration\n\nSeries 2 - Annual Reports\n\nSeries 3 - Financial Records\n\nSeries 4 - Grant Programs\n\nSeries 5 - Reprints\n\nSeries 6 - Audio-Visual Materials\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "526bc50c24443043c75cf1e1dfe6592e",
+    "publish": true,
+    "label": "Arrangement note",
+    "type": "arrangement"
+  }, {
+    "subnotes": [{
+      "content": "The Foundation for Child Development had its origins in the Guild for the Crippled Children of the Poor of New York City (the Guild), an organization whose mission was to \"care for the physical, social, domestic, educational, economic, and spiritual conditions of these unfortunates.\"  It became the Association for the Aid of Crippled Children (AACC) in 1908, when it was established in New York City as a voluntary agency that sought to teach and aid disabled children who were victims of polio.\n\nIn the early twentieth century, physically disabled children were often homebound with no access to formal education. Mabel Irving Jones, a concerned citizen and advocate for these youngsters, provided the impetus behind the creation and eventual incorporation of an agency operating under the auspices of the New York City Children's Aid Society.  By 1904 nearly 120 disabled school-aged children were attending school outside of the home; in 1906, Public School 104 of the New York City Board of Education operated the first public school class for crippled children. The Guild sought to treat those children neglected by hospitals and clinics and the \"hundreds of chronic cases of crippled children whom these charities do not and cannot reach.\" The Guild cooperated with churches and other social services organizations including St. John's Guild, the Henrietta Industrial School, and the Hartley House Settlement, to teach children outside of the home, provide a luncheon meal, and return them to their homes. The Guild\u2019s second Annual Report in 1898 indicated that this is the \"first systematic effort ever made in New York City to give the crippled children out of institutions a helpful education.\"\n\nSeparated from the Children's Aid Society in 1908, the AACC was supported entirely by contributions and employed a staff of ten, led by trained nurses. In addition to providing transportation to school and health clinics and braces and other therapeutic devices, the AACC also established physical rehabilitation facilities. By 1940, over 30,000 children had benefited from these services, including children with cerebral palsy and other disorders of fetal and neonatal origin.\n\nThe organization\u2019s early focus on the needs of a stranded school-aged population firmly defined its legacy. In later years, similar enterprises supported direct-care and research to benefit adult rehabilitation. The AACC joined with New York University-Bellevue Hospital to establish the Children's Division of the Institute of Physical Medicine and Rehabilitation, today known as the Rusk Institute. During World War II, their pioneering work helped to rehabilitate injured soldiers.\n\nIn 1944, the AACC received an $11 million bequest from the Estate of Milo M. Belding, a silk manufacturer and banker whose donation honored his spouse, Annie K. Belding, a devoted volunteer and association board member for over twenty years. This bequest allowed the AACC to become a grant-making organization. Although the organization continued to provide direct services to children, in 1950 the Visiting Nurse Service of New York assumed this aspect of the agency\u2019s services. Also during this period, the Association expanded its purview to include within its programs the developmentally disabled, the emotionally disturbed, and children with genetically based disorders, including circulatory and metabolic disorders. In 1962, it formed the Committee on Belding Scholars, with the specific goal of encouraging research on problems that \"lie between, or are germane to, both the biological and social sciences.\" \n\nIn 1972 the Association changed its name to the Foundation for Child Development (FCD) to reflect its role as a grant-making organization and in particular its evolved focus on child development. Included within its mission were goals of preventing child poverty and promoting the economic stability of families. The Foundation developed several new program areas; appointed Staff Scientists, enabling specialists in child development to pursue research while simultaneously contributing to the Foundation's mission; and, most particularly, awarded grants in areas that linked research to policy, program, and leadership development. During the mid-1970s grants focused upon methods that would transfer knowledge from scholarly endeavor to government policy-makers. The George Washington University, Vanderbilt University, and the University of California at Los Angeles benefited from this support.  In 1976 the Foundation published the pioneering report on The State of the Child: New York City, by Trude Lash and Heidi Sigal.  Revised regularly, the report examined the indicators that reveal changes in the conditions of children's lives. In 1977, the Foundation released the preliminary findings of the National Survey of Children, directed by Nicholas Zill. This report compiled nationwide findings of interview responses from more than 2,200 pre-teens, from the ages of 7-11, and more than 1,700 of their parents\u2019 responses. These ground-breaking survey results spoke of the attitudes, fears, and social temper of a generation.\n\nIn early 1972, Dr. Mary Jo Kline from the Columbia University Oral History Research Office conducted oral history interviews with eleven council members about the Foundation\u2019s development after World War II. The original intent was to undertake a complete history of the organization by combining portions of the interviews with information from the Foundation's archives, but this project was never completed.\n\nBy 1980, the Foundation\u2019s annual assets were approximately $30 million; annual grant expenditures were in the vicinity of $2 million. Around this time, the Foundation shifted focus to include examination of the causes of debilitating physical conditions and funded projects focused upon research, demonstration, and education. The formation in 1979 of Child Trends, Inc., which aimed \"to improve the quality, scope and use of statistical information concerning children,\" reflected the FCD\u2019s expanded goals.\n\nThe Foundation for Child Development is a national private philanthropy dedicated to the principle that all families should have the social and material resources to raise their children to be healthy, educated, and productive members of their communities. The Foundation seeks to understand children, particularly the disadvantaged, and to promote their well-being. They believe that families, schools, nonprofit organizations, businesses, and government at all levels share complementary responsibilities in the critical task of raising new generations.\n\nThe Foundation sponsors basic and policy-relevant research about the factors that promote the optimal development of children and adolescents; policy analysis, advocacy, services, and public education to enhance the discussion and adoption of social policies that support families in their important child-raising responsibilities; and leadership development activities linked to the programmatic focus of the Foundation. The Foundation believes that by integrating these approaches, it will strengthen its effectiveness in achieving its mission.\n\nThis broad statement further demonstrates the Foundation\u2019s special interest in accommodating working families with children, who are struggling to meet their basic needs. Three themes mark Foundation support in the late twentieth century:  linking research on children and families to form relevant programs and activities; isolating new approaches to devising social strategies for children and families; and increasing availability and access to early education programs and health care for children.\n\nThe Foundation hoped to compensate for the reduction in government-supported programs for children at risk by focusing more closely upon programs which would have a direct impact upon both children and families, with its research and action in this direction geared toward influencing public policy.\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "60b4ea6a94288eb042eabbebe08cb17f",
+    "publish": true,
+    "label": "Biographical/Historical note",
+    "type": "bioghist"
+  }, {
+    "subnotes": [{
+      "content": "Correspondents include Barbara Blum; Herbert G. Birch; Orville G. Brim, Jr.; Urie Bronfenbrenner; Hilary Rodham Clinton; Lewis B. Cuyler; Charles Dollard; Jessie Emmet; Nevil Ford; Alice FitzGerald; Charlayne Hunter Gault; George J. Hecht; Mavis Hetherington; Jerome Kagan; Sheila Kamerman; Trude Lash; Emily McFarland; Leonard Mayo; Evelyn Moore; Kathleen Mortimer; Emil Pattberg; Stephen A. Richardson; Mary French Rockefeller; Milton J. E. Senn; Heidi Sigal; Chester Swinyard; Ruby Takanishi; Ray Valdivieso; George Wheatley; and Nicholas Zill.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "1f37d38b9d0a0020697cd6f70ec34e7b",
+    "publish": true,
+    "label": "Scope and Contents note",
+    "type": "scopecontent"
+  }, {
+    "persistent_id": "414c69f0d04096d7a0d7dc8e64f2d144",
+    "type": "accessrestrict",
+    "subnotes": [{
+      "content": "Records are open for scholarly research without restriction.\n\nAudio cassette tapes of oral history interviews are closed to scholarly research. Conditions of access and duplication of oral history interviews are managed through Columbia University's Oral History Research Office.\n\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "b099555e5f86d56ff437ce10f74005d8",
+    "type": "userestrict",
+    "subnotes": [{
+      "content": "RAC users must abide by all applicable provisions of United States copyright law.  Reproduction/duplication of archival items is routinely provided in accordance with \"fair use.\"  If the RAC does not hold copyright for an archival collection, or items within a collection, it is the user\u2019s responsibility to contact the copyright holder, or make a fair effort to do so, prior to publication.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "subnotes": [{
+      "content": "The records of the Foundation for Child Development were transferred to the Rockefeller Archive Center in 1998, 1999, and 2004. \n\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "f31822bc52a76d082ea02c286e43437b",
+    "publish": true,
+    "label": "Immediate Source of Acquisition note",
+    "type": "acqinfo"
+  }, {
+    "persistent_id": "9746746ec12ba84e5a6660da7844d2ca",
+    "type": "processinfo",
+    "subnotes": [{
+      "content": "The collection begins with microfilm reel 2.",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "subnotes": [{
+      "content": "Related materials may be found in:\n\nThe Foundation for Child Development (Guild for Crippled Children of the Poor of New York City) records (RAC); The Leonard Mayo papers, at the University of Minnesota, Twin Cities; the New York City Board of Education records, at Teachers College, Columbia University; the Russell Sage Foundation records (RAC); the Social Science Research Council records (RAC); and the William T. Grant Foundation records (RAC).\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "ac9344d11d230710fcab9b56ec24049f",
+    "publish": true,
+    "label": "Related Archival Materials note",
+    "type": "relatedmaterial"
+  }, {
+    "subnotes": [{
+      "content": "Former Classification: XVI\n\n",
+      "publish": false,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "persistent_id": "76df66e49b33565ea3a28ce50aa577d9",
+    "publish": false,
+    "label": "File Plan note",
+    "type": "fileplan"
+  }, {
+    "persistent_id": "b1e91efc6a1d739377dc9c292c7f898e",
+    "type": "phystech",
+    "subnotes": [{
+      "content": "Materials requiring specialized equipment for access (film, audio, video, slides) may be closed to research dependent on availability of the applicable equipment \n\nBrittle or damaged items, or materials otherwise in need of preservation care, may be closed to researchers at the discretion of the RAC Head of Archival Services/Head of Reference.\n\n",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "32e513520d5aedb43c3b38b7c060d410",
+    "type": "otherfindaid",
+    "subnotes": [{
+      "content": "FA405 Foundation for Child Development (Guild for Crippled Children of the Poor of New York City) records",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }, {
+    "persistent_id": "9ab73d30e1c831c835b77f029e5b28f1",
+    "type": "prefercite",
+    "subnotes": [{
+      "content": "Information regarding the Rockefeller Archive Center's preferred elements and forms of citation can be found at <extref href=\"http://www.rockarch.org/research/citations.php\">http://www.rockarch.org/research/citations.php</extref>",
+      "publish": true,
+      "jsonmodel_type": "note_text"
+    }],
+    "jsonmodel_type": "note_multipart",
+    "publish": true
+  }],
+  "tree": {
+    "ref": "/repositories/2/resources/107/tree"
+  },
+  "uri": "/repositories/2/resources/107",
+  "last_modified_by": "admin",
+  "finding_aid_filing_title": "Foundation for Child Development records",
+  "id_0": "FA019",
+  "finding_aid_status": "under_revision"
+}
