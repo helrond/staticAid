@@ -505,7 +505,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getApiData(self, database, searchTerm=''):
         if self.update:
-            lastExport = datetime.fromtimestamp(self.lastExportTime())
+            lastExport = datetime.fromtimestamp(self.get_last_export_time())
             searchTerm += ' modification greater "%4d-%02d-%02d"' % (lastExport.year, lastExport.month, lastExport.day)
         elif not searchTerm or searchTerm.strip() == '':
             searchTerm = 'all'

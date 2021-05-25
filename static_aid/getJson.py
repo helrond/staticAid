@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from argparse import ArgumentParser
 import logging
@@ -7,14 +7,11 @@ from shutil import rmtree
 from static_aid import config
 from static_aid.DataExtractor_Adlib import DataExtractor_Adlib, DataExtractor_Adlib_Fake
 from static_aid.DataExtractor_ArchivesSpace import DataExtractor_ArchivesSpace
-from static_aid.DataExtractor import DataExtractor_SampleData
 from os.path import isdir
 
 DATA_SOURCE_EXTRACTORS = {'adlib': DataExtractor_Adlib,
                           'adlib-sampledata': DataExtractor_Adlib_Fake,
                           'archivesspace': DataExtractor_ArchivesSpace,
-                          'sampledata': DataExtractor_SampleData,
-                          'DEFAULT': DataExtractor_SampleData,
                           }
 
 logging.basicConfig(filename=config.logging['filename'],
@@ -22,7 +19,6 @@ logging.basicConfig(filename=config.logging['filename'],
                     datefmt=config.logging['datefmt'],
                     level=config.logging['level'],
                     )
-logging.getLogger("requests").setLevel(logging.WARNING)
 
 def main():
     parser = ArgumentParser(description='StaticAid Data Extractor')
@@ -40,13 +36,12 @@ def main():
                         )
 
     arguments = parser.parse_args()
-    arguments = vars(arguments)  # converts Namespace to {}
 
-    if arguments['replace'] and isdir(config.DATA_DIR):
+    if arguments.replace and isdir(config.DATA_DIR):
         rmtree(config.DATA_DIR)
 
-    extractorClass = DATA_SOURCE_EXTRACTORS.get(config.dataExtractor['dataSource'], DATA_SOURCE_EXTRACTORS['DEFAULT'])
-    extractorClass(update=arguments['update']).run()
+    extractorClass = DATA_SOURCE_EXTRACTORS.get(config.dataExtractor['dataSource'])
+    extractorClass(update=arguments.update).run()
 
 if __name__ == '__main__':
     main()
