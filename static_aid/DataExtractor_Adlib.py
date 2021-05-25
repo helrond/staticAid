@@ -552,7 +552,7 @@ class DataExtractor_Adlib(DataExtractor):
                     logging.info("GET " + url)
                     response = requests.get(url)
                     rawJson = response.json()
-                except Exception, e:
+                except Exception as e:
                     logging.error("Exception while retrieving URL %s: %s" % (url, e))
                     return
 

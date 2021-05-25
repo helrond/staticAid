@@ -65,7 +65,8 @@ class DataExtractor(object):
         if not exists(dirname(config.PID_FILE_PATH)):
             makedirs(dirname(config.PID_FILE_PATH))
         currentPid = str(getpid())
-        file(config.PID_FILE_PATH, 'w').write(currentPid)
+        with open(config.PID_FILE_PATH, 'w') as pf:
+            pf.write(currentPid)
 
 
     def unregisterPid(self):
@@ -131,7 +132,7 @@ class DataExtractor_SampleData(DataExtractor):
         if not archiveFilename.endswith('.zip'):
             msg = 'DataExtractor_FakeSampleData is not extracting %s (I only know how to operate on .zip files)' % archiveFilename
             logging.error(msg)
-            print 'ERROR: %s' % msg
+            print('ERROR: %s' % msg)
             exit(1)
         logging.debug('Extracting fake sample data %s into folder: %s...' % (archiveFilename, config.DATA_DIR))
 

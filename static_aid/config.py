@@ -1,4 +1,4 @@
-from ConfigParser import ConfigParser, NoSectionError
+from configparser import ConfigParser, NoSectionError
 from os.path import join, exists, realpath, curdir, dirname
 from shutil import copyfile
 
@@ -61,9 +61,12 @@ def _stringToList(string):
 
 # read the config file
 if not exists(CONFIG_FILE_PATH) and not exists(CONFIG_DEFAULTS_FILE_PATH):
-    print "Unable to find any config settings! Please create one of these two files:"
-    print "", CONFIG_FILE_PATH
-    print "", CONFIG_DEFAULTS_FILE_PATH
+    print(
+        "Unable to find any config settings! Please create one of these two files:\n",
+        CONFIG_FILE_PATH,
+        "\n",
+        CONFIG_DEFAULTS_FILE_PATH
+    )
     exit(1)
 
 if not exists(CONFIG_FILE_PATH):

@@ -96,11 +96,11 @@ def make_pages(category):
                 targetFilename = join(pageDataDir, '%s.html' % identifier)
                 with open(targetFilename, 'w+') as new_file:
                     new_file.write("---\nlayout: %s\n" % category)
-                    new_file.write("title: \"%s\"\n" % title.encode('utf-8'))
+                    new_file.write("title: \"%s\"\n" % title)
                     new_file.write("id: %s\n" % identifier)
                     new_file.write("type: %s\n" % category)
                     new_file.write("permalink: %s/%s/\n" % (category, identifier))
-                    new_file.write("description: \"%s\"\n" % ''.join(raw_description).encode('utf-8'))
+                    new_file.write("description: \"%s\"\n" % ''.join(raw_description))
                     new_file.write("---")
                     new_file.close
 
@@ -135,7 +135,7 @@ def main():
         s.close
 
     with open((join(config.STAGING_DIR, '_config.yml')), 'w+') as yaml:
-        for i in config.site.iterkeys():
+        for i in config.site:
             if config.site[i]:
                 yaml.write(i)
                 yaml.write(": ")
