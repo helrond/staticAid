@@ -16,9 +16,12 @@ RUN npm install -g grunt-cli
 
 COPY local_settings.default local_settings.default
 COPY Gruntfile.js Gruntfile.js
-COPY data/sample_data/ ./build/data
-COPY scripts ./scripts
-COPY site ./site
 COPY static_aid/ ./static_aid
+COPY data/sample_data build/data
 
 RUN python3 setup.py install
+
+COPY entrypoint.sh entrypoint.sh
+ENTRYPOINT [ "./entrypoint.sh" ]
+
+CMD [ "bundle", "exec", "jekyll", "serve", "--force_polling", "-d", "/code/build/site", "-s", "/code/build/staging", "-H", "0.0.0.0", "-P", "4000" ]

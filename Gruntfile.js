@@ -1,6 +1,4 @@
-module.exports = function(grunt) {
-
-  // Project configuration.
+module.exports = function (grunt) {
   grunt.initConfig({
     exec: {
       updateJSON: {
@@ -19,20 +17,20 @@ module.exports = function(grunt) {
         stderr: true
       },
       makePages_embedded: {
-          command: 'static-aid-build --embedded',
-          stdout: true,
-          stderr: true
-      },
+        command: 'static-aid-build --embedded',
+        stdout: true,
+        stderr: true
+      }
     },
     jekyll: {
       serve: {
-          options: {
-            serve: true,
-            dest: 'build/site',
-            skip_initial_build: true,
-            verbose: true,
-            no_watch: true,
-            open_url: true
+        options: {
+          serve: true,
+          dest: 'build/site',
+          skip_initial_build: true,
+          verbose: true,
+          no_watch: true,
+          open_url: true
         }
       },
       build: {
@@ -44,20 +42,16 @@ module.exports = function(grunt) {
         }
       }
     }
-  });
+  })
 
-  grunt.loadNpmTasks('grunt-exec');
-  grunt.loadNpmTasks('grunt-jekyll');
+  grunt.loadNpmTasks('grunt-exec')
+  grunt.loadNpmTasks('grunt-jekyll')
 
+  var pageType = 'fullpage'
   if (grunt.option('embedded')) {
-      var pageType = "embedded";
-  }
-  else {
-      var pageType = "fullpage";
+    pageType = 'embedded'
   }
 
-  grunt.registerTask('serve', ['jekyll:serve']);
-  grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build']);
-  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
-  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType, 'jekyll:build']);
-};
+  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType])
+  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType])
+}

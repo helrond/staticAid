@@ -9,15 +9,16 @@ Install [git](https://git-scm.com/) and clone the repository.
 
     $ git clone git@github.com:helrond/staticAid.git
 
-Install [Docker](https://store.docker.com/search?type=edition&offering=community) and build the image.
+Install [Docker](https://store.docker.com/search?type=edition&offering=community) and build the image using `docker-compose`.
 
     $ cd staticAid
-    $ docker build -t staticaid .
+    $ docker-compose build -t staticaid .
 
-Build the site and start the server to preview the site.
+Start the container.
 
-    $ docker run staticaid grunt build
-    $ docker run staticaid grunt serve
+    $ docker-compose up
+
+The staticAid interface should now be available at http://localhost:4000 in your browser.
 
 
 ## Usage
@@ -97,15 +98,11 @@ Pull requests accepted! Feel free to file issues on this repository as well.
 
 ## Authors
 
-Hillel Arnold / @helrond
-
-Kevin Clair / @jackflaps
-
-Luke Scott / @v-lukes
-
-Erin O'Meara / @diplomatica
-
-Scott Carlson / @scottythered
+Hillel Arnold / @helrond  
+Kevin Clair / @jackflaps  
+Luke Scott / @v-lukes  
+Erin O'Meara / @diplomaticaerin  
+Scott Carlson / @scottythered  
 
 ## License
 

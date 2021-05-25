@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  staticaid:
+    build: .
+    volumes:
+      - ./scripts:/code/scripts/
+      - ./static_aid:/code/static_aid/
+      - ./site:/code/site/
+    ports:
+      - '4000:4000'
