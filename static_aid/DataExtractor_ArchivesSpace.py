@@ -1,137 +1,91 @@
-import json
 import logging
-import os
-import requests
-import sys
+from os.path import join
 
+from asnake.aspace import ASpace
 from static_aid import config
 from static_aid.DataExtractor import DataExtractor
 
 
 class DataExtractor_ArchivesSpace(DataExtractor):
 
+    # TODO: the object-specific methods can probably be combined into a single method with conditionals
+
     def _run(self):
-        lastExport = self.lastExportTime()
-        self.makeDestinations()
-        headers = self.authenticate()
-        self.findResources(lastExport, headers)
-        self.findObjects(lastExport, headers)
-        self.findAgents(lastExport, headers)
+        self.make_destinations()
+        self.last_export = self.get_last_export_time()
+        self.aspace = ASpace(
+            user=config.archivesSpace['user'],
+            password=config.archivesSpace['password'],
+            baseurl=config.archivesSpace['baseurl'],
+        )
+        self.repo = aspace.repositories(archivesSpace['repository'])
+        self.get_updated_resources(last_export)
+        self.get_updated_objects(lastExport, headers)
+        self.get_updated_agents(lastExport, headers)
         self.findSubjects(lastExport, headers)
 
-
-    # authenticates the session
-    def authenticate(self):
-        try:
-            url = '%s/users/%s/login?password=%s&expiring=false' % (config.archivesSpace['baseurl'],
-                                                                    config.archivesSpace['user'],
-                                                                    config.archivesSpace['password'],
-                                                                    )
-            auth = requests.post(url).json()
-            token = {'X-ArchivesSpace-Session':auth["session"]}
-            return token
-        except requests.exceptions.RequestException as e:
-            logging.error('Authentication failed! Make sure the baseURL setting in %s is correct and that your ArchivesSpace instance is running.' % config.CONFIG_FILE_PATH)
-            logging.error(e)
-            sys.exit(1)
-        except KeyError:
-            logging.error('Authentication failed! It looks like you entered the wrong password. Please check the information in %s.' % config.CONFIG_FILE_PATH)
-            sys.exit(1)
-
-
-    # logs out non-expiring session (not yet in AS core, so commented out)
-    # def logout(headers):
-    #    requests.post('{baseURL}/logout'.format(**archivesSpace), headers=headers)
-    #    logging.info('You have been logged out of your session')
-
-
-    # Looks for resources
-    def findResources(self, lastExport, headers):
-        if lastExport > 0:
-            logging.info('*** Getting a list of resources modified since %d ***', lastExport)
-        else:
-            logging.info('*** Getting a list of all resources ***')
-
-        url = '%s/resources?all_ids=true&modified_since=%d' % (config.archivesSpace['repository_url'], lastExport)
-        resourceIds = requests.get(url, headers=headers)
-        for resourceId in resourceIds.json():
-            url = '%s/resources/%s' % (config.archivesSpace['repository_url'], str(resourceId))
-            resource = (requests.get(url, headers=headers)).json()
-            if resource["publish"]:
-                if not "LI" in resource["id_0"]:
-                    self.saveFile(resourceId, resource, config.destinations['collections'])
-                    self.findTree(resourceId, headers)
-                else:
-                    pass
-            else:
-                self.removeFile(resourceId, config.destinations['collections'])
-                self.removeFile(resourceId, config.destinations['trees'])
-
-
-    # Looks for resource trees
-    def findTree(self, identifier, headers):
-        url = '%s/resources/%s/tree' % (config.archivesSpace['repository_url'], str(identifier))
-        tree = (requests.get(url, headers=headers)).json()
+    def find_tree(self, identifier):
+        """Fetches a tree for a resource."""
+        # TODO: this will need to be re-thought, since the tree endpoint is deprecated
+        tree = self.aspace.client.get(
+            "/repositories/{}/resources/{}/tree".format(archivesSpace['repository'], identifier)).json()
         self.saveFile(identifier, tree, config.destinations['trees'])
 
-
-    # Looks for archival objects
-    def findObjects(self, lastExport, headers):
-        if lastExport > 0:
-            logging.info('*** Getting a list of objects modified since %d ***', lastExport)
+    def log_fetch_start(self, fetch_type, last_export):
+        if last_export > 0:
+            logging.info('*** Getting a list of {} modified since %d ***'.format(fetch_type), last_export)
         else:
-            logging.info('*** Getting a list of all objects ***')
-        url = '%s/archival_objects?all_ids=true&modified_since=%d' % (config.archivesSpace['repository_url'], lastExport)
-        archival_objects = requests.get(url, headers=headers)
-        for objectId in archival_objects.json():
-            url = '%s/archival_objects/%s' % (config.archivesSpace['repository_url'], str(objectId))
-            archival_object = requests.get(url, headers=headers).json()
-            if archival_object["publish"]:
-                self.saveFile(objectId, archival_object, config.destinations['objects'])
-                # build breadcrumb trails for archival object pages
-                url = '%s/archival_objects/%s' % (config.archivesSpace['breadcrumb_url'], str(objectId))
-                response = requests.get(url, headers=headers)
-                if response.status_code == 200:
-                    published_tree = response.json()
-                    breadcrumbs = json.loads(published_tree["tree_json"])
-                    self.saveFile(objectId, breadcrumbs, config.destinations['breadcrumbs'])
+            logging.info('*** Getting a list of all {} ***'.format(fetch_type))
+
+    def get_updated_resources(self, last_export):
+        """Fetches and saves updated resource records and associated trees."""
+        self.log_fetch_start("resources", last_export)
+        for resource_id in self.repo.resources(with_params={'all_ids': True, 'modified_since': last_export}):
+            resource = self.repo.resources(resource_id)
+            if resource.publish:
+                self.save_data_file(resource_id, resource.json(), config.destinations['collections'])
+                self.find_tree(resource_id)
             else:
-                self.removeFile(objectId, config.destinations['objects'])
+                self.remove_data_file(resource_id, config.destinations['collections'])
+                self.remove_data_file(resource_id, config.destinations['trees'])
 
+    def get_updated_objects(self, last_export):
+        """Fetches and saves updated archival objects and associated breadcrumbs."""
+        self.log_fetch_start("objects", last_export)
+        for archival_object_id in self.repo.archival_objects(with_params={'all_ids': True, 'modified_since': last_export}):
+            archival_object = self.repo.archival_objects(archival_object_id)
+            if archival_object.publish:
+                self.save_file(archival_object_id, archival_object.json(), config.destinations['objects'])
+                # TODO: not sure if this works?
+                breadcrumbs = self.aspace.client.get(
+                    "/repositories/{}/resources/{}/tree/node_from_root?node_ids={}&published_only=true".format(
+                        config.archivesSpace['repository'],
+                        archival_object.resource.ref.split("/")[-1],
+                        archival_object_id))
+                self.save_file(archival_object_id, breadcrumbs.json(), config.destinations['breadcrumbs'])
+            else:
+                self.remove_file(archival_object_id, config.destinations['objects'])
+                self.remove_file(archival_object_id, config.destinations['breadcrumbs'])
 
-    # Looks for agents
-    def findAgents(self, lastExport, headers):
-        if lastExport > 0:
-            logging.info('*** Getting a list of agents modified since %d ***', lastExport)
-        else:
-            logging.info('*** Getting a list of all agents ***')
+    def get_updated_agents(self, last_export):
+        """Fetch and save updated agent data."""
+        self.log_fetch_start("agents", last_export)
         agent_types = ['corporate_entities', 'families', 'people', 'software']
         for agent_type in agent_types:
-            url = '%s/agents/%s?all_ids=true&modified_since=%d' % (config.archivesSpace['baseurl'],
-                                                                   agent_type,
-                                                                   lastExport)
-            agents = requests.get(url, headers=headers)
-            for a in agents.json():
-                url = '%s/agents/%s/%s' % (config.archivesSpace['baseurl'], agent_type, str(a))
-                agent = requests.get(url, headers=headers).json()
-                if agent["publish"]:
-                    self.saveFile(a, agent, os.path.join(config.destinations['agents'], agent_type))
+            for agent_id in getattr(self.repo, agent_type)(with_params={'all_ids': True, 'modified_since': last_export}):
+                agent = getattr(self.repo, agent_type)(agent_id)
+                if agent.publish:
+                    self.save_file(agent_id, agent.json(), join(config.destinations['agents'], agent_type))
                 else:
-                    self.removeFile(a, os.path.join(config.destinations['agents'], agent_type))
+                    self.remove_file(agent_id, join(config.destinations['agents'], agent_type))
 
+    def get_updated_subjects(self, lastExport, headers):
+        """Fetch and save updated subject data."""
+        self.log_fetch_start("subjects", last_export)
 
-    # Looks for subjects
-    def findSubjects(self, lastExport, headers):
-        if lastExport > 0:
-            logging.info('*** Getting a list of subjects modified since %d ***', lastExport)
-        else:
-            logging.info('*** Getting a list of all subjects ***')
-        url = '%s/subjects?all_ids=true&modified_since=%d' % (config.archivesSpace['baseurl'], lastExport)
-        subjects = requests.get(url, headers=headers)
-        for s in subjects.json():
-            url = '%s/subjects/%s' % (config.archivesSpace['baseurl'], str(s))
-            subject = requests.get(url, headers=headers).json()
-            if subject["publish"]:
-                self.saveFile(s, subject, config.destinations['subjects'])
+        for subject_id in self.repo.subjects(with_params={'all_ids': True, 'modified_since': last_export}):
+            subject = self.repo.subjects(subject_id)
+            if subject.publish:
+                self.save_file(subject_id, subject.json(), config.destinations['subjects'])
             else:
-                self.removeFile(s, config.destinations['subjects'])
+                self.remove_file(subject_id, config.destinations['subjects'])
