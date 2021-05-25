@@ -83,19 +83,11 @@ dataExtractor = _configSection('DataExtractor')
 # set DEFAULT value if necessary
 dataExtractor['dataSource'] = dataExtractor.get('datasource', 'DEFAULT').lower()
 
-# baseURL, repository, user, password
+# baseurl, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
-if archivesSpace:
-    archivesSpace['repository_url'] = '%s/repositories/%s' % (archivesSpace.get('baseurl'), archivesSpace.get('repository'))
-    archivesSpace['breadcrumb_url'] = '%s/search/published_tree?node_uri=/repositories/%s' % (archivesSpace.get('baseurl'),
-                                                                                              archivesSpace.get('repository'),
-                                                                                              )
 
 # baseURL, database, user, password
 adlib = _configSection('Adlib')
-
-sampleData = _configSection('SampleData')
-sampleData['filename'] = join(SAMPLE_DATA_DIR, sampleData.get('filename', 'FILENAME_NOT_SET'))
 
 # filename, level, format, datefmt
 logging = _configSection('Logging')
