@@ -115,6 +115,6 @@ class DataExtractor(object):
     def save_data_file(self, identifier, data, destination_dir):
         """Saves JSON data to a file location"""
         filename = join(config.DATA_DIR, destination_dir, '{}.json'.format(identifier))
-        with open(filename, 'wb+') as fp:
+        with open(filename, 'w') as fp:
             dump(data, fp, indent=4, sort_keys=True)
         logging.debug('ID %s exported to %s', identifier, filename)
