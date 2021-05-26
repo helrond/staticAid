@@ -18,7 +18,7 @@ Start the container.
 
     $ docker-compose up
 
-The staticAid interface should now be available at http://localhost:4000 in your browser.
+The site will build, and the staticAid interface will then be available at http://localhost:4000 in your browser. Any changes to the templates in the `site/` directory or the python files in the `static_aid/` directory will result in a rebuild of the site or a reinstallation of the staticAid scripts, respectively.
 
 
 ## Usage

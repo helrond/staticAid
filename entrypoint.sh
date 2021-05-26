@@ -15,7 +15,8 @@ then
   inotifywait -e modify,move,create,delete -m site/ -r |
   while read filename; do
     echo "Regenerating..."
-    grunt build
+    static-aid-build
+    bundle exec jekyll build --incremental -d /code/build/site -s /code/build/staging
   done
 
   inotifywait -e modify,move,create,delete -m static_aid/ -r |
