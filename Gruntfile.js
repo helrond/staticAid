@@ -52,6 +52,7 @@ module.exports = function (grunt) {
     pageType = 'embedded'
   }
 
-  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType])
-  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType])
+  grunt.registerTask('build', ['exec:makePages_' + pageType, 'jekyll:build'])
+  grunt.registerTask('update', ['exec:updateJSON', 'exec:makePages_' + pageType, 'jekyll:build'])
+  grunt.registerTask('rebuild', ['exec:replaceJSON', 'exec:makePages_' + pageType, 'jekyll:build'])
 }
