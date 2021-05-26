@@ -61,7 +61,7 @@ class DataExtractor_ArchivesSpace(DataExtractor):
                         config.archivesSpace['repository'],
                         archival_object.resource.ref.split("/")[-1],
                         archival_object_id))
-                        if breadcrumbs.status_code == 200:
+                if breadcrumbs.status_code == 200:
                     self.save_data_file(archival_object_id, breadcrumbs.json(), config.destinations['breadcrumbs'])
             else:
                 self.remove_data_file(archival_object_id, config.destinations['objects'])
