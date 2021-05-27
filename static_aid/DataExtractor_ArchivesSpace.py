@@ -8,8 +8,6 @@ from static_aid.DataExtractor import DataExtractor
 
 class DataExtractor_ArchivesSpace(DataExtractor):
 
-    # TODO: the object-specific methods can probably be combined into a single method with conditionals
-
     def _run(self):
         last_export = self.get_last_export_time()
         self.aspace = ASpace(
@@ -19,7 +17,7 @@ class DataExtractor_ArchivesSpace(DataExtractor):
         )
         self.repo = self.aspace.repositories(config.archivesSpace['repository'])
         self.make_destinations()
-        # self.get_updated_resources(last_export)
+        self.get_updated_resources(last_export)
         self.get_updated_objects(last_export)
         self.get_updated_agents(last_export)
         self.get_updated_subjects(last_export)
