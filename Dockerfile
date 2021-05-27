@@ -14,7 +14,7 @@ RUN gem install bundler && bundler install
 COPY local_settings.default local_settings.default
 COPY entrypoint.sh entrypoint.sh
 COPY static_aid/ ./static_aid
-COPY data/sample_data build/data
+COPY sample_data/archivesspace build/data
 COPY apache/apache2.conf /etc/apache2/sites-enabled/000-default.httpd.conf
 COPY scripts/* /usr/local/bin/
 
