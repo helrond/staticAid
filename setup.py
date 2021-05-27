@@ -11,8 +11,8 @@ setup(
     scripts=[],
     entry_points={
         'console_scripts': [
-            'static-aid-get-data=static_aid.getJson:main',
-            'static-aid-build=static_aid.makePages:main',
+            'static-aid-get-data=static_aid.get_json:main',
+            'static-aid-make-pages=static_aid.make_pages:main',
         ],
     },
     zip_safe=False

@@ -3,7 +3,7 @@
 dataSource: archivesspace
 
 [ArchivesSpace]
-baseurl: http://localhost:8089
+baseurl: http://as.dev.rockarch.org:8089
 repository: 2
 user: admin
 password: admin

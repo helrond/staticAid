@@ -2,6 +2,5 @@
 
 cd /code/
 
-static-aid-get-data --replace
 static-aid-make-pages --embedded
 bundle exec jekyll build --incremental -d build/site -s build/staging

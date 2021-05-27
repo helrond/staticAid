@@ -4,7 +4,7 @@ if [ -z "$TRAVIS_CI" ]
 then
   if [ ! -f /code/build/site/index.html ]; then
     echo "Performing initial build of site"
-    grunt build
+    static-aid-build
   fi
 
   echo "Starting Apache"
@@ -17,7 +17,6 @@ then
     if [[ "$filename" == site/* ]]; then
       echo "Regenerating..."
       static-aid-build
-      bundle exec jekyll build --incremental -d /code/build/site -s /code/build/staging
     fi
     if [[ "$filename" == static_aid/* ]]; then
       echo "Installing updated staticAid scripts..."
