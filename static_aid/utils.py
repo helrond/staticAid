@@ -1,6 +1,6 @@
 from json import load
 from os import makedirs, remove
-from os.path import isdir, isfile
+from os.path import exists, isdir, isfile
 from shutil import rmtree
 
 
@@ -23,6 +23,8 @@ def load_json(path):
 
 def remove_file_or_dir(path):
     """Removes a file or directory at a given path."""
+    if not(exists(path)):
+        pass
     if isdir(path):
         rmtree(path)
     if isfile(path):

@@ -2,12 +2,10 @@
 
 from argparse import ArgumentParser
 import logging
-from shutil import rmtree
 
-from static_aid import config
+from static_aid import config, utils
 from static_aid.DataExtractor_Adlib import DataExtractor_Adlib, DataExtractor_Adlib_Fake
 from static_aid.DataExtractor_ArchivesSpace import DataExtractor_ArchivesSpace
-from os.path import isdir
 
 DATA_SOURCE_EXTRACTORS = {'adlib': DataExtractor_Adlib,
                           'adlib-sampledata': DataExtractor_Adlib_Fake,
@@ -37,8 +35,8 @@ def main():
 
     arguments = parser.parse_args()
 
-    if arguments.replace and isdir(config.DATA_DIR):
-        rmtree(config.DATA_DIR)
+    if arguments.replace:
+        utils.remove_file_or_dir(config.DATA_DIR)
 
     extractorClass = DATA_SOURCE_EXTRACTORS.get(config.dataExtractor['dataSource'])
     extractorClass(update=arguments.update).run()
