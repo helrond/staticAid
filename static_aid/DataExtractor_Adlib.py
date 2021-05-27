@@ -614,7 +614,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
     def _getApiData(self, database, searchTerm):
 
         def jsonFileContents(sampleDataType):
-            filename = join(config.SAMPLE_DATA_DIR, 'adlib-sampledata', '%s.json' % sampleDataType)
+            filename = join(config.SAMPLE_DATA_DIR, 'adlib', '%s.json' % sampleDataType)
             data = load(open(filename))
             return data
 
