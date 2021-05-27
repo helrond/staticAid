@@ -7,8 +7,8 @@ from os.path import join, exists
 import requests
 import shelve
 
-from static_aid import config
-from static_aid.DataExtractor import DataExtractor, bytesLabel
+from static_aid import config, utils
+from static_aid.DataExtractor import DataExtractor
 
 def makeDir(dirPath):
     try:
@@ -398,7 +398,7 @@ class DataExtractor_Adlib(DataExtractor):
                     'extent_type': extentType,
                     'container_summary': '%s level' % level,
                     }
-        extents = [extentObject(bytesLabel(d), 'digital_extent', level)
+        extents = [extentObject(utils.bytes_label(d), 'digital_extent', level)
                    for d in data.get('digital_extent', [])]
         extents += [extentObject(d, 'dimension-free', level)  # TODO syntax?
                     for d in data.get('dimension.free', [])]

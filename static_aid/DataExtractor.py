@@ -2,29 +2,14 @@
 
 import logging
 from os.path import join, exists, isfile, dirname
-from os import getpid, makedirs, remove, unlink
+from os import getpid, makedirs
 import pickle
 from psutil import pid_exists
 from sys import exit
-from shutil import rmtree
 from time import time
 from json import dump
 
-from static_aid import config
-
-
-def bytesLabel(size):
-    try:
-        size = float(size.encode('ascii', errors='ignore').strip())
-    except:
-        # probably already text-formatted
-        return size
-    suffix = 'B'
-    suffixes = ['PB', 'TB', 'GB', 'MB', 'KB']
-    while size >= 1024 and len(suffixes) > 0:
-        size = size / 1024.0
-        suffix = suffixes.pop()
-    return '%.1f %s' % (size, suffix)
+from static_aid import config, utils
 
 
 class DataExtractor(object):
@@ -37,18 +22,18 @@ class DataExtractor(object):
         self.update = update
 
     def run(self):
-        logging.info('=========================================')
-        logging.info('*** Export started ***')
+        logging.info('\n*** Export started ***')
 
         start_time = int(time())
-        self.remove_data_dir()
+        utils.remove_file_or_dir(config.DATA_DIR)
         self._run()
         self.update_last_export_time(start_time)
 
         logging.info('*** Export completed ***')
-        self.unregister_pid()
+        utils.remove_file_or_dir(config.PID_FILE_PATH)
 
     def _run(self):
+        """Override this method in each extractor subclass."""
         raise Exception('override this method for each DataExtractor subclass')
 
     def is_running(self):
@@ -68,17 +53,6 @@ class DataExtractor(object):
         currentPid = str(getpid())
         with open(config.PID_FILE_PATH, 'w') as pf:
             pf.write(currentPid)
-
-    def unregister_pid(self):
-        """Unlinks the PID file."""
-        unlink(config.PID_FILE_PATH)
-
-    def remove_data_dir(self):
-        """Removes the data directory."""
-        try:
-            rmtree(config.DATA_DIR)
-        except OSError:
-            pass
 
     def make_destinations(self):
         """Creates destination directories for data files."""
@@ -106,11 +80,7 @@ class DataExtractor(object):
     def remove_data_file(self, identifier, destination):
         """If a JSON file exists, deletes it."""
         filename = join(destination, '%s.json' % str(identifier))
-        if isfile(filename):
-            remove(filename)
-            logging.info('%s deleted from %s', identifier, destination)
-        else:
-            pass
+        utils.remove_file_or_dir(filename)
 
     def save_data_file(self, identifier, data, destination_dir):
         """Saves JSON data to a file location"""
