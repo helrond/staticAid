@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z "$TRAVIS_CI" ]
+if [ -z "$TRAVIS" ]
 then
   if [ ! -f /code/build/site/index.html ]; then
     echo "Performing initial build of site"
