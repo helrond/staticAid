@@ -12,7 +12,7 @@ services:
     ports:
       - '4000:4000'
     environment:
-      - TRAVIS_CI=${TRAVIS_CI}
+      - TRAVIS=${TRAVIS}
 
 volumes:
   built_site:

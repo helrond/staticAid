@@ -6,7 +6,7 @@ RUN apt-get -y update && DEBIAN_FRONTEND="noninteractive" apt-get -y install \
     ruby ruby-dev
 
 WORKDIR /code
-COPY requirements.txt Gemfile setup.py .
+COPY requirements.txt Gemfile setup.py ./
 
 RUN pip install -r requirements.txt
 RUN gem install bundler && bundler install
