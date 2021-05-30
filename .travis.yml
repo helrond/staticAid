@@ -1,5 +1,6 @@
 language: python
 sudo: required
+cache: bundler
 services:
   - docker
 env:
