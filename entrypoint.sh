@@ -23,4 +23,7 @@ then
       python3 setup.py install
     fi
   done
+else
+  echo "Running tests"
+  pytest
 fi
