@@ -12,7 +12,7 @@ then
 
   echo "Site available at http://localhost:4000"
 
-  inotifywait -e modify,move,create,delete -m site/ static_aid/ --exclude __pycache__* cassettes -r |
+  inotifywait -e modify,move,create,delete -m site/ static_aid/ --exclude __pycache__* static_aid/tests/cassettes -r |
   while read filename; do
     if [[ "$filename" == site/* ]]; then
       echo "Regenerating..."
