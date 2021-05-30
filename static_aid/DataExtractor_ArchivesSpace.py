@@ -8,14 +8,17 @@ from static_aid.DataExtractor import DataExtractor
 
 class DataExtractor_ArchivesSpace(DataExtractor):
 
-    def _run(self):
-        last_export = self.get_last_export_time()
+    def __init__(self, update=False):
+        super().__init__(update)
         self.aspace = ASpace(
             user=config.archivesSpace['user'],
             password=config.archivesSpace['password'],
             baseurl=config.archivesSpace['baseurl'],
         )
         self.repo = self.aspace.repositories(config.archivesSpace['repository'])
+
+    def _run(self):
+        last_export = self.get_last_export_time()
         self.make_destinations()
         self.get_updated_resources(last_export)
         self.get_updated_objects(last_export)
@@ -68,14 +71,17 @@ class DataExtractor_ArchivesSpace(DataExtractor):
     def get_updated_agents(self, last_export):
         """Fetch and save updated agent data."""
         self.log_fetch_start("agents", last_export)
-        agent_types = ['corporate_entities', 'families', 'people', 'software']
-        for agent_type in agent_types:
+        for agent_type, destination_sfx in [
+                ('corporate_entities', 'organizations'),
+                ('families', 'families'),
+                ('people',  'people'),
+                ('software', 'software')]:
             for agent in getattr(self.aspace.agents, agent_type)(with_params={'all_ids': True, 'modified_since': last_export}):
                 agent_id = agent.uri.split("/")[-1]
                 if agent.publish:
-                    self.save_data_file(agent_id, agent.json(), join(config.destinations['agents'], agent_type))
+                    self.save_data_file(agent_id, agent.json(), config.destinations[destination_sfx])
                 else:
-                    self.remove_data_file(agent_id, join(config.destinations['agents'], agent_type))
+                    self.remove_data_file(agent_id, config.destinations[destination_sfx])
 
     def get_updated_subjects(self, last_export):
         """Fetch and save updated subject data."""

@@ -14,7 +14,7 @@ DESCRIPTION_NOTE_TYPES = ['abstract', 'scopecontent', 'bioghist', 'general']
 
 def create_sitemap(uri_list):
     """Creates a sitemap based on a list of URIs."""
-    with open(config.sitemap, 'w+') as s:
+    with open(config.sitemap, 'w') as s:
         s.write('<?xml version="1.0" encoding="UTF-8" ?>\n')
         s.write("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n")
         for uri in uri_list:

@@ -1,0 +1,320 @@
+interactions:
+- request:
+    body: password=admin&expiring=False
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '29'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - ArchivesSnake/0.1
+    method: POST
+    uri: http://sandbox.archivesspace.org/api/users/admin/login
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA+1WyW7bMBC99zN4VmAtlmzr1n/oKUEg0OTIpSsuICm3RuB/70iiF1mKA/RWwEe+
+        92Y4K8EP4sA5oRUpSVYAbNZpXK/WNSQ0X/E8q7O8huUqzWNaxDxhy4LFGWdJXiR1nm6KjKVJmmTJ
+        ts45iUjrwJLygzSa/aoOYAfPxXJgFJWA91AuhUJxOH7vjsJ5S722CAtXuaPzIKvBm7ctRIRZoB4q
+        L3qbNE6Tlzh/yeIf8bqMs3K5ekXTYCenqmSDkjLPXkOQX2n2TiupOTSVP5pO18cSkZ3VrXGkfHvv
+        Ax1SCSG2VqBw0SndIkEx3YHylQWmLe+qYqHuBD3sFga0aQCFp4gYsFL0fXCdcGHBaCewHgI6V+Ub
+        aQ3v8sfCUo+ys9eIYIyAxAGJbdtQe7xSwca12z0wPzGZ4EE/CvuivkOD9sG1oFoJ9i5aRHYzNw/w
+        /BVMK0+Fwp4Zq2vRwERxKcpEQMNsofEwG4htkZRQhYYyqhh2WUijbSfb6+0VDYdh9EaHS4OONxWy
+        7Kc40GZaOtctmZyrKmuQFLX4pKtwmDMaXT5EHjSuAxSHP9d0JVV0Wtszeo2Mem/FtvXgrvSD0k8U
+        98x8+wfu84YFgeW46iBNQ0fxjBIP2HSWBrxfw+txblAlcNFPKhfejacQV1vxs+8bbtJi1xpjsYYz
+        FL5oytVYmgfUKKPz/jE2vMnTzZwZpPOWfDJIkyW6Z7jYCY+x6fnH4G4CA4oZ69aym8YdBPwOQ9bf
+        detq4JrmZkh7aJR8j5yrCZzgAxsKh2dDGXSv4HOfn/v83Of/cp+j5xfmH74w76fT6dtfWCuIMaUL
+        AAA=
+    headers:
+      Cache-Control:
+      - private, must-revalidate, max-age=0
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 30 May 2021 19:47:53 GMT
+      Server:
+      - nginx/1.13.12
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - ArchivesSnake/0.1
+    method: GET
+    uri: http://sandbox.archivesspace.org/api/version
+  response:
+    body:
+      string: ArchivesSpace (v3.0.0)
+    headers:
+      Cache-Control:
+      - private, must-revalidate, max-age=0
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '22'
+      Content-Type:
+      - text/html;charset=UTF-8
+      Date:
+      - Sun, 30 May 2021 19:47:53 GMT
+      Server:
+      - nginx/1.13.12
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - ArchivesSnake/0.1
+    method: GET
+    uri: http://sandbox.archivesspace.org/api/repositories/2
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4VSTW+DMAy971egnDaJqUA/1vIPdu9p6xSl4DJvgaDYVEJV//ucEqFqh+307Odn
+        y3nORVlXfeszeELXqTJLlYfe6crVoEpF9VGlqjNtTBIGYmGcb2aJsQklFXTspdAbL5HGjhh5YJmp
+        Y/dUEUnlwTDU+jgKa+oWOyGtIdatq/GEv0uTXjPexhRZkT9n6+dlts9XZb4p19mbiGgkhla3f6sG
+        Av+fph+OFulTlewHSFUNVHns+eaOCs9P7imxwqBG0jWSOVqoVXkylmDiCZi0ORu0oSb97we13W4P
+        Kg24m3CXRcwjFhGXEVcR1xE3EV8iyryPYIEdmvlkslHItRnYzStVbpArBW9f96L5IteJ5WA1j33Y
+        LlyekJ1IxCuPQi1mDoEWhfDy0N6aURN77Jq7b5E8SvQkCtOELyCNHkgiM3l3kfGnMPFWpkXlfO98
+        uKykyGF8rq7Xhx998KuNkgIAAA==
+    headers:
+      Cache-Control:
+      - private, must-revalidate, max-age=0
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 30 May 2021 19:47:53 GMT
+      Server:
+      - nginx/1.13.12
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - ArchivesSnake/0.1
+    method: GET
+    uri: http://sandbox.archivesspace.org/api/agents/corporate_entities?page=1&page_size=100&with_params=all_ids&with_params=modified_since
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA+1VzW7bMAy+7ykCndMl7tYdfNpD7LQhEBSJSdTKoiFRXb0i7z5KtjM7adprC+yS
+        SPwRyY8f6WexsyGSbNUeRF0thVPTGx1snNyQlCunADE5iqL+9Swc6gf5CCFa9KJeL0Wbts7Gg6h3
+        ykVYCh1AERi57UQtlGmsF0OcBo3d2XNVby/JNhxW3K5vq5v13c2X9Y/qa119q+/WP9kodpGgkc3r
+        VilCeMuGK4wu7aVKhKec7yN6zg6cpK7NzoyBJ6kxtBhydnyz1LH7qPCk9DVEvCoJ5L9FTKFc2dMY
+        xjHKqtRezosq158frkXAYgWNsgy6IIj0Pf98JhLvHtSr+BWY2IDAQXtADxmyDUOE1B+PmxHTAAy3
+        KT4B3WDXq5QjYBi5oAg007D1Y+4N+igNaKe4W/kytUE6cAX5rDt2MDDTMt6ewCuvQTL9CYOdGwx5
+        WZPjMNJhpr0ijpiCnr/TOnUmQa1Te5nvLnl9ISRsrT7LaxbEWf/ALBh06EY5PBXsnDSoU8PK8w6U
+        Dhv52/L0e361xWinKEy1w6yz4NLOcH+ixJ2EJ4aRwYaJv1N+nzi3MTiPxLV1EmyjQieHIYpmu8hj
+        kOmKgV4Tl5GWXD/kkRU1hfT+1xHnfGAQ/4AZE+YFZWxktowY9OL7FGw0tjDj365Fv4OQsZYNAFm/
+        P6l6cnBgRpjX+AszWjB7YcVx2rI0s+9VyzPlHLuNTSszG8AVWAvfRqYEy8+uetHq7GXmyao6LdC3
+        1iyDMBCaWzplXZ7FU41znP6T6UOSiT8OltysD8fN8dNfWltL0KsIAAA=
+    headers:
+      Cache-Control:
+      - private, must-revalidate, max-age=0
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 30 May 2021 19:47:53 GMT
+      Server:
+      - nginx/1.13.12
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - ArchivesSnake/0.1
+    method: GET
+    uri: http://sandbox.archivesspace.org/api/agents/families?page=1&page_size=100&with_params=all_ids&with_params=modified_since
+  response:
+    body:
+      string: '{"first_page":1,"last_page":1,"this_page":1,"total":0,"results":[]}
+
+        '
+    headers:
+      Cache-Control:
+      - private, must-revalidate, max-age=0
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '68'
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 30 May 2021 19:47:53 GMT
+      Server:
+      - nginx/1.13.12
+      X-Content-Type-Options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - ArchivesSnake/0.1
+    method: GET
+    uri: http://sandbox.archivesspace.org/api/agents/people?page=1&page_size=100&with_params=all_ids&with_params=modified_since
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA+1VTW/bMAy972fonCJO22GDb/sPO20IBE1iEq20aOija1rkv+/ZsQ07TdfbdtnF
+        tkiKenx8lF/UzseUdWv2pOrNSrGZr/LBp9lKsuH+K1IqnJOqv78oFvugHykmL0HV1Uq15Qf7dFD1
+        znCilbKRTCadfYM06ra63dxUH2/uqq/V57q6q+8/fVMrlY4pU6ObP0eVRPG9GCBOXPbalCyqzrEA
+        ws8koRFHrPOx7faipIA6gRqgV8PSSsjG9mVtR1skK9H1rii8cBnOFENXWqLlJkQ/4g1CknZk2UTT
+        L+Yxkg+opfu2R2xwtPA2xodMwQRLGj3IEj1dw+Vdd87Oo5C59w1zkhLtMk/L5sIi1pb2Nd5dCfaV
+        MUvr7QWuxSHswwM5PfiERzs99dyxdmJLA+dgD5LHEPTa6V8eEgzI2kryEwtqPTesN+oifFAgDBcb
+        EefQsKRlp+kJvIJ9mh3HJuwLwI5oTENviTz6xsSj7kKgpy+u8QH50GiJnZwl5nd9vUQ1qCG4aNTq
+        Xx4XYDiAnmdyIwAMkPMJwhirO5vPfUUicIFrAJdA6ds5rfuSIEqKMDoPhWZ1ZfT6sGnyAFH3LTkz
+        3mJUmBE8Ur89TdLCw02CjsTYNShrVEz0yL8+m9YtScsEcUxivTr6qHYQKXoxF043X9MdtiTkvx7+
+        oR7wH/KZrxEJoF2FXY87jzptTx9+AxwRGpfhBgAA
+    headers:
+      Cache-Control:
+      - private, must-revalidate, max-age=0
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 30 May 2021 19:47:54 GMT
+      Server:
+      - nginx/1.13.12
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - ArchivesSnake/0.1
+    method: GET
+    uri: http://sandbox.archivesspace.org/api/agents/software?page=1&page_size=100&with_params=all_ids&with_params=modified_since
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA+1VwW7bMAy97ysGndPGabZh8G3f0J42BIIm0bFWWTREKm1W5N9HO3Zg18122y47
+        xSIfZfK9R+dFVT4R69bsQZWblQpmeuLa0+SEbEL/lIByYFLltxcV0D7qAyTyGFVZrFSbvwdPtSor
+        EwhWyiYwDJp9I9eou+Juc1N8vNkWD8XnstiWHz59VStFR2JodPN7VCZIf8JIxxTyXpvMqEpOWVr4
+        QRgbdBA0H9uuVkaKrAkrfjIJpOocsBjZ2H6w3RhLYDG5PpUwzFImMKTYDUcwLxL0QX6FEtIObDDJ
+        9IcpBrmWabpne5QCB7NsY3xkiCZa0KICY/LwVl/ede+pvAgwzV4JE+Zk5/e0wbyKoLW5XfZb5WgX
+        QcbW21d9zV4SfHwEp4cchjEOzz13QTu0uZHkEI/II0TUdvrJiwmj3Noi+SkL0+xgOQkscU70IY2V
+        hmehUciGSX0wcZ+lt/HlpoErrh69ojuMOOhLsrU/AN23Qp8Y6IJVh+1tcVt0nsbEb8LfLyG9XbWQ
+        BOIUGH37l1dHeqiFuZ/gxgZkmZwnschxGOQcPissFwlN8kmQD0Luhb2cFwvXzzjZN2lH98qciW9l
+        QUIQ+KjA7tRJlLyUrnvv0HqsXm8u+3ptm6XtwXdC6tQc3cpcPkzzyf5r/u81l/8Yz+Eqd6fd6d0v
+        /rTqj7IGAAA=
+    headers:
+      Cache-Control:
+      - private, must-revalidate, max-age=0
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 30 May 2021 19:47:54 GMT
+      Server:
+      - nginx/1.13.12
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+version: 1

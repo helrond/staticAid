@@ -27,7 +27,7 @@ class DataExtractor(object):
         start_time = int(time())
         utils.remove_file_or_dir(config.DATA_DIR)
         self._run()
-        self.update_last_export_time(start_time)
+        self.set_last_export_time(start_time)
 
         logging.info('*** Export completed ***')
         utils.remove_file_or_dir(config.PID_FILE_PATH)
@@ -42,8 +42,8 @@ class DataExtractor(object):
             pidfile = open(config.PID_FILE_PATH, "r")
             for line in pidfile:
                 pid = int(line.strip())
-            if pid_exists(pid):
-                return True
+                if pid_exists(pid):
+                    return True
         return False
 
     def register_pid(self):
@@ -71,7 +71,7 @@ class DataExtractor(object):
                 pass
         return 0
 
-    def update_last_export_time(self, start_time):
+    def set_last_export_time(self, start_time):
         """Store the current time in Unix epoch time, for example 1439563523."""
         with open(config.lastExportFilepath, 'wb') as pickle_handle:
             pickle.dump(start_time, pickle_handle)

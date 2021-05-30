@@ -3,7 +3,7 @@
 dataSource: archivesspace
 
 [ArchivesSpace]
-baseurl: http://as.dev.rockarch.org:8089
+baseurl: http://sandbox.archivesspace.org/api
 repository: 2
 user: admin
 password: admin
@@ -23,7 +23,6 @@ peopleFilter:
 institutionsFilter:
 
 [Destinations]
-agents: agents
 breadcrumbs: breadcrumbs
 collections: collections
 families: agents/families

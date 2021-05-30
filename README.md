@@ -27,16 +27,18 @@ The site will build, and the staticAid interface built using sample data will th
 
 staticAid comes with bash scripts which will build the site in three different ways. In the Docker container in this repository, those scripts are installed in /usr/local/bin. If staticAid is deployed differently, you will need to find a way to make these scripts executable on the system.
 
-You have three options for building the HTML site using Jekyll. In all cases, Jekyll will place the generated site in `build/site/`.
+staticAid can produce either full HTML pages, or HTML snippets (page content without enclosing `html` or `body` tags) which can be embedded in existing pages. To generate embedded content, use the `*-embedded` version of the commands below.
+
+There are three options for building the HTML site using Jekyll. In all cases, Jekyll will place the generated site in `build/site/`.
 
 #### Build without updating data
 
-Running `static-aid-build` will build the site based on the data currently in the
+Running `static-aid-build` or `static-aid-build-embedded` will build the site based on the data currently in the
 `build/data` directory.
 
 #### Update data then build site
 
-Running `static-aid-update` will fetch JSON for resource records, resource record
+Running `static-aid-update` or `static-aid-update-embedded` will fetch JSON for resource records, resource record
 trees and archival objects from ArchivesSpace using `static_aid/get_json.py` and
 save it in your `build/data` directory, then will build the site based on that data.
 
@@ -46,7 +48,7 @@ and components. Be patient!
 
 #### Clean Build
 
-Running `static-aid-rebuild` will wipe out the existing data, fetch new data, and
+Running `static-aid-rebuild` or `static-aid-rebuild-embedded` will wipe out the existing data, fetch new data, and
 build the site from scratch.
 
 **WARNING**: Depending on the amount of data in of your ArchivesSpace instance,
@@ -70,20 +72,6 @@ Variables used in the JSON-LD objects (as well as a few others in building your 
 are stored in `local_settings.cfg`. If you don't want JSON-LD generated, you can
 leave those variables undefined. The JSON-LD will be broken, but it will not affect
 the display of the web pages.
-
-### Auto Generating StaticAid Content via Cron Job
-
-If you would like to auto-generate StaticAid content using a cron job (on OSX/Linux systems), you can
-link one of the rebuild scripts to an appropriate cron job folder. To auto-generate full-page
-content every day, you could do this:
-
-    sudo ln -s scripts/static-aid-rebuild /etc/cron.daily/
-
-or to auto-generate embedded content every week, you could do this:
-
-    sudo ln -s scripts/static-aid-rebuild-embedded /etc/cron.weekly/
-
-**NOTE:** it is important to softlink (`ln -s src dest`) instead of copying (`cp src dest`).
 
 ## Contributing
 
