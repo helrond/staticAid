@@ -8,7 +8,15 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div id="results" class="results col-md-8 offset-2" style="display:none;"></div>
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="searchResults" aria-labelledby="searchResultsLabel">
+          <div class="offcanvas-header">
+            <h5 id="searchResultsLabel">Search Results</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            foobar
+          </div>
+        </div>
       </div>
 
       {{ content }}
