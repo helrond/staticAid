@@ -5,48 +5,44 @@ layout: default
 {% assign object = site.data.objects[object_id] %}
 {% assign breadcrumbs = site.data.breadcrumbs[object_id] %}
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-8 offset-2 object">
 
   {% include breadcrumb.html %}
 
-  <h1 itemprop="name" class="collection title">
-    {{ object.title }}
-    <small>
-      {{object.dates[0].expression}}
-    </small>
-    <span class="badge">
+  <h1 itemprop="name" class="collection title">{{ object.title }} <small>{{object.dates[0].expression}}</small>
+    <span class="badge bg-secondary">
       {{object.level}}
     </span>
   </h1>
 
-  {% for instance in object.instances %}
+  {%- for instance in object.instances %}
     <h2>{% include instance.html %}</h2>
-  {% endfor %}
+  {% endfor -%}
 
-  <div class="object extents">
+  <div class="object__extents">
     {% for extent in object.extents %}
       {% include extent.html %}
     {% endfor %}
   </div>
 
-  <div class="object agents">
+  <div class="object__agents">
     {% assign agents = object.linked_agents %}
     {% include agent-list.html %}
   </div>
 
-  <div class="object subjects">
+  <div class="object__subjects">
     {% assign subjects = object.subjects %}
     {% include subjects.html %}
   </div>
 
-  <div class="object notes">
+  <div class="object__notes">
     {% for note in object.notes %}
       {% include note.html %}
     {% endfor %}
   </div>
 
   {% if object.resource.ref %}
-    <div class="object resource">
+    <div class="object__resource">
       {% assign resource_ref = object.resource.ref %}
       {% include resource-link.html %}
     </div>

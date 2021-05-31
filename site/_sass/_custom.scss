@@ -1,16 +1,8 @@
-.home-panel {
-  min-height: 21em;
-}
-
-.collection-button {
-  margin-top: 1em;
-}
-
-.contents .group-title-top {
+.group__title--toptitle-top {
   font-size: 2rem;
 }
 
-.contents .group-title-intermediate {
+.group__title--intermediate {
   font-size: 1.7rem;
 }
 
@@ -18,12 +10,10 @@
   padding-left: .5em;
 }
 
-.label {
-  line-height: 2.3;
+.full-height {
+  height: 100%;
 }
 
-#results .close {
-  margin: -1em;
-  font-size: 5rem;
-  font-weight: normal;
+.hover-border:hover {
+  border: 1px solid #0a58ca;
 }

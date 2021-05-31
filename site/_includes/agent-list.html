@@ -1,7 +1,6 @@
 <ul class="list-unstyled">
   {% for agent in agents %}
   {% if agent.ref %}
-      <!-- there is an external .json file to read agent_detail from -->
       {% if agent.ref contains "corporate_entities" %}
         {% assign type = "organizations" %}
         {% capture id %}{{agent.ref | replace: '/agents/corporate_entities/', '' }}{% endcapture %}
@@ -20,19 +19,18 @@
         {% assign agent_detail = site.data.agents.software[id] %}
       {% endif %}
   {% else %}
-    <!-- no external .json file - just use agent as agent_detail -->
     {% assign agent_detail = agent %}
     {% assign type = false %}
     {% assign id = false %}
   {% endif %}
   {% if agent_detail %}
-    <li class="{{ type }} agent">
+    <li class="agent agent--{{ type }}">
         {% if type and id %}
             <a href="{{ site.url }}{{ site.baseurl }}/{{ type }}/{{ id }}">{{agent_detail.title}}</a>
         {% else %}
             {{agent_detail.title}}
         {% endif %}
-        <span class="badge">{{agent.role}}</span>
+        <span class="badge bg-secondary">{{agent.role}}</span>
     </li>
     {% endif %}
 {% endfor %}

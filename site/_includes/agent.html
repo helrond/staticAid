@@ -1,20 +1,20 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-8 offset-2">
 
   {% include breadcrumb.html %}
 
-  <h1 class="organization title">
+  <h1 class="agent__title">
     {{ agent.title }} <span class="badge">{{agent.display_name.rules}}</span> <span class="badge">{{agent.display_name.source}}</span>
     <small>
       {% include dates-of-existence.html %}
     </small>
   </h1>
 
-  <div class="organization names">
+  <div class="agent__names">
     {% assign variant_names = agent.names %}
     {% include variant-names.html %}
   </div>
 
-  <div class="organization agents">
+  <div class="agent__related-agents">
     {% if agent.related_agents[0] %}
       <h3>Related Agents</h3>
       {% for related_agent in agent.related_agents %}
@@ -23,16 +23,15 @@
     {% endif %}
   </div>
 
-  <div class="organization notes">
+  <div class="agent__notes">
     {% for note in agent.notes %}
       {% include note.html %}
     {% endfor %}
   </div>
 
   {% if agent.is_linked_to_published_record %}
-    <div class="organization links">
+    <div class="agent__links">
       {% include related-resources.html %}
-      <!-- RESOURCES IN WHICH ORGANIZATION CAN BE FOUND -->
     </div>
   {% endif %}
 

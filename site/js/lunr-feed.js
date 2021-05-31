@@ -24,7 +24,7 @@ $(document).ready(function() {
     var query = $('#query').val();
     var result = index.search(query);
     results.empty();
-    results.prepend('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><p>Found '+result.length+' result(s) for "'+query+'"</p>');
+    results.prepend('<button type="button" class="btn-close close" aria-label="Close"></button><p>Found '+result.length+' result(s) for "'+query+'"</p>');
     result.forEach(function(result) {
       search_data.then(function(data) {
         var item = data[result.ref];
@@ -34,7 +34,7 @@ $(document).ready(function() {
     results.slideDown().fadeIn(200);
     // results.parent('.row').next('div').hide();
   });
-  $('#results').on('click', 'button.close', function(){
+  $('#results').on('click', 'button.btn-close', function(){
     $('#results').slideUp().fadeOut(200);
     $('#query').val('');
   });

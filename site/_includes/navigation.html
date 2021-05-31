@@ -1,43 +1,36 @@
 {% assign current = page.url | split: '/' %}
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">staticAid</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li{% if current[1] == 'collections' %} class='active'{% endif %}><a href="{{ site.url }}{{ site.baseurl }}/collections/">collections</a></li>
-        <li{% if current[1] == 'organizations' %} class='active'{% endif %}><a href="{{ site.url }}{{ site.baseurl }}/organizations/">organizations</a></li>
-        <li{% if current[1] == 'people' %} class='active'{% endif %}><a href="{{ site.url }}{{ site.baseurl }}/people/">people</a></li>
-        <li{% if current[1] == 'families' %} class='active'{% endif %}><a href="{{ site.url }}{{ site.baseurl }}/families/">families</a></li>
-        <li{% if current[1] == 'software' %} class='active'{% endif %}><a href="{{ site.url }}{{ site.baseurl }}/software/">software</a></li>
-        <li{% if current[1] == 'about' %} class='active'{% endif %}><a href="{{ site.url }}{{ site.baseurl }}/about/">about</a></li>
+    <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">staticAid</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link{% if current[1] == 'collections' %} active{% endif %}" href="/collections">collections</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if current[1] == 'organizations' %} active{% endif %}" href="/organizations">organizations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if current[1] == 'people' %} active{% endif %}" href="/people">people</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if current[1] == 'families' %} active{% endif %}" href="/families">families</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if current[1] == 'software' %} active{% endif %}" href="/software">software</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if current[1] == 'about' %} active{% endif %}" href="/about">about</a>
+        </li>
       </ul>
-
-      <!-- <form action="get" id="search" class="search navbar-nav navbar-left">
-        <div class="form-group">
-          <input type="text" id="query" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form> -->
-
-      <form action="get" id="search" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input id="query" type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+        <form action="get" id="search" class="d-flex" role="search">
+          <input id="query" type="text" class="form-control me-2" placeholder="Search">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
 </nav>
