@@ -1,0 +1,246 @@
+{
+    "classifications": [],
+    "create_time": "2021-06-04T19:56:45Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1996",
+            "create_time": "2021-06-04T19:56:45Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1998",
+            "expression": "1996-1998",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:56:45Z",
+            "user_mtime": "2021-06-04T19:56:45Z"
+        }
+    ],
+    "deaccessions": [],
+    "ead_id": "FA1201.xml",
+    "extents": [
+        {
+            "container_summary": "About 2 LTR size Hollinger boxes",
+            "create_time": "2021-06-04T19:56:45Z",
+            "created_by": "admin",
+            "extent_type": "Cubic Feet",
+            "jsonmodel_type": "extent",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "number": ".76",
+            "portion": "whole",
+            "system_mtime": "2021-06-04T19:56:45Z",
+            "user_mtime": "2021-06-04T19:56:45Z"
+        }
+    ],
+    "external_documents": [],
+    "external_ids": [],
+    "finding_aid_filing_title": "Ford Foundation records, Staff Subject Files, Linda Fingerson",
+    "finding_aid_language": "und",
+    "finding_aid_script": "Zyyy",
+    "finding_aid_title": "A Guide to the Ford Foundation records, Staff Subject Files, Linda Fingerson <num>FA1201</num>",
+    "id_0": "FA1201",
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "resource",
+    "lang_materials": [
+        {
+            "create_time": "2021-06-04T19:56:45Z",
+            "created_by": "admin",
+            "jsonmodel_type": "lang_material",
+            "language_and_script": {
+                "create_time": "2021-06-04T19:56:45Z",
+                "created_by": "admin",
+                "jsonmodel_type": "language_and_script",
+                "language": "eng",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:56:45Z",
+                "user_mtime": "2021-06-04T19:56:45Z"
+            },
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "notes": [],
+            "system_mtime": "2021-06-04T19:56:45Z",
+            "user_mtime": "2021-06-04T19:56:45Z"
+        },
+        {
+            "create_time": "2021-06-04T19:56:45Z",
+            "created_by": "admin",
+            "jsonmodel_type": "lang_material",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "notes": [
+                {
+                    "content": [
+                        "English ."
+                    ],
+                    "jsonmodel_type": "note_langmaterial",
+                    "persistent_id": "090d14b0550016193481b070135cd28f",
+                    "publish": true,
+                    "type": "langmaterial"
+                }
+            ],
+            "system_mtime": "2021-06-04T19:56:45Z",
+            "user_mtime": "2021-06-04T19:56:45Z"
+        }
+    ],
+    "last_modified_by": "admin",
+    "level": "collection",
+    "linked_agents": [
+        {
+            "ref": "/agents/people/5",
+            "relator": "aut",
+            "role": "creator",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/23",
+            "relator": "aut",
+            "role": "creator",
+            "terms": []
+        }
+    ],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Conditions Governing Access",
+            "persistent_id": "16785ed0dd9fc206f229b98e7ee39638",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Open for research. Brittle or damaged items are available at the discretion of RAC.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "accessrestrict"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Conditions Governing Use",
+            "persistent_id": "72ac7c38aef2bb7c360827a5fb5d7d36",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Reproduction/duplication of archival items is routinely provided in accordance with \"fair use\". If the RAC does not hold copyright for an archival collection, or items within a collection, it is the users responsibility to contact the copyright holder, or make a fair effort to do so, prior to publication.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "userestrict"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Arrangement",
+            "persistent_id": "bd8edc4bc63f1199ce817e1f673b2f87",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Collection consists of one series.\n\n Original order was maintained during processing.\n\n The collection arrangement is as follows:\n\n Series 1. Education, Media, Arts, and Culture (EMAC) program administration files, 1996-1998",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "arrangement"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Immediate Source of Acquisition",
+            "persistent_id": "4d7a5d01d2a1f614159d41d8dffdee31",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Ford Foundation archive was deposited at the RAC in 2011. Ford Foundation records, correspondence, reports, program files and officers papers were transferred to, and accessioned by the RAC beginning in 2011. Accessions continue as necesary.\n\n This material was transferred to the RAC in 2018 by the Ford Foundation and was ingested by the RAC as Accession 2018:065.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "acqinfo"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Other Finding Aids",
+            "persistent_id": "db7b71071c683d42984e5229a2975d54",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Finding aids for collections related to Linda Fingerson's program administration work include:\n\n<extref xlink:href=\"../FA1447/overview\">FA1447 Ford Foundation records, Staff Subject Files, Jon Funabiki</extref>\n\n<extref xlink:href=\"../FA540/overview\">FA540 Ford Foundation records, Education, Media, Arts, and Culture (EMAC), Media, Arts, and Culture (MAC), Office Files of John P. Santos</extref>",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "otherfindaid"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Biographical / Historical",
+            "persistent_id": "bad7abe3eb7a5efbfb0c0b2c7f972487",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Linda Fingerson supported the Ford Foundation's grant administration activities for nearly twenty years. Her Ford career began in 1990 when she worked as an Administrative Assistant in the Program Division. She was promoted to a Senior Administrative Assistant in 2000 and then promoted again in 2003 to become a Grants Administrator. She stayed in that position for six years until she departed the foundation in 2009.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "bioghist"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Scope and Contents",
+            "persistent_id": "a8b5ac9436e7569e81801e0548e37466",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Collections holds the subject files of Ford Foundation staff member Linda Fingerson. The records were created during Fingerson's time as an Administrative Assistant in the Program Division.\n\n The collection consists of only one series. This series contains a group of subject files that Fingerson created to document her work supporting the administration of the Ford Foundation's Education, Media, Arts, and Culture Program (EMAC) and its Media, Arts, and Culture Unit (MAC) between 1996 and 1998.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "scopecontent"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Biographical / Historical",
+            "persistent_id": "3abaa10e9e8f1599ca8c27f8a14b0d03",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "The Ford Foundation was chartered by Henry and Edsel Ford in 1936 \"to receive and administer funds for scientific, educational and charitable purposes, all for the public welfare\", and initially served the Ford family's charitable interests in the Detroit area. Following the deaths of Edsel Ford (1943) and Henry Ford (1947), the Foundation was propelled to the forefront of philanthropy as the largest American foundation in terms of both endowment and yearly expenditures, and with an international scope to its major program areas.\n\nDuring the Foundation's first twenty years its major programs were in international economic development, primary and higher education, educational and public broadcasting, behavioral sciences, civil liberties, urban development, fine arts and the humanities. The Ford Foundation also partnered with the Rockefeller Foundation in supporting agricultural development in South America, Africa, and Southeast Asia. Since the 1970s, the Foundation has also pioneered programs in women's rights, energy policy, micro-financing in under-developed countries, establishing human rights groups, and improving international HIV/AIDS education.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "bioghist"
+        }
+    ],
+    "publish": true,
+    "related_accessions": [],
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "restrictions": false,
+    "revision_statements": [],
+    "rights_statements": [],
+    "subjects": [
+        {
+            "ref": "/subjects/36"
+        },
+        {
+            "ref": "/subjects/37"
+        }
+    ],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T20:29:03Z",
+    "title": "Ford Foundation records, Staff Subject Files, Linda Fingerson",
+    "tree": {
+        "ref": "/repositories/2/resources/3/tree"
+    },
+    "uri": "/repositories/2/resources/3",
+    "user_mtime": "2021-06-04T19:56:45Z"
+}

@@ -1,0 +1,74 @@
+{
+    "ancestors": [
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:19Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "School memorabilia, oversize",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:19Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:19Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:19Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/11"
+                },
+                "user_mtime": "2021-06-04T19:44:19Z"
+            },
+            "system_mtime": "2021-06-04T19:44:19Z",
+            "user_mtime": "2021-06-04T19:44:19Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/2"
+    },
+    "position": 10,
+    "publish": true,
+    "ref_id": "abb81784e2cb882f426dc5c7b0278f35",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:19Z",
+    "title": "School memorabilia, oversize",
+    "uri": "/repositories/2/archival_objects/25",
+    "user_mtime": "2021-06-04T19:44:19Z"
+}

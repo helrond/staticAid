@@ -1,0 +1,80 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/95"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/35"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/3"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:32Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Auburn International Peace Petition",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:33Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:33Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:33Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/21"
+                },
+                "user_mtime": "2021-06-04T19:44:33Z"
+            },
+            "system_mtime": "2021-06-04T19:44:33Z",
+            "user_mtime": "2021-06-04T19:44:33Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/95"
+    },
+    "position": 2,
+    "publish": true,
+    "ref_id": "e2f13d1459eb567d2124c355be23133b",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:32Z",
+    "title": "Auburn International Peace Petition",
+    "uri": "/repositories/2/archival_objects/186",
+    "user_mtime": "2021-06-04T19:44:32Z"
+}

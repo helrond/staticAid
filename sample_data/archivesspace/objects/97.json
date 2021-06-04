@@ -1,0 +1,77 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/35"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/3"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:24Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Chautauqua County Rural Ministry",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:24Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:24Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:24Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/22"
+                },
+                "user_mtime": "2021-06-04T19:44:24Z"
+            },
+            "system_mtime": "2021-06-04T19:44:24Z",
+            "user_mtime": "2021-06-04T19:44:24Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/35"
+    },
+    "position": 5,
+    "publish": true,
+    "ref_id": "0b101d130ac236f45f984853d03d668c",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:24Z",
+    "title": "Chautauqua County Rural Ministry",
+    "uri": "/repositories/2/archival_objects/97",
+    "user_mtime": "2021-06-04T19:44:24Z"
+}

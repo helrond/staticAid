@@ -1,0 +1,91 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/21"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:23Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1981",
+            "create_time": "2021-06-04T19:44:23Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "expression": "1981",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:23Z",
+            "user_mtime": "2021-06-04T19:44:23Z"
+        }
+    ],
+    "display_string": "New York State Migrant Education Program, 1981",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:23Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:23Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:23Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/8"
+                },
+                "user_mtime": "2021-06-04T19:44:23Z"
+            },
+            "system_mtime": "2021-06-04T19:44:23Z",
+            "user_mtime": "2021-06-04T19:44:23Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/21"
+    },
+    "position": 11,
+    "publish": true,
+    "ref_id": "b7cf99841337405804a9a695b0fecb59",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:23Z",
+    "title": "New York State Migrant Education Program",
+    "uri": "/repositories/2/archival_objects/75",
+    "user_mtime": "2021-06-04T19:44:23Z"
+}

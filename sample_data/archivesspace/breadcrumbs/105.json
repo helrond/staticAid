@@ -1,0 +1,28 @@
+{
+    "105": [
+        {
+            "jsonmodel_type": "resource",
+            "node": null,
+            "offset": 0,
+            "parsed_title": "Prudence Wayland-Smith Papers",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Prudence Wayland-Smith Papers"
+        },
+        {
+            "jsonmodel_type": "archival_object",
+            "node": "/repositories/2/archival_objects/3",
+            "offset": 0,
+            "parsed_title": "Prison reform",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Prison reform"
+        },
+        {
+            "jsonmodel_type": "archival_object",
+            "node": "/repositories/2/archival_objects/35",
+            "offset": 0,
+            "parsed_title": "Organizations",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Organizations"
+        }
+    ]
+}

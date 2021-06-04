@@ -1,0 +1,111 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/139"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/64"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/21"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:46:49Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1968",
+            "create_time": "2021-06-04T19:46:49Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "expression": "1968",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:46:49Z",
+            "user_mtime": "2021-06-04T19:46:49Z"
+        }
+    ],
+    "display_string": "Migrant teachers idea booklet, 1968",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:46:49Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:46:49Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:46:49Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/5"
+                },
+                "user_mtime": "2021-06-04T19:46:49Z"
+            },
+            "system_mtime": "2021-06-04T19:46:49Z",
+            "user_mtime": "2021-06-04T19:46:49Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "dcbc45f9d633229030672f4cca42f540",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Permission of James Garofalo required to quote or use any part of this booklet.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "userestrict"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/139"
+    },
+    "position": 1,
+    "publish": true,
+    "ref_id": "e32618be43170e2f49926ffaa76031ab",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:46:49Z",
+    "title": "Migrant teachers idea booklet",
+    "uri": "/repositories/2/archival_objects/203",
+    "user_mtime": "2021-06-04T19:46:49Z"
+}

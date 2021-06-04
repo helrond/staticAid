@@ -1,0 +1,74 @@
+{
+    "ancestors": [
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/3"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:20Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Printed material",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:20Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:20Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:20Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/24"
+                },
+                "user_mtime": "2021-06-04T19:44:20Z"
+            },
+            "system_mtime": "2021-06-04T19:44:20Z",
+            "user_mtime": "2021-06-04T19:44:20Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/3"
+    },
+    "position": 5,
+    "publish": true,
+    "ref_id": "249e58b25e6306a860f434dd3db81d63",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:20Z",
+    "title": "Printed material",
+    "uri": "/repositories/2/archival_objects/36",
+    "user_mtime": "2021-06-04T19:44:20Z"
+}

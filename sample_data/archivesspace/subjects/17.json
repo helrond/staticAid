@@ -1,1 +1,37 @@
-{"lock_version": 11, "system_mtime": "2016-02-12T19:18:57Z", "terms": [{"lock_version": 0, "system_mtime": "2014-12-06T02:29:44Z", "term": "Statistical physics", "vocabulary": "/vocabularies/1", "jsonmodel_type": "term", "user_mtime": "2014-12-06T02:29:44Z", "uri": "/terms/18", "last_modified_by": "admin", "create_time": "2014-12-06T02:29:44Z", "created_by": "admin", "term_type": "topical"}], "vocabulary": "/vocabularies/1", "jsonmodel_type": "subject", "title": "Statistical physics", "external_documents": [], "user_mtime": "2014-12-06T02:29:44Z", "uri": "/subjects/17", "last_modified_by": "admin", "source": "lcsh", "create_time": "2014-12-06T02:29:44Z", "created_by": "admin", "is_linked_to_published_record": true, "external_ids": [{"system_mtime": "2014-12-06T02:29:44Z", "jsonmodel_type": "external_id", "user_mtime": "2014-12-06T02:29:44Z", "last_modified_by": "admin", "source": "Archivists Toolkit Database::SUBJECT", "create_time": "2014-12-06T02:29:44Z", "created_by": "admin", "external_id": "21"}], "publish": true}
+{
+    "create_time": "2021-06-04T19:44:12Z",
+    "created_by": "admin",
+    "external_documents": [],
+    "external_ids": [],
+    "is_linked_to_published_record": false,
+    "is_slug_auto": true,
+    "jsonmodel_type": "subject",
+    "last_modified_by": "admin",
+    "lock_version": 1,
+    "publish": true,
+    "source": "lcsh",
+    "system_mtime": "2021-06-04T19:44:14Z",
+    "terms": [
+        {
+            "create_time": "2021-06-04T19:44:12Z",
+            "created_by": "admin",
+            "jsonmodel_type": "term",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:12Z",
+            "term": "Migrant agricultural laborers -- United States -- 1960-1970.",
+            "term_type": "topical",
+            "uri": "/terms/17",
+            "user_mtime": "2021-06-04T19:44:12Z",
+            "vocabulary": "/vocabularies/1"
+        }
+    ],
+    "title": "Migrant agricultural laborers -- United States -- 1960-1970.",
+    "uri": "/subjects/17",
+    "used_within_published_repositories": [],
+    "used_within_repositories": [
+        "/repositories/2"
+    ],
+    "user_mtime": "2021-06-04T19:44:12Z",
+    "vocabulary": "/vocabularies/1"
+}

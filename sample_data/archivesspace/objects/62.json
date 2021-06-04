@@ -1,0 +1,67 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/16"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:21Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "<emph render=\"italic\">Migratory Labor Notes</emph> by the President's Committee on Migratory Labor",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "435ed52b83559968fb3de56d804da12c",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Transferred to Rare Books for cataloging",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "odd"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/16"
+    },
+    "position": 2,
+    "publish": true,
+    "ref_id": "014d18b059fb757cb95fce9997b08f74",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:21Z",
+    "title": "<emph render=\"italic\">Migratory Labor Notes</emph> by the President's Committee on Migratory Labor",
+    "uri": "/repositories/2/archival_objects/62",
+    "user_mtime": "2021-06-04T19:44:21Z"
+}

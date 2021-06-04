@@ -1,0 +1,100 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/33"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/3"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:24Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Sims, Bill",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:24Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:24Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:24Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/20"
+                },
+                "user_mtime": "2021-06-04T19:44:24Z"
+            },
+            "system_mtime": "2021-06-04T19:44:24Z",
+            "user_mtime": "2021-06-04T19:44:24Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "content": [
+                "Auburn Correctional Facility"
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "6b86b890fe03513dfb4c937602fda0c2",
+            "publish": true,
+            "type": "abstract"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "17cc4022901401395f3aad193f146632",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "See also <ref target=\"apf\">Prison Reform: Organizations: Auburn Prison Friends</ref>",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "odd"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/33"
+    },
+    "position": 5,
+    "publish": true,
+    "ref_id": "e0b6cbdf1cd2d32b6b2dfd994a15131b",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:24Z",
+    "title": "Sims, Bill",
+    "uri": "/repositories/2/archival_objects/89",
+    "user_mtime": "2021-06-04T19:44:24Z"
+}

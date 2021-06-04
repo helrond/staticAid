@@ -1,0 +1,94 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/50"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/11"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/1"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:27Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1970",
+            "create_time": "2021-06-04T19:44:27Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1989",
+            "expression": "1970s-1980s",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:27Z",
+            "user_mtime": "2021-06-04T19:44:27Z"
+        }
+    ],
+    "display_string": "1970s-1980s",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:27Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:27Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:27Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/3"
+                },
+                "user_mtime": "2021-06-04T19:44:27Z"
+            },
+            "system_mtime": "2021-06-04T19:44:27Z",
+            "user_mtime": "2021-06-04T19:44:27Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/50"
+    },
+    "position": 2,
+    "publish": true,
+    "ref_id": "bca8f135c0c5a6c2f9ba67c667543df9",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:27Z",
+    "uri": "/repositories/2/archival_objects/136",
+    "user_mtime": "2021-06-04T19:44:27Z"
+}

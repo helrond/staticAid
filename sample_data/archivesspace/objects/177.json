@@ -1,0 +1,90 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/77"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/21"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:30Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Sherrill Child Care Center",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:30Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:30Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:30Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/13"
+                },
+                "user_mtime": "2021-06-04T19:44:30Z"
+            },
+            "system_mtime": "2021-06-04T19:44:30Z",
+            "user_mtime": "2021-06-04T19:44:30Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "content": [
+                "part of the New York State Migrant Child Care Program"
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "36db880a3c39e5e1bd6624ba55f4cf8b",
+            "publish": true,
+            "type": "abstract"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/77"
+    },
+    "position": 14,
+    "publish": true,
+    "ref_id": "fe1de4eb6d4a886be230b231902e3842",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:30Z",
+    "title": "Sherrill Child Care Center",
+    "uri": "/repositories/2/archival_objects/177",
+    "user_mtime": "2021-06-04T19:44:30Z"
+}

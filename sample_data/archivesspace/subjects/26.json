@@ -1,1 +1,37 @@
-{"lock_version": 1379, "system_mtime": "2016-02-15T00:46:40Z", "terms": [{"lock_version": 0, "system_mtime": "2014-12-06T02:29:45Z", "term": "New York (N.Y.)", "vocabulary": "/vocabularies/1", "jsonmodel_type": "term", "user_mtime": "2014-12-06T02:29:45Z", "uri": "/terms/30", "last_modified_by": "admin", "create_time": "2014-12-06T02:29:45Z", "created_by": "admin", "term_type": "geographic"}], "vocabulary": "/vocabularies/1", "jsonmodel_type": "subject", "title": "New York (N.Y.)", "external_documents": [], "user_mtime": "2014-12-06T02:29:45Z", "uri": "/subjects/26", "last_modified_by": "admin", "source": "lcsh", "create_time": "2014-12-06T02:29:45Z", "created_by": "admin", "is_linked_to_published_record": true, "external_ids": [{"system_mtime": "2014-12-06T02:29:45Z", "jsonmodel_type": "external_id", "user_mtime": "2014-12-06T02:29:45Z", "last_modified_by": "admin", "source": "Archivists Toolkit Database::SUBJECT", "create_time": "2014-12-06T02:29:45Z", "created_by": "admin", "external_id": "32"}], "publish": true}
+{
+    "create_time": "2021-06-04T19:44:12Z",
+    "created_by": "admin",
+    "external_documents": [],
+    "external_ids": [],
+    "is_linked_to_published_record": false,
+    "is_slug_auto": true,
+    "jsonmodel_type": "subject",
+    "last_modified_by": "admin",
+    "lock_version": 1,
+    "publish": true,
+    "source": "aat",
+    "system_mtime": "2021-06-04T19:44:14Z",
+    "terms": [
+        {
+            "create_time": "2021-06-04T19:44:12Z",
+            "created_by": "admin",
+            "jsonmodel_type": "term",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:12Z",
+            "term": "Correspondence.",
+            "term_type": "genre_form",
+            "uri": "/terms/26",
+            "user_mtime": "2021-06-04T19:44:12Z",
+            "vocabulary": "/vocabularies/1"
+        }
+    ],
+    "title": "Correspondence.",
+    "uri": "/subjects/26",
+    "used_within_published_repositories": [],
+    "used_within_repositories": [
+        "/repositories/2"
+    ],
+    "user_mtime": "2021-06-04T19:44:12Z",
+    "vocabulary": "/vocabularies/1"
+}

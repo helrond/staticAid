@@ -1,0 +1,74 @@
+{
+    "ancestors": [
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/1"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:17Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Syracuse University",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:17Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:17Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:17Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/3"
+                },
+                "user_mtime": "2021-06-04T19:44:17Z"
+            },
+            "system_mtime": "2021-06-04T19:44:17Z",
+            "user_mtime": "2021-06-04T19:44:17Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/1"
+    },
+    "position": 7,
+    "publish": true,
+    "ref_id": "3b2c07f2ecd3bcbc9a878a4c256417b7",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:17Z",
+    "title": "Syracuse University",
+    "uri": "/repositories/2/archival_objects/12",
+    "user_mtime": "2021-06-04T19:44:17Z"
+}

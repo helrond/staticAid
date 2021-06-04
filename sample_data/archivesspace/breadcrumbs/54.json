@@ -1,0 +1,28 @@
+{
+    "54": [
+        {
+            "jsonmodel_type": "resource",
+            "node": null,
+            "offset": 0,
+            "parsed_title": "Prudence Wayland-Smith Papers",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Prudence Wayland-Smith Papers"
+        },
+        {
+            "jsonmodel_type": "archival_object",
+            "node": "/repositories/2/archival_objects/1",
+            "offset": 0,
+            "parsed_title": "General files",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "General files"
+        },
+        {
+            "jsonmodel_type": "archival_object",
+            "node": "/repositories/2/archival_objects/12",
+            "offset": 0,
+            "parsed_title": "Syracuse University",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Syracuse University"
+        }
+    ]
+}
