@@ -84,7 +84,7 @@ def make_pages(category):
             data = utils.load_json(join(source_data_dir, filename))
 
             identifier = splitext(filename)[0]
-            if data["jsonmodel_type"] == 'archival_object':
+            if data.get("jsonmodel_type") == 'archival_object':
                 title = clean_note_content(data["display_string"])
             else:
                 title = clean_note_content(data["title"])
@@ -124,7 +124,7 @@ def main():
 
     create_initial_structure(args.embedded)
     site_urls = []
-    for category in config.destinations:
+    for category in ["collections", "objects", "families", "organizations", "people", "software"]:
         site_urls += make_pages(category)
     create_sitemap(site_urls)
     create_site_config()

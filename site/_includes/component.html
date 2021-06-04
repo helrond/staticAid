@@ -5,38 +5,30 @@
   {% capture component_id %}{{component.id}}{% endcapture %}
   {% assign component_detail = site.data.objects[component_id] %}
 
-  <div class="col-md-12 group--{{component.level}}">
+  <div class="col group--{{component.level}}">
     <div id="{{component_detail.ref_id}}" class="row">
-      <div class="col-md-9">
-        {% if component.level == 'series' %}
-          <span class="group__title--top">{{ component.title }}</span>
-        {% elsif component.level == 'recordgrp' %}
-          <span class="group__title--top">{{ component.title }}</span>
-        {% elsif component.level == 'subseries' %}
-          <span class="group__title--intermediate">{{ component.title }}</span>
-        {% elsif component.level == 'subgrp' %}
-          <span class="group__title--intermediate">{{ component.title }}</span>
+      <div class="col">
+        {% if component.node_type == "resource" %}
+          <a title="More information" href="{{ site.url }}{{ site.baseurl }}/collections/{{component_id}}">
         {% else %}
-          <span class="component-title">{{ component.title }}</span>
+          <a title="More information" href="{{ site.url }}{{ site.baseurl }}/objects/{{component_id}}">
         {% endif %}
-
-  {% if component.node_type == "resource" %}
-    <a title="More information" class="more-link" href="{{ site.url }}{{ site.baseurl }}/collections/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
-  {% else %}
-    <!-- component.node_type == "archival_object" or is not set (ex: it's not set by ArchivesSpace extractor) -->
-    <a title="More information" class="more-link" href="{{ site.url }}{{ site.baseurl }}/objects/{{component_id}}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
-  {% endif %}
+          {% if component.level == 'series' %}
+            <span class="group__title--top">{{ component.title }}</span>
+          {% elsif component.level == 'recordgrp' %}
+            <span class="group__title--top">{{ component.title }}</span>
+          {% elsif component.level == 'subseries' %}
+            <span class="group__title--intermediate">{{ component.title }}</span>
+          {% elsif component.level == 'subgrp' %}
+            <span class="group__title--intermediate">{{ component.title }}</span>
+          {% else %}
+            <span class="component__title">{{ component.title }}</span>
+          {% endif %}
+        </a>
 
         {% if component_detail.notes[0] or component_detail.subjects[0]  or component_detail.linked_agents[0] %}
-          <span class="more-link glyphicon glyphicon-comment" aria-hidden="true"></span>
+          <span class="material-icons" aria-hidden="true">comment</span>
         {% endif %}
-      </div>
-      <div class="col-md-3">
-
-        {% for instance in component_detail.instances %}
-          <p>{% include instance.html %}</p>
-        {% endfor %}
-
       </div>
     </div>
 
