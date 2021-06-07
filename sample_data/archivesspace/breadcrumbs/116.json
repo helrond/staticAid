@@ -1,0 +1,28 @@
+{
+    "116": [
+        {
+            "jsonmodel_type": "resource",
+            "node": null,
+            "offset": 0,
+            "parsed_title": "Prudence Wayland-Smith Papers",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Prudence Wayland-Smith Papers"
+        },
+        {
+            "jsonmodel_type": "archival_object",
+            "node": "/repositories/2/archival_objects/4",
+            "offset": 0,
+            "parsed_title": "Miscellaneous reform",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Miscellaneous reform"
+        },
+        {
+            "jsonmodel_type": "archival_object",
+            "node": "/repositories/2/archival_objects/40",
+            "offset": 0,
+            "parsed_title": "Civil rights movement",
+            "root_record_uri": "/repositories/2/resources/2",
+            "title": "Civil rights movement"
+        }
+    ]
+}

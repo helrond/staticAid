@@ -1,0 +1,3376 @@
+{
+    "children": [
+        {
+            "children": [
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 5,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/5",
+                    "suppressed": false,
+                    "title": "Date book, 1965"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 6,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/6",
+                    "suppressed": false,
+                    "title": "Delta Kappa Gamma"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 7,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/7",
+                    "suppressed": false,
+                    "title": "Government documents"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 8,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/8",
+                    "suppressed": false,
+                    "title": "Negatives"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 9,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/9",
+                    "suppressed": false,
+                    "title": "Oneida Community Mansion House"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 10,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/10",
+                    "suppressed": false,
+                    "title": "Personal, 1920s-1980s"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 49,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/49",
+                            "suppressed": false,
+                            "title": "General"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 134,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/134",
+                                    "suppressed": false,
+                                    "title": "1950s"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 135,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/135",
+                                    "suppressed": false,
+                                    "title": "1960s"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 136,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/136",
+                                    "suppressed": false,
+                                    "title": "1970s-1980s"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 50,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/50",
+                            "suppressed": false,
+                            "title": "Friends Journal"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 51,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/51",
+                            "suppressed": false,
+                            "title": "Friends World College"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 52,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/52",
+                            "suppressed": false,
+                            "title": "Friends World Committee for Consultation"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 53,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/53",
+                            "suppressed": false,
+                            "title": "Printed material"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 11,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/11",
+                    "suppressed": false,
+                    "title": "Religious Society of Friends"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 54,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/54",
+                            "suppressed": false,
+                            "title": "George Arents Research Library"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 55,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/55",
+                            "suppressed": false,
+                            "title": "<emph render=\"italic\">Urban Education and Cultural Deprivation</emph>, 1964"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 12,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/12",
+                    "suppressed": false,
+                    "title": "Syracuse University"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 13,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/13",
+                    "suppressed": false,
+                    "title": "World and national news"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 14,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/14",
+                    "suppressed": false,
+                    "title": "Miscellaneous"
+                }
+            ],
+            "containers": [],
+            "has_children": true,
+            "id": 1,
+            "instance_types": [],
+            "level": "series",
+            "node_type": "archival_object",
+            "publish": true,
+            "record_uri": "/repositories/2/archival_objects/1",
+            "suppressed": false,
+            "title": "General files"
+        },
+        {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 56,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/56",
+                            "suppressed": false,
+                            "title": "A-G"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 57,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/57",
+                            "suppressed": false,
+                            "title": "H-Z"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 58,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/58",
+                            "suppressed": false,
+                            "title": "\"Letters from families to whom boxes were sent\", Christmas 1957, Winter 1958-59"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 59,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/59",
+                            "suppressed": false,
+                            "title": "Migrant letters"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 15,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/15",
+                    "suppressed": false,
+                    "title": "General correspondence"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 60,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/60",
+                            "suppressed": false,
+                            "title": "General"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 61,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/61",
+                            "suppressed": false,
+                            "title": "Congressional hearings and Senate reports"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 62,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/62",
+                            "suppressed": false,
+                            "title": "<emph render=\"italic\">Migratory Labor Notes</emph> by the President's Committee on Migratory Labor"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 63,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/63",
+                            "suppressed": false,
+                            "title": "Printed material"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 16,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/16",
+                    "suppressed": false,
+                    "title": "Government legislation and reform"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 17,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/17",
+                    "suppressed": false,
+                    "title": "Exhibitions on black migration history, 1989-1990"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 18,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/18",
+                    "suppressed": false,
+                    "title": "Financial"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 19,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/19",
+                    "suppressed": false,
+                    "title": "Housing"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 20,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/20",
+                    "suppressed": false,
+                    "title": "Newspaper clippings"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 137,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/137",
+                                    "suppressed": false,
+                                    "title": "General"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 138,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/138",
+                                    "suppressed": false,
+                                    "title": "Report, 1965-1970"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 202,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/202",
+                                            "suppressed": false,
+                                            "title": "Correspondence"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 203,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/203",
+                                            "suppressed": false,
+                                            "title": "Migrant teachers idea booklet, 1968"
+                                        }
+                                    ],
+                                    "containers": [],
+                                    "has_children": true,
+                                    "id": 139,
+                                    "instance_types": [],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/139",
+                                    "suppressed": false,
+                                    "title": "Garofalo, James"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 64,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/64",
+                            "suppressed": false,
+                            "title": "American Friends Service Committee"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 65,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/65",
+                            "suppressed": false,
+                            "title": "Clinton Migrant Committee"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 66,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/66",
+                            "suppressed": false,
+                            "title": "Colorado State Department of Education"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 67,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/67",
+                            "suppressed": false,
+                            "title": "Consumers League of New York, 1952"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 140,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/140",
+                                    "suppressed": false,
+                                    "title": "Agenda and advocacy"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 141,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/141",
+                                    "suppressed": false,
+                                    "title": "Correspondence"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 142,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/142",
+                                    "suppressed": false,
+                                    "title": "Finances and fundraising"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 143,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/143",
+                                    "suppressed": false,
+                                    "title": "Newspaper clippings"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 144,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/144",
+                                    "suppressed": false,
+                                    "title": "Publications"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 145,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/145",
+                                    "suppressed": false,
+                                    "title": "Reports"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 68,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/68",
+                            "suppressed": false,
+                            "title": "League of Women Voters"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 69,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/69",
+                            "suppressed": false,
+                            "title": "Mohawk Valley Meeting (Society of Friends)"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 70,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/70",
+                            "suppressed": false,
+                            "title": "National Migrant Committee and Ministry"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 71,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/71",
+                            "suppressed": false,
+                            "title": "National Sharecropper's Fund"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 72,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/72",
+                            "suppressed": false,
+                            "title": "New York State Committee on Farm and Food Processing Labor"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 146,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/146",
+                                    "suppressed": false,
+                                    "title": "General correspondence"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 147,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/147",
+                                    "suppressed": false,
+                                    "title": "Financial"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 148,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/148",
+                                    "suppressed": false,
+                                    "title": "Meetings"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 149,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/149",
+                                    "suppressed": false,
+                                    "title": "Policies, legislation and agenda"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 150,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/150",
+                                    "suppressed": false,
+                                    "title": "Projects and reports"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 151,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/151",
+                                    "suppressed": false,
+                                    "title": "<emph render=\"italic\">State Council Reporter </emph>publication"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 152,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/152",
+                                    "suppressed": false,
+                                    "title": "Training conferences and workshops"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 153,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/153",
+                                    "suppressed": false,
+                                    "title": "Miscellaneous"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 73,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/73",
+                            "suppressed": false,
+                            "title": "New York State Council of Churches and \"Migrant Ministry\""
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 154,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/154",
+                                    "suppressed": false,
+                                    "title": "General correspondence"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 155,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/155",
+                                    "suppressed": false,
+                                    "title": "By-laws and program operations"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 156,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/156",
+                                    "suppressed": false,
+                                    "title": "Financial"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 157,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/157",
+                                    "suppressed": false,
+                                    "title": "Meetings and conferences"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 158,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/158",
+                                    "suppressed": false,
+                                    "title": "Newsletters"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 159,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/159",
+                                    "suppressed": false,
+                                    "title": "Newspaper clippings"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 160,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/160",
+                                    "suppressed": false,
+                                    "title": "Summaries and statistics"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 161,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/161",
+                                    "suppressed": false,
+                                    "title": "Various local programs"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 162,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/162",
+                                    "suppressed": false,
+                                    "title": "Miscellaneous"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 74,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/74",
+                            "suppressed": false,
+                            "title": "New York State Federation of Growers and Processors - New York State Migrant Child Care Program"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 75,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/75",
+                            "suppressed": false,
+                            "title": "New York State Migrant Education Program, 1981"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 76,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/76",
+                            "suppressed": false,
+                            "title": "New York State Interdepartmental Committee on Migrant Labor, 1969-1973"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 163,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/163",
+                                    "suppressed": false,
+                                    "title": "Annual reports"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 204,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/204",
+                                            "suppressed": false,
+                                            "title": "General"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 205,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/205",
+                                            "suppressed": false,
+                                            "title": "Committee annual reports"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 206,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/206",
+                                            "suppressed": false,
+                                            "title": "George, Anne V., New York State Committee on Farm and Food Processing Labor"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 207,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/207",
+                                            "suppressed": false,
+                                            "title": "New York State Education Department"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 208,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/208",
+                                            "suppressed": false,
+                                            "title": "Price, Arthur F., New York State Migrant Child Care Program"
+                                        }
+                                    ],
+                                    "containers": [],
+                                    "has_children": true,
+                                    "id": 164,
+                                    "instance_types": [],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/164",
+                                    "suppressed": false,
+                                    "title": "Correspondence"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 165,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/165",
+                                    "suppressed": false,
+                                    "title": "Daily notes of migrant activities"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 166,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/166",
+                                    "suppressed": false,
+                                    "title": "Essays/reports on migrant issues and reform"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 167,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/167",
+                                    "suppressed": false,
+                                    "title": "Financial"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 168,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/168",
+                                    "suppressed": false,
+                                    "title": "Journal"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 169,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/169",
+                                    "suppressed": false,
+                                    "title": "Lobbying efforts"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 170,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/170",
+                                    "suppressed": false,
+                                    "title": "McAllister Summer School/Vernon-Verona-Sherrill Central School"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 171,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/171",
+                                    "suppressed": false,
+                                    "title": "Migrant camp choir"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 209,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/209",
+                                            "suppressed": false,
+                                            "title": "General"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 210,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/210",
+                                            "suppressed": false,
+                                            "title": "Photos"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 211,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/211",
+                                            "suppressed": false,
+                                            "title": "Photos, oversize"
+                                        }
+                                    ],
+                                    "containers": [],
+                                    "has_children": true,
+                                    "id": 172,
+                                    "instance_types": [],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/172",
+                                    "suppressed": false,
+                                    "title": "Migrant labor camps"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 173,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/173",
+                                    "suppressed": false,
+                                    "title": "Newspaper clippings"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 174,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/174",
+                                    "suppressed": false,
+                                    "title": "Personal notes"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 175,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/175",
+                                    "suppressed": false,
+                                    "title": "<emph render=\"italic\">The Readers' News</emph>"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 223,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/223",
+                                                    "suppressed": false,
+                                                    "title": "Brown family general files"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 224,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/224",
+                                                    "suppressed": false,
+                                                    "title": "Brown, Alfred"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 225,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/225",
+                                                    "suppressed": false,
+                                                    "title": "Brown, Anthony"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 226,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/226",
+                                                    "suppressed": false,
+                                                    "title": "Brown, Betty"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 227,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/227",
+                                                    "suppressed": false,
+                                                    "title": "Brown, James"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 228,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/228",
+                                                    "suppressed": false,
+                                                    "title": "Brown, Larry"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 229,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/229",
+                                                    "suppressed": false,
+                                                    "title": "Edwards, Cora"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 230,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/230",
+                                                    "suppressed": false,
+                                                    "title": "Freeman, Mary"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 231,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/231",
+                                                    "suppressed": false,
+                                                    "title": "Holloway, Janie"
+                                                },
+                                                {
+                                                    "children": [],
+                                                    "containers": [],
+                                                    "has_children": false,
+                                                    "id": 232,
+                                                    "instance_types": [
+                                                        "mixed_materials"
+                                                    ],
+                                                    "level": null,
+                                                    "node_type": "archival_object",
+                                                    "publish": true,
+                                                    "record_uri": "/repositories/2/archival_objects/232",
+                                                    "suppressed": false,
+                                                    "title": "Williams family"
+                                                }
+                                            ],
+                                            "containers": [],
+                                            "has_children": true,
+                                            "id": 212,
+                                            "instance_types": [],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/212",
+                                            "suppressed": false,
+                                            "title": "Correspondence"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 213,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/213",
+                                            "suppressed": false,
+                                            "title": "Funding"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 214,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/214",
+                                            "suppressed": false,
+                                            "title": "Memorabilia"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 215,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/215",
+                                            "suppressed": false,
+                                            "title": "Memorabilia, oversize"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 216,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/216",
+                                            "suppressed": false,
+                                            "title": "Miscellaneous"
+                                        }
+                                    ],
+                                    "containers": [],
+                                    "has_children": true,
+                                    "id": 176,
+                                    "instance_types": [],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/176",
+                                    "suppressed": false,
+                                    "title": "Scholarship program"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 177,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/177",
+                                    "suppressed": false,
+                                    "title": "Sherrill Child Care Center"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 178,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/178",
+                                    "suppressed": false,
+                                    "title": "Special Milk Program"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 179,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/179",
+                                    "suppressed": false,
+                                    "title": "Workshops/conferences on migrant education"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 180,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/180",
+                                    "suppressed": false,
+                                    "title": "Miscellaneous"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 77,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/77",
+                            "suppressed": false,
+                            "title": "Oneida-Kenwood-Sherrill Migrant Committee"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 78,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/78",
+                            "suppressed": false,
+                            "title": "Oneida-Madison Migrant Committee"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 79,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/79",
+                            "suppressed": false,
+                            "title": "State-level migrant groups in New York"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 80,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/80",
+                            "suppressed": false,
+                            "title": "Syracuse Monthly Meeting of Friends"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 81,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/81",
+                            "suppressed": false,
+                            "title": "Utica Area Migrant Committee"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 82,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/82",
+                            "suppressed": false,
+                            "title": "World Council of Churches"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 83,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/83",
+                            "suppressed": false,
+                            "title": "Miscellaneous conferences, committees, programs and workshops"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 21,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/21",
+                    "suppressed": false,
+                    "title": "Organizations"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 22,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/22",
+                    "suppressed": false,
+                    "title": "Photographs"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 23,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/23",
+                    "suppressed": false,
+                    "title": "Printed material"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 24,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/24",
+                    "suppressed": false,
+                    "title": "School memorabilia"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 25,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/25",
+                    "suppressed": false,
+                    "title": "School memorabilia, oversize"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 26,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/26",
+                    "suppressed": false,
+                    "title": "Scrapbook"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 27,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/27",
+                    "suppressed": false,
+                    "title": "Scrapbooks, oversize"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 28,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/28",
+                    "suppressed": false,
+                    "title": "Slides"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 29,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/29",
+                    "suppressed": false,
+                    "title": "Slides"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 30,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/30",
+                    "suppressed": false,
+                    "title": "Miscellaneous"
+                }
+            ],
+            "containers": [],
+            "has_children": true,
+            "id": 2,
+            "instance_types": [],
+            "level": "series",
+            "node_type": "archival_object",
+            "publish": true,
+            "record_uri": "/repositories/2/archival_objects/2",
+            "suppressed": false,
+            "title": "Migrant reform"
+        },
+        {
+            "children": [
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 31,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/31",
+                    "suppressed": false,
+                    "title": "Advocacy and outreach"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 32,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/32",
+                    "suppressed": false,
+                    "title": "General correspondence"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 84,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/84",
+                            "suppressed": false,
+                            "title": "Ford, Glen (Ted)"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 85,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/85",
+                            "suppressed": false,
+                            "title": "Johnson, Mel"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 86,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/86",
+                            "suppressed": false,
+                            "title": "Maloney, Robert"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 87,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/87",
+                            "suppressed": false,
+                            "title": "Montgomery, Michael"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 88,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/88",
+                            "suppressed": false,
+                            "title": "Moseley, Winston"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 89,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/89",
+                            "suppressed": false,
+                            "title": "Sims, Bill"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 90,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/90",
+                            "suppressed": false,
+                            "title": "Swanson, John"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 91,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/91",
+                            "suppressed": false,
+                            "title": "Miscellaneous"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 33,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/33",
+                    "suppressed": false,
+                    "title": "Inmate correspondence"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 34,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/34",
+                    "suppressed": false,
+                    "title": "News and media coverage"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 92,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/92",
+                            "suppressed": false,
+                            "title": "American Friends Service Committee"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 93,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/93",
+                            "suppressed": false,
+                            "title": "Attica Friends Meeting"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 181,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/181",
+                                    "suppressed": false,
+                                    "title": "General correspondence"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 182,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/182",
+                                    "suppressed": false,
+                                    "title": "Auburn Hospitality Association"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 183,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/183",
+                                    "suppressed": false,
+                                    "title": "<emph render=\"italic\">Contraband: Poetry from Prison and Other Ghettos of the Mind</emph>"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 94,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/94",
+                            "suppressed": false,
+                            "title": "Auburn Correctional Facility"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 184,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/184",
+                                    "suppressed": false,
+                                    "title": "General correspondence"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 217,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/217",
+                                            "suppressed": false,
+                                            "title": "Alternatives to Violence Project (AVP)"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 218,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/218",
+                                            "suppressed": false,
+                                            "title": "New York State Department of Correctional Facilities"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 219,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/219",
+                                            "suppressed": false,
+                                            "title": "Schmidt, Mattie"
+                                        }
+                                    ],
+                                    "containers": [],
+                                    "has_children": true,
+                                    "id": 185,
+                                    "instance_types": [],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/185",
+                                    "suppressed": false,
+                                    "title": "Correspondence"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 186,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/186",
+                                    "suppressed": false,
+                                    "title": "Auburn International Peace Petition"
+                                },
+                                {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 220,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/220",
+                                            "suppressed": false,
+                                            "title": "1975-1982"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 221,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/221",
+                                            "suppressed": false,
+                                            "title": "1983-1994"
+                                        },
+                                        {
+                                            "children": [],
+                                            "containers": [],
+                                            "has_children": false,
+                                            "id": 222,
+                                            "instance_types": [
+                                                "mixed_materials"
+                                            ],
+                                            "level": null,
+                                            "node_type": "archival_object",
+                                            "publish": true,
+                                            "record_uri": "/repositories/2/archival_objects/222",
+                                            "suppressed": false,
+                                            "title": "Undated"
+                                        }
+                                    ],
+                                    "containers": [],
+                                    "has_children": true,
+                                    "id": 187,
+                                    "instance_types": [],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/187",
+                                    "suppressed": false,
+                                    "title": "Meeting of Oversight Committee"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 188,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/188",
+                                    "suppressed": false,
+                                    "title": "Miscellaneous"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 95,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/95",
+                            "suppressed": false,
+                            "title": "Auburn Prison Friends"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 96,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/96",
+                            "suppressed": false,
+                            "title": "Central Intelligence Agency"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 97,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/97",
+                            "suppressed": false,
+                            "title": "Chautauqua County Rural Ministry"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 98,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/98",
+                            "suppressed": false,
+                            "title": "Church Women United of Oneida"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 99,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/99",
+                            "suppressed": false,
+                            "title": "Clinton Correctional Facility"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 100,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/100",
+                            "suppressed": false,
+                            "title": "Department of American Studies"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 101,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/101",
+                            "suppressed": false,
+                            "title": "Friends Committee on National Legislation"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 102,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/102",
+                            "suppressed": false,
+                            "title": "Idyllic Foundation"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 103,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/103",
+                            "suppressed": false,
+                            "title": "Land Trust Committee of the New York Yearly Meeting of the Religious Society of Friends"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 104,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/104",
+                            "suppressed": false,
+                            "title": "Madison County Correctional Facility"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 105,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/105",
+                            "suppressed": false,
+                            "title": "Madison County bail fund"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 106,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/106",
+                            "suppressed": false,
+                            "title": "Mohawk Meeting (Society of Friends)"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 107,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/107",
+                            "suppressed": false,
+                            "title": "New York State Coalition for Criminal Justice"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 108,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/108",
+                            "suppressed": false,
+                            "title": "New York State Council of Churches"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 189,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/189",
+                                    "suppressed": false,
+                                    "title": "Correspondence"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 190,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/190",
+                                    "suppressed": false,
+                                    "title": "Meetings and minutes"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 191,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/191",
+                                    "suppressed": false,
+                                    "title": "Newsletters and reports"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 192,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/192",
+                                    "suppressed": false,
+                                    "title": "Policies, by-laws and finance"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 193,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/193",
+                                    "suppressed": false,
+                                    "title": "Printed material"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 194,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/194",
+                                    "suppressed": false,
+                                    "title": "Prisons Committee"
+                                },
+                                {
+                                    "children": [],
+                                    "containers": [],
+                                    "has_children": false,
+                                    "id": 201,
+                                    "instance_types": [
+                                        "mixed_materials"
+                                    ],
+                                    "level": null,
+                                    "node_type": "archival_object",
+                                    "publish": true,
+                                    "record_uri": "/repositories/2/archival_objects/201",
+                                    "suppressed": false,
+                                    "title": "Training and workshops"
+                                }
+                            ],
+                            "containers": [],
+                            "has_children": true,
+                            "id": 109,
+                            "instance_types": [],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/109",
+                            "suppressed": false,
+                            "title": "New York Yearly Meeting of the Religious Society of Friends - Alternatives to Violence Project (NYYM/AVP)"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 110,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/110",
+                            "suppressed": false,
+                            "title": "Offender Aid and Restoration (OAR)"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 111,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/111",
+                            "suppressed": false,
+                            "title": "Syracuse Meeting (Society of Friends)"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 112,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/112",
+                            "suppressed": false,
+                            "title": "Women's Prison Project"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 113,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/113",
+                            "suppressed": false,
+                            "title": "Miscellaneous"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 35,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/35",
+                    "suppressed": false,
+                    "title": "Organizations"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 36,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/36",
+                    "suppressed": false,
+                    "title": "Printed material"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 37,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/37",
+                    "suppressed": false,
+                    "title": "Training and coursework"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 38,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/38",
+                    "suppressed": false,
+                    "title": "Miscellaneous"
+                }
+            ],
+            "containers": [],
+            "has_children": true,
+            "id": 3,
+            "instance_types": [],
+            "level": "series",
+            "node_type": "archival_object",
+            "publish": true,
+            "record_uri": "/repositories/2/archival_objects/3",
+            "suppressed": false,
+            "title": "Prison reform"
+        },
+        {
+            "children": [
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 39,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/39",
+                    "suppressed": false,
+                    "title": "Birth control - Planned Parenthood"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 114,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/114",
+                            "suppressed": false,
+                            "title": "General correspondence"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 115,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/115",
+                            "suppressed": false,
+                            "title": "The Fellowship of Reconciliation"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 116,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/116",
+                            "suppressed": false,
+                            "title": "Magazine clippings"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 117,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/117",
+                            "suppressed": false,
+                            "title": "Martin Luther King, Jr."
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 118,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/118",
+                            "suppressed": false,
+                            "title": "New York Yearly Meeting of the Religious Society of Friends (NYYM), 1968"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 119,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/119",
+                            "suppressed": false,
+                            "title": "Newspaper clippings"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 120,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/120",
+                            "suppressed": false,
+                            "title": "Printed material"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 121,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/121",
+                            "suppressed": false,
+                            "title": "Runnymede Corporation against segregated housing"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 122,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/122",
+                            "suppressed": false,
+                            "title": "Southern Christian Leadership Conference (SCLC)"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 123,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/123",
+                            "suppressed": false,
+                            "title": "Miscellaneous"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 40,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/40",
+                    "suppressed": false,
+                    "title": "Civil rights movement"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 41,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/41",
+                    "suppressed": false,
+                    "title": "Discrimination in housing - Housing and Home Finance Agency, Washington DC, 1957"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 42,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/42",
+                    "suppressed": false,
+                    "title": "Human relations - National Conference of Christians and Jews"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 43,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/43",
+                    "suppressed": false,
+                    "title": "Low-income family aid"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 44,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/44",
+                    "suppressed": false,
+                    "title": "Missions work"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 124,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/124",
+                            "suppressed": false,
+                            "title": "General files"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 125,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/125",
+                            "suppressed": false,
+                            "title": "Quaker Project on Community Conflict"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 45,
+                    "instance_types": [],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/45",
+                    "suppressed": false,
+                    "title": "Peace and community nonviolence"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 126,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/126",
+                            "suppressed": false,
+                            "title": "American Friends Service Committee"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 127,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/127",
+                            "suppressed": false,
+                            "title": "Disarmament"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 128,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/128",
+                            "suppressed": false,
+                            "title": "New York Telephone Federal Tax Protest"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 129,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/129",
+                            "suppressed": false,
+                            "title": "<emph render=\"italic\">Peacemaker </emph>publication"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 130,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/130",
+                            "suppressed": false,
+                            "title": "Peace walks and vigils"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 131,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/131",
+                            "suppressed": false,
+                            "title": "Publications and newsletters"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 132,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/132",
+                            "suppressed": false,
+                            "title": "Vietnam and draft law"
+                        },
+                        {
+                            "children": [],
+                            "containers": [],
+                            "has_children": false,
+                            "id": 133,
+                            "instance_types": [
+                                "mixed_materials"
+                            ],
+                            "level": null,
+                            "node_type": "archival_object",
+                            "publish": true,
+                            "record_uri": "/repositories/2/archival_objects/133",
+                            "suppressed": false,
+                            "title": "Women's peace movements"
+                        }
+                    ],
+                    "containers": [],
+                    "has_children": true,
+                    "id": 46,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/46",
+                    "suppressed": false,
+                    "title": "Peace movement"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 47,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/47",
+                    "suppressed": false,
+                    "title": "Poverty"
+                },
+                {
+                    "children": [],
+                    "containers": [],
+                    "has_children": false,
+                    "id": 48,
+                    "instance_types": [
+                        "mixed_materials"
+                    ],
+                    "level": null,
+                    "node_type": "archival_object",
+                    "publish": true,
+                    "record_uri": "/repositories/2/archival_objects/48",
+                    "suppressed": false,
+                    "title": "Miscellaneous"
+                }
+            ],
+            "containers": [],
+            "has_children": true,
+            "id": 4,
+            "instance_types": [],
+            "level": "series",
+            "node_type": "archival_object",
+            "publish": true,
+            "record_uri": "/repositories/2/archival_objects/4",
+            "suppressed": false,
+            "title": "Miscellaneous reform"
+        }
+    ],
+    "containers": [],
+    "id": 2,
+    "instance_types": [],
+    "jsonmodel_type": "resource_tree",
+    "level": "collection",
+    "node_type": "resource",
+    "publish": true,
+    "record_uri": "/repositories/2/resources/2",
+    "suppressed": false,
+    "title": "Prudence Wayland-Smith Papers"
+}

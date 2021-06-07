@@ -1,0 +1,88 @@
+{
+    "ancestors": [
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/3"
+        }
+    ],
+    "component_id": "1",
+    "create_time": "2021-06-04T19:56:45Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1996",
+            "create_time": "2021-06-04T19:56:45Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1998",
+            "expression": "1996-1998",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:56:45Z",
+            "user_mtime": "2021-06-04T19:56:45Z"
+        }
+    ],
+    "display_string": "Education, Media, Arts, and Culture (EMAC) program administration files, 1996-1998",
+    "extents": [
+        {
+            "container_summary": "About 2 LTR size Hollinger boxes",
+            "create_time": "2021-06-04T19:56:45Z",
+            "created_by": "admin",
+            "extent_type": "Cubic Feet",
+            "jsonmodel_type": "extent",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "number": ".76",
+            "portion": "whole",
+            "system_mtime": "2021-06-04T19:56:45Z",
+            "user_mtime": "2021-06-04T19:56:45Z"
+        }
+    ],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "series",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Scope and Contents",
+            "persistent_id": "9719ccc0a8fe87e0e7ca1abf02dd6721",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Series contains the files Linda Fingerson created to document her work supporting the administration of the Ford Foundation's Education, Media, Arts, and Culture Program (EMAC) and its Media, Arts, and Culture Unit (MAC) between 1996 and 1998. Records generally regard EMAC meetings as well as different program and budget review activities conducted by the program's staff. The series also contains several office calendars of MAC Deputy Director Jon Funabiki and MAC Program Officer John Phillip Santos.\n\n Series chiefly consists of correspondence, notes, press clippings, and meeting briefing books.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "scopecontent"
+        }
+    ],
+    "position": 0,
+    "publish": true,
+    "ref_id": "55a30e3ead353a8338eafe0b3da1f283",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/3"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:56:45Z",
+    "title": "Education, Media, Arts, and Culture (EMAC) program administration files",
+    "uri": "/repositories/2/archival_objects/233",
+    "user_mtime": "2021-06-04T19:56:45Z"
+}

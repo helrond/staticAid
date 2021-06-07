@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  staticaid:
+    build: .
+    entrypoint: /bin/bash -l -c /code/entrypoint.sh
+    volumes:
+      - ./scripts:/code/scripts/
+      - ./static_aid:/code/static_aid/
+      - ./site:/code/site/
+      - built_site:/code/build/site/
+    ports:
+      - '4000:4000'
+    environment:
+      - TRAVIS=${TRAVIS}
+
+volumes:
+  built_site:

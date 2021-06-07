@@ -1,0 +1,285 @@
+{
+    "classifications": [],
+    "create_time": "2021-06-04T19:44:04Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1939",
+            "create_time": "2021-06-04T19:44:04Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1958",
+            "expression": "1939-1958",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:04Z",
+            "user_mtime": "2021-06-04T19:44:04Z"
+        }
+    ],
+    "deaccessions": [],
+    "ead_id": "aaie",
+    "extents": [
+        {
+            "create_time": "2021-06-04T19:44:04Z",
+            "created_by": "admin",
+            "extent_type": "linear ft.",
+            "jsonmodel_type": "extent",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "number": "1",
+            "portion": "whole",
+            "system_mtime": "2021-06-04T19:44:04Z",
+            "user_mtime": "2021-06-04T19:44:04Z"
+        }
+    ],
+    "external_documents": [],
+    "external_ids": [],
+    "finding_aid_author": "MRC",
+    "finding_aid_date": "6 May 2010",
+    "finding_aid_language": "eng",
+    "finding_aid_language_note": "English",
+    "finding_aid_script": "Zyyy",
+    "finding_aid_subtitle": "A description of the collection at Syracuse University",
+    "finding_aid_title": "American Association of Industrial Editors (AAIE) Records",
+    "id_0": "2750900",
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "resource",
+    "lang_materials": [
+        {
+            "create_time": "2021-06-04T19:44:04Z",
+            "created_by": "admin",
+            "jsonmodel_type": "lang_material",
+            "language_and_script": {
+                "create_time": "2021-06-04T19:44:04Z",
+                "created_by": "admin",
+                "jsonmodel_type": "language_and_script",
+                "language": "eng",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:04Z",
+                "user_mtime": "2021-06-04T19:44:04Z"
+            },
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "notes": [],
+            "system_mtime": "2021-06-04T19:44:04Z",
+            "user_mtime": "2021-06-04T19:44:04Z"
+        },
+        {
+            "create_time": "2021-06-04T19:44:04Z",
+            "created_by": "admin",
+            "jsonmodel_type": "lang_material",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "notes": [
+                {
+                    "content": [
+                        "English"
+                    ],
+                    "jsonmodel_type": "note_langmaterial",
+                    "persistent_id": "e100d06eefdc0dd6fb3ba1bfaaa250a7",
+                    "publish": true,
+                    "type": "langmaterial"
+                }
+            ],
+            "system_mtime": "2021-06-04T19:44:04Z",
+            "user_mtime": "2021-06-04T19:44:04Z"
+        }
+    ],
+    "last_modified_by": "admin",
+    "level": "collection",
+    "linked_agents": [
+        {
+            "ref": "/agents/corporate_entities/3",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/4",
+            "role": "subject",
+            "terms": []
+        }
+    ],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "1238f16836f5ca722fcc42eb8dd5a133",
+            "publish": true,
+            "subnotes": [
+                {
+                    "items": [],
+                    "jsonmodel_type": "note_orderedlist",
+                    "publish": true
+                }
+            ],
+            "type": "odd"
+        },
+        {
+            "content": [
+                "Minutes, reports, photographs, printed materials from the American professional editors' association."
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "538a3ef6ad00e0d0c75913c2787e86a8",
+            "publish": true,
+            "type": "abstract"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Biographical History",
+            "persistent_id": "453295ba6e7986623168443235ae1c50",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "The American Association of Industrial Editors was formed in 1938 by a small group of editors of industrial publications and house organs, who saw their mission as increasing professionalism among editors, improving quality of publications and serving management. Within a few months the fledgling organization had members from 17 states and by 1939 they began publishing the Editor's Notebook, aimed at editors of industrial and corporate magazines. In 1941 AAIE became one of several charter members of the National Council of Industrial Editors Association (NCIEA), which later became the International Council of Industrial Editors (ICIE). AAIE withdrew from ICIE in 1946 over policy differences but the two organizations merged again in 1970, becoming the International Association of Business Communicators (IABC).",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "bioghist"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Scope and Contents of the Collection",
+            "persistent_id": "c8c332e6a3e74f186fce2e97b4a1856d",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "The <emph render=\"bold\">American Association of Industrial Editors Records</emph> contains minutes, reports, photographs, printed materials and other items from the American professional editors' association.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "scopecontent"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Arrangement of the Collection",
+            "persistent_id": "08145c948b7295dcddf9f68949015f8f",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "The collection is unprocessed and remains in original order.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "arrangement"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Access Restrictions",
+            "persistent_id": "bc98eb3169a9ad70196bad67f2bc9272",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "The collection is unprocessed and accessible by special permission only.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "accessrestrict"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Use Restrictions",
+            "persistent_id": "0b8995683ed591b5b0f5134d0bd8f4c0",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Written permission must be obtained from SCRC and all relevant rights holders before publishing quotations, excerpts or images from any materials in this collection.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "userestrict"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Preferred Citation",
+            "persistent_id": "64910eb8bc11b32ecb8e61290f30673b",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Preferred citation for this material is as follows:\n\n American Association of Industrial Editors (AAIE) Records,",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "prefercite"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Acquisition Information",
+            "persistent_id": "c9a52ecd70bfcd4b18d315de62ed21fe",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Gift of <persname role=\"donor\">Samuel V. Kennedy</persname>, 1980.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "acqinfo"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "e1aa9acca62e91a80632ade3cfaa1936",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "An inventory has not yet been created for this collection. Please contact the Repository listed above for more information.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "odd"
+        }
+    ],
+    "publish": true,
+    "related_accessions": [],
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "restrictions": false,
+    "revision_statements": [],
+    "rights_statements": [],
+    "subjects": [
+        {
+            "ref": "/subjects/1"
+        },
+        {
+            "ref": "/subjects/2"
+        },
+        {
+            "ref": "/subjects/3"
+        },
+        {
+            "ref": "/subjects/4"
+        },
+        {
+            "ref": "/subjects/5"
+        },
+        {
+            "ref": "/subjects/6"
+        },
+        {
+            "ref": "/subjects/7"
+        },
+        {
+            "ref": "/subjects/8"
+        }
+    ],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T21:05:08Z",
+    "title": "American Association of Industrial Editors (AAIE) Records",
+    "tree": {
+        "ref": "/repositories/2/resources/1/tree"
+    },
+    "uri": "/repositories/2/resources/1",
+    "user_mtime": "2021-06-04T19:44:04Z"
+}

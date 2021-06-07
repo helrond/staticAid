@@ -1,0 +1,37 @@
+{
+    "create_time": "2021-06-04T19:44:13Z",
+    "created_by": "admin",
+    "external_documents": [],
+    "external_ids": [],
+    "is_linked_to_published_record": false,
+    "is_slug_auto": true,
+    "jsonmodel_type": "subject",
+    "last_modified_by": "admin",
+    "lock_version": 1,
+    "publish": true,
+    "source": "aat",
+    "system_mtime": "2021-06-04T19:44:14Z",
+    "terms": [
+        {
+            "create_time": "2021-06-04T19:44:13Z",
+            "created_by": "admin",
+            "jsonmodel_type": "term",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:13Z",
+            "term": "Notes.",
+            "term_type": "genre_form",
+            "uri": "/terms/32",
+            "user_mtime": "2021-06-04T19:44:13Z",
+            "vocabulary": "/vocabularies/1"
+        }
+    ],
+    "title": "Notes.",
+    "uri": "/subjects/32",
+    "used_within_published_repositories": [],
+    "used_within_repositories": [
+        "/repositories/2"
+    ],
+    "user_mtime": "2021-06-04T19:44:13Z",
+    "vocabulary": "/vocabularies/1"
+}

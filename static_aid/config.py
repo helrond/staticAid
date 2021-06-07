@@ -1,4 +1,4 @@
-from ConfigParser import ConfigParser, NoSectionError
+from configparser import ConfigParser, NoSectionError
 from os.path import join, exists, realpath, curdir, dirname
 from shutil import copyfile
 
@@ -61,9 +61,12 @@ def _stringToList(string):
 
 # read the config file
 if not exists(CONFIG_FILE_PATH) and not exists(CONFIG_DEFAULTS_FILE_PATH):
-    print "Unable to find any config settings! Please create one of these two files:"
-    print "", CONFIG_FILE_PATH
-    print "", CONFIG_DEFAULTS_FILE_PATH
+    print(
+        "Unable to find any config settings! Please create one of these two files:\n",
+        CONFIG_FILE_PATH,
+        "\n",
+        CONFIG_DEFAULTS_FILE_PATH
+    )
     exit(1)
 
 if not exists(CONFIG_FILE_PATH):
@@ -80,19 +83,11 @@ dataExtractor = _configSection('DataExtractor')
 # set DEFAULT value if necessary
 dataExtractor['dataSource'] = dataExtractor.get('datasource', 'DEFAULT').lower()
 
-# baseURL, repository, user, password
+# baseurl, repository, user, password
 archivesSpace = _configSection('ArchivesSpace')
-if archivesSpace:
-    archivesSpace['repository_url'] = '%s/repositories/%s' % (archivesSpace.get('baseurl'), archivesSpace.get('repository'))
-    archivesSpace['breadcrumb_url'] = '%s/search/published_tree?node_uri=/repositories/%s' % (archivesSpace.get('baseurl'),
-                                                                                              archivesSpace.get('repository'),
-                                                                                              )
 
 # baseURL, database, user, password
 adlib = _configSection('Adlib')
-
-sampleData = _configSection('SampleData')
-sampleData['filename'] = join(SAMPLE_DATA_DIR, sampleData.get('filename', 'FILENAME_NOT_SET'))
 
 # filename, level, format, datefmt
 logging = _configSection('Logging')

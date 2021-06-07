@@ -1,0 +1,101 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/40"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/4"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:26Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1968",
+            "create_time": "2021-06-04T19:44:26Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "expression": "1968",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:26Z",
+            "user_mtime": "2021-06-04T19:44:26Z"
+        }
+    ],
+    "display_string": "New York Yearly Meeting of the Religious Society of Friends (NYYM), 1968",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:26Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:26Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:26Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/24"
+                },
+                "user_mtime": "2021-06-04T19:44:26Z"
+            },
+            "system_mtime": "2021-06-04T19:44:26Z",
+            "user_mtime": "2021-06-04T19:44:26Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "content": [
+                "race relations"
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "69864a2f501a151c73fa2e295b637873",
+            "publish": true,
+            "type": "abstract"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/40"
+    },
+    "position": 4,
+    "publish": true,
+    "ref_id": "caf3d919299894482bb1cd631c6fefa1",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:26Z",
+    "title": "New York Yearly Meeting of the Religious Society of Friends (NYYM)",
+    "uri": "/repositories/2/archival_objects/118",
+    "user_mtime": "2021-06-04T19:44:26Z"
+}

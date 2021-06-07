@@ -1,0 +1,37 @@
+{
+    "create_time": "2021-06-04T19:44:04Z",
+    "created_by": "admin",
+    "external_documents": [],
+    "external_ids": [],
+    "is_linked_to_published_record": false,
+    "is_slug_auto": true,
+    "jsonmodel_type": "subject",
+    "last_modified_by": "admin",
+    "lock_version": 1,
+    "publish": true,
+    "source": "local",
+    "system_mtime": "2021-06-04T19:44:05Z",
+    "terms": [
+        {
+            "create_time": "2021-06-04T19:44:04Z",
+            "created_by": "admin",
+            "jsonmodel_type": "term",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:04Z",
+            "term": "Journalism",
+            "term_type": "topical",
+            "uri": "/terms/2",
+            "user_mtime": "2021-06-04T19:44:04Z",
+            "vocabulary": "/vocabularies/1"
+        }
+    ],
+    "title": "Journalism",
+    "uri": "/subjects/2",
+    "used_within_published_repositories": [],
+    "used_within_repositories": [
+        "/repositories/2"
+    ],
+    "user_mtime": "2021-06-04T19:44:04Z",
+    "vocabulary": "/vocabularies/1"
+}

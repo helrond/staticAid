@@ -1,0 +1,93 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/74"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/21"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:29Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Financial",
+    "extents": [
+        {
+            "create_time": "2021-06-04T19:44:29Z",
+            "created_by": "admin",
+            "extent_type": "folders",
+            "jsonmodel_type": "extent",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "number": "2",
+            "portion": "whole",
+            "system_mtime": "2021-06-04T19:44:29Z",
+            "user_mtime": "2021-06-04T19:44:29Z"
+        }
+    ],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:29Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:29Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:29Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/7"
+                },
+                "user_mtime": "2021-06-04T19:44:29Z"
+            },
+            "system_mtime": "2021-06-04T19:44:29Z",
+            "user_mtime": "2021-06-04T19:44:29Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/74"
+    },
+    "position": 2,
+    "publish": true,
+    "ref_id": "5bf5579e36c81e95e4bf968659609247",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:29Z",
+    "title": "Financial",
+    "uri": "/repositories/2/archival_objects/156",
+    "user_mtime": "2021-06-04T19:44:29Z"
+}

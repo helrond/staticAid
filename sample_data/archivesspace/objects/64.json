@@ -1,0 +1,67 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/21"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:22Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "American Friends Service Committee",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "72016111aeb85f356164990c66c26432",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "See also <ref target=\"prafsc\">Prison Reform: Organizations: American Friends Service Committee</ref>",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "odd"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/21"
+    },
+    "position": 0,
+    "publish": true,
+    "ref_id": "mrafsc",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:22Z",
+    "title": "American Friends Service Committee",
+    "uri": "/repositories/2/archival_objects/64",
+    "user_mtime": "2021-06-04T19:44:22Z"
+}

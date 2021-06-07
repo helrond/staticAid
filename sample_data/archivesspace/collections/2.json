@@ -1,0 +1,473 @@
+{
+    "classifications": [],
+    "create_time": "2021-06-04T19:44:13Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1925",
+            "create_time": "2021-06-04T19:44:13Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1994",
+            "expression": "1925-1994",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:44:13Z",
+            "user_mtime": "2021-06-04T19:44:13Z"
+        }
+    ],
+    "deaccessions": [],
+    "ead_id": "wayland-smith_p",
+    "extents": [
+        {
+            "create_time": "2021-06-04T19:44:13Z",
+            "created_by": "admin",
+            "extent_type": "linear feet",
+            "jsonmodel_type": "extent",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "number": "18",
+            "portion": "whole",
+            "system_mtime": "2021-06-04T19:44:13Z",
+            "user_mtime": "2021-06-04T19:44:13Z"
+        }
+    ],
+    "external_documents": [],
+    "external_ids": [],
+    "finding_aid_author": "LR",
+    "finding_aid_date": "10 Aug 2009",
+    "finding_aid_language": "eng",
+    "finding_aid_language_note": "English",
+    "finding_aid_script": "Zyyy",
+    "finding_aid_subtitle": "An inventory of her papers at Syracuse University",
+    "finding_aid_title": "Prudence Wayland-Smith Papers",
+    "id_0": "2697344",
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "resource",
+    "lang_materials": [
+        {
+            "create_time": "2021-06-04T19:44:13Z",
+            "created_by": "admin",
+            "jsonmodel_type": "lang_material",
+            "language_and_script": {
+                "create_time": "2021-06-04T19:44:14Z",
+                "created_by": "admin",
+                "jsonmodel_type": "language_and_script",
+                "language": "eng",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:14Z",
+                "user_mtime": "2021-06-04T19:44:14Z"
+            },
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "notes": [],
+            "system_mtime": "2021-06-04T19:44:13Z",
+            "user_mtime": "2021-06-04T19:44:13Z"
+        },
+        {
+            "create_time": "2021-06-04T19:44:14Z",
+            "created_by": "admin",
+            "jsonmodel_type": "lang_material",
+            "language_and_script": {
+                "create_time": "2021-06-04T19:44:14Z",
+                "created_by": "admin",
+                "jsonmodel_type": "language_and_script",
+                "language": "spa",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:14Z",
+                "user_mtime": "2021-06-04T19:44:14Z"
+            },
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "notes": [],
+            "system_mtime": "2021-06-04T19:44:14Z",
+            "user_mtime": "2021-06-04T19:44:14Z"
+        },
+        {
+            "create_time": "2021-06-04T19:44:14Z",
+            "created_by": "admin",
+            "jsonmodel_type": "lang_material",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "notes": [
+                {
+                    "content": [
+                        "Most material in English, with a few items in Spanish"
+                    ],
+                    "jsonmodel_type": "note_langmaterial",
+                    "persistent_id": "c4d07a94030223698ace79bc29e0cf38",
+                    "publish": true,
+                    "type": "langmaterial"
+                }
+            ],
+            "system_mtime": "2021-06-04T19:44:14Z",
+            "user_mtime": "2021-06-04T19:44:14Z"
+        }
+    ],
+    "last_modified_by": "admin",
+    "level": "collection",
+    "linked_agents": [
+        {
+            "ref": "/agents/people/2",
+            "role": "creator",
+            "terms": []
+        },
+        {
+            "ref": "/agents/people/3",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/5",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/6",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/7",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/8",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/9",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/10",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/11",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/12",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/13",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/14",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/15",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/16",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/17",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/18",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/19",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/20",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/21",
+            "role": "subject",
+            "terms": []
+        },
+        {
+            "ref": "/agents/corporate_entities/22",
+            "role": "subject",
+            "terms": []
+        }
+    ],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "cd7f2e2e9ae76b36b90b138519cd155d",
+            "publish": true,
+            "subnotes": [
+                {
+                    "items": [
+                        "14 Feb 2012 - adds (MRC)",
+                        "26 Oct 2012 - extent revised (MBD)"
+                    ],
+                    "jsonmodel_type": "note_orderedlist",
+                    "publish": true
+                }
+            ],
+            "type": "odd"
+        },
+        {
+            "content": [
+                "Papers of the 20th century social activist, focused on migrant reform, education for migrant children and prison reform. Correspondence, 1925- 1994. Also newspaper clippings, personal notes, and memorabilia including student artwork from migrant schools, photographs and photo boards. Some government documents and publications along with manuscript materials from Wayland-Smith's personal and professional life."
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "0a84ce75edae23bbb17300adcf3a4774",
+            "publish": true,
+            "type": "abstract"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Biographical History",
+            "persistent_id": "b164a29c21816cd25ac62724d951c216",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Prudence Wayland-Smith (1908-1995) was a social activist dedicated to migrant and prison reform for over 50 years.\n\n Born in 1908, Prudence Wayland-Smith was a descendant of the Oneida Community and a member of the Religious Society of Friends (Quakers). She graduated from Curtis High School on Staten Island in 1925 and went on to the Women's College at Brown University. \n\n In 1934 Wayland-Smith was elected president of the Oneida-Kenwood-Sherrill League of Women Voters. Later, she became chairwoman of the Oneida-Kenwood-Sherrill Migrant Committee. Much of the work that the committee carried out was in response to the needs of migrant workers who came up from Florida and other southern states in the summer months to help plant and harvest crops in Oneida County and Madison County in central New York. Migrant families often lived in horrible conditions in labor camps and their children had little or no education. The migrant committee not only worked for better housing conditions and labor rights in migrant camps, they also established day-care centers and summer schools for migrant children so that they could get a basic education. The committee also established a scholarship fund for migrant children going on to college. Prudence remained an active member of the League and the Migrant Committee until the late 1970s when the committee disbanded due to the fact that agriculture had become more mechanized and labor camps were closing.\n\n Beginning in the late 1970s, Wayland-Smith dedicated most of her time to prison reform in local correctional facilities in Oneida and Madison County. As a church leader she brought together other Quaker women to visit inmates, correspond, coordinate Alternatives to Violence workshops, and establish other education programs for prisoners, while also pushing for reform of the treatment of prisoners and conditions within the prisons themselves. Following the Quaker belief that there was goodness in everyone, Wayland-Smith worked to make sure that inmates would have a way to survive once they returned to society. She worked continually in local prisons up until her death at the age of 86 in 1995.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "bioghist"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Scope and Contents of the Collection",
+            "persistent_id": "5d3f94f23552f8c695ec0547019b1a96",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "The <emph render=\"bold\">Prudence Wayland-Smith Papers</emph> reflect the social reform work that Wayland-Smith carried out from the 1940s to the mid-1990s. The collection is divided into four parts: general files, migrant reform, prison reform and miscellaneous reform. \n\n  <emph render=\"bold\">General files</emph> contains material on a variety of non-reform topics, including the Oneida Community Mansion House, Syracuse University, and general news of the day. The majority of the material deals with the Religious Society of Friends (Quakers).\n\n  <emph render=\"bold\">Migrant reform</emph> contains correspondence, notes, photos, and other material related to Wayland-Smith's work with regional and state-level migrant committees and organizations, primarily the Oneida-Kenwood-Sherrill Migrant Committee. Included here is information on summer camps for migrant children, the migrant children's scholarship fund, and other related topics. There are also several scrapbooks and other items of memorabilia from the summer camps.\n\n <emph render=\"bold\">Prison reform</emph> materials relate to Wayland-Smith's work assisting prisoners directly as well as her efforts to bring about reforms in the prison system as a whole. This series includes inmate correspondence, news and media coverage, and regional and state-level committee materials as well as material relating to specific prisons in central New York.\n\n <emph render=\"bold\">Miscellaneous reform</emph> covers a range of other areas of reform in which Wayland-Smith was interested, including the peace movement, birth control, human relations, poverty, and non-violence.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "scopecontent"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Arrangement of the Collection",
+            "persistent_id": "def586dd1fa1f03353a8b4afa06676b0",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "All series are arranged alphabetically.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "arrangement"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Related Material",
+            "persistent_id": "eda09c3cb8578e62d1b98a4025dca1cb",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "SCRC has several collections related to prison reform and the Oneida Community. Please refer to the  for a complete listing. See in particular <archref href=\"../o/oneida_comm.htm\">Oneida Community</archref> and <archref href=\"../w/wayland-smith_r.htm\">Robert Wayland-Smith Papers</archref> (Prudence's husband).",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "relatedmaterial"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Separated Material",
+            "persistent_id": "e375a8a77fe3f2e7ed623ecb4dc432e3",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Some material has been transferred to Rare Books for cataloging, including eight copies of <emph render=\"italic\">Migratory Labor Notes</emph> and four other government publications, a pamphlet on Martin Luther King, Jr. Please refer to  for a complete listing.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "separatedmaterial"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Access Restrictions",
+            "persistent_id": "11fb276bd46b4e49ea0740accb729ed4",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "There are no access restrictions on this material.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "accessrestrict"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Use Restrictions",
+            "persistent_id": "d2061760c6659e09f1c6bbca25e80fc5",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "The 1965-1970 Report published by the American Friends Service Committee (Box 4) is not to be quoted or reprinted without express permission of the AFSC. Permission of James Garofalo is required to quote or use any part of 1968 migrant teachers idea booklet (Box 4).",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "userestrict"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Preferred Citation",
+            "persistent_id": "9e38ba3e106c03350fd58d1563bee8d9",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Preferred citation for this material is as follows:\n\n  Prudence Wayland-Smith Papers,",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "prefercite"
+        },
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Acquisition Information",
+            "persistent_id": "bbd385369de5e26cac17fb2efb6c0ff0",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Gift of Giles, Robert, and Paul Wayland-Smith, 2003.",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "acqinfo"
+        }
+    ],
+    "publish": true,
+    "related_accessions": [],
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "restrictions": false,
+    "revision_statements": [],
+    "rights_statements": [],
+    "subjects": [
+        {
+            "ref": "/subjects/9"
+        },
+        {
+            "ref": "/subjects/10"
+        },
+        {
+            "ref": "/subjects/11"
+        },
+        {
+            "ref": "/subjects/12"
+        },
+        {
+            "ref": "/subjects/13"
+        },
+        {
+            "ref": "/subjects/14"
+        },
+        {
+            "ref": "/subjects/15"
+        },
+        {
+            "ref": "/subjects/16"
+        },
+        {
+            "ref": "/subjects/17"
+        },
+        {
+            "ref": "/subjects/18"
+        },
+        {
+            "ref": "/subjects/19"
+        },
+        {
+            "ref": "/subjects/20"
+        },
+        {
+            "ref": "/subjects/21"
+        },
+        {
+            "ref": "/subjects/22"
+        },
+        {
+            "ref": "/subjects/23"
+        },
+        {
+            "ref": "/subjects/24"
+        },
+        {
+            "ref": "/subjects/6"
+        },
+        {
+            "ref": "/subjects/25"
+        },
+        {
+            "ref": "/subjects/26"
+        },
+        {
+            "ref": "/subjects/27"
+        },
+        {
+            "ref": "/subjects/28"
+        },
+        {
+            "ref": "/subjects/29"
+        },
+        {
+            "ref": "/subjects/30"
+        },
+        {
+            "ref": "/subjects/31"
+        },
+        {
+            "ref": "/subjects/32"
+        },
+        {
+            "ref": "/subjects/33"
+        },
+        {
+            "ref": "/subjects/34"
+        },
+        {
+            "ref": "/subjects/35"
+        }
+    ],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T21:10:41Z",
+    "title": "Prudence Wayland-Smith Papers",
+    "tree": {
+        "ref": "/repositories/2/resources/2/tree"
+    },
+    "uri": "/repositories/2/resources/2",
+    "user_mtime": "2021-06-04T19:44:13Z"
+}

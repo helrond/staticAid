@@ -1,0 +1,77 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/40"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/4"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:25Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "General correspondence",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:25Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:25Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:25Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/24"
+                },
+                "user_mtime": "2021-06-04T19:44:25Z"
+            },
+            "system_mtime": "2021-06-04T19:44:25Z",
+            "user_mtime": "2021-06-04T19:44:25Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/40"
+    },
+    "position": 0,
+    "publish": true,
+    "ref_id": "140fe7f74bbb26c5031f5d4ec0b1a84e",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:25Z",
+    "title": "General correspondence",
+    "uri": "/repositories/2/archival_objects/114",
+    "user_mtime": "2021-06-04T19:44:25Z"
+}

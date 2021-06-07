@@ -1,0 +1,53 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/11"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/1"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:21Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Friends Journal",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/11"
+    },
+    "position": 1,
+    "publish": true,
+    "ref_id": "e8f1d2e232fe59909ed187298dae2c5b",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:21Z",
+    "title": "Friends Journal",
+    "uri": "/repositories/2/archival_objects/50",
+    "user_mtime": "2021-06-04T19:44:21Z"
+}

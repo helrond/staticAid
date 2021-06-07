@@ -1,0 +1,106 @@
+{
+    "ancestors": [
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/233"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/3"
+        }
+    ],
+    "create_time": "2021-06-04T19:56:46Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1996",
+            "create_time": "2021-06-04T19:56:46Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1998",
+            "expression": "1996-1998",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:56:46Z",
+            "user_mtime": "2021-06-04T19:56:46Z"
+        }
+    ],
+    "display_string": "John Phillip Santos and Jon Funabiki office calendars, 1996-1998",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:56:46Z",
+            "created_by": "admin",
+            "instance_type": "mixed materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:56:47Z",
+                "created_by": "admin",
+                "indicator_2": "15-17",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:56:47Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/28"
+                },
+                "type_2": "folder",
+                "user_mtime": "2021-06-04T19:56:47Z"
+            },
+            "system_mtime": "2021-06-04T19:56:46Z",
+            "user_mtime": "2021-06-04T19:56:46Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "file",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "label": "Scope and Contents",
+            "persistent_id": "c83c9d6fc3f3f7240ce32fd65750853a",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "Order of calendars in file:\n\n 1. 1996-1997 (most likely Funabiki because Santos did not join the Ford Foundation until 1997) 2. 1996-1997 - Jon Funabiki 3. 1997-1998 - John Phillip Santos secretary calendar 4. 1997-1998 - Jon Funabiki 5. 1997-1998 - John Phillip Santos 6. 1998-1999 (mostly blank)",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "scopecontent"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/233"
+    },
+    "position": 13,
+    "publish": true,
+    "ref_id": "92370fb0bddc6fee72fc7b98774dcb47",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/3"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:56:46Z",
+    "title": "John Phillip Santos and Jon Funabiki office calendars",
+    "uri": "/repositories/2/archival_objects/247",
+    "user_mtime": "2021-06-04T19:56:46Z"
+}

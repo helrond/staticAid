@@ -1,0 +1,20 @@
+{
+    "244": [
+        {
+            "jsonmodel_type": "resource",
+            "node": null,
+            "offset": 0,
+            "parsed_title": "Ford Foundation records, Staff Subject Files, Linda Fingerson",
+            "root_record_uri": "/repositories/2/resources/3",
+            "title": "Ford Foundation records, Staff Subject Files, Linda Fingerson"
+        },
+        {
+            "jsonmodel_type": "archival_object",
+            "node": "/repositories/2/archival_objects/233",
+            "offset": 0,
+            "parsed_title": "Education, Media, Arts, and Culture (EMAC) program administration files, 1996-1998",
+            "root_record_uri": "/repositories/2/resources/3",
+            "title": "Education, Media, Arts, and Culture (EMAC) program administration files, 1996-1998"
+        }
+    ]
+}

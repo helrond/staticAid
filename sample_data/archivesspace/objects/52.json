@@ -1,0 +1,77 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/11"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/1"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:21Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Friends World Committee for Consultation",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:21Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:21Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:21Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/1"
+                },
+                "user_mtime": "2021-06-04T19:44:21Z"
+            },
+            "system_mtime": "2021-06-04T19:44:21Z",
+            "user_mtime": "2021-06-04T19:44:21Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/11"
+    },
+    "position": 3,
+    "publish": true,
+    "ref_id": "cae33bd0ecdfda0e7cdd99f4e9e6e5ae",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:21Z",
+    "title": "Friends World Committee for Consultation",
+    "uri": "/repositories/2/archival_objects/52",
+    "user_mtime": "2021-06-04T19:44:21Z"
+}

@@ -1,0 +1,91 @@
+{
+    "ancestors": [
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/233"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/3"
+        }
+    ],
+    "create_time": "2021-06-04T19:56:46Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1997",
+            "create_time": "2021-06-04T19:56:46Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1997",
+            "expression": "1997 May 13",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:56:46Z",
+            "user_mtime": "2021-06-04T19:56:46Z"
+        }
+    ],
+    "display_string": "Melissa Carroll memo - Disbursements Procedures, 1997 May 13",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:56:46Z",
+            "created_by": "admin",
+            "instance_type": "mixed materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:56:46Z",
+                "created_by": "admin",
+                "indicator_2": "5",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:56:46Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/27"
+                },
+                "type_2": "folder",
+                "user_mtime": "2021-06-04T19:56:46Z"
+            },
+            "system_mtime": "2021-06-04T19:56:46Z",
+            "user_mtime": "2021-06-04T19:56:46Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "file",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/233"
+    },
+    "position": 3,
+    "publish": true,
+    "ref_id": "f04f023262727b00ba2a852237852325",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/3"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:56:46Z",
+    "title": "Melissa Carroll memo - Disbursements Procedures",
+    "uri": "/repositories/2/archival_objects/237",
+    "user_mtime": "2021-06-04T19:56:46Z"
+}

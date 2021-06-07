@@ -1,9 +1,9 @@
 [DataExtractor]
-# dataSource can be one of SampleData, ArchivesSpace, Adlib, Adlib-sampledata (case-insensitive)
-dataSource: SampleData
+# dataSource can be one of ArchivesSpace, Adlib, Adlib-sampledata (case-insensitive)
+dataSource: archivesspace
 
 [ArchivesSpace]
-baseURL: http://localhost:8089
+baseurl: http://sandbox.archivesspace.org/api
 repository: 2
 user: admin
 password: admin
@@ -22,12 +22,7 @@ objectFilter:
 peopleFilter:
 institutionsFilter:
 
-
-[SampleData]
-filename: data-cleaned.zip
-
 [Destinations]
-agents: agents
 breadcrumbs: breadcrumbs
 collections: collections
 families: agents/families

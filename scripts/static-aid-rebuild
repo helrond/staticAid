@@ -1,7 +1,7 @@
 #!/bin/sh
 
-DIR=$(cd $(dirname $(readlink -f "$0" ))/..; pwd)
-cd $DIR
+cd /code/
 
-rm build/data -rf
-grunt rebuild
+static-aid-get-data --replace
+static-aid-make-pages
+bundle exec jekyll build --incremental -d build/site -s build/staging

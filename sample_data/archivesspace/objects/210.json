@@ -1,0 +1,93 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/172"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/77"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/21"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/2"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:46:58Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Photos",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:46:58Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:46:58Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:46:58Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/10"
+                },
+                "user_mtime": "2021-06-04T19:46:58Z"
+            },
+            "system_mtime": "2021-06-04T19:46:58Z",
+            "user_mtime": "2021-06-04T19:46:58Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "content": [
+                "migrant labor camps, migrant child-care centers and summer schools"
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "ea8c9084d74ec4ee1e358a231ada61e3",
+            "publish": true,
+            "type": "abstract"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/172"
+    },
+    "position": 1,
+    "publish": true,
+    "ref_id": "9fb76c904c3cbee4a24226ba62d51e55",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:46:58Z",
+    "title": "Photos",
+    "uri": "/repositories/2/archival_objects/210",
+    "user_mtime": "2021-06-04T19:46:58Z"
+}

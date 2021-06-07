@@ -1,0 +1,87 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/33"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/3"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:23Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Johnson, Mel",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:23Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:23Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:23Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/16"
+                },
+                "user_mtime": "2021-06-04T19:44:23Z"
+            },
+            "system_mtime": "2021-06-04T19:44:23Z",
+            "user_mtime": "2021-06-04T19:44:23Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "content": [
+                "Auburn Correctional Facility"
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "be8d2ba1c977604cd480830133e310bc",
+            "publish": true,
+            "type": "abstract"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/33"
+    },
+    "position": 1,
+    "publish": true,
+    "ref_id": "071cba725e3022d1e3f407ea4add9434",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:23Z",
+    "title": "Johnson, Mel",
+    "uri": "/repositories/2/archival_objects/85",
+    "user_mtime": "2021-06-04T19:44:23Z"
+}

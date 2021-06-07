@@ -1,0 +1,43 @@
+{
+    "ancestors": [
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:15Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Migrant reform",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "series",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "position": 1,
+    "publish": true,
+    "ref_id": "91a1936b941fcc3ed949bffefa347ddd",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:15Z",
+    "title": "Migrant reform",
+    "uri": "/repositories/2/archival_objects/2",
+    "user_mtime": "2021-06-04T19:44:15Z"
+}

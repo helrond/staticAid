@@ -5,6 +5,8 @@
 _config.yml
 *.egg-info
 .sass-cache
+.jekyll-cache
+*__pycache__
 
 # runtime and user-generated stuff
 *.cfg
@@ -19,4 +21,3 @@ _config.yml
 .DS_Store
 .project
 .pydevproject
-

@@ -7,8 +7,8 @@ from os.path import join, exists
 import requests
 import shelve
 
-from static_aid import config
-from static_aid.DataExtractor import DataExtractor, bytesLabel
+from static_aid import config, utils
+from static_aid.DataExtractor import DataExtractor
 
 def makeDir(dirPath):
     try:
@@ -398,7 +398,7 @@ class DataExtractor_Adlib(DataExtractor):
                     'extent_type': extentType,
                     'container_summary': '%s level' % level,
                     }
-        extents = [extentObject(bytesLabel(d), 'digital_extent', level)
+        extents = [extentObject(utils.bytes_label(d), 'digital_extent', level)
                    for d in data.get('digital_extent', [])]
         extents += [extentObject(d, 'dimension-free', level)  # TODO syntax?
                     for d in data.get('dimension.free', [])]
@@ -505,7 +505,7 @@ class DataExtractor_Adlib(DataExtractor):
 
     def getApiData(self, database, searchTerm=''):
         if self.update:
-            lastExport = datetime.fromtimestamp(self.lastExportTime())
+            lastExport = datetime.fromtimestamp(self.get_last_export_time())
             searchTerm += ' modification greater "%4d-%02d-%02d"' % (lastExport.year, lastExport.month, lastExport.day)
         elif not searchTerm or searchTerm.strip() == '':
             searchTerm = 'all'
@@ -552,7 +552,7 @@ class DataExtractor_Adlib(DataExtractor):
                     logging.info("GET " + url)
                     response = requests.get(url)
                     rawJson = response.json()
-                except Exception, e:
+                except Exception as e:
                     logging.error("Exception while retrieving URL %s: %s" % (url, e))
                     return
 
@@ -614,7 +614,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
     def _getApiData(self, database, searchTerm):
 
         def jsonFileContents(sampleDataType):
-            filename = join(config.SAMPLE_DATA_DIR, 'adlib-sampledata', '%s.json' % sampleDataType)
+            filename = join(config.SAMPLE_DATA_DIR, 'adlib', '%s.json' % sampleDataType)
             data = load(open(filename))
             return data
 
@@ -654,8 +654,7 @@ class DataExtractor_Adlib_Fake(DataExtractor_Adlib):
 
 
 if __name__ == '__main__':
-    # NOTE: this is useful for launching in a debugger or for isolated testing;
-    # it will not run when StaticAid is launched via 'grunt rebuild', so it is safe to leave in place.
+    # NOTE: this is useful for launching in a debugger or for isolated testing
     logging.basicConfig(level=INFO)
     e = DataExtractor_Adlib()
     e.READ_FROM_RAW_DUMP = True

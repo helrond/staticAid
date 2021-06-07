@@ -1,0 +1,91 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/46"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/4"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:26Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "American Friends Service Committee",
+    "extents": [],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:26Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:26Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:26Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/25"
+                },
+                "user_mtime": "2021-06-04T19:44:26Z"
+            },
+            "system_mtime": "2021-06-04T19:44:26Z",
+            "user_mtime": "2021-06-04T19:44:26Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "jsonmodel_type": "note_multipart",
+            "persistent_id": "39f121d0d2a0814a2a670e5c25e34ec4",
+            "publish": true,
+            "subnotes": [
+                {
+                    "content": "See also <ref target=\"mrafsc\">Migrant Reform: Organizations: American Friends Service Committee</ref> and <ref target=\"prafsc\">Prison Reform: Organizations: American Friends Service Committee</ref>",
+                    "jsonmodel_type": "note_text",
+                    "publish": true
+                }
+            ],
+            "type": "odd"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/46"
+    },
+    "position": 0,
+    "publish": true,
+    "ref_id": "c9f4cf04f743491dbc556de0162924c3",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:26Z",
+    "title": "American Friends Service Committee",
+    "uri": "/repositories/2/archival_objects/126",
+    "user_mtime": "2021-06-04T19:44:26Z"
+}

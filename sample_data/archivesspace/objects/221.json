@@ -1,0 +1,110 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/187"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/95"
+        },
+        {
+            "ref": "/repositories/2/archival_objects/35"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/3"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:47:02Z",
+    "created_by": "admin",
+    "dates": [
+        {
+            "begin": "1983",
+            "create_time": "2021-06-04T19:47:02Z",
+            "created_by": "admin",
+            "date_type": "inclusive",
+            "end": "1994",
+            "expression": "1983-1994",
+            "jsonmodel_type": "date",
+            "label": "creation",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "system_mtime": "2021-06-04T19:47:02Z",
+            "user_mtime": "2021-06-04T19:47:02Z"
+        }
+    ],
+    "display_string": "1983-1994",
+    "extents": [
+        {
+            "create_time": "2021-06-04T19:47:02Z",
+            "created_by": "admin",
+            "extent_type": "folders",
+            "jsonmodel_type": "extent",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "number": "9",
+            "portion": "whole",
+            "system_mtime": "2021-06-04T19:47:02Z",
+            "user_mtime": "2021-06-04T19:47:02Z"
+        }
+    ],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:47:02Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:47:02Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:47:02Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/22"
+                },
+                "user_mtime": "2021-06-04T19:47:02Z"
+            },
+            "system_mtime": "2021-06-04T19:47:02Z",
+            "user_mtime": "2021-06-04T19:47:02Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/187"
+    },
+    "position": 1,
+    "publish": true,
+    "ref_id": "d15eef772b8c36b21bcba7f317038184",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:47:02Z",
+    "uri": "/repositories/2/archival_objects/221",
+    "user_mtime": "2021-06-04T19:47:02Z"
+}

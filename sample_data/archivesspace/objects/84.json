@@ -1,0 +1,100 @@
+{
+    "ancestors": [
+        {
+            "ref": "/repositories/2/archival_objects/33"
+        },
+        {
+            "level": "series",
+            "ref": "/repositories/2/archival_objects/3"
+        },
+        {
+            "level": "collection",
+            "ref": "/repositories/2/resources/2"
+        }
+    ],
+    "create_time": "2021-06-04T19:44:23Z",
+    "created_by": "admin",
+    "dates": [],
+    "display_string": "Ford, Glen (Ted)",
+    "extents": [
+        {
+            "create_time": "2021-06-04T19:44:23Z",
+            "created_by": "admin",
+            "extent_type": "folders",
+            "jsonmodel_type": "extent",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "number": "2",
+            "portion": "whole",
+            "system_mtime": "2021-06-04T19:44:23Z",
+            "user_mtime": "2021-06-04T19:44:23Z"
+        }
+    ],
+    "external_documents": [],
+    "external_ids": [],
+    "has_unpublished_ancestor": false,
+    "instances": [
+        {
+            "create_time": "2021-06-04T19:44:23Z",
+            "created_by": "admin",
+            "instance_type": "mixed_materials",
+            "is_representative": false,
+            "jsonmodel_type": "instance",
+            "last_modified_by": "admin",
+            "lock_version": 0,
+            "sub_container": {
+                "create_time": "2021-06-04T19:44:23Z",
+                "created_by": "admin",
+                "jsonmodel_type": "sub_container",
+                "last_modified_by": "admin",
+                "lock_version": 0,
+                "system_mtime": "2021-06-04T19:44:23Z",
+                "top_container": {
+                    "ref": "/repositories/2/top_containers/16"
+                },
+                "user_mtime": "2021-06-04T19:44:23Z"
+            },
+            "system_mtime": "2021-06-04T19:44:23Z",
+            "user_mtime": "2021-06-04T19:44:23Z"
+        }
+    ],
+    "is_slug_auto": true,
+    "jsonmodel_type": "archival_object",
+    "lang_materials": [],
+    "last_modified_by": "admin",
+    "level": "otherlevel",
+    "linked_agents": [],
+    "linked_events": [],
+    "lock_version": 0,
+    "notes": [
+        {
+            "content": [
+                "Mid-Orange, Wallkill, Auburn and Elmira correctional facilities"
+            ],
+            "jsonmodel_type": "note_singlepart",
+            "persistent_id": "769e92246b1db7b41692f3c0797efeb2",
+            "publish": true,
+            "type": "abstract"
+        }
+    ],
+    "parent": {
+        "ref": "/repositories/2/archival_objects/33"
+    },
+    "position": 0,
+    "publish": true,
+    "ref_id": "ad0af9f66eed49d928b76654dbe1c3bb",
+    "repository": {
+        "ref": "/repositories/2"
+    },
+    "resource": {
+        "ref": "/repositories/2/resources/2"
+    },
+    "restrictions_apply": false,
+    "rights_statements": [],
+    "subjects": [],
+    "suppressed": false,
+    "system_mtime": "2021-06-04T19:44:23Z",
+    "title": "Ford, Glen (Ted)",
+    "uri": "/repositories/2/archival_objects/84",
+    "user_mtime": "2021-06-04T19:44:23Z"
+}
