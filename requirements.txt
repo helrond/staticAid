@@ -1,4 +1,4 @@
 ArchivesSnake==0.9.1
 psutil==5.8.0
 pytest==9.0.3
-vcrpy==4.1.1
+vcrpy==8.2.1
